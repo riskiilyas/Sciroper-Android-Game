@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RPS Challenge chapter 4</string>
+    <string name="kertas">kertas</string>
+    <string name="gunting">gunting</string>
+    <string name="batu">batu</string>
+    <string name="pemain_1">Pemain 1</string>
+    <string name="com">COM</string>
+    <string name="refresh">refresh</string>
+    <string name="vs">VS</string>
+    <string name="pemain_1_win">Pemain 1 \n MENANG!</string>
+    <string name="pemain_2_win">Pemain 2 \n MENANG!</string>
+    <string name="draw">Draw</string>
+</resources>
