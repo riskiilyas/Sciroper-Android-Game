@@ -1,5 +1,5 @@
 package com.binar.rpschallengechapter5
 
 interface InterfaceController {
-    fun cekSuit(pemain: String, com: String)
+    fun cekSuit(pemain: String, pemainDua: String)
 }

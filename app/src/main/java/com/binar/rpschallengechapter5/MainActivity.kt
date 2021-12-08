@@ -1,6 +1,7 @@
 package com.binar.rpschallengechapter5
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,9 @@ import com.binar.rpschallengechapter5.databinding.ActivityMainBinding
 @RequiresApi(Build.VERSION_CODES.M)
 @SuppressLint("ResourceAsColor")
 open class MainActivity : AppCompatActivity(), Callback {
+    companion object {
+        const val EXTRA_PERSON = "extra_person"
+    }
 
     private lateinit var binding: ActivityMainBinding
 
@@ -19,6 +23,11 @@ open class MainActivity : AppCompatActivity(), Callback {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val user: User = intent.getParcelableExtra<User>(EXTRA_PERSON) as User
+
+        binding.pemain1.text = user.name
+
 
         val btnPemain = arrayOf(
             binding.ivPemain1Batu,
@@ -38,11 +47,14 @@ open class MainActivity : AppCompatActivity(), Callback {
             ImageView.setOnClickListener {
 
                 val hasilCom = btnCom.random()
-                Log.d("${btnPemain[index].contentDescription}", "Clicked")
+                val hasilPemain = btnPemain[index].contentDescription.toString()
+                Log.d("PEMAIN SATU", "Memilih $hasilPemain")
+                Toast.makeText(this, "Pemain 1 Memilih $hasilPemain", Toast.LENGTH_SHORT)
+                    .show()
                 hasilCom.setBackgroundResource(R.drawable.shape_background)
                 disableClick(false)
                 controller.cekSuit(
-                    btnPemain[index].contentDescription.toString(),
+                    hasilPemain,
                     hasilCom.contentDescription.toString()
                 )
                 btnPemain.forEach {
@@ -52,8 +64,6 @@ open class MainActivity : AppCompatActivity(), Callback {
             }
         }
         binding.ivRefresh.setOnClickListener {
-            Toast.makeText(this, "Mulai lagi skuy", Toast.LENGTH_SHORT)
-                .show()
             Log.d("reset", "Clicked")
             btnPemain.forEach {
                 it.setBackgroundResource(android.R.color.transparent)
@@ -63,6 +73,18 @@ open class MainActivity : AppCompatActivity(), Callback {
             }
             hasil(R.string.vs, android.R.color.transparent, R.color.red)
             disableClick(true)
+        }
+
+        binding.ivClose.setOnClickListener {
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra(MenuActivity.EXTRA_PERSON, user)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+
+//            supportFragmentManager.beginTransaction()
+//                .add(R.id.landing_page, Page3Fragment())
+//                .addToBackStack(null)
+//                .commit()
         }
 
     }
