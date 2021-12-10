@@ -1,10 +1,11 @@
-package com.binar.rpschallengechapter5
+package com.binar.rpschallengechapter5.ui.landing
 
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.binar.rpschallengechapter5.R
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 
 class LandingPageActivity : AppCompatActivity() {

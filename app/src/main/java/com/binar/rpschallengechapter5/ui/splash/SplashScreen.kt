@@ -1,10 +1,12 @@
-package com.binar.rpschallengechapter5
+package com.binar.rpschallengechapter5.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.binar.rpschallengechapter5.R
+import com.binar.rpschallengechapter5.ui.landing.LandingPageActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

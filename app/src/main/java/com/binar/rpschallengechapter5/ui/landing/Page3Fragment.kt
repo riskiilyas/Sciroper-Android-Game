@@ -1,4 +1,4 @@
-package com.binar.rpschallengechapter5
+package com.binar.rpschallengechapter5.ui.landing
 
 import android.content.Intent
 import android.os.Build
@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
+import com.binar.rpschallengechapter5.R
 import com.binar.rpschallengechapter5.databinding.FragmentPage3Binding
+import com.binar.rpschallengechapter5.ui.menu.MenuActivity
 import com.bumptech.glide.Glide
 
 class Page3Fragment : Fragment() {
@@ -46,10 +48,9 @@ class Page3Fragment : Fragment() {
             if (binding.etName.text.isNotEmpty()) {
 
                 val name = binding.etName.text.toString()
-                val user = User(name)
 
                 val intent = Intent(activity, MenuActivity::class.java)
-                intent.putExtra(MenuActivity.EXTRA_PERSON, user)
+                intent.putExtra("name", name)
                 startActivity(intent)
             }
         }

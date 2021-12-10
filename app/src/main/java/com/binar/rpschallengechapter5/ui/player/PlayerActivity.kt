@@ -1,22 +1,22 @@
-package com.binar.rpschallengechapter5
+package com.binar.rpschallengechapter5.ui.player
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.binar.rpschallengechapter5.R
+import com.binar.rpschallengechapter5.controller.Callback
+import com.binar.rpschallengechapter5.controller.Controller
 import com.binar.rpschallengechapter5.databinding.ActivityPlayerBinding
+import com.binar.rpschallengechapter5.ui.dialog.DialogResult
+
 
 @RequiresApi(Build.VERSION_CODES.M)
 @SuppressLint("ResourceAsColor")
 open class PlayerActivity : AppCompatActivity(), Callback {
-
-    companion object {
-        const val EXTRA_PERSON = "extra_person"
-    }
 
     private lateinit var binding: ActivityPlayerBinding
 
@@ -24,8 +24,9 @@ open class PlayerActivity : AppCompatActivity(), Callback {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val user: User = intent.getParcelableExtra<User>(EXTRA_PERSON) as User
-        binding.pemain1.text = user.name
+
+        val name = intent.getStringExtra("name")
+        binding.pemain1.text = name
 
 
         val btnPemainSatu = arrayOf(
@@ -49,8 +50,8 @@ open class PlayerActivity : AppCompatActivity(), Callback {
             Log.e("pemain satu", "klikk")
             ImageView.setOnClickListener {
                 hasilPemainSatu = btnPemainSatu[index].contentDescription.toString()
-                Log.d("PEMAIN SATU","Memilih $hasilPemainSatu")
-                Toast.makeText(this, "Pemain 1 Memilih $hasilPemainSatu", Toast.LENGTH_SHORT)
+                Log.d("PEMAIN SATU", "Memilih $hasilPemainSatu")
+                Toast.makeText(this, "$name Memilih $hasilPemainSatu", Toast.LENGTH_SHORT)
                     .show()
                 disableClick1(false)
                 disableClick2(true)
@@ -66,12 +67,12 @@ open class PlayerActivity : AppCompatActivity(), Callback {
             Log.e("pemain Dua", "klikk")
             ImageView.setOnClickListener {
                 hasilPemainDua = btnPemainDua[index].contentDescription.toString()
-                Log.d("PEMAIN DUA","Memilih $hasilPemainDua")
-                Toast.makeText(this, "Pemain 1 Memilih $hasilPemainDua", Toast.LENGTH_SHORT)
+                Log.d("PEMAIN DUA", "Memilih $hasilPemainDua")
+                Toast.makeText(this, "Pemain 2 Memilih $hasilPemainDua", Toast.LENGTH_SHORT)
                     .show()
                 disableClick2(false)
                 if (hasilPemainSatu != "") {
-                    controller.cekSuit(hasilPemainSatu, hasilPemainDua)
+                    controller.cekSuit(hasilPemainSatu, hasilPemainDua, name, "Pemain 2")
                 }
 
                 btnPemainDua.forEach {
@@ -89,7 +90,9 @@ open class PlayerActivity : AppCompatActivity(), Callback {
             btnPemainDua.forEach {
                 it.setBackgroundResource(android.R.color.transparent)
             }
-            hasil(R.string.vs, android.R.color.transparent, R.color.red)
+            binding.textHasil.text = getString(R.string.vs)
+            binding.textHasil.setTextColor(getColor(R.color.red))
+//            hasil(R.string.vs, android.R.color.transparent, R.color.red)
             disableClick1(true)
             disableClick2(false)
 
@@ -98,10 +101,7 @@ open class PlayerActivity : AppCompatActivity(), Callback {
         }
 
         binding.ivClose.setOnClickListener {
-            val intent = Intent(this, MenuActivity::class.java)
-            intent.putExtra(MenuActivity.EXTRA_PERSON, user)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
+            finish()
         }
 
     }
@@ -118,10 +118,11 @@ open class PlayerActivity : AppCompatActivity(), Callback {
         binding.ivPemain2Gunting.isEnabled = isEnable
     }
 
-    override fun hasil(text: Int, bg: Int, textColor: Int) {
-        binding.textHasil.text = getString(text)
-        binding.textHasil.setBackgroundColor(getColor(bg))
-        binding.textHasil.setTextColor(getColor(textColor))
+    override fun hasil(hasil: String) {
+        val dialogResult = DialogResult()
+        val bundle = Bundle()
+        bundle.putString("hasil", hasil)
+        dialogResult.arguments = bundle
+        dialogResult.show(supportFragmentManager, "DialogResult")
     }
-
 }

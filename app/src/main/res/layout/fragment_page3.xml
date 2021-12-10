@@ -5,7 +5,7 @@
     android:id="@+id/fragment_page3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Page3Fragment">
+    tools:context=".ui.landing.Page3Fragment">
 
     <ImageView
         android:id="@+id/iv_third_page"
@@ -31,8 +31,9 @@
         android:layout_marginEnd="24dp"
         android:autofillHints="name"
         android:fontFamily="@font/comic_sans"
-        android:hint="@string/mamat_cs"
+        android:hint="@string/max_char"
         android:inputType="text"
+        android:maxLength="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_third_page" />

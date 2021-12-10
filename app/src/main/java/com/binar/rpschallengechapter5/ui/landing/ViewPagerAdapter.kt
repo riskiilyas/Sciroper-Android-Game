@@ -1,4 +1,4 @@
-package com.binar.rpschallengechapter5
+package com.binar.rpschallengechapter5.ui.landing
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
