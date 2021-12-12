@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.binar.rpschallengechapter5.R
+import com.binar.rpschallengechapter5.controller.CallBackFragment
 import com.binar.rpschallengechapter5.controller.Callback
 import com.binar.rpschallengechapter5.controller.Controller
 import com.binar.rpschallengechapter5.databinding.ActivityPlayerBinding
@@ -16,17 +17,23 @@ import com.binar.rpschallengechapter5.ui.dialog.DialogResult
 
 @RequiresApi(Build.VERSION_CODES.M)
 @SuppressLint("ResourceAsColor")
-open class PlayerActivity : AppCompatActivity(), Callback {
+open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
 
     private lateinit var binding: ActivityPlayerBinding
+    val name by lazy { intent.getStringExtra("name") }
+    private var hasilPemainSatu = ""
+    private var hasilPemainDua = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name = intent.getStringExtra("name")
         binding.pemain1.text = name
+
+        Toast.makeText(this, "$name Duluan yahh", Toast.LENGTH_SHORT)
+            .show()
 
 
         val btnPemainSatu = arrayOf(
@@ -41,11 +48,9 @@ open class PlayerActivity : AppCompatActivity(), Callback {
             binding.ivPemain2Gunting,
         )
 
-        var hasilPemainSatu = ""
-        var hasilPemainDua: String
 
         disableClick2(false)
-        val controller = Controller(this)
+        val controller = Controller(this,name,"Pemain 2")
         btnPemainSatu.forEachIndexed { index, ImageView ->
             Log.e("pemain satu", "klikk")
             ImageView.setOnClickListener {
@@ -55,7 +60,6 @@ open class PlayerActivity : AppCompatActivity(), Callback {
                     .show()
                 disableClick1(false)
                 disableClick2(true)
-
                 btnPemainSatu.forEach {
                     it.setBackgroundResource(android.R.color.transparent)
                 }
@@ -72,38 +76,25 @@ open class PlayerActivity : AppCompatActivity(), Callback {
                     .show()
                 disableClick2(false)
                 if (hasilPemainSatu != "") {
-                    controller.cekSuit(hasilPemainSatu, hasilPemainDua, name, "Pemain 2")
+                    controller.cekSuit(hasilPemainSatu, hasilPemainDua)
+
+                    btnPemainDua.forEach {
+                        it.setBackgroundResource(android.R.color.transparent)
+                    }
+                    btnPemainDua[index].setBackgroundResource(R.drawable.shape_background)
                 }
-
-                btnPemainDua.forEach {
-                    it.setBackgroundResource(android.R.color.transparent)
-                }
-                btnPemainDua[index].setBackgroundResource(R.drawable.shape_background)
             }
-        }
 
-        binding.ivRefresh.setOnClickListener {
-            Log.d("reset", "Clicked")
-            btnPemainSatu.forEach {
-                it.setBackgroundResource(android.R.color.transparent)
+            binding.ivRefresh.setOnClickListener {
+                Log.d("reset", "Clicked")
+                reset(android.R.color.transparent)
             }
-            btnPemainDua.forEach {
-                it.setBackgroundResource(android.R.color.transparent)
+
+            binding.ivClose.setOnClickListener {
+                finish()
             }
-            binding.textHasil.text = getString(R.string.vs)
-            binding.textHasil.setTextColor(getColor(R.color.red))
-//            hasil(R.string.vs, android.R.color.transparent, R.color.red)
-            disableClick1(true)
-            disableClick2(false)
 
-            hasilPemainSatu = ""
-            hasilPemainDua = ""
         }
-
-        binding.ivClose.setOnClickListener {
-            finish()
-        }
-
     }
 
     private fun disableClick1(isEnable: Boolean) {
@@ -124,5 +115,21 @@ open class PlayerActivity : AppCompatActivity(), Callback {
         bundle.putString("hasil", hasil)
         dialogResult.arguments = bundle
         dialogResult.show(supportFragmentManager, "DialogResult")
+    }
+
+    override fun reset(
+        bgPilihan: Int
+    ) {
+        binding.ivPemain1Batu.setBackgroundResource(bgPilihan)
+        binding.ivPemain1Kertas.setBackgroundResource(bgPilihan)
+        binding.ivPemain1Gunting.setBackgroundResource(bgPilihan)
+        binding.ivPemain2Batu.setBackgroundResource(bgPilihan)
+        binding.ivPemain2Kertas.setBackgroundResource(bgPilihan)
+        binding.ivPemain2Gunting.setBackgroundResource(bgPilihan)
+        hasilPemainSatu = ""
+        hasilPemainDua = ""
+        disableClick1(true)
+        disableClick2(false)
+
     }
 }

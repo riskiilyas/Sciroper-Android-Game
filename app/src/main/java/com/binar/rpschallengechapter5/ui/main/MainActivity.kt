@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.binar.rpschallengechapter5.R
+import com.binar.rpschallengechapter5.controller.CallBackFragment
 import com.binar.rpschallengechapter5.controller.Callback
 import com.binar.rpschallengechapter5.controller.Controller
 import com.binar.rpschallengechapter5.databinding.ActivityMainBinding
@@ -16,16 +17,17 @@ import com.binar.rpschallengechapter5.ui.dialog.DialogResult
 
 @RequiresApi(Build.VERSION_CODES.M)
 @SuppressLint("ResourceAsColor")
-open class MainActivity : AppCompatActivity(), Callback {
+open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
 
     private lateinit var binding: ActivityMainBinding
+    val name by lazy { intent.getStringExtra("name") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name = intent.getStringExtra("name")
+
 
         binding.pemain1.text = name
 
@@ -43,7 +45,7 @@ open class MainActivity : AppCompatActivity(), Callback {
         )
 
 
-        val controller = Controller(this)
+        val controller = Controller(this, name, "CPU")
         btnPemain.forEachIndexed { index, ImageView ->
             ImageView.setOnClickListener {
                 val hasilCom = btnCom.random()
@@ -56,7 +58,7 @@ open class MainActivity : AppCompatActivity(), Callback {
                 hasilCom.setBackgroundResource(R.drawable.shape_background)
                 controller.cekSuit(
                     hasilPemain,
-                    hasilCom.contentDescription.toString(),name,"CPU")
+                    hasilCom.contentDescription.toString())
                 Log.d("CPU", "Memilih $hasilCom")
                 Toast.makeText(
                     this,
@@ -73,13 +75,7 @@ open class MainActivity : AppCompatActivity(), Callback {
 
         binding.ivRefresh.setOnClickListener {
             Log.d("reset", "Clicked")
-            btnPemain.forEach {
-                it.setBackgroundResource(android.R.color.transparent)
-            }
-            btnCom.forEach {
-                it.setBackgroundResource(android.R.color.transparent)
-            }
-            disableClick(true)
+            reset(android.R.color.transparent)
         }
 
         binding.ivClose.setOnClickListener {
@@ -97,17 +93,24 @@ open class MainActivity : AppCompatActivity(), Callback {
 
 
     override fun hasil(hasil: String) {
-
         val dialogResult = DialogResult()
         val bundle = Bundle()
         bundle.putString("hasil", hasil)
         dialogResult.arguments = bundle
         dialogResult.show(supportFragmentManager, "DialogResult")
     }
-//    override fun hasil(text: Int, bg: Int, textColor: Int) {
-//        binding.textHasil.text = getString(text)
-//        binding.textHasil.setBackgroundColor(getColor(bg))
-//        binding.textHasil.setTextColor(getColor(textColor))
-//    }
+
+    override fun reset(
+        bgPilihan: Int
+    ) {
+        binding.ivPemain1Batu.setBackgroundResource(bgPilihan)
+        binding.ivPemain1Kertas.setBackgroundResource(bgPilihan)
+        binding.ivPemain1Gunting.setBackgroundResource(bgPilihan)
+        binding.ivComBatu.setBackgroundResource(bgPilihan)
+        binding.ivComKertas.setBackgroundResource(bgPilihan)
+        binding.ivComGunting.setBackgroundResource(bgPilihan)
+        disableClick(true)
+
+    }
 
 }

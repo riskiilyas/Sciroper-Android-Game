@@ -32,7 +32,7 @@
         android:autofillHints="name"
         android:fontFamily="@font/comic_sans"
         android:hint="@string/max_char"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:maxLength="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
