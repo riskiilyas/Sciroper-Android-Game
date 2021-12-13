@@ -4,15 +4,17 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 
-
-
-class Controller(private val callback: Callback, private val pemainSatu: String?, private val pemainDua: String) : InterfaceController {
+class Controller(
+    private val callback: Callback,
+    private val pemainSatu: String?,
+    private val pemainDua: String
+) : InterfaceController {
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun cekSuit(
         pilihanSatu: String,
         pilihanDua: String,
-     ) {
+    ) {
         if (pilihanSatu == pilihanDua) {
             Log.d("Hasil", "Draw")
             callback.hasil("SERI!")

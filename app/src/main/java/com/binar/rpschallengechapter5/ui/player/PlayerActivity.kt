@@ -50,7 +50,7 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
 
 
         disableClick2(false)
-        val controller = Controller(this,name,"Pemain 2")
+        val controller = Controller(this, name, "Pemain 2")
         btnPemainSatu.forEachIndexed { index, ImageView ->
             Log.e("pemain satu", "klikk")
             ImageView.setOnClickListener {

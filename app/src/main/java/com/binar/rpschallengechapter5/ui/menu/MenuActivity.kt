@@ -24,7 +24,7 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val name= intent.getStringExtra("name")
+        val name = intent.getStringExtra("name")
 
         binding.tvPemainVsPemain.text = "$name VS Pemain"
         binding.tvPemainVsCPU.text = "$name VS CPU"

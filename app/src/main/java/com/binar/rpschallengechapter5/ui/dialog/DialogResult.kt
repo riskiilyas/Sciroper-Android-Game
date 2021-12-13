@@ -1,11 +1,9 @@
 package com.binar.rpschallengechapter5.ui.dialog
 
-
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +36,7 @@ class DialogResult : DialogFragment() {
         val tvresult = view.findViewById<TextView>(R.id.tv_result)
 
         if (arguments != null) {
-            val hasil = arguments?.getString("hasil","")
+            val hasil = arguments?.getString("hasil")
             tvresult.text = hasil
 
         }
@@ -46,7 +44,6 @@ class DialogResult : DialogFragment() {
         btnMainLagi.setOnClickListener {
             dismiss()
             callBackFragment?.reset(android.R.color.transparent)
-            Log.d("Main Lagi", "Dialog Main lagi")
 
         }
 

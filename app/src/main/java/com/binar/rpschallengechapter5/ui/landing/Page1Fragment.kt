@@ -9,7 +9,6 @@ import android.widget.ImageView
 import com.binar.rpschallengechapter5.R
 import com.bumptech.glide.Glide
 
-
 class Page1Fragment : Fragment() {
 
     override fun onCreateView(

@@ -58,7 +58,8 @@ open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
                 hasilCom.setBackgroundResource(R.drawable.shape_background)
                 controller.cekSuit(
                     hasilPemain,
-                    hasilCom.contentDescription.toString())
+                    hasilCom.contentDescription.toString()
+                )
                 Log.d("CPU", "Memilih $hasilCom")
                 Toast.makeText(
                     this,
