@@ -1,6 +1,7 @@
 package com.binar.rpschallengechapter5.ui.main
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,15 +20,12 @@ import com.binar.rpschallengechapter5.ui.dialog.DialogResult
 @SuppressLint("ResourceAsColor")
 open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     val name by lazy { intent.getStringExtra("name") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         binding.pemain1.text = name
 
@@ -52,21 +50,16 @@ open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
                 val hasilPemain = btnPemain[index].contentDescription.toString()
 
                 Log.d("PEMAIN SATU", "Memilih $hasilPemain")
-                Toast.makeText(this, "$name Memilih $hasilPemain", Toast.LENGTH_SHORT)
-                    .show()
+                showToast(this, "$name Memilih $hasilPemain")
                 disableClick(false)
+
                 hasilCom.setBackgroundResource(R.drawable.shape_background)
                 controller.cekSuit(
                     hasilPemain,
                     hasilCom.contentDescription.toString()
                 )
                 Log.d("CPU", "Memilih $hasilCom")
-                Toast.makeText(
-                    this,
-                    "CPU Memilih ${hasilCom.contentDescription}",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
+                showToast(this, "CPU Memilih ${hasilCom.contentDescription}")
                 btnPemain.forEach {
                     it.setBackgroundResource(android.R.color.transparent)
                 }
@@ -87,9 +80,11 @@ open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
 
 
     private fun disableClick(isEnable: Boolean) {
-        binding.ivPemain1Kertas.isEnabled = isEnable
-        binding.ivPemain1Batu.isEnabled = isEnable
-        binding.ivPemain1Gunting.isEnabled = isEnable
+        binding.apply {
+            ivPemain1Kertas.isEnabled = isEnable
+            ivPemain1Batu.isEnabled = isEnable
+            ivPemain1Gunting.isEnabled = isEnable
+        }
     }
 
 
@@ -104,14 +99,20 @@ open class MainActivity : AppCompatActivity(), Callback, CallBackFragment {
     override fun reset(
         bgPilihan: Int
     ) {
-        binding.ivPemain1Batu.setBackgroundResource(bgPilihan)
-        binding.ivPemain1Kertas.setBackgroundResource(bgPilihan)
-        binding.ivPemain1Gunting.setBackgroundResource(bgPilihan)
-        binding.ivComBatu.setBackgroundResource(bgPilihan)
-        binding.ivComKertas.setBackgroundResource(bgPilihan)
-        binding.ivComGunting.setBackgroundResource(bgPilihan)
+        binding.apply {
+            ivPemain1Batu.setBackgroundResource(bgPilihan)
+            ivPemain1Kertas.setBackgroundResource(bgPilihan)
+            ivPemain1Gunting.setBackgroundResource(bgPilihan)
+            ivComBatu.setBackgroundResource(bgPilihan)
+            ivComKertas.setBackgroundResource(bgPilihan)
+            ivComGunting.setBackgroundResource(bgPilihan)
+        }
         disableClick(true)
 
+    }
+
+    private fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -13,10 +13,11 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        val delaySplashScreen = 2000L
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }, delaySplashScreen)
     }
 }

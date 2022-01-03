@@ -17,11 +17,10 @@ import com.bumptech.glide.Glide
 @SuppressLint("SetTextI18n")
 class MenuActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMenuBinding
+    private val binding by lazy { ActivityMenuBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val name = intent.getStringExtra("name")

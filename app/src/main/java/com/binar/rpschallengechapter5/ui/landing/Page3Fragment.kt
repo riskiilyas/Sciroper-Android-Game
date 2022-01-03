@@ -17,15 +17,14 @@ import com.binar.rpschallengechapter5.ui.menu.MenuActivity
 import com.bumptech.glide.Glide
 
 class Page3Fragment : Fragment() {
-
-    private lateinit var binding: FragmentPage3Binding
-
+    private var _binding: FragmentPage3Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPage3Binding.inflate(inflater, container, false)
+        _binding = FragmentPage3Binding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -54,5 +53,10 @@ class Page3Fragment : Fragment() {
                 startActivity(intent)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

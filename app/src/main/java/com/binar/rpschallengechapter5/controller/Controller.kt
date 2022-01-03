@@ -29,4 +29,5 @@ class Controller(
         }
         Log.d("Hasil", "$pilihanSatu VS $pilihanDua")
     }
+
 }

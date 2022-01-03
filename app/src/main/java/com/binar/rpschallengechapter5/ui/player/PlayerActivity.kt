@@ -1,6 +1,7 @@
 package com.binar.rpschallengechapter5.ui.player
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,7 @@ import com.binar.rpschallengechapter5.ui.dialog.DialogResult
 @SuppressLint("ResourceAsColor")
 open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
 
-    private lateinit var binding: ActivityPlayerBinding
+    private val binding by lazy { ActivityPlayerBinding.inflate(layoutInflater) }
     val name by lazy { intent.getStringExtra("name") }
     private var hasilPemainSatu = ""
     private var hasilPemainDua = ""
@@ -27,13 +28,10 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.pemain1.text = name
-
-        Toast.makeText(this, "$name Duluan yahh", Toast.LENGTH_SHORT)
-            .show()
+        showToast(this,"$name Duluan yahh")
 
 
         val btnPemainSatu = arrayOf(
@@ -52,14 +50,16 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
         disableClick2(false)
         val controller = Controller(this, name, "Pemain 2")
         btnPemainSatu.forEachIndexed { index, ImageView ->
-            Log.e("pemain satu", "klikk")
+            Log.d("pemain satu", "klikk")
             ImageView.setOnClickListener {
                 hasilPemainSatu = btnPemainSatu[index].contentDescription.toString()
+
                 Log.d("PEMAIN SATU", "Memilih $hasilPemainSatu")
-                Toast.makeText(this, "$name Memilih $hasilPemainSatu", Toast.LENGTH_SHORT)
-                    .show()
+                showToast(this,"$name Memilih $hasilPemainSatu")
+
                 disableClick1(false)
                 disableClick2(true)
+
                 btnPemainSatu.forEach {
                     it.setBackgroundResource(android.R.color.transparent)
                 }
@@ -72,12 +72,10 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
             ImageView.setOnClickListener {
                 hasilPemainDua = btnPemainDua[index].contentDescription.toString()
                 Log.d("PEMAIN DUA", "Memilih $hasilPemainDua")
-                Toast.makeText(this, "Pemain 2 Memilih $hasilPemainDua", Toast.LENGTH_SHORT)
-                    .show()
+                showToast(this,"Pemain 2 Memilih $hasilPemainDua")
                 disableClick2(false)
                 if (hasilPemainSatu != "") {
                     controller.cekSuit(hasilPemainSatu, hasilPemainDua)
-
                     btnPemainDua.forEach {
                         it.setBackgroundResource(android.R.color.transparent)
                     }
@@ -120,16 +118,22 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
     override fun reset(
         bgPilihan: Int
     ) {
-        binding.ivPemain1Batu.setBackgroundResource(bgPilihan)
-        binding.ivPemain1Kertas.setBackgroundResource(bgPilihan)
-        binding.ivPemain1Gunting.setBackgroundResource(bgPilihan)
-        binding.ivPemain2Batu.setBackgroundResource(bgPilihan)
-        binding.ivPemain2Kertas.setBackgroundResource(bgPilihan)
-        binding.ivPemain2Gunting.setBackgroundResource(bgPilihan)
+        binding.apply {
+            ivPemain1Batu.setBackgroundResource(bgPilihan)
+            ivPemain1Kertas.setBackgroundResource(bgPilihan)
+            ivPemain1Gunting.setBackgroundResource(bgPilihan)
+            ivPemain2Batu.setBackgroundResource(bgPilihan)
+            ivPemain2Kertas.setBackgroundResource(bgPilihan)
+            ivPemain2Gunting.setBackgroundResource(bgPilihan)
+        }
         hasilPemainSatu = ""
         hasilPemainDua = ""
         disableClick1(true)
         disableClick2(false)
 
+    }
+
+    private fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
