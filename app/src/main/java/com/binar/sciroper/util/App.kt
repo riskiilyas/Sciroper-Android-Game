@@ -1,4 +1,4 @@
-package com.binar.sciroper
+package com.binar.sciroper.util
 
 import android.app.Application
 import android.content.Context
