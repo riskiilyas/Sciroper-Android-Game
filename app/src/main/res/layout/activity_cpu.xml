@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playgame.PlayerActivity">
+    tools:context=".ui.playgame.CPUActivity">
 
     <TextView
         android:id="@+id/tv_kertas"
         style="@style/text_style"
         android:text="@string/kertas"
-        android:textColor="?attr/backgroundColour"
+        android:textColor="@color/orange"
         app:layout_constraintBottom_toTopOf="@+id/tv_gunting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,14 +37,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_gunting" />
 
+
     <TextView
         android:id="@+id/pemain1"
         style="@style/text_pemain_com"
         android:text="@string/pemain_1"
-        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/com"
         app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
-        app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/com" />
 
     <ImageView
@@ -53,9 +53,9 @@
         android:layout_marginStart="8dp"
         android:contentDescription="@string/batu"
         android:src="@drawable/batu"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_com_batu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_batu"
+        app:layout_constraintTop_toTopOf="@+id/iv_com_batu"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -64,9 +64,9 @@
         android:layout_marginStart="8dp"
         android:contentDescription="@string/kertas"
         android:src="@drawable/kertas"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_com_kertas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas" />
+        app:layout_constraintTop_toTopOf="@+id/iv_com_kertas" />
 
     <ImageView
         android:id="@+id/iv_pemain1_gunting"
@@ -74,43 +74,43 @@
         android:layout_marginStart="8dp"
         android:contentDescription="@string/gunting"
         android:src="@drawable/gunting"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_gunting"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_com_gunting"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting" />
+        app:layout_constraintTop_toTopOf="@+id/iv_com_gunting" />
 
     <TextView
         android:id="@+id/com"
         style="@style/text_pemain_com"
         android:layout_marginTop="8dp"
-        android:text="@string/pemain_2"
+        android:text="@string/cpu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
+        app:layout_constraintStart_toStartOf="@+id/iv_com_batu"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
 
     <ImageView
-        android:id="@+id/iv_pemain2_batu"
+        android:id="@+id/iv_com_batu"
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/batu"
         android:src="@drawable/batu"
-        app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
+        app:layout_constraintBottom_toTopOf="@+id/iv_com_kertas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/com" />
 
     <ImageView
-        android:id="@+id/iv_pemain2_kertas"
+        android:id="@+id/iv_com_kertas"
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/kertas"
         android:src="@drawable/kertas"
-        app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
+        app:layout_constraintBottom_toTopOf="@+id/iv_com_gunting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_batu" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_com_batu" />
 
     <ImageView
-        android:id="@+id/iv_pemain2_gunting"
+        android:id="@+id/iv_com_gunting"
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -118,7 +118,7 @@
         android:src="@drawable/gunting"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_kertas" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_com_kertas" />
 
     <ImageView
         android:id="@+id/iv_refresh"
@@ -150,10 +150,10 @@
         android:textColor="@color/red"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain1_kertas"
-        app:layout_constraintEnd_toStartOf="@id/iv_pemain2_kertas"
+        app:layout_constraintEnd_toStartOf="@id/iv_com_kertas"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/iv_pemain1_kertas"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas"
+        app:layout_constraintTop_toTopOf="@+id/iv_com_kertas"
         app:layout_constraintVertical_bias="0.0"
         tools:targetApi="o" />
 

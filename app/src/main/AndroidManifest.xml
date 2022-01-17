@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.binar.rpschallengechapter5">
+    package="com.binar.sciroper">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,22 +10,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:name="com.binar.sciroper.App"
         android:supportsRtl="true"
         android:theme="@style/Theme.RPSChallengeChapter4"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".ui.player.PlayerActivity"
+            android:name="com.binar.sciroper.ui.playgame.PlayerActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ui.menu.MenuActivity"
+            android:name="com.binar.sciroper.ui.playgame.PlayActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".ui.landing.LandingPageActivity"
+            android:name="com.binar.sciroper.ui.landing.LandingPageActivity"
             android:noHistory="true"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing"/>
         <activity
-            android:name=".ui.splash.SplashScreen"
+            android:name="com.binar.sciroper.ui.splash.SplashScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,13 +39,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-            </intent-filter>
-        </activity>
+            android:name="com.binar.sciroper.ui.playgame.CPUActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
     </application>
 
 </manifest>

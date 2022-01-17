@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13796296296296295" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.13796296296296295" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13796296296296295" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/drawable/shape_background.xml" value="0.13796296296296295" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/drawable/shape_bg_dialog.xml" value="0.13796296296296295" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_cpu.xml" value="0.22327898550724637" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_landing_page.xml" value="0.11458333333333333" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_menu.xml" value="0.16259057971014493" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_play_game.xml" value="0.22327898550724637" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_player.xml" value="0.16259057971014493" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/activity_splash_screen.xml" value="0.128" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/fragment_dialog_result.xml" value="0.2164855072463768" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/fragment_page1.xml" value="0.11458333333333333" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/fragment_page2.xml" value="0.11458333333333333" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/layout/fragment_page3.xml" value="0.11458333333333333" />
+        <entry key="..\:/Android Studio Projects/RPS-Game-Challenge-5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13796296296296295" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.35833333333333334" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/shape_background.xml" value="0.3851851851851852" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/shape_bg.xml" value="0.3851851851851852" />
@@ -25,7 +42,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

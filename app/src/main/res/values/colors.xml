@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default Theme  -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,13 +8,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange">#F6B26B</color>
-    <color name="green">#93C47D</color>
-    <color name="purple">#C27BA0</color>
-    <color name="blue_text">#00B0F0</color>
-    <color name="red">#FF0000</color>
-    <color name="blue_background">#C3DAE9</color>
-    <color name="blue_draw">#0070C0</color>
-    <color name="orange_dialog">#FF9900</color>
-    <color name="purple_dialog">#9B6DBB</color>
+    <color name="navigationColour">#0071C1</color>
+    <color name="menuColour">#C87BA2</color>
+    <color name="exitButton">#E61A23</color>
+    <color name="signColour">#F2B36C</color>
+    <color name="vsColour">#B1D035</color>
+    <color name="showColour">#F08300</color>
+
+    <!-- Light Theme  -->
+    <color name="backgroundColourLight">#ffffff</color>
+    <color name="textColourLight">#000000</color>
+
+
+    <!-- Dark Theme  -->
+    <color name="backgroundColourDark">#231916</color>
+    <color name="textColourDark">#fff</color>
+
+
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/shape_bg_dialog"
     android:padding="20dp"
-    tools:context=".ui.dialog.DialogResult">
+    tools:context=".ui.playgame.DialogResult">
 
     <TextView
         android:id="@+id/tv_head"
