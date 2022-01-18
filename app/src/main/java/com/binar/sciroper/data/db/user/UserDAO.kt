@@ -7,21 +7,24 @@ import androidx.room.*
 interface UserDAO {
 
     @Insert
-    suspend fun insertUser(user: User): Int
+    suspend fun insertUser(user: User): Long
 
     @Delete
-    suspend fun deleteUser(user: User): Int
+    suspend fun deleteUser(user: User): Long
 
     @Update
-    suspend fun updateUser(user: User): Int
+    suspend fun updateUser(user: User): Long
 
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
-    fun getUser(id: Int): User
+    fun getUserById(id: Int): LiveData<User>
+
+    @Query("SELECT * FROM ${User.TABLE_NAME} WHERE email = :email AND password = :password")
+    fun getUserByEmailAndPassword(email: String, password: String): LiveData<User>
 
     @Query("DELETE FROM ${User.TABLE_NAME}")
-    suspend fun clearAllUser(): Int
+    suspend fun clearAllUser(): Long
 
     @Query("SELECT * FROM ${User.TABLE_NAME}")
-    fun getUsers(): List<User>
+    fun getUsers(): LiveData<List<User>>
 
 }
