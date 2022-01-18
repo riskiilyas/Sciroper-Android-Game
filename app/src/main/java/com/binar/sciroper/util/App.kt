@@ -1,4 +1,4 @@
-package com.binar.sciroper
+package com.binar.sciroper.util
 
 import android.app.Application
 import android.content.Context
@@ -8,7 +8,6 @@ import java.lang.ref.WeakReference
 class App: Application() {
 
     companion object {
-        const val APP_SHARED_PREFERENCES = "app_shared_preferences"
         lateinit var context: WeakReference<Context>
         var appDb: AppDB? = null
     }

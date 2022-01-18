@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        app:dotsColor="@color/blue_draw"
         app:dotsCornerRadius="8dp"
         app:dotsSize="11dp"
         app:dotsSpacing="4dp"

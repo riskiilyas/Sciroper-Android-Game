@@ -15,8 +15,8 @@ interface UserDAO {
     @Update
     suspend fun updateUser(user: User): Int
 
-    @Query("SELECT * FROM ${User.TABLE_NAME} WHERE username = :username")
-    fun getUser(username: String): User
+    @Query("SELECT * FROM ${User.TABLE_NAME} WHERE username = :id")
+    fun getUser(id: String): User
 
     @Query("DELETE FROM ${User.TABLE_NAME}")
     suspend fun clearAllUser(): Int

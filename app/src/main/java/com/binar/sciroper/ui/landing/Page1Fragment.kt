@@ -22,8 +22,5 @@ class Page1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val ivFirstPage = view.findViewById<ImageView>(R.id.iv_first_page)
 
-        Glide.with(view)
-            .load(getString(R.string.url_landing_page1))
-            .into(ivFirstPage)
     }
 }

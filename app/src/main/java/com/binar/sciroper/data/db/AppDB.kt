@@ -20,13 +20,17 @@ abstract class AppDB: RoomDatabase() {
         private var INSTANCE: AppDB? = null
 
         // Masukkan Context null jika sudah di Inisialisasi
-        fun getInstance(applicationContext: Context?): AppDB {
+        fun getInstance(applicationContext: Context): AppDB {
             synchronized(Any()) {
                 if (INSTANCE == null) {
-                    INSTANCE = buildDB(applicationContext!!)
+                    INSTANCE = buildDB(applicationContext)
                 }
                 return INSTANCE!!
             }
+        }
+
+        fun destroyInstance(){
+            INSTANCE = null
         }
 
         private fun buildDB(context: Context): AppDB {

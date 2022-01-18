@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentPage3Binding
 import com.binar.sciroper.ui.playgame.PlayActivity
@@ -30,10 +31,6 @@ class Page3Fragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Glide.with(view)
-            .load(getString(R.string.url_landing_page3))
-            .into(binding.ivThirdPage)
 
         binding.etName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}

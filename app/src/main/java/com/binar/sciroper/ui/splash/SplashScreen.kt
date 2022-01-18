@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.binar.sciroper.App
+import com.binar.sciroper.util.App
 import com.binar.sciroper.R
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.ui.landing.LandingPageActivity
 
 class SplashScreen : AppCompatActivity() {
@@ -16,7 +17,6 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        appSharedPreference = getSharedPreferences(App.APP_SHARED_PREFERENCES, MODE_PRIVATE)
 
         val delaySplashScreen = 2000L
         Handler(Looper.getMainLooper()).postDelayed({

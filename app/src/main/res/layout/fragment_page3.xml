@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/iv_third_page"
         style="@style/landing_image"
-        android:contentDescription="@string/user"
+        android:contentDescription="user"
         tools:ignore="MissingConstraints"
         tools:src="@tools:sample/avatars" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/tv_third_page"
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
-        android:text="@string/text_third_page"
+        android:text="text_third_page"
         app:layout_constraintEnd_toEndOf="@+id/iv_third_page"
         app:layout_constraintStart_toStartOf="@+id/iv_third_page"
         app:layout_constraintTop_toBottomOf="@+id/iv_third_page" />
@@ -30,8 +30,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="name"
-        android:fontFamily="@font/comic_sans"
-        android:hint="@string/max_char"
+        android:fontFamily="@font/madeeta"
+        android:hint="max_char"
         android:inputType="textPersonName"
         android:maxLength="7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:contentDescription="@string/next"
+        android:contentDescription="next"
         android:src="@drawable/ic_baseline_arrow_right_24"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"

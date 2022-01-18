@@ -9,14 +9,13 @@
     <ImageView
         android:id="@+id/iv_second_page"
         style="@style/landing_image"
-        android:contentDescription="@string/cpu"
         tools:ignore="MissingConstraints"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
-        android:text="@string/text_second_page"
+        android:text="text_second_page"
         app:layout_constraintEnd_toEndOf="@+id/iv_second_page"
         app:layout_constraintStart_toStartOf="@+id/iv_second_page"
         app:layout_constraintTop_toBottomOf="@+id/iv_second_page" />

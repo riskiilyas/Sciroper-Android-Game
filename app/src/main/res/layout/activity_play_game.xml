@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/tv_pilih"
         style="@style/landing_menu_text"
-        android:text="@string/pilih_lawanmu"
+        android:text="pilih_lawanmu"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="@string/pemain_vs_pemain"
+        android:contentDescription="pemain_vs_pemain"
         app:layout_constraintEnd_toEndOf="@+id/tv_pilih"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/tv_pilih"
@@ -33,7 +33,7 @@
     <TextView
         android:id="@+id/tv_pemain_vs_pemain"
         style="@style/landing_menu_text"
-        android:text="@string/pemain_vs_pemain"
+        android:text="pemain_vs_pemain"
         app:layout_constraintEnd_toEndOf="@+id/iv_pemain_vs_pemain"
         app:layout_constraintStart_toStartOf="@+id/iv_pemain_vs_pemain"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_pemain" />
@@ -43,7 +43,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/pemain_vs_cpu"
+        android:contentDescription="pemain_vs_cpu"
         app:layout_constraintEnd_toEndOf="@+id/tv_pemain_vs_pemain"
         app:layout_constraintStart_toStartOf="@+id/tv_pemain_vs_pemain"
         app:layout_constraintTop_toBottomOf="@+id/tv_pemain_vs_pemain"
@@ -52,7 +52,7 @@
     <TextView
         android:id="@+id/tv_pemain_vs_CPU"
         style="@style/landing_menu_text"
-        android:text="@string/pemain_vs_cpu"
+        android:text="pemain_vs_cpu"
         app:layout_constraintEnd_toEndOf="@+id/iv_pemain_vs_CPU"
         app:layout_constraintStart_toStartOf="@+id/iv_pemain_vs_CPU"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_CPU" />

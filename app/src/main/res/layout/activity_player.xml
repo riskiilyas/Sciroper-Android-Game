@@ -9,7 +9,6 @@
     <TextView
         android:id="@+id/tv_kertas"
         style="@style/text_style"
-        android:text="@string/kertas"
         android:textColor="?attr/backgroundColour"
         app:layout_constraintBottom_toTopOf="@+id/tv_gunting"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +18,6 @@
     <TextView
         android:id="@+id/tv_gunting"
         style="@style/text_style"
-        android:text="@string/gunting"
-        android:textColor="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/batu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +26,6 @@
     <TextView
         android:id="@+id/batu"
         style="@style/text_style"
-        android:text="@string/batu"
-        android:textColor="@color/purple"
         app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -40,7 +35,6 @@
     <TextView
         android:id="@+id/pemain1"
         style="@style/text_pemain_com"
-        android:text="@string/pemain_1"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/com"
         app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
@@ -51,8 +45,6 @@
         android:id="@+id/iv_pemain1_batu"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="@string/batu"
-        android:src="@drawable/batu"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_pemain2_batu"
@@ -62,8 +54,6 @@
         android:id="@+id/iv_pemain1_kertas"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="@string/kertas"
-        android:src="@drawable/kertas"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas" />
@@ -72,8 +62,6 @@
         android:id="@+id/iv_pemain1_gunting"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="@string/gunting"
-        android:src="@drawable/gunting"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_gunting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting" />
@@ -82,7 +70,6 @@
         android:id="@+id/com"
         style="@style/text_pemain_com"
         android:layout_marginTop="8dp"
-        android:text="@string/pemain_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
         app:layout_constraintTop_toBottomOf="@id/guideline2" />
@@ -92,8 +79,6 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/batu"
-        android:src="@drawable/batu"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/com" />
@@ -103,8 +88,6 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/kertas"
-        android:src="@drawable/kertas"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_batu" />
@@ -114,8 +97,6 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/gunting"
-        android:src="@drawable/gunting"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_kertas" />
@@ -127,10 +108,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/refresh"
         android:padding="10dp"
         android:scaleType="centerInside"
-        android:src="@drawable/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
@@ -143,11 +122,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:autoSizeTextType="uniform"
-        android:fontFamily="@font/comic_sans"
         android:gravity="center"
         android:rotation="-15"
-        android:text="@string/vs"
-        android:textColor="@color/red"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain1_kertas"
         app:layout_constraintEnd_toStartOf="@id/iv_pemain2_kertas"
@@ -163,8 +139,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/close"
-        android:src="@drawable/close"
         app:layout_constraintBottom_toBottomOf="@+id/tv_kertas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
