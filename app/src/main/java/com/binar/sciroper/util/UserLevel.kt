@@ -9,7 +9,7 @@ class UserLevel(private val user: User) {
 
         fun sortUsersLevel(users: List<User>){
             Collections.sort(users,
-                Comparator { p0, p1 ->
+                Comparator { p1, p0 ->
                     when {
                         p0.level == p1.level -> {
                             when {
