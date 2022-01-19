@@ -29,7 +29,6 @@
         android:layout_height="0dp"
         android:contentDescription="@string/next"
         android:src="@drawable/ic_baseline_arrow_right_24"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
