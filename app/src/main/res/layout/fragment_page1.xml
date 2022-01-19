@@ -6,16 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.landing.Page1Fragment">
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv_first_page"
         style="@style/landing_image"
         tools:ignore="MissingConstraints"
-        tools:src="@tools:sample/avatars" />
+        app:lottie_rawRes="@raw/player_vs_player"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        />
 
     <TextView
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
-        android:text="text_first_page"
+        android:text="@string/player_with_other_player"
         app:layout_constraintEnd_toEndOf="@+id/iv_first_page"
         app:layout_constraintStart_toStartOf="@+id/iv_first_page"
         app:layout_constraintTop_toBottomOf="@+id/iv_first_page" />
