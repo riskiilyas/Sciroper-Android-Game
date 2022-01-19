@@ -16,6 +16,7 @@
         />
 
     <TextView
+        android:id="@+id/tv_fragment_satu"
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
         android:text="@string/player_with_other_player"
