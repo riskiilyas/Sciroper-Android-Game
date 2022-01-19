@@ -1,8 +1,6 @@
 package com.binar.sciroper.data.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO

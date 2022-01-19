@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sciroper</string>
+    <string name="user_level">Level %1$d</string>
+    <string name="register_succeed">Register \nSucceed</string>
 </resources>

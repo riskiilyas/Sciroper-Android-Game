@@ -18,6 +18,10 @@
         <item name="android:scaleType">centerInside</item>
     </style>
 
+    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/button_toggle</item>
+    </style>
+
     <style name="text_pemain_com">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
