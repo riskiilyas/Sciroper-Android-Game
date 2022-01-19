@@ -2,11 +2,12 @@ package com.binar.sciroper.data.db.user
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
 interface UserDAO {
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     suspend fun insertUser(user: User): Long
 
     @Delete

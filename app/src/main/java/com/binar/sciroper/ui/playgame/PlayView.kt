@@ -1,7 +1,7 @@
 package com.binar.sciroper.ui.playgame
 
 
-interface Callback {
+interface PlayView {
     fun hasil(hasil: String)
 
 }
