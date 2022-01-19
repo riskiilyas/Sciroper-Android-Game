@@ -21,7 +21,7 @@ class Page2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ivFirstPage = view.findViewById<ImageView>(R.id.iv_second_page)
+        val ivSecondPage = view.findViewById<ImageView>(R.id.iv_second_page)
 
     }
 }
