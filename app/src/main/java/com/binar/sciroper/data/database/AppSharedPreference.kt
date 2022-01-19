@@ -1,4 +1,4 @@
-package com.binar.sciroper.data.local
+package com.binar.sciroper.data.database
 
 import android.content.Context
 import com.binar.sciroper.util.App
