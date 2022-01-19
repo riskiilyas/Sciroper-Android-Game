@@ -1,15 +1,13 @@
 package com.binar.sciroper.ui.playgame
 
-import android.annotation.SuppressLint
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ActivityPlayGameBinding
+import com.binar.sciroper.util.goToWithData
 import com.google.android.material.snackbar.Snackbar
-import com.bumptech.glide.Glide
 
-@SuppressLint("SetTextI18n")
 class PlayActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayGameBinding
@@ -20,24 +18,27 @@ class PlayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val name = intent.getStringExtra("name")
+        val avatar = intent.getIntExtra("avatar", 0)
 
-        binding.tvPemainVsPemain.text = "$name VS Pemain"
-        binding.tvPemainVsCPU.text = "$name VS CPU"
+        binding.apply {
+            tvPemainVsPemain.text = getString(R.string.player_vs_player, name)
+            tvPemainVsCPU.text = getString(R.string.player_vs_player, name)
+        }
 
         binding.ivPemainVsPemain.setOnClickListener {
-            val mIntent = Intent(this, PlayerActivity::class.java)
-            mIntent.putExtra("name", name)
-            startActivity(mIntent)
-
+            goToWithData(PlayerActivity::class.java) {
+                it.putExtra("name", name)
+                it.putExtra("avatar", avatar)
+            }
         }
         binding.ivPemainVsCPU.setOnClickListener {
-            val mIntent = Intent(this, CPUActivity::class.java)
-            mIntent.putExtra("name", name)
-            startActivity(mIntent)
+            goToWithData(CPUActivity::class.java) {
+                it.putExtra("name", name)
+                it.putExtra("avatar", avatar)
+            }
         }
-
         Snackbar.make(
-            binding.menuActivity,
+            binding.playActivity,
             "Selamat datang $name",
             Snackbar.LENGTH_LONG
         ).setAction("TUTUP") {
