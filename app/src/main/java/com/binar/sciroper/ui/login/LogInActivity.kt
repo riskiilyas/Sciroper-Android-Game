@@ -47,11 +47,15 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
 
         signInBtn.setOnClickListener {
             showProgress()
-            logInPresenter.login(email = email.text.toString(), password = password.text.toString())
+            Handler(Looper.getMainLooper()).postDelayed({
+                logInPresenter.login(
+                    email = email.text.toString(),
+                    password = password.text.toString()
+                )
+            }, 3000)
         }
 
-        email.addTextChangedListener(textWatcher)
-        password.addTextChangedListener(textWatcher)
+        addTextChangedListenerOnView(email, password, textWatcher = textWatcher)
     }
 
     private val textWatcher = object : TextWatcher {
@@ -69,6 +73,15 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         }
     }
 
+    private fun addTextChangedListenerOnView(
+        vararg views: TextInputEditText,
+        textWatcher: TextWatcher
+    ) {
+        for (view in views) {
+            view.addTextChangedListener(textWatcher)
+        }
+    }
+
     override fun onSignInMsg(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -82,7 +95,6 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
 
     override fun onSuccess(user: User) {
         val intent = Intent(this, MenuActivity::class.java)
-        intent.putExtra("key_id", user.id)
         startActivity(intent)
     }
 }

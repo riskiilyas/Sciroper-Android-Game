@@ -8,10 +8,9 @@ import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.Toast
-import com.binar.sciroper.data.db.user.User
+import android.widget.*
+import com.binar.sciroper.R
+
 import com.binar.sciroper.databinding.ActivitySignUpBinding
 import com.binar.sciroper.ui.register_confirmation.RegisterConfirmationActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -25,6 +24,8 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
     private lateinit var rePassword: TextInputEditText
     private lateinit var signUpBtn: Button
     private lateinit var loadingInd: ProgressBar
+    private lateinit var radioGroup: RadioGroup
+    private var avatarId: Int = R.drawable.avatar21
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +41,7 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         rePassword = binding.tietRepassword
         signUpBtn = binding.btnSignUp
         loadingInd = binding.loadingInd
+        radioGroup = binding.radioGroup
 
         signUpBtn.setOnClickListener {
             if (password.text.toString() != rePassword.text.toString()) {
@@ -47,18 +49,66 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
                 onSignUpMsg("Password does not match")
             } else {
                 showProgress()
-                signUpPresenter.register(
-                    username = userName.text.toString(),
-                    email = email.text.toString(),
-                    password = password.text.toString()
-                )
+                Handler(Looper.getMainLooper()).postDelayed({
+                    signUpPresenter.register(
+                        username = userName.text.toString(),
+                        email = email.text.toString(),
+                        password = password.text.toString(),
+                        avatarId = avatarId
+                    )
+                }, 3000)
             }
         }
 
-        userName.addTextChangedListener(textWatcher)
-        email.addTextChangedListener(textWatcher)
-        password.addTextChangedListener(textWatcher)
-        rePassword.addTextChangedListener(textWatcher)
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                binding.avatar1.id -> {
+                    avatarId = R.drawable.avatar21
+                    binding.avatar1.background = getDrawable(R.drawable.avatar11)
+                    binding.avatar2.background = getDrawable(R.drawable.avatar22)
+                    binding.avatar3.background = getDrawable(R.drawable.avatar23)
+                    binding.avatar4.background = getDrawable(R.drawable.avatar24)
+                    signUpBtn.isEnabled = true
+                    Toast.makeText(this, "avatar 1 selected", Toast.LENGTH_SHORT).show()
+                }
+                binding.avatar2.id -> {
+                    avatarId = R.drawable.avatar22
+                    binding.avatar1.background = getDrawable(R.drawable.avatar21)
+                    binding.avatar2.background = getDrawable(R.drawable.avatar12)
+                    binding.avatar3.background = getDrawable(R.drawable.avatar23)
+                    binding.avatar4.background = getDrawable(R.drawable.avatar24)
+                    signUpBtn.isEnabled = true
+                    Toast.makeText(this, "avatar 2 selected", Toast.LENGTH_SHORT).show()
+                }
+                binding.avatar3.id -> {
+                    avatarId = R.drawable.avatar23
+                    binding.avatar1.background = getDrawable(R.drawable.avatar21)
+                    binding.avatar2.background = getDrawable(R.drawable.avatar22)
+                    binding.avatar3.background = getDrawable(R.drawable.avatar13)
+                    binding.avatar4.background = getDrawable(R.drawable.avatar24)
+                    signUpBtn.isEnabled = true
+                    Toast.makeText(this, "avatar 3 selected", Toast.LENGTH_SHORT).show()
+                }
+                binding.avatar4.id -> {
+                    avatarId = R.drawable.avatar24
+                    binding.avatar1.background = getDrawable(R.drawable.avatar21)
+                    binding.avatar2.background = getDrawable(R.drawable.avatar22)
+                    binding.avatar3.background = getDrawable(R.drawable.avatar23)
+                    binding.avatar4.background = getDrawable(R.drawable.avatar14)
+                    signUpBtn.isEnabled = true
+                    Toast.makeText(this, "avatar 4 selected", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        addTextChangedListenerOnView(
+            userName,
+            email,
+            password,
+            rePassword,
+            textWatcher = textWatcher
+        )
+
     }
 
 
@@ -79,6 +129,15 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         }
     }
 
+    private fun addTextChangedListenerOnView(
+        vararg views: TextInputEditText,
+        textWatcher: TextWatcher
+    ) {
+        for (view in views) {
+            view.addTextChangedListener(textWatcher)
+        }
+    }
+
     override fun onSignUpMsg(message: String) {
         Handler(Looper.getMainLooper()).postDelayed({
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -92,14 +151,9 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         }, 3000)
     }
 
-    override fun onSuccess(user: User) {
+    override fun onSuccess(username: String) {
+        signUpPresenter.getUser(email.text.toString(), password.text.toString())
         val intent = Intent(this, RegisterConfirmationActivity::class.java)
-        intent.putExtra("key_id", user.id)
         startActivity(intent)
-    }
-
-    fun getData() {
-        TODO("Figure out how to send intent from sign up to registration")
-        TODO("Figure out how to send fix avatar bug in login screen")
     }
 }

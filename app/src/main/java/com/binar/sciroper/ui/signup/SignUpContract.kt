@@ -7,7 +7,7 @@ interface SignUpContract {
     interface View {
         fun onSignUpMsg(message: String)
         fun showProgress()
-        fun onSuccess(user: User)
+        fun onSuccess(username: String)
     }
 
     interface Presenter {

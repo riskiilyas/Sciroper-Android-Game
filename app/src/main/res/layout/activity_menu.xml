@@ -32,8 +32,9 @@
 
     <ImageView
         android:id="@+id/user_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/tv_menu"
         app:layout_constraintStart_toStartOf="@id/tv_menu"
         app:layout_constraintTop_toBottomOf="@id/tv_menu"
@@ -70,7 +71,7 @@
         tools:text="@string/user_level" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_tutorial"
+        android:id="@+id/btn_tutorial"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -87,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_user_level" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_play"
+        android:id="@+id/btn_play"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -100,10 +101,10 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_tutorial" />
+        app:layout_constraintTop_toBottomOf="@id/btn_tutorial" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_setting"
+        android:id="@+id/btn_setting"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -116,10 +117,10 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_play" />
+        app:layout_constraintTop_toBottomOf="@id/btn_play" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_leader_board"
+        android:id="@+id/btn_leader_board"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -132,10 +133,10 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting" />
+        app:layout_constraintTop_toBottomOf="@id/btn_setting" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/tv_exit_game"
+        android:id="@+id/btn_exit_game"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -148,7 +149,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintTop_toBottomOf="@id/tv_leader_board" />
+        app:layout_constraintTop_toBottomOf="@id/btn_leader_board" />
 
 
     <androidx.constraintlayout.widget.Guideline
