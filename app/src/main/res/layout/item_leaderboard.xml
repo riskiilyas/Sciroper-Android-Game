@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginStart="20dp"
+    android:layout_marginStart="10dp"
     android:layout_marginTop="4dp"
-    android:layout_marginEnd="20dp">
+    android:layout_marginEnd="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/tv_Rank"
@@ -40,11 +40,11 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="32dp"
             android:layout_toEndOf="@id/AvatarPlayer"
+            android:background="?backgroundColour"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
             android:text="@string/game_suit"
             android:textSize="20sp"
-            android:background="?backgroundColour"
             android:textStyle="bold" />
     </RelativeLayout>
 
