@@ -40,11 +40,13 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
 
         logInPresenter = LogInPresenter(this)
 
+        // button to navigate to sign up activity
         signUpBtn.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
+        // button to sign in user if email and password is correct
         signInBtn.setOnClickListener {
             showProgress()
             Handler(Looper.getMainLooper()).postDelayed({
@@ -58,6 +60,8 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         addTextChangedListenerOnView(email, password, textWatcher = textWatcher)
     }
 
+    // text watcher applied to sign in button to enable or disable sign up button depending;
+    // if user has input all the required field
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
         }
@@ -73,6 +77,7 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         }
     }
 
+    // function to add text watcher on multiple text input edit text view
     private fun addTextChangedListenerOnView(
         vararg views: TextInputEditText,
         textWatcher: TextWatcher
@@ -82,10 +87,12 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         }
     }
 
+    // display message when sign in button is clicked
     override fun onSignInMsg(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    // to show progress bar
     override fun showProgress() {
         loadingInd.visibility = View.VISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
@@ -93,6 +100,7 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         }, 3000)
     }
 
+    // if sign in is success, onSuccess is used to navigate to menu activity
     override fun onSuccess(user: User) {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)

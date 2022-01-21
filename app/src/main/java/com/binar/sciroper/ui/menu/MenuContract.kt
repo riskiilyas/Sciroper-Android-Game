@@ -1,6 +1,6 @@
 package com.binar.sciroper.ui.menu
 
-class MenuContract {
+interface MenuContract {
 
     interface View{
 

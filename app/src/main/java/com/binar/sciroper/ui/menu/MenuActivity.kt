@@ -2,6 +2,7 @@ package com.binar.sciroper.ui.menu
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.binar.sciroper.R
@@ -16,7 +17,8 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
     private lateinit var username: TextView
     private lateinit var userImage: ImageView
     private lateinit var userLevel: TextView
-    private  var userId: Int = 0
+    private lateinit var exitBtn: Button
+    private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +30,18 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         username = binding.tvUsername
         userLevel = binding.tvUserLevel
         userImage = binding.userImg
+        exitBtn = binding.btnExitGame
 
         menuPresenter = MenuPresenter(this)
 
         username.text = userId.toString()
         menuPresenter.getUser(userId).observe(this) {
             bind(it)
+        }
+
+        exitBtn.setOnClickListener {
+            finish()
+            moveTaskToBack(true)
         }
     }
 

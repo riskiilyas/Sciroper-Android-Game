@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.View
 import android.widget.*
 import com.binar.sciroper.R
@@ -44,10 +45,18 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         radioGroup = binding.radioGroup
 
         signUpBtn.setOnClickListener {
-            if (password.text.toString() != rePassword.text.toString()) {
+            // check if user has input email in the correct pattern/format
+            if (!Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()){
+                showProgress()
+                onSignUpMsg("Invalid email format")
+            }
+            // check if password value equals rePassword value
+            else if (password.text.toString() != rePassword.text.toString()) {
                 showProgress()
                 onSignUpMsg("Password does not match")
-            } else {
+            }
+            // simulate loading during data fetch, register user and move to register succeed screen
+            else {
                 showProgress()
                 Handler(Looper.getMainLooper()).postDelayed({
                     signUpPresenter.register(
@@ -60,6 +69,8 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
             }
         }
 
+        // to check for user avatar and also set the indicator if an avatar is chosen
+        // do note that default avatar is set to id of R.drawable.avatar21
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 binding.avatar1.id -> {
@@ -68,8 +79,6 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
                     binding.avatar2.background = getDrawable(R.drawable.avatar22)
                     binding.avatar3.background = getDrawable(R.drawable.avatar23)
                     binding.avatar4.background = getDrawable(R.drawable.avatar24)
-                    signUpBtn.isEnabled = true
-                    Toast.makeText(this, "avatar 1 selected", Toast.LENGTH_SHORT).show()
                 }
                 binding.avatar2.id -> {
                     avatarId = R.drawable.avatar22
@@ -77,8 +86,6 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
                     binding.avatar2.background = getDrawable(R.drawable.avatar12)
                     binding.avatar3.background = getDrawable(R.drawable.avatar23)
                     binding.avatar4.background = getDrawable(R.drawable.avatar24)
-                    signUpBtn.isEnabled = true
-                    Toast.makeText(this, "avatar 2 selected", Toast.LENGTH_SHORT).show()
                 }
                 binding.avatar3.id -> {
                     avatarId = R.drawable.avatar23
@@ -86,8 +93,6 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
                     binding.avatar2.background = getDrawable(R.drawable.avatar22)
                     binding.avatar3.background = getDrawable(R.drawable.avatar13)
                     binding.avatar4.background = getDrawable(R.drawable.avatar24)
-                    signUpBtn.isEnabled = true
-                    Toast.makeText(this, "avatar 3 selected", Toast.LENGTH_SHORT).show()
                 }
                 binding.avatar4.id -> {
                     avatarId = R.drawable.avatar24
@@ -95,8 +100,6 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
                     binding.avatar2.background = getDrawable(R.drawable.avatar22)
                     binding.avatar3.background = getDrawable(R.drawable.avatar23)
                     binding.avatar4.background = getDrawable(R.drawable.avatar14)
-                    signUpBtn.isEnabled = true
-                    Toast.makeText(this, "avatar 4 selected", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -111,7 +114,8 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
 
     }
 
-
+    // text watcher applied to sign up button to enable or disable sign up button depending;
+    // if user has input all the required field
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
         }
@@ -129,6 +133,7 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         }
     }
 
+    // function to add text watcher on multiple text input edit text view
     private fun addTextChangedListenerOnView(
         vararg views: TextInputEditText,
         textWatcher: TextWatcher
@@ -138,12 +143,14 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         }
     }
 
+    // display message when sign up button is clicked
     override fun onSignUpMsg(message: String) {
         Handler(Looper.getMainLooper()).postDelayed({
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }, 3000)
     }
 
+    // to show progress bar
     override fun showProgress() {
         loadingInd.visibility = View.VISIBLE
         Handler(Looper.getMainLooper()).postDelayed({
@@ -151,6 +158,7 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         }, 3000)
     }
 
+    // if sign up is success, onSuccess is used to navigate to register confirmation activity
     override fun onSuccess(username: String) {
         signUpPresenter.getUser(email.text.toString(), password.text.toString())
         val intent = Intent(this, RegisterConfirmationActivity::class.java)

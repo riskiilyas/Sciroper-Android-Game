@@ -21,17 +21,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/user_avatar"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginVertical="32dp"
-        android:background="@drawable/border"
-        android:scaleType="fitCenter"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="@id/tv_confirmation"
-        app:layout_constraintStart_toStartOf="@id/tv_confirmation"
-        app:layout_constraintTop_toBottomOf="@id/tv_confirmation" />
+
+        android:layout_marginVertical="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight="250dp"
+        app:lottie_autoPlay="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_rawRes="@raw/success_register"
+        app:layout_constraintTop_toBottomOf="@id/tv_confirmation"
+        app:layout_constraintWidth="250dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
@@ -44,9 +46,9 @@
         android:text="Next"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/user_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/lottie"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/user_avatar"
-        app:layout_constraintTop_toBottomOf="@id/user_avatar" />
+        app:layout_constraintStart_toStartOf="@+id/lottie"
+        app:layout_constraintTop_toBottomOf="@id/lottie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
