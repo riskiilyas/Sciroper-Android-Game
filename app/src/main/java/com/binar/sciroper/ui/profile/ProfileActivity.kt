@@ -2,6 +2,7 @@ package com.binar.sciroper.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.binar.sciroper.R
@@ -20,12 +21,15 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val user = User(1, "rahmat", "rahmat@gmail.com", "1223", 1, 0, 0, 0, 0)
-
-        GlobalScope.launch {
-            App.appDb.getUserDao().insertUser(user)
-        }
+//        val user = User(1, "rahmat", "rahmat@gmail.com", "1223", 1, 0, 0, 0, 0)
+//        val user2 = User(2, "rahmat123", "rahmat123@gmail.com", "1", 2, 0, 0, 0, 0)
+//
+//        GlobalScope.launch {
+//            App.appDb.getUserDao().insertUser(user)
+//            App.appDb.getUserDao().insertUser(user2)
+//        } //todo ini dummy tolong di hapus ya wkwk
         presenterProfile = PresenterProfile(this)
+
         val username = presenterProfile.getDataUser().username
         val email = presenterProfile.getDataUser().email
         val avatarID = presenterProfile.getDataUser().avatarId
@@ -41,12 +45,10 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         avatar[avatarID].setBackgroundResource(R.color.navigationColour)
         choiceAvatar(avatar)
 
-
-
         binding.btnUpdate.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val email = binding.etEmail.text.toString()
-            val oldPass = binding.etOldPass.text.toString()
+            val pass = binding.etOldPass.text.toString()
             val newPass = binding.etNewPass.text.toString()
             val reNewPass = binding.etRePass.text.toString()
 
@@ -54,7 +56,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
                 userAvatar,
                 username,
                 email,
-                oldPass,
+                pass,
                 newPass,
                 reNewPass
             )

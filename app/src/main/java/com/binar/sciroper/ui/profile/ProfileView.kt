@@ -1,6 +1,6 @@
 package com.binar.sciroper.ui.profile
 
-import android.os.Message
+
 import android.widget.ImageView
 
 interface ProfileView {

@@ -34,4 +34,7 @@ interface UserDAO {
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
     fun getUserByIdProfile(id: Int): User
 
+    @Query("select * from ${User.TABLE_NAME} except select * from ${User.TABLE_NAME} where id  = :id")
+    fun getUserExcl(id: Int): User
+
 }
