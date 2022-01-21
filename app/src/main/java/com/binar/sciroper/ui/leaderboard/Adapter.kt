@@ -22,7 +22,7 @@ class Adapter(
         fun bindView(dataPlayer: User) {
             itemBinding.tvRank.text = dataPlayer.id.toString()
             itemBinding.namaPlayer.text = dataPlayer.username
-//            itemBinding.AvatarPlayer.setImageResource(Int) = dataPlayer.avatar_id
+            itemBinding.AvatarPlayer.setImageResource(dataPlayer.avatarId)
         }
 
     }

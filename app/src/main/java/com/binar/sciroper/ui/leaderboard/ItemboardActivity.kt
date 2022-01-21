@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ItemLeaderboardBinding
 
-class ItemboardActivity : AppCompatActivity() {
+class ItemBoardActivity : AppCompatActivity() {
     private lateinit var binding: ItemLeaderboardBinding
 
 
