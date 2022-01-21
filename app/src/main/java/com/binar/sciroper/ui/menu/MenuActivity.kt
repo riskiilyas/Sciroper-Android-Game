@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.menu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -40,8 +41,7 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         }
 
         exitBtn.setOnClickListener {
-            finish()
-            moveTaskToBack(true)
+            createDialog()
         }
     }
 
@@ -51,5 +51,18 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
             userLevel.text = getString(R.string.user_level, user.level)
             userImage.setImageResource(user.avatarId)
         }
+    }
+
+    private fun createDialog() {
+        val dialogFragment = DialogExit()
+        dialogFragment.isCancelable = false
+        dialogFragment.show(supportFragmentManager, "custom_dialog")
+    }
+
+    override fun onBackPressed() {
+        val homeIntent = Intent(Intent.ACTION_MAIN)
+        homeIntent.addCategory(Intent.CATEGORY_HOME)
+        homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(homeIntent)
     }
 }

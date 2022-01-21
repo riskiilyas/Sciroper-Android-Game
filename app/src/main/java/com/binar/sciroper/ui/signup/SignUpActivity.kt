@@ -26,6 +26,7 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
     private lateinit var signUpBtn: Button
     private lateinit var loadingInd: ProgressBar
     private lateinit var radioGroup: RadioGroup
+    private lateinit var avatar1: RadioButton
     private var avatarId: Int = R.drawable.avatar21
 
 
@@ -43,17 +44,16 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         signUpBtn = binding.btnSignUp
         loadingInd = binding.loadingInd
         radioGroup = binding.radioGroup
+        avatar1 = binding.avatar1
 
         signUpBtn.setOnClickListener {
             // check if user has input email in the correct pattern/format
-            if (!Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()){
-                showProgress()
-                onSignUpMsg("Invalid email format")
+            if (!Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()) {
+                Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show()
             }
             // check if password value equals rePassword value
             else if (password.text.toString() != rePassword.text.toString()) {
-                showProgress()
-                onSignUpMsg("Password does not match")
+                Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
             }
             // simulate loading during data fetch, register user and move to register succeed screen
             else {
@@ -147,7 +147,7 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
     override fun onSignUpMsg(message: String) {
         Handler(Looper.getMainLooper()).postDelayed({
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        }, 3000)
+        }, 0)
     }
 
     // to show progress bar
@@ -163,5 +163,15 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         signUpPresenter.getUser(email.text.toString(), password.text.toString())
         val intent = Intent(this, RegisterConfirmationActivity::class.java)
         startActivity(intent)
+        onResetInputField()
+    }
+
+    private fun onResetInputField() {
+        userName.setText("", TextView.BufferType.SPANNABLE)
+        email.setText("", TextView.BufferType.SPANNABLE)
+        password.setText("", TextView.BufferType.SPANNABLE)
+        rePassword.setText("", TextView.BufferType.SPANNABLE)
+        avatar1.background = getDrawable(R.drawable.avatar11)
+        avatarId = R.drawable.avatar21
     }
 }

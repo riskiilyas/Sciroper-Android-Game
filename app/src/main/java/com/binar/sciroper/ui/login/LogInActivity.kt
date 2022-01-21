@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ActivityLogInBinding
@@ -50,7 +51,7 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
         signInBtn.setOnClickListener {
             showProgress()
             Handler(Looper.getMainLooper()).postDelayed({
-                logInPresenter.login(
+                logInPresenter.onLogin(
                     email = email.text.toString(),
                     password = password.text.toString()
                 )
@@ -104,5 +105,11 @@ class LogInActivity : AppCompatActivity(), LogInContract.View {
     override fun onSuccess(user: User) {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
+        onResetInputField()
+    }
+
+    private fun onResetInputField() {
+        email.setText("", TextView.BufferType.SPANNABLE)
+        password.setText("", TextView.BufferType.SPANNABLE)
     }
 }

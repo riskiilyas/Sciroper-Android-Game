@@ -106,6 +106,7 @@
         android:layout_marginVertical="12dp"
         android:hint="UserName"
         app:endIconMode="clear_text"
+        android:focusedByDefault="true"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/avatar_constraint"
         app:layout_constraintTop_toBottomOf="@+id/avatar_constraint">

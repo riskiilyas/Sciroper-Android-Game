@@ -1,15 +1,14 @@
 package com.binar.sciroper.ui.login
 
-import android.util.Log
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class LogInPresenter(private val view: LogInContract.View) {
+class LogInPresenter(private val view: LogInContract.View) : LogInContract.Presenter {
 
-    fun login(email: String, password: String) {
+    override fun onLogin(email: String, password: String) {
         GlobalScope.launch {
             val dao = App.appDb.getUserDao()
             val getUserAndEmail = dao.getUserByEmailAndPassword(email = email, password = password)

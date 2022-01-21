@@ -1,6 +1,6 @@
 package com.binar.sciroper.ui.login
 
-import android.service.autofill.UserData
+
 import com.binar.sciroper.data.db.user.User
 
 interface LogInContract {
@@ -12,7 +12,7 @@ interface LogInContract {
     }
 
     interface Presenter {
-        fun onSignUp(userName: String, password: String)
+        fun onLogin(email: String, password: String)
     }
 
 }

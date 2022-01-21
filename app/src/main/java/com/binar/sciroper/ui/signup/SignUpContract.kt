@@ -1,6 +1,5 @@
 package com.binar.sciroper.ui.signup
 
-import com.binar.sciroper.data.db.user.User
 
 interface SignUpContract {
 
@@ -11,7 +10,8 @@ interface SignUpContract {
     }
 
     interface Presenter {
-        fun onSignUp(userName: String, password: String)
+        fun register(username: String, email: String, password: String, avatarId: Int)
+        fun getUser(email: String, password: String)
     }
 
 
