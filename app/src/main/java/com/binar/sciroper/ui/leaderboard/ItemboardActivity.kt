@@ -14,4 +14,5 @@ class ItemBoardActivity : AppCompatActivity() {
         binding = ItemLeaderboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
 }
