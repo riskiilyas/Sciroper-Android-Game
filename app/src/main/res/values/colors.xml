@@ -14,7 +14,7 @@
     <color name="signColour">#F2B36C</color>
     <color name="vsColour">#B1D035</color>
     <color name="showColour">#F08300</color>
-
+    <color name="blue_background">#C3DAE9</color>
     <!-- Light Theme  -->
     <color name="backgroundColourLight">#ffffff</color>
     <color name="textColourLight">#000000</color>

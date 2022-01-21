@@ -17,7 +17,7 @@
         <activity
             android:name="com.binar.sciroper.ui.playgame.PlayerActivity"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.binar.sciroper.ui.playgame.PlayActivity"
             android:screenOrientation="portrait"

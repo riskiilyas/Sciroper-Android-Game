@@ -1,23 +1,21 @@
 package com.binar.sciroper.ui.playgame
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ActivityPlayerBinding
 
 
-@RequiresApi(Build.VERSION_CODES.M)
-@SuppressLint("ResourceAsColor")
 open class PlayerActivity : AppCompatActivity(), PlayView, DialogView {
 
     private val binding by lazy { ActivityPlayerBinding.inflate(layoutInflater) }
     val name by lazy { intent.getStringExtra("name") }
+    private lateinit var pilihanPemainSatu: ImageView
+    private lateinit var pilihanPemainDua: ImageView
     private var hasilPemainSatu = ""
     private var hasilPemainDua = ""
 
@@ -27,7 +25,7 @@ open class PlayerActivity : AppCompatActivity(), PlayView, DialogView {
         setContentView(binding.root)
 
         binding.pemain1.text = name
-        showToast(this,"$name Duluan yahh")
+        showToast(this, "$name Duluan yahh")
 
 
         val btnPemainSatu = arrayOf(
@@ -44,22 +42,21 @@ open class PlayerActivity : AppCompatActivity(), PlayView, DialogView {
 
 
         disableClick2(false)
-        val controller = PresenterPlayImpl(this, name, "Pemain 2")
+        val presenter = PresenterPlayImpl(this, name, "Pemain 2")
         btnPemainSatu.forEachIndexed { index, ImageView ->
             Log.d("pemain satu", "klikk")
             ImageView.setOnClickListener {
                 hasilPemainSatu = btnPemainSatu[index].contentDescription.toString()
-
+                pilihanPemainSatu = btnPemainSatu[index]
                 Log.d("PEMAIN SATU", "Memilih $hasilPemainSatu")
-                showToast(this,"$name Memilih $hasilPemainSatu")
+                showToast(this, "$name Memilih $hasilPemainSatu")
 
                 disableClick1(false)
                 disableClick2(true)
 
                 btnPemainSatu.forEach {
-                    it.setBackgroundResource(android.R.color.transparent)
+                    it.setBackgroundResource(R.drawable.shape_background)
                 }
-                btnPemainSatu[index].setBackgroundResource(R.drawable.shape_background)
             }
         }
 
@@ -67,29 +64,40 @@ open class PlayerActivity : AppCompatActivity(), PlayView, DialogView {
             Log.e("pemain Dua", "klikk")
             ImageView.setOnClickListener {
                 hasilPemainDua = btnPemainDua[index].contentDescription.toString()
+                pilihanPemainDua = btnPemainDua[index]
                 Log.d("PEMAIN DUA", "Memilih $hasilPemainDua")
-                showToast(this,"Pemain 2 Memilih $hasilPemainDua")
+                showToast(this, "Pemain 2 Memilih $hasilPemainDua")
                 disableClick2(false)
-                if (hasilPemainSatu != "") {
-                    controller.cekSuit(hasilPemainSatu, hasilPemainDua)
-                    btnPemainDua.forEach {
-                        it.setBackgroundResource(android.R.color.transparent)
-                    }
-                    btnPemainDua[index].setBackgroundResource(R.drawable.shape_background)
+                btnPemainDua.forEach {
+                    it.setBackgroundResource(R.drawable.shape_background)
                 }
             }
-
-            binding.ivRefresh.setOnClickListener {
-                Log.d("reset", "Clicked")
-                reset(android.R.color.transparent)
-            }
-
-            binding.ivClose.setOnClickListener {
-                finish()
-            }
-
         }
+
+        binding.btnShow.setOnClickListener {
+            if(hasilPemainSatu != "" && hasilPemainDua !=""){
+                presenter.cekSuit(hasilPemainSatu, hasilPemainDua)
+                reset(android.R.color.transparent)
+                pilihanPemainDua.setBackgroundResource(R.drawable.shape_background)
+                pilihanPemainSatu.setBackgroundResource(R.drawable.shape_background)
+            }else{
+                showToast(this,"Hey kamu belum milih tau")
+            }
+        }
+
+
+
+        binding.ivRefresh.setOnClickListener {
+            Log.d("reset", "Clicked")
+            reset(android.R.color.transparent)
+        }
+
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
+
     }
+
 
     private fun disableClick1(isEnable: Boolean) {
         binding.ivPemain1Kertas.isEnabled = isEnable
