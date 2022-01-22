@@ -22,10 +22,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.playgame.PlayActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.landing.LandingPageActivity"
             android:exported="false"
             android:noHistory="true"

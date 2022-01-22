@@ -11,10 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
-import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentPage3Binding
-import com.binar.sciroper.ui.playgame.PlayActivity
-import com.bumptech.glide.Glide
+import com.binar.sciroper.ui.menugameplay.MenuGamePlayActivity
 
 class Page3Fragment : Fragment() {
     private var _binding: FragmentPage3Binding? = null
@@ -44,7 +42,7 @@ class Page3Fragment : Fragment() {
 
                 val name = binding.etName.text.toString()
 
-                val intent = Intent(activity, PlayActivity::class.java)
+                val intent = Intent(activity, MenuGamePlayActivity::class.java)
                 intent.putExtra("name", name)
                 startActivity(intent)
             }
