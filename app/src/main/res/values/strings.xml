@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Sciroper</string>
+<<<<<<< HEAD
     <string name="player_with_computer">Player with Computer</string>
     <string name="player_with_other_player">Player with other player</string>
     <string name="next">next</string>
     <string name="avatar_game">avatar_game</string>
     <string name="game_suit">Game Suit</string>
     <string name="_1">1</string>
+=======
+    <string name="user_level">Level %1$d</string>
+    <string name="register_succeed">Register \nSucceed</string>
+>>>>>>> e2802b5113cef4cba2b397b0ca4f82853ca4ec26
 </resources>

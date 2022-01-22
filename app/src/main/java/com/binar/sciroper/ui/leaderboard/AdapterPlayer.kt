@@ -1,19 +1,15 @@
 package com.binar.sciroper.ui.leaderboard
 
-import android.content.Context
-
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ItemLeaderboardBinding
-import com.binar.sciroper.ui.leaderboard.Adapter.DataPlayerViewHolder
+import com.binar.sciroper.ui.leaderboard.AdapterPlayer.DataPlayerViewHolder
 
-class Adapter(
-    private val context: Context,
+class AdapterPlayer(
+    private val context: LeaderBoardActivity,
     private val dataPlayer: MutableList<User>,
-//    val listener: (User) -> Unit
 ) : RecyclerView.Adapter<DataPlayerViewHolder>() {
 
 
