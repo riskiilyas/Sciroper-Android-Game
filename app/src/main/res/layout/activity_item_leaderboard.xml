@@ -9,6 +9,7 @@
     android:layout_marginEnd="10dp">
 
   <RelativeLayout
+      android:id="@+id/itemLeaderboard"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="2dp">
