@@ -15,6 +15,8 @@
     <color name="vsColour">#B1D035</color>
     <color name="showColour">#F08300</color>
     <color name="blue_background">#C3DAE9</color>
+    <color name="orange_dialog">#FF9900</color>
+    <color name="purple_dialog">#9B6DBB</color>
     <!-- Light Theme  -->
     <color name="backgroundColourLight">#ffffff</color>
     <color name="textColourLight">#000000</color>

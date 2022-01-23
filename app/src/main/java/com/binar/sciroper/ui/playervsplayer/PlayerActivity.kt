@@ -3,7 +3,6 @@ package com.binar.sciroper.ui.playervsplayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
@@ -107,7 +106,6 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
             }
         }
 
-
         binding.ivRefresh.setOnClickListener {
             reset(android.R.color.transparent)
         }
@@ -115,7 +113,6 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
         binding.ivBack.setOnClickListener {
             finish()
         }
-
     }
 
     override fun disableClick1(isEnable: Boolean) {
