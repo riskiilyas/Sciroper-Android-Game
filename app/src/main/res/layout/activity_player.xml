@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playgame.PlayerActivity">
+    tools:context=".ui.playervsplayer.PlayerActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -41,7 +41,7 @@
         android:id="@+id/iv_pemain1_batu"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="Batu"
+        android:contentDescription="Rock"
         android:src="@drawable/rock"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         android:id="@+id/iv_pemain1_kertas"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="Kertas"
+        android:contentDescription="Paper"
         android:src="@drawable/paper"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
         android:id="@+id/iv_pemain1_gunting"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
-        android:contentDescription="Gunting"
+        android:contentDescription="Scissors"
         android:src="@drawable/scissors"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_gunting"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="Batu"
+        android:contentDescription="Rock"
         android:src="@drawable/rock"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,7 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="Kertas"
+        android:contentDescription="Paper"
         android:src="@drawable/paper"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +114,7 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="Gunting"
+        android:contentDescription="Scissors"
         android:src="@drawable/scissors"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,14 +183,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.21" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80" />
+        app:layout_constraintGuide_percent="0.83" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

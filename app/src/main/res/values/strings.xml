@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Sciroper</string>
+    <string name="choose_first">%1$s Choose first</string>
+    <string name="player_choose">%1$s Chooses %2$s</string>
+    <string name="havent_choose">%1$s haven\'t chosen anything</string>
 </resources>

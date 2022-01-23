@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ActivityPlayGameBinding
+import com.binar.sciroper.ui.playervsplayer.PlayerActivity
 import com.google.android.material.snackbar.Snackbar
 import com.bumptech.glide.Glide
 

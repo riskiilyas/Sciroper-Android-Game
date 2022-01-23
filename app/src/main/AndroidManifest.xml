@@ -15,7 +15,7 @@
         android:theme="@style/Theme.RPSChallengeChapter4"
         tools:ignore="AllowBackup">
         <activity
-            android:name="com.binar.sciroper.ui.playgame.PlayerActivity"
+            android:name="com.binar.sciroper.ui.playervsplayer.PlayerActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity

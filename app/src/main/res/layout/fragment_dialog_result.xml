@@ -13,13 +13,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/madeeta"
-        android:text="hasil_permainan"
+        android:text="Result"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lootieResult"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_head"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/result_win" />
+
 
     <TextView
         android:id="@+id/tv_result"
@@ -27,14 +39,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/madeeta"
-        android:text="mamat_cs_n_menang"
+        android:text="Player win"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_head"
-        app:layout_constraintStart_toStartOf="@+id/tv_head"
-        app:layout_constraintTop_toBottomOf="@+id/tv_head" />
+        app:layout_constraintEnd_toEndOf="@+id/lootieResult"
+        app:layout_constraintStart_toStartOf="@+id/lootieResult"
+        app:layout_constraintTop_toBottomOf="@+id/lootieResult" />
 
     <Button
         android:id="@+id/btn_main_lagi"
@@ -45,7 +57,7 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_result" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_result" />
 
     <Button
         android:id="@+id/btn_menu"
