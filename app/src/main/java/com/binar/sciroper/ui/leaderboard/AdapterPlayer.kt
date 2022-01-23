@@ -4,16 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.databinding.ItemLeaderboardBinding
+import com.binar.sciroper.databinding.ActivityItemLeaderboardBinding
 import com.binar.sciroper.ui.leaderboard.AdapterPlayer.DataPlayerViewHolder
 
-class AdapterPlayer(
+class AdapterPlayer (
     private val context: LeaderBoardActivity,
-    private val dataPlayer: MutableList<User>,
+
+    private val dataPlayer: List<User>,
 ) : RecyclerView.Adapter<DataPlayerViewHolder>() {
 
 
-    class DataPlayerViewHolder(private val itemBinding: ItemLeaderboardBinding) :
+    class DataPlayerViewHolder(private val itemBinding: ActivityItemLeaderboardBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bindView(dataPlayer: User) {
             itemBinding.tvRank.text = dataPlayer.id.toString()
@@ -25,7 +26,7 @@ class AdapterPlayer(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataPlayerViewHolder {
         val itemBinding =
-            ItemLeaderboardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ActivityItemLeaderboardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DataPlayerViewHolder(itemBinding)
     }
 

@@ -10,6 +10,8 @@ import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.ActivityMenuBinding
+import com.binar.sciroper.ui.leaderboard.LeaderBoardActivity
+import com.binar.sciroper.util.goto
 
 class MenuActivity : AppCompatActivity(), MenuContract.View {
 
@@ -19,6 +21,7 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
     private lateinit var userImage: ImageView
     private lateinit var userLevel: TextView
     private lateinit var exitBtn: Button
+    private lateinit var leaderboard: Button
     private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,7 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         userLevel = binding.tvUserLevel
         userImage = binding.userImg
         exitBtn = binding.btnExitGame
+        leaderboard = binding.btnLeaderBoard
 
         menuPresenter = MenuPresenter(this)
 
@@ -43,6 +47,10 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         exitBtn.setOnClickListener {
             createDialog()
         }
+        leaderboard.setOnClickListener {
+            goto(LeaderBoardActivity::class.java)
+        }
+
     }
 
     private fun bind(user: User) {
@@ -65,4 +73,5 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(homeIntent)
     }
+
 }

@@ -6,16 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".ui.leaderboard.LeaderBoardActivity">
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        style="@style/style_crown"
+        android:src="@drawable/crown_silver"
+        app:layout_constraintBottom_toTopOf="@id/rankDua"
+        app:layout_constraintEnd_toEndOf="@id/rankDua"
+        app:layout_constraintStart_toStartOf="@id/rankDua" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankDua"
+        style="@style/image_style"
+        android:src="@drawable/avatar2"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toStartOf="@id/rankSatu"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        style="@style/style_rank"
+        android:background="@drawable/position_rank"
+        android:text="Dayat"
+        android:textSize="30sp" />
+
+    <ImageView
+        style="@style/style_crown"
+        android:src="@drawable/crown_gold"
+        app:layout_constraintBottom_toTopOf="@id/rankSatu"
+        app:layout_constraintEnd_toEndOf="@id/rankSatu"
+        app:layout_constraintStart_toStartOf="@id/rankSatu" />
 
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankSatu"
+        style="@style/image_style"
+        android:src="@drawable/avatar1"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        style="@style/style_crown"
+        android:src="@drawable/crown_bronze"
+        app:layout_constraintBottom_toTopOf="@id/rankTiga"
+        app:layout_constraintEnd_toEndOf="@id/rankTiga"
+        app:layout_constraintStart_toStartOf="@id/rankTiga" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankTiga"
+        style="@style/image_style"
+        android:src="@drawable/avatar3"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toEndOf="@id/rankSatu" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        tools:listitem="@layout/activity_item_leaderboard"
-        />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+        tools:listitem="@layout/activity_item_leaderboard" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

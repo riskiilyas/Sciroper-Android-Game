@@ -52,6 +52,20 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="image_style">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+
+    <style name="style_crown">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="style_rank">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
 
     <style name="AvatarRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/avatar_selector</item>

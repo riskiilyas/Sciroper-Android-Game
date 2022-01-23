@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tvRank"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRank"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -24,14 +25,16 @@
         android:text="@string/_1"
         android:textSize="20sp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/AvatarPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/image_style"
+        android:src="@drawable/avatar1"
         android:layout_marginStart="12dp"
         android:layout_toEndOf="@id/tv_Rank"
-        android:background="@drawable/rv_circle"
-        android:contentDescription="@string/avatar_game" />
+        android:contentDescription="@string/avatar_game"
+        app:civ_circle_background_color="#666666"
+
+        />
 
     <TextView
         android:id="@+id/namaPlayer"

@@ -8,34 +8,24 @@ import com.binar.sciroper.data.db.AppDB
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ActivityLeaderBoardBinding
 
-class LeaderBoardActivity : AppCompatActivity(),MainView {
+class LeaderBoardActivity : AppCompatActivity(), MainView {
     private lateinit var binding: ActivityLeaderBoardBinding
-    private lateinit var presenterMain : PresenterBoard
+    private lateinit var presenterMain: PresenterBoard
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityLeaderBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val database = Room.databaseBuilder(
-            this, AppDB::class.java, "Users"
-        )
-            .allowMainThreadQueries()
-            .build()
         presenterMain = PresenterBoard(this)
+        presenterMain.getData().observe(this,{
+            val recyclerView = binding.rcPlayer
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = AdapterPlayer(this,it )
+            binding.rcPlayer.apply {
+                recyclerView.adapter
+            }
+        })
 
-//        val allDataPlayer = database.getUserDao().getUsers()
-
-
-//        binding.rcPlayer.apply {
-//            layoutManager = LinearLayoutManager(this@LeaderBoardActivity)
-//            adapter = AdapterPlayer(presenterMain)
-//        }
-//
-        val recyclerView = binding.rcPlayer
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = AdapterPlayer(this, presenterMain as MutableList<User>)
-        binding.rcPlayer.apply {
-            recyclerView.adapter
-        }
 
     }
 }
