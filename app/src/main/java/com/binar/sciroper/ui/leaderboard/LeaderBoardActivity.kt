@@ -8,7 +8,7 @@ import com.binar.sciroper.data.db.AppDB
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ActivityLeaderBoardBinding
 
-class LeaderBoardActivity : AppCompatActivity() {
+class LeaderBoardActivity : AppCompatActivity(),MainView {
     private lateinit var binding: ActivityLeaderBoardBinding
     private lateinit var presenterMain : PresenterBoard
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +19,7 @@ class LeaderBoardActivity : AppCompatActivity() {
         )
             .allowMainThreadQueries()
             .build()
+        presenterMain = PresenterBoard(this)
 
 //        val allDataPlayer = database.getUserDao().getUsers()
 
@@ -31,7 +32,7 @@ class LeaderBoardActivity : AppCompatActivity() {
         val recyclerView = binding.rcPlayer
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = AdapterPlayer(this, presenterMain.getData() as MutableList<User>)
+        recyclerView.adapter = AdapterPlayer(this, presenterMain as MutableList<User>)
         binding.rcPlayer.apply {
             recyclerView.adapter
         }
