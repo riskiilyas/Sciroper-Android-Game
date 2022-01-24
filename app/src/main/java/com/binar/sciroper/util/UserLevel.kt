@@ -28,11 +28,13 @@ class UserLevel(private val user: User) {
 
     fun win() {
         user.point += 25
+        user.wins += 1
         checkPoint()
     }
 
     fun lose() {
         user.point += 10
+        user.loses += 1
         checkPoint()
     }
 

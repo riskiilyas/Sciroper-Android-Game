@@ -20,7 +20,7 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
     private var presenter = PresenterPlayerImp(this, DEFAULT_RESULT, DEFAULT_RESULT)
     private lateinit var firstPlayerChoice: ImageView
     private lateinit var secondPlayerChoice: ImageView
-    private var username = presenter.getDatauser().username
+    private var username = presenter.dataUser.username
     private var firstPlayerResult = DEFAULT_RESULT
     private var secondPlayerResult = DEFAULT_RESULT
     private val secondPlayer = "Player 2"
@@ -40,7 +40,7 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
 
         presenter = PresenterPlayerImp(this, username, secondPlayer)
 
-        val avatarId = presenter.getDatauser().avatarId
+        val avatarId = presenter.dataUser.avatarId
         val avatarUser = AvatarHelper.provideList()[avatarId]
 
         binding.pemain1.text = username
@@ -113,6 +113,7 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
         binding.ivBack.setOnClickListener {
             finish()
         }
+
     }
 
     override fun disableClick1(isEnable: Boolean) {
