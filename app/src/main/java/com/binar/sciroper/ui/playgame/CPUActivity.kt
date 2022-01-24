@@ -11,7 +11,7 @@ import com.binar.sciroper.databinding.ActivityCpuBinding
 
 
 @SuppressLint("ResourceAsColor")
-open class CPUActivity : AppCompatActivity(), Callback, CallBackFragment {
+open class CPUActivity : AppCompatActivity(), PlayView, DialogView {
 
     private lateinit var binding: ActivityCpuBinding
     val name by lazy { intent.getStringExtra("name") }
@@ -37,7 +37,7 @@ open class CPUActivity : AppCompatActivity(), Callback, CallBackFragment {
         )
 
 
-        val controller = Controller(this, name, "CPU")
+        val controller = PresenterPlayImpl(this, name, "CPU")
 
         btnPemain.forEachIndexed { index, ImageView ->
             ImageView.setOnClickListener {
