@@ -8,11 +8,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class PresenterProfile(private val view: ProfileView) {
-    private val idUser = AppSharedPreference.id!!//todo ini idUsernya
+    private val idUser = AppSharedPreference.id!!
+    private val emptyString = ""
 
 
-    fun getDataUser() = App.appDb.getUserDao().getUserByIdProfile(1)// todo tinggal ganti ke idUser
-    private fun getAllUser() = App.appDb.getUserDao().getUserExcl(1)// todo tinggal ganti ke idUser
+    fun getDataUser() = App.appDb.getUserDao().getUserByIdProfile(idUser)
+    private fun getAllUser() = App.appDb.getUserDao().getUserExcl(idUser)
     private val passUser = getDataUser().password
     private val allUsername = getAllUser().username
     private val allEmail = getAllUser().email
@@ -53,36 +54,35 @@ class PresenterProfile(private val view: ProfileView) {
                         view.run { onErrorUpdate("Email already used") }
                     }
                 }
-                username == "" -> {
+                username == emptyString -> {
                     launch(Dispatchers.Main) {
                         view.run { onErrorUpdate("You must have a username") }
                     }
                 }
 
-                pass == passUser && newPass == "" && reNewPass == "" -> {
+                pass == passUser && newPass == emptyString && reNewPass == emptyString -> {
                     val update = App.appDb.getUserDao()
                         .updateProfileById(
                             avatar,
                             username,
                             email,
                             pass,
-                            1
+                            idUser
                         )
-                    // todo tinggal ganti ke idUser
                     launch(Dispatchers.Main) {
                         view.onSuccessUpdate(update)
                     }
                 }
 
-                pass == passUser && newPass != "" && reNewPass != "" -> {
+                pass == passUser && newPass != emptyString && reNewPass != emptyString -> {
                     val update = App.appDb.getUserDao()
                         .updateProfileById(
                             avatar,
                             username,
                             email,
                             reNewPass,
-                            1
-                        )// todo tinggal ganti ke idUser
+                            idUser
+                        )
                     launch(Dispatchers.Main) {
                         view.onSuccessUpdate(update)
 

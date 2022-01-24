@@ -37,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:padding="5dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/background_ly_avatar"
         android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -94,9 +94,11 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:maxLength="10"
             android:maxLines="1"
-            android:inputType="text"/>
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -112,10 +114,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
-            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -132,10 +136,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etOldPass"
-            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -152,10 +158,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNewPass"
-            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -172,10 +180,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRePass"
-            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton

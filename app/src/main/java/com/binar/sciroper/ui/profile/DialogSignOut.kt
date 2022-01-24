@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.binar.sciroper.data.local.AppSharedPreference.isLogin
 import com.binar.sciroper.databinding.FragmentDialogSignOutBinding
 
 
@@ -27,6 +28,7 @@ class DialogSignOut : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnYes.setOnClickListener {
+            isLogin = false
             //todo bikin intent keloginActivity
 //            Intent(activity,LoginActivity::class.java).also {
 //                startActivity(it)
@@ -36,5 +38,8 @@ class DialogSignOut : DialogFragment() {
         binding.btnNo.setOnClickListener {
             dismiss()
         }
+    }
+    companion object{
+        const val DIALOG_SIGNOUT = "dialog_update"
     }
 }

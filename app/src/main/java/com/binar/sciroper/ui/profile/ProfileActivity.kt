@@ -2,15 +2,13 @@ package com.binar.sciroper.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.binar.sciroper.R
-import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ActivityProfileBinding
-import com.binar.sciroper.util.App
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.binar.sciroper.ui.profile.DialogSignOut.Companion.DIALOG_SIGNOUT
+import com.binar.sciroper.ui.profile.DialogUpdate.Companion.DIALOG_UPDATE
+import com.binar.sciroper.util.grabText
 
 class ProfileActivity : AppCompatActivity(), ProfileView {
     private lateinit var binding: ActivityProfileBinding
@@ -30,11 +28,11 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 //        } //todo ini dummy tolong di hapus ya wkwk
         presenterProfile = PresenterProfile(this)
 
-        val username = presenterProfile.getDataUser().username
-        val email = presenterProfile.getDataUser().email
+        val usernameDb = presenterProfile.getDataUser().username
+        val emailDb = presenterProfile.getDataUser().email
         val avatarID = presenterProfile.getDataUser().avatarId
-        binding.etUsername.setText(username)
-        binding.etEmail.setText(email)
+        binding.etUsername.setText(usernameDb)
+        binding.etEmail.setText(emailDb)
 
         val avatar = arrayOf(
             binding.avatarId1,
@@ -46,11 +44,11 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         choiceAvatar(avatar)
 
         binding.btnUpdate.setOnClickListener {
-            val username = binding.etUsername.text.toString()
-            val email = binding.etEmail.text.toString()
-            val pass = binding.etOldPass.text.toString()
-            val newPass = binding.etNewPass.text.toString()
-            val reNewPass = binding.etRePass.text.toString()
+            val username = binding.etUsername.grabText()
+            val email = binding.etEmail.grabText()
+            val pass = binding.etOldPass.grabText()
+            val newPass = binding.etNewPass.grabText()
+            val reNewPass = binding.etRePass.grabText()
 
             presenterProfile.updateDataUser(
                 userAvatar,
@@ -68,7 +66,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
     override fun onSuccessUpdate(user: Int) {
         val dialogUpdate = DialogUpdate()
-        dialogUpdate.show(supportFragmentManager, "DialogUpdate")
+        dialogUpdate.show(supportFragmentManager, DIALOG_UPDATE)
         binding.etOldPass.text?.clear()
         binding.etNewPass.text?.clear()
         binding.etRePass.text?.clear()
@@ -80,7 +78,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
 
     override fun onSignOut() {
         val dialogSignOut = DialogSignOut()
-        dialogSignOut.show(supportFragmentManager, "DialogSignOut")
+        dialogSignOut.show(supportFragmentManager, DIALOG_SIGNOUT)
     }
 
     override fun choiceAvatar(user: Array<ImageView>) {
