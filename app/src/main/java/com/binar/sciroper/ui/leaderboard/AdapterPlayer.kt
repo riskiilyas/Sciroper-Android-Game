@@ -8,16 +8,16 @@ import com.binar.sciroper.databinding.ActivityItemLeaderboardBinding
 import com.binar.sciroper.ui.leaderboard.AdapterPlayer.DataPlayerViewHolder
 
 class AdapterPlayer (
-    private val context: LeaderBoardActivity,
-
-    private val dataPlayer: List<User>,
+    private val dataPlayer: List<User>
 ) : RecyclerView.Adapter<DataPlayerViewHolder>() {
+     var rangking: Int = 0
 
 
-    class DataPlayerViewHolder(private val itemBinding: ActivityItemLeaderboardBinding) :
+    inner class DataPlayerViewHolder(private val itemBinding: ActivityItemLeaderboardBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
+
         fun bindView(dataPlayer: User) {
-            itemBinding.tvRank.text = dataPlayer.id.toString()
+            itemBinding.tvRank.text = rangking.toString()
             itemBinding.namaPlayer.text = dataPlayer.username
             itemBinding.AvatarPlayer.setImageResource(dataPlayer.avatarId)
         }
@@ -32,6 +32,7 @@ class AdapterPlayer (
 
     override fun onBindViewHolder(holder: DataPlayerViewHolder, position: Int) {
         val user: User = dataPlayer[position]
+        rangking = position+1
         holder.bindView(user)
     }
 
