@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="text_style">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">0dp</item>
@@ -69,6 +70,11 @@
 
     <style name="AvatarRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/avatar_selector</item>
+    </style>
+
+    <style name="Font_Madeeta" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:fontFamily">@font/madeeta</item>
+
     </style>
 
 </resources>

@@ -15,6 +15,28 @@
         android:theme="@style/Theme.RPSChallengeChapter4"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ui.profile.Profile"
+            android:exported="false" />
+        <activity
+            android:name=".ui.menu.Menu2"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.Setting"
+            android:exported="true" />
+        <activity
+            android:name=".ui.how_to_play.HowToPlay"
+            android:exported="true" />
+        <activity
+            android:name=".ui.playgame.PlayerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.playgame.PlayActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.landing.LandingPageActivity"
+            android:exported="false"
             android:name=".ui.leaderboard.LeaderBoardActivity"
             android:exported="true" />
         <activity
@@ -64,6 +86,7 @@
         <activity
             android:name=".ui.playgame.CPUActivity"
             android:exported="true"
+            android:screenOrientation="portrait" />
             android:screenOrientation="portrait"
             tools:ignore="WrongManifestParent" />
     </application>
