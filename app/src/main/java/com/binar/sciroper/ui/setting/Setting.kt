@@ -30,7 +30,7 @@ class Setting : AppCompatActivity() {
         binding.tvProfile.setOnClickListener {
             goto(Profile::class.java)
         }
-
+            //tes
         // dark mode
         val btn = findViewById<SwitchMaterial>(R.id.switchDark)
         btn.setOnCheckedChangeListener { buttonView, isChecked ->
