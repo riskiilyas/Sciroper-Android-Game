@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRank"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="10dp">
+
+  <RelativeLayout
+      android:id="@+id/itemLeaderboard"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="2dp">
+
+    <TextView
+        android:id="@+id/tv_Rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="?backgroundColour"
+        android:fontFamily="@font/madeeta"
+        android:text="@string/_1"
+        android:textSize="20sp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/AvatarPlayer"
+        style="@style/image_style"
+        android:src="@drawable/avatar1"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@id/tv_Rank"
+        android:contentDescription="@string/avatar_game"
+        app:civ_circle_background_color="#666666"
+
+        />
+
+    <TextView
+        android:id="@+id/namaPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="32dp"
+        android:layout_toEndOf="@id/AvatarPlayer"
+        android:background="?backgroundColour"
+        android:fontFamily="@font/madeeta"
+        android:gravity="center"
+        android:text="@string/game_suit"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+  </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

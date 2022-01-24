@@ -10,6 +10,7 @@ import com.binar.sciroper.databinding.ActivitySettingBinding
 import com.binar.sciroper.ui.profile.Profile
 import com.binar.sciroper.util.goto
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.binar.sciroper.R
 
 class Setting : AppCompatActivity() {
     var userId: Int = 0

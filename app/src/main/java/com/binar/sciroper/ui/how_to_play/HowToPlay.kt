@@ -3,6 +3,7 @@ package com.binar.sciroper.ui.how_to_play
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.binar.sciroper.databinding.ActivityHowToPlayBinding
+import com.binar.sciroper.R
 
 class HowToPlay : AppCompatActivity() {
     private lateinit var binding: ActivityHowToPlayBinding

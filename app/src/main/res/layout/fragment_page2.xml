@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.landing.Page2Fragment">
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv_second_page"
         style="@style/landing_image"
         tools:ignore="MissingConstraints"
-        tools:src="@tools:sample/avatars" />
+        app:lottie_rawRes="@raw/player_vs_com"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        />
 
     <TextView
+        android:id="@+id/tv_fragment_dua"
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
-        android:text="text_second_page"
+        android:text="@string/player_with_computer"
         app:layout_constraintEnd_toEndOf="@+id/iv_second_page"
         app:layout_constraintStart_toStartOf="@+id/iv_second_page"
         app:layout_constraintTop_toBottomOf="@+id/iv_second_page" />
+
+    <ImageView
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/next"
+        android:src="@drawable/ic_baseline_arrow_right_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
