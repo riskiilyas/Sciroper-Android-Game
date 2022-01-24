@@ -17,6 +17,7 @@
     <color name="grey_300">#aeaeae</color>
     <color name="grey_bg">#FF57585A</color>
     <color name="green">#2FC836</color>
+    <color name="yellow">#FDD835</color>
 
     <!-- Light Theme  -->
     <color name="backgroundColourLight">#ffffff</color>

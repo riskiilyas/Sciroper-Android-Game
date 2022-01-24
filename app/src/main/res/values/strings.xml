@@ -9,5 +9,9 @@
     =======
     <string name="user_level">Level %1$d</string>
     <string name="register_succeed">Register \nSucceed</string>
+    <string name="binar">Binar</string>
+    <string name="bos">Bos</string>
+    <string name="salsa">salsa</string>
+    <string name="leaderboard">LeaderBoard</string>
     >>>>>>> e2802b5113cef4cba2b397b0ca4f82853ca4ec26
 </resources>

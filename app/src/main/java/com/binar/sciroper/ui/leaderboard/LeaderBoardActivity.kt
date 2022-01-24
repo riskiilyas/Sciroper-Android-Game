@@ -11,22 +11,24 @@ import com.binar.sciroper.databinding.ActivityLeaderBoardBinding
 class LeaderBoardActivity : AppCompatActivity(), MainView {
     private lateinit var binding: ActivityLeaderBoardBinding
     private lateinit var presenterMain: PresenterBoard
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLeaderBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         presenterMain = PresenterBoard(this)
-        presenterMain.getData().observe(this,{
+        presenterMain.getData().observe(this, {
             val recyclerView = binding.rcPlayer
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.setHasFixedSize(true)
-            recyclerView.adapter = AdapterPlayer(this,it )
+            recyclerView.adapter = AdapterPlayer(this, it)
             binding.rcPlayer.apply {
                 recyclerView.adapter
             }
         })
-
-
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 }
 
