@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentPage2Binding
+import com.binar.sciroper.ui.login.LogInActivity
 import com.binar.sciroper.ui.playgame.PlayActivity
 
 
@@ -27,9 +28,8 @@ class Page2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ivSecondPage = view.findViewById<ImageView>(R.id.iv_second_page)
         binding.btnNext.setOnClickListener {
-            val intent = Intent(activity, PlayActivity::class.java)
+            val intent = Intent(activity, LogInActivity::class.java)
             startActivity(intent)
         }
 
