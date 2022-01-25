@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.binar.sciroper">
 
-
     <application
         android:name=".util.App"
         android:allowBackup="true"
@@ -19,34 +18,18 @@
             android:windowSoftInputMode="adjustNothing"
             android:exported="true" />
         <activity
-            android:name=".ui.playgame.PlayerActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.playgame.PlayActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.landing.LandingPageActivity"
             android:exported="false"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" />
+        <activity
             android:name="com.binar.sciroper.ui.playervsplayer.PlayerActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.menugameplay.MenuGamePlayActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.landing.LandingPageActivity"
-            android:exported="false"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
-            android:name=".ui.profile.Profile"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.setting.SettingActivity"
             android:exported="true" />

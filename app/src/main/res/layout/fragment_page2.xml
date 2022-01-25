@@ -4,22 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColour"
     tools:context=".ui.landing.Page2Fragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv_second_page"
         style="@style/landing_image"
-        tools:ignore="MissingConstraints"
-        app:lottie_rawRes="@raw/player_vs_com"
-        app:lottie_loop="true"
         app:lottie_autoPlay="true"
-        />
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/player_vs_com"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tv_fragment_dua"
         style="@style/landing_menu_text"
         android:layout_marginTop="8dp"
         android:text="@string/player_with_computer"
+        android:textColor="?textColour"
         app:layout_constraintEnd_toEndOf="@+id/iv_second_page"
         app:layout_constraintStart_toStartOf="@+id/iv_second_page"
         app:layout_constraintTop_toBottomOf="@+id/iv_second_page" />

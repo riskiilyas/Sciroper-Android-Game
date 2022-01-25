@@ -8,6 +8,7 @@ import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ActivityProfileBinding
 import com.binar.sciroper.ui.profile.DialogSignOut.Companion.DIALOG_SIGNOUT
 import com.binar.sciroper.ui.profile.DialogUpdate.Companion.DIALOG_UPDATE
+import com.binar.sciroper.util.AvatarHelper
 import com.binar.sciroper.util.grabText
 
 class ProfileActivity : AppCompatActivity(), ProfileView {
@@ -19,13 +20,6 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        val user = User(1, "rahmat", "rahmat@gmail.com", "1223", 1, 0, 0, 0, 0)
-//        val user2 = User(2, "rahmat123", "rahmat123@gmail.com", "1", 2, 0, 0, 0, 0)
-//
-//        GlobalScope.launch {
-//            App.appDb.getUserDao().insertUser(user)
-//            App.appDb.getUserDao().insertUser(user2)
-//        } //todo ini dummy tolong di hapus ya wkwk
         presenterProfile = PresenterProfile(this)
 
         val usernameDb = presenterProfile.getDataUser().username
@@ -40,7 +34,11 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
             binding.avatarId3,
             binding.avatarId4,
         )
-        avatar[avatarID].setBackgroundResource(R.color.navigationColour)
+        AvatarHelper.provideList().forEachIndexed { index, id ->
+            if (id == avatarID) {
+                avatar[index].setBackgroundResource(R.color.navigationColour)
+            }
+        }
         choiceAvatar(avatar)
 
         binding.btnUpdate.setOnClickListener {
@@ -58,6 +56,9 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
                 newPass,
                 reNewPass
             )
+        }
+        binding.btnBack.setOnClickListener {
+            finish()
         }
         binding.btnSignOut.setOnClickListener {
             onSignOut()
@@ -84,7 +85,7 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
     override fun choiceAvatar(user: Array<ImageView>) {
         user.forEachIndexed { index: Int, imageView: ImageView ->
             imageView.setOnClickListener {
-                userAvatar = index
+                userAvatar = AvatarHelper.provideList()[index]
                 user.forEach {
                     it.setBackgroundResource(android.R.color.transparent)
                 }

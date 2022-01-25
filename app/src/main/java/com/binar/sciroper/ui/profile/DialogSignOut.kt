@@ -1,6 +1,7 @@
 package com.binar.sciroper.ui.profile
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.binar.sciroper.data.local.AppSharedPreference.isLogin
 import com.binar.sciroper.databinding.FragmentDialogSignOutBinding
+import com.binar.sciroper.ui.login.LogInActivity
 
 
 class DialogSignOut : DialogFragment() {
@@ -29,10 +31,9 @@ class DialogSignOut : DialogFragment() {
 
         binding.btnYes.setOnClickListener {
             isLogin = false
-            //todo bikin intent keloginActivity
-//            Intent(activity,LoginActivity::class.java).also {
-//                startActivity(it)
-//            }
+            Intent(activity,LogInActivity::class.java).also {
+                startActivity(it)
+            }
         }
 
         binding.btnNo.setOnClickListener {

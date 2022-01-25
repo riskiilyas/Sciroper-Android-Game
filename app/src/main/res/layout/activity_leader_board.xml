@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColour"
     tools:context=".ui.leaderboard.LeaderBoardActivity">
 
     <View
@@ -33,6 +34,7 @@
         android:fontFamily="@font/madeeta"
         android:gravity="center"
         android:text="@string/leaderboard"
+        android:textColor="?textColour"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"

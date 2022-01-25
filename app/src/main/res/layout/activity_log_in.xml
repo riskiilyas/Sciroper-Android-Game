@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColour"
     tools:context=".ui.login.LogInActivity">
 
     <ImageView
@@ -24,7 +25,7 @@
         android:fontFamily="@font/madeeta"
         android:text="Login"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        android:textColor="@color/black"
+        android:textColor="?textColour"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/logo_img"
         app:layout_constraintStart_toStartOf="@id/logo_img"

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.binar.sciroper.databinding.FragmentPage2Binding
 import com.binar.sciroper.ui.login.LogInActivity
-
+import com.binar.sciroper.util.goto
 
 
 class Page2Fragment : Fragment() {
@@ -26,8 +26,7 @@ class Page2Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnNext.setOnClickListener {
-            val intent = Intent(activity, LogInActivity::class.java)
-            startActivity(intent)
+            (activity as LandingPageActivity).goto(LogInActivity::class.java)
         }
 
     }

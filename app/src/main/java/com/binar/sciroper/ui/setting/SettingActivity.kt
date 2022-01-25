@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference.isDarkMode
 import com.binar.sciroper.databinding.ActivitySettingBinding
-import com.binar.sciroper.ui.profile.Profile
+import com.binar.sciroper.ui.profile.ProfileActivity
 import com.binar.sciroper.util.goto
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -24,7 +24,7 @@ class SettingActivity : AppCompatActivity() {
         }
 
         binding.tvProfile.setOnClickListener {
-            goto(Profile::class.java)
+            goto(ProfileActivity::class.java)
         }
         val btn = findViewById<SwitchMaterial>(R.id.switchDark)
         btn.setOnCheckedChangeListener { buttonView, isChecked ->

@@ -13,9 +13,9 @@ object AvatarHelper {
         )
     }
 
-    const val avatarId1 = R.drawable.avatar1
-    const val avatarId2 = R.drawable.avatar2
-    const val avatarId3 = R.drawable.avatar3
-    const val avatarId4 = R.drawable.avatar4
+    const val avatarId1 = R.drawable.avatar21
+    const val avatarId2 = R.drawable.avatar22
+    const val avatarId3 = R.drawable.avatar23
+    const val avatarId4 = R.drawable.avatar24
 
 }
