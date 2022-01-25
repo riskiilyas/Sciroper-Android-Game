@@ -14,6 +14,7 @@ import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.ActivityCpuBinding
 import com.binar.sciroper.ui.playervsplayer.DialogResultPvP
+import com.binar.sciroper.ui.playervsplayer.DialogViewPvP
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.UserLevel
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +24,7 @@ import kotlinx.coroutines.launch
 
 
 @SuppressLint("ResourceAsColor")
-class CPUActivity : AppCompatActivity(), PlayView, DialogView {
+class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
 
     private lateinit var binding: ActivityCpuBinding
     private lateinit var player1: User
@@ -44,6 +45,14 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogView {
         binding.pemain1Player.text = player1.username
         binding.ivAvatarPlayer.setImageResource(player1.avatarId)
 
+        binding.ivBack.setOnClickListener { onBackPressed() }
+
+        binding.ivRefresh.setOnClickListener {
+            if (isPlayerTurn) {
+                reset(Color.TRANSPARENT)
+            }
+        }
+
         p1Choices = listOf(
             binding.ivPemain1BatuPlayer,
             binding.ivPemain1KertasPlayer,
@@ -57,24 +66,19 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogView {
         )
 
         p1Choices.forEachIndexed { index, it ->
-            if (isPlayerTurn){
                 it.setOnClickListener {
-                    it.setBackgroundColor(R.color.navigationColour)
-                    showToast("${player1.username} Memilih ${it.contentDescription}")
-                    presenter.comTurn(it.contentDescription.toString())
-                    isPlayerTurn = false
+                    if (isPlayerTurn) {
+                        it.setBackgroundColor(R.color.navigationColour)
+                        showToast("${player1.username} Memilih ${it.contentDescription}")
+                        presenter.comTurn(it.contentDescription.toString())
+                        isPlayerTurn = false
+                    }
                 }
-            }
         }
 
     }
 
     override fun hasil(hasil: String, status: Int) {
-        val dialogResult = DialogResultPvP()
-        val bundle = Bundle()
-        bundle.putString("hasil", hasil)
-        dialogResult.arguments = bundle
-        dialogResult.show(supportFragmentManager, "DialogResult")
         val userLevel = UserLevel(player1)
 
         when (status) {
@@ -88,7 +92,29 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogView {
         }
     }
 
-    override fun reset() {
+    override fun createDialog(resultString: String, result: Int) {
+        val dialogResult = DialogResultPvP()
+        val bundle = Bundle()
+        when (result) {
+            0 -> {
+                bundle.putString(DialogResultPvP.RESULT, "DRAW!")
+                bundle.putInt(DialogResultPvP.RESULT_LOTTIE, R.raw.result_draw)
+            }
+            1 -> {
+                bundle.putString(DialogResultPvP.RESULT, "$resultString\nWIN!")
+                bundle.putInt(DialogResultPvP.RESULT_LOTTIE, R.raw.result_win)
+            }
+            -1 ->{
+                bundle.putString(DialogResultPvP.RESULT, "COM\nWIN!")
+                bundle.putInt(DialogResultPvP.RESULT_LOTTIE, R.raw.result_win)
+            }
+        }
+        dialogResult.arguments = bundle
+        dialogResult.show(supportFragmentManager, DialogResultPvP.TAG)
+        Log.d("tess", "createDialog: ${result}")
+    }
+
+    override fun reset(bgReset: Int) {
         p1Choices.forEach {
             it.setBackgroundColor(Color.TRANSPARENT)
         }
