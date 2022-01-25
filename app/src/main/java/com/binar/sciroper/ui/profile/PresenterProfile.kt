@@ -13,7 +13,8 @@ class PresenterProfile(private val view: ProfileView) {
 
 
     fun getDataUser() = App.appDb.getUserDao().getUserByIdProfile(idUser)
-    private fun getAllUser() = App.appDb.getUserDao().getUserExcl(idUser)
+
+    private fun getAllUser() = App.appDb.getUserDao().getUserExcl(idUser)// todo bug
     private val passUser = getDataUser().password
     private val allUsername = getAllUser().username
     private val allEmail = getAllUser().email
