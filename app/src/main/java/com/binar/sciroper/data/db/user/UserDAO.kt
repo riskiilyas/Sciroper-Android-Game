@@ -34,8 +34,16 @@ interface UserDAO {
     @Query("SELECT * FROM ${User.TABLE_NAME}")
     fun getUsers(): LiveData<List<User>>
 
+    @Query("UPDATE ${User.TABLE_NAME} SET avatar_id = :avatarId, username = :username, email= :email,password = :newPass WHERE id = :id")
+    fun updateProfileById(avatarId: Int, username: String, email: String, newPass: String, id: Int): Int
+
+    @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
+    fun getUserByIdProfile(id: Int): User
+
+    @Query("select * from ${User.TABLE_NAME} except select * from ${User.TABLE_NAME} where id  = :id")
+    fun getUserExcl(id: Int): User
+
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
     fun getUserByIdNoLiveData(id: Int): User
-
 
 }
