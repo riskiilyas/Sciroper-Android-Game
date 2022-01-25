@@ -1,6 +1,8 @@
 package com.binar.sciroper.ui.profile
 
+import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
+import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.Dispatchers
@@ -9,14 +11,16 @@ import kotlinx.coroutines.launch
 
 class PresenterProfile(private val view: ProfileView) {
     private val idUser = AppSharedPreference.id!!
-    private val emptyString = ""
 
+    private val allUsers = App.appDb.getUserDao().getUserExcl(AppSharedPreference.id!!)
+    val player = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!)
+    var userAvatar: Int = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!).avatarId
 
-    fun getDataUser() = App.appDb.getUserDao().getUserByIdProfile(idUser)
-    private fun getAllUser() = App.appDb.getUserDao().getUserExcl(idUser)
-    private val passUser = getDataUser().password
-    private val allUsername = getAllUser().username
-    private val allEmail = getAllUser().email
+    fun getDataUser(): User {
+        return player
+    }
+
+    private val passUser = player.password
 
     fun updateDataUser(
         avatar: Int,
@@ -44,23 +48,23 @@ class PresenterProfile(private val view: ProfileView) {
                         view.run { onErrorUpdate("New Password and Re-New Password not match") }
                     }
                 }
-                username == allUsername -> {
+                checkUserNameIsAlready(username) -> {
                     launch(Dispatchers.Main) {
                         view.run { onErrorUpdate("Username already used") }
                     }
                 }
-                email == allEmail -> {
+                checkEmailIsAlready(email) -> {
                     launch(Dispatchers.Main) {
                         view.run { onErrorUpdate("Email already used") }
                     }
                 }
-                username == emptyString -> {
+                username.isBlank() -> {
                     launch(Dispatchers.Main) {
                         view.run { onErrorUpdate("You must have a username") }
                     }
                 }
 
-                pass == passUser && newPass == emptyString && reNewPass == emptyString -> {
+                pass == passUser && newPass.isBlank() && reNewPass.isBlank() -> {
                     val update = App.appDb.getUserDao()
                         .updateProfileById(
                             avatar,
@@ -74,7 +78,7 @@ class PresenterProfile(private val view: ProfileView) {
                     }
                 }
 
-                pass == passUser && newPass != emptyString && reNewPass != emptyString -> {
+                pass == passUser && newPass.isNotBlank() && reNewPass.isNotBlank() -> {
                     val update = App.appDb.getUserDao()
                         .updateProfileById(
                             avatar,
@@ -91,5 +95,19 @@ class PresenterProfile(private val view: ProfileView) {
             }
         }
 
+    }
+
+    private fun checkEmailIsAlready(email: String): Boolean{
+        allUsers.forEach {
+            if (it.email == email) return true
+        }
+        return false
+    }
+
+    private fun checkUserNameIsAlready(username: String): Boolean{
+        allUsers.forEach {
+            if (it.username == username) return true
+        }
+        return false
     }
 }

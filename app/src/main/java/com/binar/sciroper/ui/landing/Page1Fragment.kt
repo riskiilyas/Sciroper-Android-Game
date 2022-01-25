@@ -20,7 +20,6 @@ class Page1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ivFirstPage = view.findViewById<ImageView>(R.id.iv_first_page)
 
     }
 }

@@ -8,7 +8,7 @@
     tools:context=".ui.profile.ProfileActivity">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
+        android:id="@+id/btnBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageFilterView" />
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
     <LinearLayout
         android:id="@+id/linearLayoutAvatar"
@@ -94,10 +94,10 @@
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:inputType="text"
             android:maxLength="10"
             android:maxLines="1"
-            android:fontFamily="@font/madeeta"
             android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,9 +116,9 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:fontFamily="@font/madeeta"
             android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,9 +138,9 @@
             android:id="@+id/etOldPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:fontFamily="@font/madeeta"
             android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,9 +160,9 @@
             android:id="@+id/etNewPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:fontFamily="@font/madeeta"
             android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,9 +182,9 @@
             android:id="@+id/etRePass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:fontFamily="@font/madeeta"
             android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,7 +210,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/shape_background"
+        android:background="?backgroundColour"
         android:fontFamily="@font/madeeta"
         android:text="Sign Out"
         android:textColor="?textColour"
@@ -218,19 +218,5 @@
         app:layout_constraintEnd_toEndOf="@+id/ilRePass"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnUpdate" />
-    tools:context=".ui.profile.Profile">
-
-    <TextView
-        android:id="@+id/Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/madeeta"
-        android:text="Profile"
-        android:textColor='?textColour'
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

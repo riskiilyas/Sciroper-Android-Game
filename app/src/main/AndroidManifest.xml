@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.binar.sciroper">
 
-
     <application
         android:name=".util.App"
         android:allowBackup="true"
@@ -32,9 +31,6 @@
             android:name=".ui.menugameplay.MenuGamePlayActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".ui.profile.Profile"
-            android:exported="false" />
         <activity
             android:name=".ui.setting.SettingActivity"
             android:exported="true" />

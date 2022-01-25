@@ -20,9 +20,10 @@ class PresenterPlayImpl(
 
         GlobalScope.launch(Dispatchers.Default) {
             playView.comPlay(comChoice)
-            checkSuit(pilihanSatu, comChoice)
+            GlobalScope.launch(Dispatchers.Main) {
+                checkSuit(pilihanSatu, comChoice)
+            }
         }
-
     }
 
     override fun checkSuit(pilihanSatu: String, pilihanCom: Int) {

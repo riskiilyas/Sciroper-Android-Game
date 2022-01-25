@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.signup
 
+import android.util.Log
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 class SignUpPresenter(private val view: SignUpContract.View): SignUpContract.Presenter {
 
     override fun register(username: String, email: String, password: String, avatarId: Int) {
-        GlobalScope.launch(Dispatchers.IO) { // background thread
+        GlobalScope.launch(Dispatchers.IO) {
             val dao = App.appDb.getUserDao()
             val getUserAndEmail = dao.getUserByUsernameAndEmail(username, email)
 
@@ -43,6 +44,7 @@ class SignUpPresenter(private val view: SignUpContract.View): SignUpContract.Pre
                     App.appDb.getUserDao().getUserByEmailAndPassword(email, password)
                 }.await()
             AppSharedPreference.id = user.id
+            Log.d("ID preference", "getUser: ${AppSharedPreference.id}")
             AppSharedPreference.isLogin = true
         }
     }
