@@ -4,47 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playgame.PlayerActivity">
+    android:background="?backgroundColour"
+    tools:context=".ui.playervsplayer.PlayerActivity">
 
-    <TextView
-        android:id="@+id/tv_kertas"
-        style="@style/text_style"
-        android:textColor="?attr/backgroundColour"
-        app:layout_constraintBottom_toTopOf="@+id/tv_gunting"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logo_menu"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_gunting"
-        style="@style/text_style"
-        app:layout_constraintBottom_toTopOf="@+id/batu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_kertas" />
-
-    <TextView
-        android:id="@+id/batu"
-        style="@style/text_style"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_gunting" />
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
+        app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:src="@drawable/avatar1" />
 
     <TextView
         android:id="@+id/pemain1"
         style="@style/text_pemain_com"
         android:textAlignment="center"
+        android:textColor="?textColour"
         app:layout_constraintBottom_toBottomOf="@+id/com"
         app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
         app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
-        app:layout_constraintTop_toTopOf="@+id/com" />
+        app:layout_constraintTop_toTopOf="@+id/com"
+        tools:text="Mamat" />
 
     <ImageView
         android:id="@+id/iv_pemain1_batu"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
+        android:contentDescription="Rock"
+        android:src="@drawable/rock"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_pemain2_batu"
@@ -54,6 +54,8 @@
         android:id="@+id/iv_pemain1_kertas"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
+        android:contentDescription="Paper"
+        android:src="@drawable/paper"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas" />
@@ -62,23 +64,39 @@
         android:id="@+id/iv_pemain1_gunting"
         style="@style/btn_style"
         android:layout_marginStart="8dp"
+        android:contentDescription="Scissors"
+        android:src="@drawable/scissors"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_gunting"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting" />
+        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/avatar1"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
+        app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
+        app:layout_constraintTop_toTopOf="@id/guideline2" />
 
     <TextView
         android:id="@+id/com"
         style="@style/text_pemain_com"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="2dp"
+        android:text="Player 2"
+        android:textColor="?textColour"
+        app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
         app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
-        app:layout_constraintTop_toBottomOf="@id/guideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/iv_pemain2_batu"
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="Rock"
+        android:src="@drawable/rock"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/com" />
@@ -88,6 +106,8 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="Paper"
+        android:src="@drawable/paper"
         app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_batu" />
@@ -97,6 +117,8 @@
         style="@style/btn_style"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="Scissors"
+        android:src="@drawable/scissors"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_kertas" />
@@ -110,6 +132,7 @@
         android:layout_marginBottom="16dp"
         android:padding="10dp"
         android:scaleType="centerInside"
+        android:src="@drawable/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
@@ -117,45 +140,60 @@
 
     <TextView
         android:id="@+id/text_hasil"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:autoSizeTextType="uniform"
+        android:background="@drawable/shape_vs"
+        android:fontFamily="@font/madeeta"
         android:gravity="center"
-        android:rotation="-15"
-        android:textStyle="bold"
+        android:text="VS"
+        android:textColor="?textColour"
+        android:textSize="75dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pemain1_kertas"
         app:layout_constraintEnd_toStartOf="@id/iv_pemain2_kertas"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/iv_pemain1_kertas"
-        app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas"
-        app:layout_constraintVertical_bias="0.0"
-        tools:targetApi="o" />
+        app:layout_constraintTop_toTopOf="@+id/iv_pemain1_kertas" />
 
     <ImageView
-        android:id="@+id/iv_close"
+        android:id="@+id/iv_back"
         android:layout_width="50dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_kertas"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/signColour"
+        android:fontFamily="@font/madeeta"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Show"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80" />
+        app:layout_constraintGuide_percent="0.83" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

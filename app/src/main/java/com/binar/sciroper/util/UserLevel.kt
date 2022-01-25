@@ -7,7 +7,7 @@ class UserLevel(private val user: User) {
 
     companion object {
 
-        fun sortUsersLevel(users: List<User>){
+        fun sortUsersLevel(users: List<User>):List<User>{
             Collections.sort(users,
                 Comparator { p1, p0 ->
                     when {
@@ -21,18 +21,22 @@ class UserLevel(private val user: User) {
                         p0.level > p1.level -> return@Comparator 1
                         else -> return@Comparator -1
                     }
+
                 })
+            return users
         }
 
     }
 
     fun win() {
         user.point += 25
+        user.wins += 1
         checkPoint()
     }
 
     fun lose() {
         user.point += 10
+        user.loses += 1
         checkPoint()
     }
 
