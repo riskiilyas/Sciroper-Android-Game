@@ -9,8 +9,6 @@ import com.binar.sciroper.ui.playgame.CPUActivity
 import com.binar.sciroper.ui.playgame.PlayerActivity
 import com.binar.sciroper.util.goto
 
-
-
 class MenuGamePlayActivity : AppCompatActivity(), MGPView {
 
     private lateinit var binding: ActivityMenuGamePlayBinding

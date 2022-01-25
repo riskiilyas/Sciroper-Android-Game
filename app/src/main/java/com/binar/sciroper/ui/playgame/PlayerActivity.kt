@@ -14,7 +14,7 @@ import com.binar.sciroper.databinding.ActivityPlayerBinding
 
 @RequiresApi(Build.VERSION_CODES.M)
 @SuppressLint("ResourceAsColor")
-open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
+open class PlayerActivity : AppCompatActivity(), PlayView, DialogView {
 
     private val binding by lazy { ActivityPlayerBinding.inflate(layoutInflater) }
     val name by lazy { intent.getStringExtra("name") }
@@ -44,7 +44,7 @@ open class PlayerActivity : AppCompatActivity(), Callback, CallBackFragment {
 
 
         disableClick2(false)
-        val controller = Controller(this, name, "Pemain 2")
+        val controller = PresenterPlayImpl(this, name, "Pemain 2")
         btnPemainSatu.forEachIndexed { index, ImageView ->
             Log.d("pemain satu", "klikk")
             ImageView.setOnClickListener {

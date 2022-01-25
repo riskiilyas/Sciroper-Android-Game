@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.leaderboard.LeaderBoardActivity">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/madeeta"
+        android:gravity="center"
+        android:text="@string/leaderboard"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_rank2"
+        style="@style/style_crown"
+        android:src="@drawable/crown_silver"
+        app:layout_constraintBottom_toTopOf="@id/rankDua"
+        app:layout_constraintEnd_toEndOf="@id/rankDua"
+        app:layout_constraintStart_toStartOf="@id/rankDua" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankDua"
+        style="@style/image_style"
+        android:layout_marginBottom="60dp"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/tv_RankDua"
+        app:layout_constraintEnd_toStartOf="@id/rankSatu"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/avatar2" />
+
+    <TextView
+        android:id="@+id/tv_RankDua"
+        style="@style/style_rank"
+        android:background="@drawable/position_rank"
+        android:gravity="center"
+        android:text="@string/salsa"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/rankDua"
+        app:layout_constraintStart_toStartOf="@id/rankDua"
+        app:layout_constraintTop_toBottomOf="@id/rankDua" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/style_crown"
+        android:src="@drawable/crown_gold"
+        app:layout_constraintBottom_toTopOf="@id/rankSatu"
+        app:layout_constraintEnd_toEndOf="@id/rankSatu"
+        app:layout_constraintStart_toStartOf="@id/rankSatu" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankSatu"
+        style="@style/image_style"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/avatar1"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/tv_RankSatu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_RankSatu"
+        style="@style/style_rank"
+        android:background="@drawable/position_rank"
+        android:gravity="center"
+        android:text="@string/binar"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/rankSatu"
+        app:layout_constraintStart_toStartOf="@id/rankSatu"
+        app:layout_constraintTop_toBottomOf="@id/rankSatu" />
+
+
+    <ImageView
+        android:id="@+id/iv_rank3"
+        style="@style/style_crown"
+        android:src="@drawable/crown_bronze"
+        app:layout_constraintBottom_toTopOf="@id/rankTiga"
+        app:layout_constraintEnd_toEndOf="@id/rankTiga"
+        app:layout_constraintStart_toStartOf="@id/rankTiga" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rankTiga"
+        style="@style/image_style"
+        android:layout_marginBottom="60dp"
+        app:civ_circle_background_color="#666666"
+        app:layout_constraintBottom_toBottomOf="@id/tv_RankTiga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintStart_toEndOf="@id/rankSatu"
+        tools:src="@drawable/avatar3" />
+
+    <TextView
+        android:id="@+id/tv_RankTiga"
+        style="@style/style_rank"
+        android:background="@drawable/position_rank"
+        android:gravity="center"
+        android:text="@string/bos"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/rankTiga"
+        app:layout_constraintStart_toStartOf="@id/rankTiga"
+        app:layout_constraintTop_toBottomOf="@id/rankTiga" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcPlayer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/activity_item_leaderboard" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

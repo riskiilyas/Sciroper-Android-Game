@@ -11,11 +11,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.binar.sciroper.R
-import com.binar.sciroper.ui.playgame.CallBackFragment
 
 class DialogResult : DialogFragment() {
 
-    private var callBackFragment: CallBackFragment? = null
+    private var dialogView: DialogView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +39,7 @@ class DialogResult : DialogFragment() {
 
         btnMainLagi.setOnClickListener {
             dismiss()
-            callBackFragment?.reset(android.R.color.transparent)
+            dialogView?.reset(android.R.color.transparent)
 
         }
 
@@ -52,7 +51,7 @@ class DialogResult : DialogFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            callBackFragment = context as CallBackFragment
+            dialogView = context as DialogView
         } catch (e: Exception) {
             e.printStackTrace()
         }
