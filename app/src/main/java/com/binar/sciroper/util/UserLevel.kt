@@ -34,6 +34,11 @@ class UserLevel(private val user: User) {
         checkPoint()
     }
 
+    fun draw() {
+        user.point += 15
+        checkPoint()
+    }
+
     fun lose() {
         user.point += 10
         user.loses += 1

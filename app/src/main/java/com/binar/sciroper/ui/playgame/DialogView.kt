@@ -1,5 +1,5 @@
 package com.binar.sciroper.ui.playgame
 
 interface DialogView {
-    fun reset(bgPilihan: Int)
+    fun reset()
 }

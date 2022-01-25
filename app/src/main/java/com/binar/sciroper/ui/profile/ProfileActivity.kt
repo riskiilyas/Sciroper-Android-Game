@@ -8,6 +8,7 @@ import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ActivityProfileBinding
 import com.binar.sciroper.ui.profile.DialogSignOut.Companion.DIALOG_SIGNOUT
 import com.binar.sciroper.ui.profile.DialogUpdate.Companion.DIALOG_UPDATE
+import com.binar.sciroper.util.AvatarHelper
 import com.binar.sciroper.util.grabText
 
 class ProfileActivity : AppCompatActivity(), ProfileView {
@@ -40,6 +41,13 @@ class ProfileActivity : AppCompatActivity(), ProfileView {
             binding.avatarId3,
             binding.avatarId4,
         )
+
+        AvatarHelper.provideList().forEachIndexed { index, id ->
+            if (id == userAvatar) {
+                avatar[index].setBackgroundResource(R.color.navigationColour)
+            }
+        }
+
         avatar[avatarID].setBackgroundResource(R.color.navigationColour)
         choiceAvatar(avatar)
 
