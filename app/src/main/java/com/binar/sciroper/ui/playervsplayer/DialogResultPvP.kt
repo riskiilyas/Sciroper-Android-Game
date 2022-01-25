@@ -20,6 +20,7 @@ class DialogResultPvP : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.setCancelable(false)
         binding = FragmentDialogResultBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -29,19 +29,11 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-//        val user = User(1, "rahmat", "rahmat@gmail.com", "1223", 1, 0, 0, 0, 0)
-//        val user2 = User(2, "rahmat123", "rahmat123@gmail.com", "1", 2, 0, 0, 0, 0)
-//
-//        GlobalScope.launch {
-//            App.appDb.getUserDao().insertUser(user)
-//            App.appDb.getUserDao().insertUser(user2)
-//        }
-        AppSharedPreference.id = 1 //todo ini dummy tolong di hapus ya wkwk
 
         presenter = PresenterPlayerImp(this, username, secondPlayer)
 
         val avatarId = presenter.dataUser.avatarId
-        val avatarUser = AvatarHelper.provideList()[avatarId]
+        val avatarUser = avatarId
 
         binding.pemain1.text = username
         binding.ivAvatar.setImageResource(avatarUser)

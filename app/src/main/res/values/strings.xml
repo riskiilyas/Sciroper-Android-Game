@@ -3,4 +3,19 @@
     <string name="choose_first">%1$s Choose first</string>
     <string name="player_choose">%1$s Chooses %2$s</string>
     <string name="havent_choose">%1$s haven\'t chosen anything</string>
+    <string name="player_vs_com">%1$s Vs COM</string>
+    <string name="player_vs_player">%1$s Vs Player</string>
+    <string name="choose_your_opponent">Choose Your Opponent</string>
+    <string name="player_with_computer">Player with Computer</string>
+    <string name="player_with_other_player">Player with other player</string>
+    <string name="next">next</string>
+    <string name="avatar_game">avatar_game</string>
+    <string name="game_suit">Game Suit</string>
+    <string name="_1">1</string>
+    <string name="user_level">Level %1$d</string>
+    <string name="register_succeed">Register \nSucceed</string>
+    <string name="binar">Binar</string>
+    <string name="bos">Bos</string>
+    <string name="salsa">salsa</string>
+    <string name="leaderboard">LeaderBoard</string>
 </resources>
