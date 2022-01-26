@@ -1,17 +1,16 @@
 package com.binar.sciroper.ui.signup
 
+import android.util.Log
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
-class SignUpPresenter(private val view: SignUpContract.View): SignUpContract.Presenter {
+@DelicateCoroutinesApi
+class SignUpPresenter(private val view: SignUpContract.View) : SignUpContract.Presenter {
 
     override fun register(username: String, email: String, password: String, avatarId: Int) {
-        GlobalScope.launch(Dispatchers.IO) { // background thread
+        GlobalScope.launch(Dispatchers.IO) {
             val dao = App.appDb.getUserDao()
             val getUserAndEmail = dao.getUserByUsernameAndEmail(username, email)
 
@@ -26,7 +25,7 @@ class SignUpPresenter(private val view: SignUpContract.View): SignUpContract.Pre
                 )
             }
 
-            launch(Dispatchers.Main) { // main thread
+            launch(Dispatchers.Main) {
                 if (getUserAndEmail == null) {
                     view.onSuccess(username)
                 } else {
@@ -39,10 +38,11 @@ class SignUpPresenter(private val view: SignUpContract.View): SignUpContract.Pre
     override fun getUser(email: String, password: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val user =
-                async {
+                withContext(Dispatchers.Default) {
                     App.appDb.getUserDao().getUserByEmailAndPassword(email, password)
-                }.await()
+                }
             AppSharedPreference.id = user.id
+            Log.d("ID preference", "getUser: ${AppSharedPreference.id}")
             AppSharedPreference.isLogin = true
         }
     }

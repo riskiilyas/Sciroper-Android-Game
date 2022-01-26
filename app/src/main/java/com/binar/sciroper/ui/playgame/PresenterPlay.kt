@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.playgame
 
 interface PresenterPlay {
-    fun cekSuit(pilihanSatu: String, pilihanDua: String)
+    fun comTurn(pilihanSatu: String)
+    fun checkSuit(pilihanSatu: String, pilihanCom: Int)
 }

@@ -13,9 +13,14 @@
     <color name="exitButton">#E61A23</color>
     <color name="signColour">#F2B36C</color>
     <color name="vsColour">#B1D035</color>
-    <color name="showColour">#F08300</color>
+    <color name="signoutColour">#474241</color>
+    <color name="blue_background">#C3DAE9</color>
+    <color name="orange_dialog">#FF9900</color>
+    <color name="purple_dialog">#9B6DBB</color>
     <color name="grey_300">#aeaeae</color>
     <color name="grey_bg">#FF57585A</color>
+    <color name="green">#2FC836</color>
+    <color name="yellow">#FDD835</color>
 
     <!-- Light Theme  -->
     <color name="backgroundColourLight">#ffffff</color>

@@ -10,6 +10,11 @@ import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.ActivityMenuBinding
+import com.binar.sciroper.ui.how_to_play.HowToPlay
+import com.binar.sciroper.ui.leaderboard.LeaderBoardActivity
+import com.binar.sciroper.ui.menugameplay.MenuGamePlayActivity
+import com.binar.sciroper.ui.setting.SettingActivity
+import com.binar.sciroper.util.goto
 
 class MenuActivity : AppCompatActivity(), MenuContract.View {
 
@@ -19,6 +24,10 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
     private lateinit var userImage: ImageView
     private lateinit var userLevel: TextView
     private lateinit var exitBtn: Button
+    private lateinit var leaderboard: Button
+    private lateinit var setting: Button
+    private lateinit var gamePlay: Button
+    private lateinit var howToPlay: Button
     private var userId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +41,10 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         userLevel = binding.tvUserLevel
         userImage = binding.userImg
         exitBtn = binding.btnExitGame
+        leaderboard = binding.btnLeaderBoard
+        setting = binding.btnSetting
+        gamePlay = binding.btnPlay
+        howToPlay = binding.btnTutorial
 
         menuPresenter = MenuPresenter(this)
 
@@ -39,10 +52,23 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         menuPresenter.getUser(userId).observe(this) {
             bind(it)
         }
+        howToPlay.setOnClickListener {
+            goto(HowToPlay::class.java)
+        }
+        gamePlay.setOnClickListener {
+            goto(MenuGamePlayActivity::class.java)
+        }
+        setting.setOnClickListener {
+            goto(SettingActivity::class.java)
+        }
 
         exitBtn.setOnClickListener {
             createDialog()
         }
+        leaderboard.setOnClickListener {
+            goto(LeaderBoardActivity::class.java)
+        }
+
     }
 
     private fun bind(user: User) {
@@ -65,4 +91,5 @@ class MenuActivity : AppCompatActivity(), MenuContract.View {
         homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(homeIntent)
     }
+
 }

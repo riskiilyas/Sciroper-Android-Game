@@ -1,30 +1,82 @@
 package com.binar.sciroper.ui.playgame
 
-import android.util.Log
+import kotlinx.coroutines.*
 
+@DelicateCoroutinesApi
 class PresenterPlayImpl(
     private val playView: PlayView,
-    private val pemainSatu: String?,
-    private val pemainDua: String
-    ) : PresenterPlay {
+    private val namaPlayer: String,
+) : PresenterPlay {
 
-    override fun cekSuit(
+    override fun comTurn(
         pilihanSatu: String,
-        pilihanDua: String,
     ) {
-        if (pilihanSatu == pilihanDua) {
-            Log.d("Hasil", "Draw")
-            playView.hasil("SERI!")
+        val comChoice = listOf(
+            0, 1, 2
+        ).random()
 
-        } else if (pilihanSatu == "Batu" && pilihanDua == "Gunting" || pilihanSatu == "Gunting" && pilihanDua == "Kertas" || pilihanSatu == "Kertas" && pilihanDua == "Batu") {
-            Log.d("Hasil", "pemain 1 win")
-            playView.hasil("$pemainSatu \n  MENANG!")
-
-        } else {
-            Log.d("Hasil", "pemain 2/pemainDua win")
-            playView.hasil("$pemainDua \n MENANG!")
+        GlobalScope.launch(Dispatchers.Default) {
+            playView.comPlay(comChoice)
+            runBlocking {
+                checkSuit(pilihanSatu, comChoice)
+            }
         }
-        Log.d("Hasil", "$pilihanSatu VS $pilihanDua")
     }
+
+    override fun checkSuit(pilihanSatu: String, pilihanCom: Int) {
+        var res = -2
+        when (pilihanSatu) {
+            "Rock" -> {
+                when (pilihanCom) {
+                    0 -> {
+                        playView.hasil("SERI!", 0)
+                        res = 0
+                    }
+                    1 -> {
+                        playView.hasil("COM\nMENANG!", -1)
+                        res = -1
+                    }
+                    2 -> {
+                        playView.hasil("$namaPlayer\nMenang", 1)
+                        res = 1
+                    }
+                }
+            }
+            "Paper" -> {
+                when (pilihanCom) {
+                    0 -> {
+                        playView.hasil("$namaPlayer\nMenang", 1)
+                        res = 1
+                    }
+                    1 -> {
+                        playView.hasil("SERI!", 0)
+                        res = 0
+                    }
+                    2 -> {
+                        playView.hasil("COM\nMENANG!", -1)
+                        res = -1
+                    }
+                }
+            }
+            "Scissors" -> {
+                when (pilihanCom) {
+                    0 -> {
+                        playView.hasil("COM\nMENANG!", -1)
+                        res = -1
+                    }
+                    1 -> {
+                        playView.hasil("$namaPlayer\nMenang", 1)
+                        res = 1
+                    }
+                    2 -> {
+                        playView.hasil("SERI!", 0)
+                        res = 0
+                    }
+                }
+            }
+        }
+        playView.createDialog(namaPlayer, res)
+    }
+
 
 }

@@ -6,7 +6,7 @@ import androidx.room.Room
 import com.binar.sciroper.data.db.AppDB
 import java.lang.ref.WeakReference
 
-class App: Application() {
+class App : Application() {
 
     companion object {
         lateinit var context: WeakReference<Context>

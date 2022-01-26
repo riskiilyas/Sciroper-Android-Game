@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="app_theme">
-        <attr name="backgroundColour" format="color"/>
-        <attr name="textColour" format="color"/>
+        <attr name="backgroundColour" format="color" />
+        <attr name="textColour" format="color" />
     </declare-styleable>
 </resources>

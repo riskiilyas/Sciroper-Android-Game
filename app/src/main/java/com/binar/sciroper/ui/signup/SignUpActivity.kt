@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.signup
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.binar.sciroper.databinding.ActivitySignUpBinding
 import com.binar.sciroper.ui.register_confirmation.RegisterConfirmationActivity
 import com.google.android.material.textfield.TextInputEditText
 
+@SuppressLint("UseCompatLoadingForDrawables")
 class SignUpActivity : AppCompatActivity(), SignUpContract.View {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var signUpPresenter: SignUpPresenter
@@ -47,16 +49,11 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
         avatar1 = binding.avatar1
 
         signUpBtn.setOnClickListener {
-            // check if user has input email in the correct pattern/format
             if (!Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()) {
                 Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show()
-            }
-            // check if password value equals rePassword value
-            else if (password.text.toString() != rePassword.text.toString()) {
+            } else if (password.text.toString() != rePassword.text.toString()) {
                 Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-            }
-            // simulate loading during data fetch, register user and move to register succeed screen
-            else {
+            } else {
                 showProgress()
                 Handler(Looper.getMainLooper()).postDelayed({
                     signUpPresenter.register(
@@ -69,8 +66,6 @@ class SignUpActivity : AppCompatActivity(), SignUpContract.View {
             }
         }
 
-        // to check for user avatar and also set the indicator if an avatar is chosen
-        // do note that default avatar is set to id of R.drawable.avatar21
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 binding.avatar1.id -> {

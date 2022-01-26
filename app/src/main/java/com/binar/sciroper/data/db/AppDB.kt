@@ -5,8 +5,8 @@ import androidx.room.RoomDatabase
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
 
-@Database(entities = [User::class], exportSchema = false, version = 1)
-abstract class AppDB: RoomDatabase() {
+@Database(entities = [User::class], exportSchema = true, version = 1)
+abstract class AppDB : RoomDatabase() {
     abstract fun getUserDao(): UserDAO
 
     companion object {

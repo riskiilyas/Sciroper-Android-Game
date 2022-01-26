@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -12,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="?backgroundColour"
         app:cardCornerRadius="16dp">
 
         <LinearLayout
@@ -27,9 +27,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/madeeta"
-                android:text="Are you sure?"
+                android:text="@string/are_you_sure"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                android:textColor="@color/black"
+                android:textColor="?textColour"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/grey_bg"
                 android:fontFamily="@font/madeeta"
-                android:text="Yes!!"
+                android:text="@string/yes"
                 android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -54,7 +54,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/grey_bg"
                 android:fontFamily="@font/madeeta"
-                android:text="No!!"
+                android:text="@string/no"
                 android:textColor="@color/white" />
 
 

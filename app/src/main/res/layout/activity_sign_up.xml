@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColour"
     tools:context=".ui.signup.SignUpActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -38,7 +39,7 @@
         android:id="@+id/tv_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Avatar"
+        android:text="@string/choose_avatar"
         app:layout_constraintStart_toStartOf="@+id/start_guideline"
         app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
@@ -104,9 +105,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="12dp"
-        android:hint="UserName"
-        app:endIconMode="clear_text"
         android:focusedByDefault="true"
+        android:hint="@string/username"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/avatar_constraint"
         app:layout_constraintTop_toBottomOf="@+id/avatar_constraint">
@@ -117,7 +118,8 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:maxLength="10"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -126,7 +128,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="12dp"
-        android:hint="Email"
+        android:hint="@string/email"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/avatar_constraint"
@@ -137,7 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -146,7 +149,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="12dp"
-        android:hint="Password"
+        android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/avatar_constraint"
@@ -157,7 +160,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -166,7 +170,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="12dp"
-        android:hint="re-password"
+        android:hint="@string/re_password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintStart_toStartOf="@+id/avatar_constraint"
@@ -177,7 +181,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="?textColour" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -189,7 +194,7 @@
         android:layout_marginTop="12dp"
         android:enabled="false"
         android:fontFamily="@font/madeeta"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
         app:layout_constraintHorizontal_bias="0.0"

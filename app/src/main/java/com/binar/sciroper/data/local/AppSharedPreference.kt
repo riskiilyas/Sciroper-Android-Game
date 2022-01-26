@@ -4,13 +4,14 @@ import android.content.Context
 import com.binar.sciroper.util.App
 
 object AppSharedPreference {
-    // Tag
+
     private const val APP_SHARED_PREFERENCES = "app_shared_preferences"
     private const val KEY_IS_LOGIN = "key_is_login"
     private const val KEY_IS_DARK_MODE = "key_is_dark_mode"
     private const val KEY_ID = "key_id"
 
-    private val sharedPreference = App.context.get()?.getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE)
+    private val sharedPreference =
+        App.context.get()?.getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE)
 
     var isLogin: Boolean?
         get() = sharedPreference?.getBoolean(KEY_IS_LOGIN, false)
