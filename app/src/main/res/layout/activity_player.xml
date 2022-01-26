@@ -133,6 +133,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
+        android:visibility="visible"
         android:contentDescription="@string/app_name"
         android:padding="10dp"
         android:scaleType="centerInside"

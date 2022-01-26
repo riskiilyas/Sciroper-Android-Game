@@ -34,7 +34,7 @@
         android:id="@+id/iv_rank2"
         style="@style/style_crown"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/crown_silver"
+        android:src="@drawable/crown_silver1"
         app:layout_constraintBottom_toTopOf="@id/rankDua"
         app:layout_constraintEnd_toEndOf="@id/rankDua"
         app:layout_constraintStart_toStartOf="@id/rankDua" />
@@ -68,7 +68,7 @@
         android:id="@+id/imageView"
         style="@style/style_crown"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/crown_gold"
+        android:src="@drawable/crown_gold1"
         app:layout_constraintBottom_toTopOf="@id/rankSatu"
         app:layout_constraintEnd_toEndOf="@id/rankSatu"
         app:layout_constraintStart_toStartOf="@id/rankSatu" />
@@ -104,7 +104,7 @@
         android:id="@+id/iv_rank3"
         style="@style/style_crown"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/crown_bronze"
+        android:src="@drawable/crown_bronze1"
         app:layout_constraintBottom_toTopOf="@id/rankTiga"
         app:layout_constraintEnd_toEndOf="@id/rankTiga"
         app:layout_constraintStart_toStartOf="@id/rankTiga" />
