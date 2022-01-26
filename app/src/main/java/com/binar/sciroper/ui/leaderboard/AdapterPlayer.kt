@@ -7,10 +7,10 @@ import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.ActivityItemLeaderboardBinding
 import com.binar.sciroper.ui.leaderboard.AdapterPlayer.DataPlayerViewHolder
 
-class AdapterPlayer (
+class AdapterPlayer(
     private val dataPlayer: List<User>
 ) : RecyclerView.Adapter<DataPlayerViewHolder>() {
-     var rangking: Int = 0
+    var rangking: Int = 0
 
 
     inner class DataPlayerViewHolder(private val itemBinding: ActivityItemLeaderboardBinding) :
@@ -26,13 +26,17 @@ class AdapterPlayer (
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataPlayerViewHolder {
         val itemBinding =
-            ActivityItemLeaderboardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ActivityItemLeaderboardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return DataPlayerViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: DataPlayerViewHolder, position: Int) {
         val user: User = dataPlayer[position]
-        rangking = position+1
+        rangking = position + 1
         holder.bindView(user)
     }
 

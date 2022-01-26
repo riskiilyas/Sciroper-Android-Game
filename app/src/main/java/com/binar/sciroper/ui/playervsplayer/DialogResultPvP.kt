@@ -48,10 +48,6 @@ class DialogResultPvP : DialogFragment() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -61,7 +57,7 @@ class DialogResultPvP : DialogFragment() {
         }
     }
 
-    companion object{
+    companion object {
         const val RESULT = "result"
         const val RESULT_LOTTIE = "result_lottie"
         const val TAG = "dialog_result"

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,9 +41,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tv_pilih"
         app:layout_constraintTop_toBottomOf="@+id/tv_pilih"
-        app:lottie_rawRes="@raw/player_vs_player"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/player_vs_player" />
 
     <TextView
         android:id="@+id/tv_pemain_vs_pemain"
@@ -63,9 +64,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/tv_pemain_vs_pemain"
         app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_pemain"
-        app:lottie_rawRes="@raw/player_vs_com"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/player_vs_com" />
 
     <TextView
         android:id="@+id/tv_pemain_vs_CPU"

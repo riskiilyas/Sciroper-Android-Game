@@ -11,8 +11,9 @@
         android:id="@+id/ivBackSetting"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,26 +24,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/madeeta"
-        android:text="Setting"
+        android:text="@string/setting"
         android:textColor='?textColour'
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvProfile"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnProfile"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/menuColour"
         android:fontFamily="@font/madeeta"
-        android:text="Profile"
-        android:textColor='?textColour'
+        android:text="@string/profile"
+        android:textAllCaps="false"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSetting" />
+        app:layout_constraintEnd_toEndOf="@+id/switchDark"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/switchDark"
+        app:layout_constraintTop_toBottomOf="@+id/tvSetting" />
+
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchDark"
@@ -50,12 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Dark mode"
+        android:text="@string/dark_mode"
         android:textColor='?textColour'
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProfile"
+        app:layout_constraintTop_toBottomOf="@id/btnProfile"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

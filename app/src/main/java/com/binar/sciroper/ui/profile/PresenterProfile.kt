@@ -1,10 +1,10 @@
 package com.binar.sciroper.ui.profile
 
-import android.util.Log
 import android.util.Patterns.EMAIL_ADDRESS
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,8 +13,9 @@ class PresenterProfile(private val view: ProfileView) {
     private val idUser = AppSharedPreference.id!!
 
     private val allUsers = App.appDb.getUserDao().getUserExcl(AppSharedPreference.id!!)
-    val player = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!)
-    var userAvatar: Int = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!).avatarId
+    private val player = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!)
+    var userAvatar: Int =
+        App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!).avatarId
 
     fun getDataUser(): User {
         return player
@@ -22,6 +23,7 @@ class PresenterProfile(private val view: ProfileView) {
 
     private val passUser = player.password
 
+    @DelicateCoroutinesApi
     fun updateDataUser(
         avatar: Int,
         username: String,
@@ -97,14 +99,14 @@ class PresenterProfile(private val view: ProfileView) {
 
     }
 
-    private fun checkEmailIsAlready(email: String): Boolean{
+    private fun checkEmailIsAlready(email: String): Boolean {
         allUsers.forEach {
             if (it.email == email) return true
         }
         return false
     }
 
-    private fun checkUserNameIsAlready(username: String): Boolean{
+    private fun checkUserNameIsAlready(username: String): Boolean {
         allUsers.forEach {
             if (it.username == username) return true
         }

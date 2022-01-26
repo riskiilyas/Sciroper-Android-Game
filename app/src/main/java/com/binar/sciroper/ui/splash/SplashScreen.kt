@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.splash
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,7 @@ import com.binar.sciroper.ui.landing.LandingPageActivity
 import com.binar.sciroper.ui.menu.MenuActivity
 import com.binar.sciroper.util.goto
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

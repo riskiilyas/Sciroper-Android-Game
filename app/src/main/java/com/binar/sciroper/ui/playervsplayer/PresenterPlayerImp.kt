@@ -7,10 +7,12 @@ import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.UserLevel
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+@DelicateCoroutinesApi
 class PresenterPlayerImp(
     private val playerView: PlayerView,
     private val firstPlayer: String?,

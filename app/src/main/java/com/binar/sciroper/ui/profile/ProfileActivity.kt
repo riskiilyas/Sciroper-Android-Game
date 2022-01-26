@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import com.binar.sciroper.R
-import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.ActivityProfileBinding
 import com.binar.sciroper.ui.profile.DialogSignOut.Companion.DIALOG_SIGNOUT
 import com.binar.sciroper.ui.profile.DialogUpdate.Companion.DIALOG_UPDATE
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
 import com.binar.sciroper.util.grabText
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 class ProfileActivity : AppCompatActivity(), ProfileView {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var presenterProfile: PresenterProfile

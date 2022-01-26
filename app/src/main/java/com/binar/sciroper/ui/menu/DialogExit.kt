@@ -29,12 +29,7 @@ class DialogExit : DialogFragment() {
         _binding = DialogExitBinding.inflate(LayoutInflater.from(context))
 
         binding.positiveBtn.setOnClickListener {
-//            val homeIntent = Intent(Intent.ACTION_MAIN)
-//            homeIntent.addCategory(Intent.CATEGORY_HOME)
-//            homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-//            startActivity(homeIntent)
             activity?.finishAffinity()
-
         }
 
         binding.negativeBtn.setOnClickListener {

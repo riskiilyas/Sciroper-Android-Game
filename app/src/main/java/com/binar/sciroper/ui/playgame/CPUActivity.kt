@@ -1,14 +1,11 @@
 package com.binar.sciroper.ui.playgame
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.lifecycle.LiveData
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.local.AppSharedPreference
@@ -17,12 +14,9 @@ import com.binar.sciroper.ui.playervsplayer.DialogResultPvP
 import com.binar.sciroper.ui.playervsplayer.DialogViewPvP
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.UserLevel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
-
+@DelicateCoroutinesApi
 @SuppressLint("ResourceAsColor")
 class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
 
@@ -31,8 +25,8 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
     private lateinit var presenter: PresenterPlay
     private var isPlayerTurn = true
 
-    private lateinit var p1Choices : List<ImageView>
-    private lateinit var comChoices : List<ImageView>
+    private lateinit var p1Choices: List<ImageView>
+    private lateinit var comChoices: List<ImageView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +35,6 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
 
         player1 = App.appDb.getUserDao().getUserByIdNoLiveData(AppSharedPreference.id!!)
         presenter = PresenterPlayImpl(this, player1.username)
-        Log.d("ttt", "onCreate: ${player1.username}")
         binding.pemain1Player.text = player1.username
         binding.ivAvatarPlayer.setImageResource(player1.avatarId)
 
@@ -65,15 +58,15 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
             binding.ivPemain2GuntingCOM
         )
 
-        p1Choices.forEachIndexed { index, it ->
-                it.setOnClickListener {
-                    if (isPlayerTurn) {
-                        it.setBackgroundColor(R.color.navigationColour)
-                        showToast("${player1.username} Memilih ${it.contentDescription}")
-                        presenter.comTurn(it.contentDescription.toString())
-                        isPlayerTurn = false
-                    }
+        p1Choices.forEach { its ->
+            its.setOnClickListener {
+                if (isPlayerTurn) {
+                    it.setBackgroundColor(R.color.navigationColour)
+                    showToast("${player1.username} Memilih ${it.contentDescription}")
+                    presenter.comTurn(it.contentDescription.toString())
+                    isPlayerTurn = false
                 }
+            }
         }
 
     }
@@ -104,14 +97,13 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
                 bundle.putString(DialogResultPvP.RESULT, "$resultString\nWIN!")
                 bundle.putInt(DialogResultPvP.RESULT_LOTTIE, R.raw.result_win)
             }
-            -1 ->{
+            -1 -> {
                 bundle.putString(DialogResultPvP.RESULT, "COM\nWIN!")
                 bundle.putInt(DialogResultPvP.RESULT_LOTTIE, R.raw.result_win)
             }
         }
         dialogResult.arguments = bundle
         dialogResult.show(supportFragmentManager, DialogResultPvP.TAG)
-        Log.d("tess", "createDialog: ${result}")
     }
 
     override fun reset(bgReset: Int) {
@@ -126,8 +118,8 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
 
     override suspend fun comPlay(id: Int) {
         delay(800)
-        comChoices.forEachIndexed { index, image ->
-            GlobalScope.launch(Dispatchers.Main){
+        comChoices.forEach { image ->
+            GlobalScope.launch(Dispatchers.Main) {
                 image.setBackgroundColor(R.color.navigationColour)
             }
             delay(400)

@@ -7,7 +7,7 @@ class UserLevel(private val user: User) {
 
     companion object {
 
-        fun sortUsersLevel(users: List<User>):List<User>{
+        fun sortUsersLevel(users: List<User>): List<User> {
             Collections.sort(users,
                 Comparator { p1, p0 ->
                     when {

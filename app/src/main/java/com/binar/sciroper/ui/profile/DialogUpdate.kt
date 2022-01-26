@@ -28,7 +28,8 @@ class DialogUpdate : DialogFragment() {
             dismiss()
         }
     }
-    companion object{
+
+    companion object {
         const val DIALOG_UPDATE = "dialog_update"
     }
 }

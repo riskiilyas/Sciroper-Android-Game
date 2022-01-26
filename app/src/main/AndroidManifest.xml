@@ -16,6 +16,7 @@
         <activity
             android:name=".ui.profile.ProfileActivity"
             android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.playervsplayer.PlayerActivity"
@@ -29,17 +30,21 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.menugameplay.MenuGamePlayActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
 
         <activity
             android:name=".ui.setting.SettingActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.how_to_play.HowToPlay"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <activity
             android:name=".ui.leaderboard.LeaderBoardActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <activity
@@ -49,15 +54,17 @@
         <activity
             android:name=".ui.menu.MenuActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.signup.SignUpActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.login.LogInActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait"
+            />
 
         <activity
             android:name=".ui.splash.SplashScreen"

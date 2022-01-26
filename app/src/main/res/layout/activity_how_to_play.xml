@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/madeeta"
-        android:text="How To Play"
+        android:text="@string/how_to_play"
         android:textColor='?textColour'
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +43,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="40dp"
         android:fontFamily="@font/madeeta"
-        android:text="Choose one between
-rock / sciccors / paper,
-and the opponent will
-choose between rock /
-sciccors / paper too."
+        android:text="@string/choose_one_between_rock_sciccors_paper_and_the_opponent_will_choose_between_rock_sciccors_paper_too"
         android:textAlignment="center"
         android:textColor='?textColour'
         android:textSize="24sp"
@@ -59,8 +55,9 @@ sciccors / paper too."
         android:id="@+id/ivBackHTP"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

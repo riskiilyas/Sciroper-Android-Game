@@ -1,12 +1,12 @@
 package com.binar.sciroper.ui.playgame
 
-import android.util.Log
 import kotlinx.coroutines.*
 
+@DelicateCoroutinesApi
 class PresenterPlayImpl(
     private val playView: PlayView,
     private val namaPlayer: String,
-    ) : PresenterPlay {
+) : PresenterPlay {
 
     override fun comTurn(
         pilihanSatu: String,

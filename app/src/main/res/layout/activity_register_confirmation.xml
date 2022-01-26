@@ -43,7 +43,7 @@
         android:background="@drawable/rounded_border"
         android:backgroundTint="@color/navigationColour"
         android:fontFamily="@font/madeeta"
-        android:text="Next"
+        android:text="@string/next"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/lottie"

@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.binar.sciroper.R
-import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.ActivityPlayerBinding
 import com.binar.sciroper.ui.playervsplayer.DialogResultPvP.Companion.RESULT
 import com.binar.sciroper.ui.playervsplayer.DialogResultPvP.Companion.RESULT_LOTTIE
 import com.binar.sciroper.ui.playervsplayer.DialogResultPvP.Companion.TAG
 import com.binar.sciroper.ui.playervsplayer.PresenterPlayerImp.Companion.DEFAULT_RESULT
-import com.binar.sciroper.util.AvatarHelper
 
 
 class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
@@ -33,10 +31,9 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
         presenter = PresenterPlayerImp(this, username, secondPlayer)
 
         val avatarId = presenter.dataUser.avatarId
-        val avatarUser = avatarId
 
         binding.pemain1.text = username
-        binding.ivAvatar.setImageResource(avatarUser)
+        binding.ivAvatar.setImageResource(avatarId)
         presenter.showToast(this, getString(R.string.choose_first, username))
 
 
@@ -75,7 +72,10 @@ class PlayerActivity : AppCompatActivity(), PlayerView, DialogViewPvP {
             ImageView.setOnClickListener {
                 secondPlayerResult = btnPemainDua[index].contentDescription.toString()
                 secondPlayerChoice = btnPemainDua[index]
-                presenter.showToast(this, getString(R.string.player_choose, secondPlayer, secondPlayerResult))
+                presenter.showToast(
+                    this,
+                    getString(R.string.player_choose, secondPlayer, secondPlayerResult)
+                )
                 disableClick2(false)
                 btnPemainDua.forEach {
                     it.setBackgroundResource(R.drawable.shape_background)

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/madeeta"
-        android:text="Profile"
+        android:text="@string/profile"
         android:textColor="?textColour"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutAvatar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
@@ -50,28 +50,32 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/avatar1" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar21" />
 
         <ImageView
             android:id="@+id/avatarId2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/avatar2" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar22" />
 
         <ImageView
             android:id="@+id/avatarId3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/avatar3" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar23" />
 
         <ImageView
             android:id="@+id/avatarId4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/avatar4" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar24" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +86,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:hint="Username"
+        android:hint="@string/username"
         app:counterEnabled="true"
         app:counterMaxLength="10"
         app:endIconMode="clear_text"
@@ -106,7 +110,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/email"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="@+id/ilUsername"
         app:layout_constraintStart_toStartOf="@+id/ilUsername"
@@ -128,7 +132,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Password"
+        android:hint="@string/password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="@+id/ilEmail"
         app:layout_constraintStart_toStartOf="@+id/ilEmail"
@@ -150,7 +154,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="New password"
+        android:hint="@string/new_password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="@+id/ilOldPass"
         app:layout_constraintStart_toStartOf="@+id/ilOldPass"
@@ -172,7 +176,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Re-new password"
+        android:hint="@string/re_new_password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="@+id/ilNewPass"
         app:layout_constraintStart_toStartOf="@+id/ilNewPass"
@@ -197,7 +201,7 @@
         android:background="@drawable/shape_background"
         android:backgroundTint="@color/signColour"
         android:fontFamily="@font/madeeta"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSignOut"
@@ -212,7 +216,7 @@
         android:layout_marginBottom="32dp"
         android:background="?backgroundColour"
         android:fontFamily="@font/madeeta"
-        android:text="Sign Out"
+        android:text="@string/sign_out"
         android:textColor="?textColour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ilRePass"
