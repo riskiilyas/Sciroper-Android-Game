@@ -37,7 +37,8 @@ class PresenterPlayerImp(
                 launch(Dispatchers.Main) {
                     playerView.result("DRAW!", R.raw.result_draw)
                 }
-
+                point.draw()
+                user.updateUser(dataUser)
             } else if (firstPlayerChoice == "Rock" && secondPlayerChoice == "Scissors" || firstPlayerChoice == "Scissors" && secondPlayerChoice == "Paper" || firstPlayerChoice == "Paper" && secondPlayerChoice == "Rock") {
                 Log.d("Hasil", "pemain 1 win")
                 launch(Dispatchers.Main) {

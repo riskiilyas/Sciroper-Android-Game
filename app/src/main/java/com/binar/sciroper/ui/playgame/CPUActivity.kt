@@ -61,7 +61,7 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
         p1Choices.forEach { its ->
             its.setOnClickListener {
                 if (isPlayerTurn) {
-                    it.setBackgroundColor(R.color.navigationColour)
+                    it.setBackgroundResource(R.drawable.shape_background)
                     showToast("${player1.username} Memilih ${it.contentDescription}")
                     presenter.comTurn(it.contentDescription.toString())
                     isPlayerTurn = false
@@ -120,7 +120,7 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
         delay(800)
         comChoices.forEach { image ->
             GlobalScope.launch(Dispatchers.Main) {
-                image.setBackgroundColor(R.color.navigationColour)
+                image.setBackgroundResource(R.drawable.shape_background)
             }
             delay(400)
             GlobalScope.launch(Dispatchers.Main) {
@@ -129,7 +129,7 @@ class CPUActivity : AppCompatActivity(), PlayView, DialogViewPvP {
         }
         delay(800)
         GlobalScope.launch(Dispatchers.Main) {
-            comChoices[id].setBackgroundColor(R.color.navigationColour)
+            comChoices[id].setBackgroundResource(R.drawable.shape_background)
         }
     }
 
