@@ -3,6 +3,7 @@ package com.binar.sciroper.data.db.user
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDAO {
@@ -19,8 +20,11 @@ interface UserDAO {
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
     fun getUserById(id: Int): LiveData<User>
 
+    @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
+    fun getUserId(id: Int): User
+
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE username = :username")
-    fun getUserByUserName(username: String): User
+    suspend fun getUserByUserName(username: String): User
 
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE username = :username OR email = :email")
     fun getUserByUsernameAndEmail(username: String, email: String): User
@@ -45,6 +49,9 @@ interface UserDAO {
 
     @Query("select * from ${User.TABLE_NAME} except select * from ${User.TABLE_NAME} where id  = :id")
     fun getUserExcl(id: Int): List<User>
+
+    @Query("select * from ${User.TABLE_NAME} except select * from ${User.TABLE_NAME} where id  = :id")
+    fun getUserExclFlow(id: Int): Flow<List<User>>
 
     @Query("SELECT * FROM ${User.TABLE_NAME} WHERE id = :id")
     fun getUserByIdNoLiveData(id: Int): User

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="landing_page_2"
+            type="com.binar.sciroper.ui.mvvm.fragments.landing.LandingPage2Fragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.mvvm.fragments.landing.LandingPage2Fragment">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_second_page"
+            style="@style/landing_image"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/player_vs_com"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_fragment_dua"
+            style="@style/landing_menu_text"
+            app:layout_constraintEnd_toEndOf="@+id/iv_second_page"
+            app:layout_constraintStart_toStartOf="@+id/iv_second_page"
+            app:layout_constraintTop_toBottomOf="@+id/iv_second_page"
+            android:layout_marginTop="8dp"
+            android:text="@string/player_with_computer"
+            android:textColor="?textColour" />
+
+        <ImageView
+            android:id="@+id/btn_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:onClick="@{() -> landing_page_2.goToLogIn()}"
+            android:contentDescription="@string/next"
+            android:src="@drawable/ic_baseline_arrow_right_24" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_percent="0.15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

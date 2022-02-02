@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.mvvm.fragments.landing.LandingPage1Fragment">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_first_page"
+            style="@style/landing_image"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/player_vs_player"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_fragment_satu"
+            style="@style/landing_menu_text"
+            app:layout_constraintEnd_toEndOf="@+id/iv_first_page"
+            app:layout_constraintStart_toStartOf="@+id/iv_first_page"
+            app:layout_constraintTop_toBottomOf="@+id/iv_first_page"
+            android:layout_marginTop="8dp"
+            android:text="@string/player_with_other_player"
+            android:textColor="?textColour" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_percent="0.15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

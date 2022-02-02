@@ -9,9 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavHost
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference.isLogin
 import com.binar.sciroper.databinding.FragmentDialogSignOutBinding
 import com.binar.sciroper.ui.login.LogInActivity
+import com.binar.sciroper.ui.mvvm.fragments.login.LogInFragment
 
 
 class DialogSignOut : DialogFragment() {
