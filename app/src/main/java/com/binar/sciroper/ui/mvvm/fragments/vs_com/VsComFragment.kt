@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
@@ -57,6 +59,14 @@ class VsComFragment : Fragment() {
                 it.setBackgroundResource(R.drawable.shape_background)
                 showToast("${user.username} Memilih ${it.contentDescription}")
                 vsComVm.setPlayerChoice(it.contentDescription.toString())
+                freezeState(p1Choices)
+                repeat(3) {
+                    vsComVm.setComputerChoice()
+                    comChoices.filter { it.contentDescription == vsComVm.computerChoice }[0].setBackgroundResource(
+                        R.drawable.shape_background
+                    )
+                }
+                vsComVm.setOpponentSelectedId(comChoices.filter { it.contentDescription == vsComVm.computerChoice }[0].id)
             }
         }
 
@@ -74,6 +84,21 @@ class VsComFragment : Fragment() {
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun freezeState(choices: List<ImageView>) {
+        vsComVm.setStatus(false)
+        choices.forEach {
+            it.isEnabled = vsComVm.status
+        }
+    }
+
+    private fun View.changeBgColor(@ColorRes id: Int) {
+        setBackgroundColor(ContextCompat.getColor(requireActivity(), id))
+    }
+
+    fun mockChoices(){
+
     }
 
     override fun onDestroy() {

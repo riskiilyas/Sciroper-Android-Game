@@ -1,60 +1,146 @@
 package com.binar.sciroper.ui.mvvm.fragments.vs_player
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
+import com.binar.sciroper.databinding.FragmentVsPlayerBinding
+import com.binar.sciroper.util.App
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VsPlayerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class VsPlayerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var _binding: FragmentVsPlayerBinding? = null
+    private val binding get() = _binding!!
+    private val vsPlayerVm: VsPlayerVm by activityViewModels {
+        VsPlayerVmFactory(App.appDb.getUserDao())
     }
+    private lateinit var btnPemainSatu: List<ImageView>
+    private lateinit var btnPemainDua: List<ImageView>
+    private lateinit var allBtn: MutableList<ImageView>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vs_player, container, false)
+        _binding = FragmentVsPlayerBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment VsPlayerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VsPlayerFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnPemainSatu = listOf(
+            binding.ivPemain1Batu,
+            binding.ivPemain1Kertas,
+            binding.ivPemain1Gunting,
+        )
+
+        btnPemainDua = listOf(
+            binding.ivPemain2Batu,
+            binding.ivPemain2Kertas,
+            binding.ivPemain2Gunting,
+        )
+
+        allBtn = mutableListOf()
+
+        allBtn.addAll(btnPemainSatu)
+        allBtn.addAll(btnPemainDua)
+
+        binding.apply {
+            vm = vsPlayerVm
+            vsPlayerFragment = this@VsPlayerFragment
+            ivAvatar.setImageResource(vsPlayerVm.user.avatarId)
+            pemain1.text = vsPlayerVm.user.username
+            ivRefresh.setOnClickListener { restartGame() }
+        }
+
+        playGame()
+
+    }
+
+    private fun createToast(player: String, choice: String) {
+        Toast.makeText(
+            requireContext(),
+            "$player Memilih $choice",
+            Toast.LENGTH_SHORT
+        ).show()
+        Log.i(
+            "testing",
+            "$choice, opponent: ${vsPlayerVm.opponentChoice}, player: ${vsPlayerVm.playerChoice}"
+        )
+    }
+
+    private fun playerMove() {
+        btnPemainSatu.forEach {
+            it.setOnClickListener { choice ->
+                vsPlayerVm.setPlayerChoice(choice.contentDescription.toString())
+                vsPlayerVm.setPlayerSelectedId(choice.id)
+                choice.setBackgroundResource(R.drawable.shape_background)
+                freezeState(btnPemainSatu)
+                vsPlayerVm.gameResult()
+                createDialog()
+                createToast(vsPlayerVm.user.username, vsPlayerVm.playerChoice)
             }
+        }
+    }
+
+    private fun opponentMove() {
+        btnPemainDua.forEach {
+            it.setOnClickListener { choice ->
+                vsPlayerVm.setOpponentChoice(choice.contentDescription.toString())
+                vsPlayerVm.setOpponentSelectedId(choice.id)
+                choice.setBackgroundResource(R.drawable.shape_background)
+                freezeState(btnPemainDua)
+                vsPlayerVm.gameResult()
+                createDialog()
+                createToast(vsPlayerVm.opponent, vsPlayerVm.opponentChoice)
+            }
+        }
+    }
+
+    private fun playGame() {
+        playerMove()
+        opponentMove()
+    }
+
+    private fun freezeState(choices: List<ImageView>) {
+        vsPlayerVm.setStatus(false)
+        choices.forEach {
+            it.isEnabled = vsPlayerVm.status
+        }
+    }
+
+    private fun createDialog() {
+        if (vsPlayerVm.result != "") {
+            val dialogFragment = GameDialog()
+            dialogFragment.isCancelable = false
+            dialogFragment.show(childFragmentManager, "test")
+        }
+    }
+
+    private fun restartGame() {
+        vsPlayerVm.reset()
+        allBtn.forEach {
+            it.isEnabled = vsPlayerVm.status
+            it.setBackgroundResource(0)
+        }
+    }
+
+    fun navToMenuGamePlay(){
+        val action = VsPlayerFragmentDirections.actionVsPlayerFragmentToMenuGamePlayFragment()
+        findNavController().navigate(action)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

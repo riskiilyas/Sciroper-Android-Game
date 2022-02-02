@@ -110,11 +110,11 @@
             android:id="@+id/action_menuGamePlayFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
         <action
-            android:id="@+id/action_menuGamePlayFragment_to_vsPlayerFragment"
-            app:destination="@id/vsPlayerFragment" />
-        <action
             android:id="@+id/action_menuGamePlayFragment_to_vsComFragment"
             app:destination="@id/vsComFragment" />
+        <action
+            android:id="@+id/action_menuGamePlayFragment_to_vsPlayerFragment"
+            app:destination="@id/vsPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/vsComFragment"
@@ -133,5 +133,8 @@
         <action
             android:id="@+id/action_vsPlayerFragment_to_menuGamePlayFragment"
             app:destination="@id/menuGamePlayFragment" />
+        <action
+            android:id="@+id/action_vsPlayerFragment_to_vsPlayerFragment"
+            app:destination="@id/vsPlayerFragment" />
     </fragment>
 </navigation>
