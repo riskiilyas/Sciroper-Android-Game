@@ -9,6 +9,10 @@
             name="vm"
             type="com.binar.sciroper.ui.mvvm.fragments.vs_com.VsComVm" />
 
+        <variable
+            name="vsComFragment"
+            type="com.binar.sciroper.ui.mvvm.fragments.vs_com.VsComFragment" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,6 +181,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/app_name"
+            android:onClick="@{() -> vsComFragment.navToMenuGamePlay()}"
             android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

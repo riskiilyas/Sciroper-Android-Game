@@ -66,6 +66,10 @@
         <action
             android:id="@+id/action_menuFragment_to_menuGamePlayFragment"
             app:destination="@id/menuGamePlayFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_HTPFragment"
+            app:destination="@id/HTPFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/registerConfirmationFragment"
@@ -81,7 +85,9 @@
         android:label="SettingFragment" >
         <action
             android:id="@+id/action_settingFragment_to_menuFragment"
-            app:destination="@id/menuFragment" />
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_settingFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -93,6 +99,11 @@
         <action
             android:id="@+id/action_profileFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:popUpTo="@id/settingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/leaderboardFragment"
@@ -108,7 +119,9 @@
         android:label="MenuGamePlayFragment" >
         <action
             android:id="@+id/action_menuGamePlayFragment_to_menuFragment"
-            app:destination="@id/menuFragment" />
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_menuGamePlayFragment_to_vsComFragment"
             app:destination="@id/vsComFragment" />
@@ -123,7 +136,9 @@
         tools:layout="@layout/fragment_vs_com" >
         <action
             android:id="@+id/action_vsComFragment_to_menuGamePlayFragment"
-            app:destination="@id/menuGamePlayFragment" />
+            app:destination="@id/menuGamePlayFragment"
+            app:popUpTo="@id/menuGamePlayFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/vsPlayerFragment"
@@ -132,9 +147,20 @@
         tools:layout="@layout/fragment_vs_player" >
         <action
             android:id="@+id/action_vsPlayerFragment_to_menuGamePlayFragment"
-            app:destination="@id/menuGamePlayFragment" />
+            app:destination="@id/menuGamePlayFragment"
+            app:popUpTo="@id/menuGamePlayFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_vsPlayerFragment_to_vsPlayerFragment"
             app:destination="@id/vsPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/HTPFragment"
+        android:name="com.binar.sciroper.ui.mvvm.fragments.how_to_play.HTPFragment"
+        android:label="HTPFragment" >
+        <action
+            android:id="@+id/action_HTPFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment" />
     </fragment>
 </navigation>

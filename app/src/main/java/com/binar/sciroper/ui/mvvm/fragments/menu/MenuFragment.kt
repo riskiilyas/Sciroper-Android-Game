@@ -49,12 +49,18 @@ class MenuFragment : Fragment() {
         }
     }
 
-    fun navToSetting(){
+    fun navToSetting() {
         val action = MenuFragmentDirections.actionMenuFragmentToSettingFragment()
         findNavController().navigate(action)
     }
-    fun navToPlay(){
+
+    fun navToPlay() {
         val action = MenuFragmentDirections.actionMenuFragmentToMenuGamePlayFragment()
+        findNavController().navigate(action)
+    }
+
+    fun navToHtp() {
+        val action = MenuFragmentDirections.actionMenuFragmentToHTPFragment()
         findNavController().navigate(action)
     }
 

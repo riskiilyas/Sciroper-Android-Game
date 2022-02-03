@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
@@ -73,6 +74,7 @@ class VsComFragment : Fragment() {
         binding.apply {
             vm = vsComVm
             lifecycleOwner = viewLifecycleOwner
+            vsComFragment = this@VsComFragment
         }
 
         binding.apply {
@@ -99,6 +101,11 @@ class VsComFragment : Fragment() {
 
     fun mockChoices(){
 
+    }
+
+    fun navToMenuGamePlay(){
+        val action = VsComFragmentDirections.actionVsComFragmentToMenuGamePlayFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroy() {

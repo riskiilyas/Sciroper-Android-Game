@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import com.binar.sciroper.R
+import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentProfileBinding
-import com.binar.sciroper.ui.profile.DialogSignOut
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
 
@@ -25,7 +23,6 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var user: User
     private lateinit var avatars: List<ImageView>
-    val avatarsId: List<Int> = AvatarHelper.provideList()
     private lateinit var userListExcl: List<User>
     private lateinit var inputUsername: String
     private lateinit var inputEmail: String
@@ -53,6 +50,7 @@ class ProfileFragment : Fragment() {
         binding.apply {
             vm = profileVm
             lifecycleOwner = viewLifecycleOwner
+            profileFragment = this@ProfileFragment
         }
 
         profileVm.getUser().observe(viewLifecycleOwner) {
@@ -61,7 +59,7 @@ class ProfileFragment : Fragment() {
             onSelectAvatar(it, avatars)
         }
 
-        profileVm.userAvatarId.observe(viewLifecycleOwner){
+        profileVm.userAvatarId.observe(viewLifecycleOwner) {
 
         }
 
@@ -89,6 +87,11 @@ class ProfileFragment : Fragment() {
     private fun onSignOut() {
         val dialogSignOut = DialogSignOutt()
         dialogSignOut.show(childFragmentManager, DialogSignOutt.DIALOG_SIGNOUTT)
+    }
+
+    fun navToSetting() {
+        val action = ProfileFragmentDirections.actionProfileFragmentToSettingFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroy() {

@@ -94,6 +94,7 @@
             android:backgroundTint="@color/menuColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/how_to_play"
+            android:onClick="@{() -> menuFragment.navToHtp()}"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             android:textColor="@color/black"
