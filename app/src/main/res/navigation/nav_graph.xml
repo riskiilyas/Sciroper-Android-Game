@@ -70,6 +70,12 @@
             android:id="@+id/action_menuFragment_to_HTPFragment"
             app:destination="@id/HTPFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_menuFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerConfirmationFragment"
@@ -162,5 +168,27 @@
             android:id="@+id/action_HTPFragment_to_menuFragment"
             app:destination="@id/menuFragment"
             app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.binar.sciroper.ui.mvvm.fragments.achievement.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" >
+        <action
+            android:id="@+id/action_achievementFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.binar.sciroper.ui.mvvm.fragments.shop.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
