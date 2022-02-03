@@ -64,6 +64,16 @@ class MenuFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    fun navToShop() {
+        val action = MenuFragmentDirections.actionMenuFragmentToShopFragment()
+        findNavController().navigate(action)
+    }
+
+    fun navToAchievement() {
+        val action = MenuFragmentDirections.actionMenuFragmentToAchievementFragment()
+        findNavController().navigate(action)
+    }
+
     fun createDialog() {
         val dialogFragment = DialogExit()
         dialogFragment.isCancelable = false
