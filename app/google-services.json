@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868335977392",
+    "project_id": "sciroper-fd4fe",
+    "storage_bucket": "sciroper-fd4fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868335977392:android:740dc16afdb6c01d720c75",
+        "android_client_info": {
+          "package_name": "com.binar.sciroper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868335977392-ndtfppjbioat8p9f2l9mfqh0cupm84lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuBWMeWKVnFVdkPqWhPQAN9QvYiWXa3Cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868335977392-ndtfppjbioat8p9f2l9mfqh0cupm84lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,10 +38,6 @@ class MenuFragment : Fragment() {
             vm = menuVm
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
-            btnSetting.setOnClickListener { navToSetting() }
-            btnTutorial.setOnClickListener { moveTo(HowToPlay::class.java) }
-            btnPlay.setOnClickListener { moveTo(MenuGamePlayActivity::class.java) }
-            btnLeaderBoard.setOnClickListener { moveTo(LeaderBoardActivity::class.java) }
         }
 
         menuVm.user.observe(viewLifecycleOwner) {
@@ -71,6 +67,11 @@ class MenuFragment : Fragment() {
 
     fun navToAchievement() {
         val action = MenuFragmentDirections.actionMenuFragmentToAchievementFragment()
+        findNavController().navigate(action)
+    }
+
+    fun navToLeaderBoard(){
+        val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
         findNavController().navigate(action)
     }
 

@@ -10,9 +10,9 @@ import com.binar.sciroper.data.db.user.UserDAO
 class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
     val allUsers = userDao.getUsers()
     private val _userListSize = MutableLiveData<Int>()
-    val userListSize: LiveData<Int> = _userListSize
+    val userListSize: LiveData<Int> get() = _userListSize
 
-    fun getUserListSize(userList:List<User>){
+    fun getUserListSize(userList: List<User>) {
         _userListSize.value = userList.size
     }
 }

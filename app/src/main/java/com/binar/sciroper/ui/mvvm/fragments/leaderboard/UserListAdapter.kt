@@ -14,7 +14,7 @@ class UserListAdapter :
     class UserViewHolder(private var binding: ActivityItemLeaderboardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
-            binding.tvRank.text = layoutPosition.toString()
+            binding.tvRank.text = (layoutPosition+1).toString()
             binding.namaPlayer.text = user.username
             binding.AvatarPlayer.setImageResource(user.avatarId)
             binding.executePendingBindings()

@@ -146,6 +146,7 @@
             android:backgroundTint="@color/menuColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/leader_board"
+            android:onClick="@{() -> menuFragment.navToLeaderBoard()}"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             android:textColor="@color/black"
