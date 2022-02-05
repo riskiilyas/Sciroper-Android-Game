@@ -18,6 +18,9 @@ import com.binar.sciroper.databinding.FragmentSignUpBinding
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
 
@@ -34,6 +37,7 @@ class SignUpFragment : Fragment() {
     private lateinit var signUpBtn: Button
     private lateinit var loadingInd: ProgressBar
     private lateinit var avatarList: List<AppCompatImageView>
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +51,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = Firebase.auth
         userName = binding.tietUsername
         email = binding.tietEmail
         password = binding.tietPassword
@@ -61,10 +66,23 @@ class SignUpFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
+//        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+//            .addOnCompleteListener(requireActivity()) { task ->
+//                if (task.isSuccessful) {
+//                    Log.d("banana auth", "createUserWithEmail: Success")
+//                    val user = auth.currentUser
+//                    makeToast("$user")
+//                } else {
+//                    Log.w("banana auth", "createUserWithEmail:failure", task.exception)
+//                    makeToast("Authentication failed.")
+//                }
+//            }
+
         signUpVm.navToMenu.observe(viewLifecycleOwner) {
             if (it) {
                 Log.i("banana", "navToMenu Triggered")
-                val action = SignUpFragmentDirections.actionSignUpFragmentToRegisterConfirmationFragment()
+                val action =
+                    SignUpFragmentDirections.actionSignUpFragmentToRegisterConfirmationFragment()
                 findNavController().navigate(action)
                 signUpVm.setEndNav()
             }
@@ -77,15 +95,15 @@ class SignUpFragment : Fragment() {
             }
         }
 
-        signUpVm.errorEmailFormatToast.observe(viewLifecycleOwner){
-            if(it){
+        signUpVm.errorEmailFormatToast.observe(viewLifecycleOwner) {
+            if (it) {
                 makeToast("Incorrect email format")
                 signUpVm.setEndErrorEmailFormatToast()
             }
         }
 
-        signUpVm.nonMatchingPassword.observe(viewLifecycleOwner){
-            if(it){
+        signUpVm.nonMatchingPassword.observe(viewLifecycleOwner) {
+            if (it) {
                 makeToast("Password does not match")
                 signUpVm.setNonMatchingPasswordToast()
             }
@@ -142,7 +160,7 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun makeToast(msg: String){
+    private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
