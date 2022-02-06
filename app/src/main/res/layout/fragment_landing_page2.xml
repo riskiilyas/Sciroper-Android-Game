@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.mvvm.fragments.landing.LandingPage2Fragment">
 
         <com.airbnb.lottie.LottieAnimationView
@@ -28,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="@+id/iv_second_page"
             app:layout_constraintStart_toStartOf="@+id/iv_second_page"
             app:layout_constraintTop_toBottomOf="@+id/iv_second_page"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin"
             android:text="@string/player_with_computer"
             android:textColor="?textColour" />
 

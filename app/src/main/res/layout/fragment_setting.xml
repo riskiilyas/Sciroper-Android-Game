@@ -16,12 +16,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.mvvm.fragments.setting.SettingFragment">
+
+        <View
+            android:id="@+id/view_setting"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/card_how_to_play"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivBackSetting"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/app_name"
@@ -34,31 +46,43 @@
             android:id="@+id/tvSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/margin_top_title"
             android:fontFamily="@font/madeeta"
             android:text="@string/setting"
             android:textColor='?textColour'
-            android:textSize="40sp"
+            android:textSize="@dimen/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/ivBackSetting" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/card_bg"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_setting" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_margin="16dp"
             android:background="@drawable/rounded_border"
-            android:backgroundTint="@color/menuColour"
-            android:onClick="@{() -> settingFragment.navToProfile()}"
+            android:backgroundTint="?menuColour"
             android:fontFamily="@font/madeeta"
+            android:onClick="@{() -> settingFragment.navToProfile()}"
             android:text="@string/profile"
             android:textAllCaps="false"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/switchDark"
+            app:layout_constraintEnd_toEndOf="@+id/view"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/switchDark"
-            app:layout_constraintTop_toBottomOf="@+id/tvSetting" />
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
 
 
         <com.google.android.material.switchmaterial.SwitchMaterial
@@ -78,15 +102,18 @@
             app:layout_constraintTop_toBottomOf="@id/btnProfile"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-        <TextView
-            android:id="@+id/test"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="3dp"
+            android:layout_height="47dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="This is a fragment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".65" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,31 +12,54 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.mvvm.fragments.how_to_play.HTPFragment">
+
+        <View
+            android:id="@+id/view_htp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/card_how_to_play"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tvHowToPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="@dimen/margin_top_title"
             android:fontFamily="@font/madeeta"
             android:text="@string/how_to_play"
             android:textColor='?textColour'
-            android:textSize="40sp"
+            android:textSize="@dimen/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBackHTP"
+                android:layout_width="@dimen/btn"
+                android:layout_height="@dimen/btn"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/app_name"
+                android:onClick="@{() -> htpFragment.navToMenu()}"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/ltHowToPlay"
             android:layout_width="300dp"
             android:layout_height="300dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvHowToPlay"
+            app:layout_constraintTop_toBottomOf="@id/view_htp"
             app:layout_constraintVertical_bias="0.19"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
@@ -53,22 +76,18 @@
             android:text="@string/choose_one_between_rock_sciccors_paper_and_the_opponent_will_choose_between_rock_sciccors_paper_too"
             android:textAlignment="center"
             android:textColor='?textColour'
-            android:textSize="24sp"
+            android:textSize="@dimen/text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ltHowToPlay" />
 
-        <ImageView
-            android:id="@+id/ivBackHTP"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/app_name"
-            android:onClick="@{() -> htpFragment.navToMenu()}"
-            android:src="@drawable/back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="3dp"
+            android:layout_height="47dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.18" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

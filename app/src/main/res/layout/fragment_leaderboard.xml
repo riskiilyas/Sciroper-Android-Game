@@ -33,6 +33,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_title"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
             android:text="@string/leaderboard"
@@ -41,7 +42,16 @@
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+            app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/btnShare"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_rank2"
@@ -51,8 +61,7 @@
             android:visibility="@{vm.userListSize>=2? View.VISIBLE: View.INVISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/rankDua"
             app:layout_constraintEnd_toEndOf="@id/rankDua"
-            app:layout_constraintStart_toStartOf="@id/rankDua"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
+            app:layout_constraintStart_toStartOf="@id/rankDua" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/rankDua"
@@ -89,8 +98,7 @@
             android:src="@drawable/crown_gold1"
             app:layout_constraintBottom_toTopOf="@id/rankSatu"
             app:layout_constraintEnd_toEndOf="@id/rankSatu"
-            app:layout_constraintStart_toStartOf="@id/rankSatu"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
+            app:layout_constraintStart_toStartOf="@id/rankSatu" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -128,8 +136,7 @@
             android:visibility="@{vm.userListSize>=3? View.VISIBLE: View.INVISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/rankTiga"
             app:layout_constraintEnd_toEndOf="@id/rankTiga"
-            app:layout_constraintStart_toStartOf="@id/rankTiga"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
+            app:layout_constraintStart_toStartOf="@id/rankTiga" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -165,6 +172,7 @@
             android:id="@+id/rcPlayer"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="?backgroundColour"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -174,14 +182,13 @@
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/activity_item_leaderboard" />
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/back"
-            android:contentDescription="@string/back"
+            android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -190,17 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
-
-        <TextView
-            android:id="@+id/testing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="This is a fragment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintGuide_percent="0.45" />
 
         <TextView
             android:id="@+id/test2"

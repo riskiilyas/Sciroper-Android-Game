@@ -23,8 +23,8 @@
     </style>
 
     <style name="landing_image">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_width">@dimen/landing_image</item>
+        <item name="android:layout_height">@dimen/landing_image</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintTop_toTopOf">@id/guideline</item>

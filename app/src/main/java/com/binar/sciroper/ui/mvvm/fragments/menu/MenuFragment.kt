@@ -8,12 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.ui.how_to_play.HowToPlay
 import com.binar.sciroper.ui.leaderboard.LeaderBoardActivity
 import com.binar.sciroper.ui.menu.DialogExit
 import com.binar.sciroper.ui.menugameplay.MenuGamePlayActivity
 import com.binar.sciroper.util.App
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -21,6 +26,9 @@ class MenuFragment : Fragment() {
     private val menuVm: MenuVm by viewModels {
         MenuVmFactory(App.appDb.getUserDao())
     }
+
+    private lateinit var database: FirebaseDatabase
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +47,14 @@ class MenuFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
         }
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("User")
+
+        myRef.setValue(
+            menuVm.user.value
+        )
+
 
         menuVm.user.observe(viewLifecycleOwner) {
             binding.userImg.setImageResource(it.avatarId)

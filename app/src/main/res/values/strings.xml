@@ -6,13 +6,13 @@
     <string name="player_vs_com">%1$s Vs COM</string>
     <string name="player_vs_player">%1$s Vs Player</string>
     <string name="choose_your_opponent">Choose Your Opponent</string>
-    <string name="player_with_computer">Player with Computer</string>
-    <string name="player_with_other_player">Player with other player</string>
+    <string name="player_with_computer">Play with Computer</string>
+    <string name="player_with_other_player">Play with other player</string>
     <string name="next">next</string>
     <string name="avatar_game">avatar_game</string>
     <string name="game_suit">Game Suit</string>
     <string name="_1">1</string>
-    <string name="user_level">Level %1$d</string>
+    <string name="user_level">%1$d</string>
     <string name="register_succeed">Register \nSucceed</string>
     <string name="binar">Binar</string>
     <string name="bos">Bos</string>
@@ -32,7 +32,7 @@
     <string name="menu">Menu</string>
     <string name="how_to_play">How To Play</string>
     <string name="play_game">Play Game</string>
-    <string name="leader_board">Leader Board</string>
+    <string name="leader_board">Leaderboard</string>
     <string name="exit">Exit</string>
     <string name="player_2">Player 2</string>
     <string name="show">Show</string>

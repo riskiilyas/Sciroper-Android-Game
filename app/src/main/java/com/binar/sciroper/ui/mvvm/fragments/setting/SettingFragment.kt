@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.mvvm.fragments.setting
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
 import com.binar.sciroper.util.App
@@ -18,6 +20,12 @@ class SettingFragment : Fragment() {
     private val binding get() = _binding!!
     private val settingVm: SettingVm by viewModels {
         SettingVmFactory(App.appDb.getUserDao(), AppSharedPreference)
+    }
+
+    @SuppressLint("ResourceAsColor")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.window?.statusBarColor = R.color.btnLight
     }
 
     override fun onCreateView(

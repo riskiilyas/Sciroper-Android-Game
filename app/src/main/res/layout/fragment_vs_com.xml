@@ -34,8 +34,8 @@
 
         <ImageView
             android:id="@+id/ivAvatarPlayer"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batuPlayer"
@@ -89,8 +89,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:contentDescription="@string/app_name"
             android:src="@drawable/com"
             app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batuCOM"
@@ -176,8 +176,8 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/app_name"

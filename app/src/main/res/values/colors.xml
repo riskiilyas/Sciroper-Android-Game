@@ -10,7 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="navigationColour">#0071C1</color>
     <color name="menuColour">#C87BA2</color>
-    <color name="exitButton">#E61A23</color>
+    <color name="exitButton">#B1D035</color>
     <color name="signColour">#F2B36C</color>
     <color name="vsColour">#B1D035</color>
     <color name="signoutColour">#474241</color>
@@ -23,13 +23,20 @@
     <color name="yellow">#FDD835</color>
 
     <!-- Light Theme  -->
-    <color name="backgroundColourLight">#ffffff</color>
+    <color name="backgroundColourLight">#fffbbe</color>
     <color name="textColourLight">#000000</color>
+    <color name="btnLight">#eec1ea</color>
+    <color name="menuLight">#be97dc</color>
+    <color name="cardLight">#fff</color>
+    <color name="exitLight">#B1D035</color>
 
 
     <!-- Dark Theme  -->
-    <color name="backgroundColourDark">#231916</color>
+    <color name="backgroundColourDark">#3f0071</color>
     <color name="textColourDark">#fff</color>
-
+    <color name="btnDark">#9777B3</color>
+    <color name="menuDark">#a374d5</color>
+    <color name="cardDark">#610094</color>
+    <color name="exitDark">#3f0071</color>
 
 </resources>

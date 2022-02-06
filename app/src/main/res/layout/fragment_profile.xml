@@ -21,12 +21,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.mvvm.fragments.profile.ProfileFragment">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/btnBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
             android:layout_marginStart="8dp"
             android:onClick="@{() -> profileFragment.navToSetting()}"
             android:layout_marginTop="8dp"
@@ -38,12 +39,12 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/madeeta"
             android:text="@string/profile"
             android:textColor="?textColour"
-            android:textSize="28sp"
+            android:textSize="@dimen/title"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btnBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnBack" />
@@ -234,6 +235,7 @@
             android:backgroundTint="@color/signColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/update"
+            android:textSize="@dimen/btn_text_sign_in"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnSignOut"
@@ -246,6 +248,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="32dp"
+            android:textSize="@dimen/btn_text_sign_in"
             android:background="?backgroundColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/sign_out"

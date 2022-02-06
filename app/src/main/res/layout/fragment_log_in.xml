@@ -40,6 +40,7 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="?textColour"
             android:textStyle="bold"
+            android:textSize="@dimen/title"
             app:layout_constraintEnd_toEndOf="@id/logo_img"
             app:layout_constraintStart_toStartOf="@id/logo_img"
             app:layout_constraintTop_toBottomOf="@id/logo_img" />
@@ -97,6 +98,7 @@
             android:fontFamily="@font/madeeta"
             android:onClick="@{() -> vm.logIn()}"
             android:text="@string/sign_in"
+            android:textSize="@dimen/btn_text_sign_in"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/til_password"
@@ -112,6 +114,7 @@
             android:onClick="@{() -> log_in.goToSignUp()}"
             android:text="@string/sign_up"
             android:textColor="@color/black"
+            android:textSize="@dimen/btn_text_sign_in"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
             app:layout_constraintStart_toStartOf="@id/btn_sign_in"

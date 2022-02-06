@@ -3,5 +3,9 @@
     <declare-styleable name="app_theme">
         <attr name="backgroundColour" format="color" />
         <attr name="textColour" format="color" />
+        <attr name="btnColour" format="color"/>
+        <attr name="menuColour" format="color"/>
+        <attr name="cardColour" format="color"/>
+        <attr name="exitColour" format="color"/>
     </declare-styleable>
 </resources>

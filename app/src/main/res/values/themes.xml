@@ -11,10 +11,14 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="backgroundColor">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/backgroundColourLight</item>
         <!-- Customize your theme here. -->
         <item name="backgroundColour">@color/backgroundColourLight</item>
         <item name="textColour">@color/textColourLight</item>
+        <item name="cardColour">@color/cardLight</item>
+        <item name="btnColour">@color/btnLight</item>
+        <item name="menuColour">@color/menuLight</item>
+        <item name="exitColour">@color/exitLight</item>
     </style>
 
     <style name="Theme.ActivityLeaerboard" parent="Theme.RPSChallengeChapter4">
