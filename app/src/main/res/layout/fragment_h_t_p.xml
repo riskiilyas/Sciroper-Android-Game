@@ -51,19 +51,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/ltHowToPlay"
-            android:layout_width="300dp"
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            android:layout_marginTop="20dp"
+            app:autoPlay="true"
+            app:layout_constraintTop_toBottomOf="@id/guideline1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_htp"
-            app:layout_constraintVertical_bias="0.19"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/how_to_play" />
+            app:layout_constraintEnd_toEndOf="@id/tvHowToPlay2"
+            app:videoId="xsg0HMcL2oo" />
 
         <TextView
             android:id="@+id/tvHowToPlay2"
@@ -79,7 +76,7 @@
             android:textSize="@dimen/text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ltHowToPlay" />
+            app:layout_constraintTop_toBottomOf="@id/youtube_player_view" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"

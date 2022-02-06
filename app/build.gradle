@@ -100,4 +100,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Api youtube
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
 }

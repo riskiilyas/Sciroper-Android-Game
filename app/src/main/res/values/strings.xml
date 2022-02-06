@@ -43,7 +43,9 @@
     <string name="update">Update</string>
     <string name="sign_out">Sign Out</string>
     <string name="dark_mode">Dark mode</string>
-    <string name="disable_dark_mode">Disable dark mode</string>
+    <string name="music_on">Music On</string>
+    <string name="disable_music">Music Off</string>
+    <string name="disable_dark_mode">Dark mode off</string>
     <string name="choose_avatar">Choose Avatar</string>
     <string name="re_password">re-password</string>
     <string name="are_you_sure">Are you sure?</string>

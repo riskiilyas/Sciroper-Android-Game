@@ -31,7 +31,7 @@ class SettingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,6 +55,18 @@ class SettingFragment : Fragment() {
                 settingVm.setTheme(it)
             }
         }
+
+        settingVm.isCheckedMusic.observe(viewLifecycleOwner) {
+            if (it) {
+                playMusic(view.context)
+                settingVm.setMusic(it)
+            } else {
+                pausePlay()
+                settingVm.setMusic(it)
+            }
+        }
+
+
     }
 
     fun navToMenu() {

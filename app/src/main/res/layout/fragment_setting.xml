@@ -102,6 +102,23 @@
             app:layout_constraintTop_toBottomOf="@id/btnProfile"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchMusic"
+            style="@style/Font_Madeeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:checked="@{vm.isCheckedMusic}"
+            android:onClick="@{() -> vm.setIsCheckedMusic()}"
+            android:text="@{vm.isCheckedMusic? @string/disable_music : @string/music_on }"
+            android:textColor='?textColour'
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switchDark"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
             android:layout_width="3dp"
