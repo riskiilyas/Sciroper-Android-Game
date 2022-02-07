@@ -10,6 +10,7 @@ object AppSharedPreference {
     private const val KEY_IS_DARK_MODE = "key_is_dark_mode"
     private const val KEY_ID = "key_id"
     private const val KEY_MUSIC = "key_music"
+    private const val REMINDER = "isReminder"
 
     private val sharedPreference =
         App.context.get()?.getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE)
@@ -45,4 +46,14 @@ object AppSharedPreference {
                 sharedPreference?.edit()?.putBoolean(KEY_MUSIC, value)?.apply()
             }
         }
+
+    var isReminder: Boolean?
+        get() = sharedPreference?.getBoolean(REMINDER, false)
+        set(value) {
+            if (value != null) {
+                sharedPreference?.edit()?.putBoolean(REMINDER, value)?.apply()
+            }
+        }
+
+
 }

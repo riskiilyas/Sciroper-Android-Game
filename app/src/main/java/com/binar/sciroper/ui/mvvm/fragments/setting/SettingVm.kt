@@ -17,10 +17,12 @@ import kotlin.coroutines.coroutineContext
 
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
-    private val _isChecked = MutableLiveData<Boolean>(false)
+    private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
     private val _isCheckedMusic = MutableLiveData<Boolean>(false)
+    private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isReminder)
     val isChecked: LiveData<Boolean> = _isChecked
     val isCheckedMusic: LiveData<Boolean> = _isCheckedMusic
+    val isCheckedNotif: LiveData<Boolean> = _isCheckedNotif
 
     fun setIsChecked() {
         _isChecked.value = !_isChecked.value!!
@@ -36,6 +38,13 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
 
     fun setMusic(condition: Boolean) {
         AppSharedPreference.isMusicPlay = condition
+    }
+    fun setIsCheckedNotif() {
+        _isCheckedNotif.value = !_isCheckedNotif.value!!
+    }
+
+    fun setNotif(condition: Boolean) {
+        AppSharedPreference.isReminder = condition
     }
 
 }
