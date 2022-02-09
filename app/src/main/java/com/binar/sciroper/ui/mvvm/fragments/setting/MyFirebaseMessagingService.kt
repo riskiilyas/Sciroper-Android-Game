@@ -25,7 +25,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
-    fun showNotification(context: Context, title: String, body: String) {
+    private fun showNotification(context: Context, title: String, body: String) {
         val intent = context.packageManager.getLaunchIntentForPackage("com.binar.sciroper")
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
