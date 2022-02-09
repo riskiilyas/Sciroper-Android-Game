@@ -19,7 +19,6 @@ import com.binar.sciroper.util.App
 class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
-    private lateinit var alarmReceiver: AlarmReceiver
     private val settingVm: SettingVm by viewModels {
         SettingVmFactory(App.appDb.getUserDao(), AppSharedPreference)
     }
@@ -48,7 +47,7 @@ class SettingFragment : Fragment() {
             settingFragment = this@SettingFragment
         }
 
-        binding.switchNotif.isChecked = AppSharedPreference.isReminder!!
+        binding.switchNotif.isChecked = AppSharedPreference.isNotif!!
         settingVm.isChecked.observe(viewLifecycleOwner) {
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -69,20 +68,13 @@ class SettingFragment : Fragment() {
             }
         }
 
-        alarmReceiver = AlarmReceiver()
         settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
             if (it) {
-                alarmReceiver.setRepeatingAlarm(
-                    requireContext(),
-                    "RepeatingAlarm",
-                    "17:07",
-                    "Sciroper Reminder"
-                )
+
                 Log.d("banana", "if: $it")
                 settingVm.setNotif(it)
                 Log.d("banana", "setnotif: $it")
             } else {
-                alarmReceiver.cancelAlarm(requireContext())
                 settingVm.setNotif(it)
             }
         }

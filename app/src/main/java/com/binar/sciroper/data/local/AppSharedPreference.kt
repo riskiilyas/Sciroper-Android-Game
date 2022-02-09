@@ -47,7 +47,7 @@ object AppSharedPreference {
             }
         }
 
-    var isReminder: Boolean?
+    var isNotif: Boolean?
         get() = sharedPreference?.getBoolean(REMINDER, false)
         set(value) {
             if (value != null) {

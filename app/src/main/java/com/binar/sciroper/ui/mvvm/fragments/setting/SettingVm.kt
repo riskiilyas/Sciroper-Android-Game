@@ -2,7 +2,6 @@ package com.binar.sciroper.ui.mvvm.fragments.setting
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,15 +10,12 @@ import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.data.local.MusicPlayer.mediaPlayer
-import com.binar.sciroper.util.App.Companion.context
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
     private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
     private val _isCheckedMusic = MutableLiveData<Boolean>(false)
-    private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isReminder)
+    private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isNotif)
     val isChecked: LiveData<Boolean> = _isChecked
     val isCheckedMusic: LiveData<Boolean> = _isCheckedMusic
     val isCheckedNotif: LiveData<Boolean> = _isCheckedNotif
@@ -44,7 +40,7 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
     }
 
     fun setNotif(condition: Boolean) {
-        AppSharedPreference.isReminder = condition
+        AppSharedPreference.isNotif = condition
     }
 
 }
