@@ -6,14 +6,14 @@
     <data>
         <variable
             name="landing_page_2"
-            type="com.binar.sciroper.ui.mvvm.fragments.landing.LandingPage2Fragment" />
+            type="com.binar.sciroper.ui.fragments.landing.LandingPage2Fragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.landing.LandingPage2Fragment">
+        tools:context=".ui.fragments.landing.LandingPage2Fragment">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/iv_second_page"

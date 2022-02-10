@@ -6,14 +6,14 @@
     <data>
         <variable
             name="htpFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.how_to_play.HTPFragment" />
+            type="com.binar.sciroper.ui.fragments.how_to_play.HTPFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.how_to_play.HTPFragment">
+        tools:context=".ui.fragments.how_to_play.HTPFragment">
 
         <View
             android:id="@+id/view_htp"

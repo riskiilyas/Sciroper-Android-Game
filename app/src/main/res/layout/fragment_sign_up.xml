@@ -7,13 +7,13 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.signup.SignUpVm" />
+            type="com.binar.sciroper.ui.fragments.signup.SignUpVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.signup.SignUpFragment">
+        tools:context=".ui.fragments.signup.SignUpFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/top_guideline"

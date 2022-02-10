@@ -7,18 +7,18 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu.MenuVm" />
+            type="com.binar.sciroper.ui.fragments.menu.MenuVm" />
 
         <variable
             name="menuFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu.MenuFragment" />
+            type="com.binar.sciroper.ui.fragments.menu.MenuFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.menu.MenuFragment">
+        tools:context=".ui.fragments.menu.MenuFragment">
 
         <ImageView
             android:id="@+id/logo_img"
@@ -63,6 +63,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/htp"
+            android:onClick="@{()->menuFragment.navToHtp()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnAchievement"
             app:layout_constraintTop_toBottomOf="@+id/btnAchievement" />

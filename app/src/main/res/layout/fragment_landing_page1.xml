@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.landing.LandingPage1Fragment">
+        tools:context=".ui.fragments.landing.LandingPage1Fragment">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/iv_first_page"
