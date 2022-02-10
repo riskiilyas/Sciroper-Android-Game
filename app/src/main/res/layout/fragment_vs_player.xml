@@ -6,18 +6,18 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerVm" />
+            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerVm" />
 
         <variable
             name="vsPlayerFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerFragment" />
+            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.vs_player.VsPlayerFragment">
+        tools:context=".ui.fragments.vs_player.VsPlayerFragment">
 
         <ImageView
             android:id="@+id/imageView2"

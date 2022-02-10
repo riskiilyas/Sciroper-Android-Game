@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerVm" />
+            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

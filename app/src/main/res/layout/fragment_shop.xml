@@ -5,17 +5,17 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.shop.ShopVm" />
+            type="com.binar.sciroper.ui.fragments.shop.ShopVm" />
 
         <variable
             name="shopFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.shop.ShopFragment" />
+            type="com.binar.sciroper.ui.fragments.shop.ShopFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.shop.ShopFragment">
+        tools:context=".ui.fragments.shop.ShopFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

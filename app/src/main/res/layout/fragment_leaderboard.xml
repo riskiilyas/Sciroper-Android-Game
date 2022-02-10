@@ -9,14 +9,14 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.leaderboard.LeaderBoardVm" />
+            type="com.binar.sciroper.ui.fragments.leaderboard.LeaderBoardVm" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.leaderboard.LeaderboardFragment">
+        tools:context=".ui.fragments.leaderboard.LeaderboardFragment">
 
         <View
             android:layout_width="0dp"
