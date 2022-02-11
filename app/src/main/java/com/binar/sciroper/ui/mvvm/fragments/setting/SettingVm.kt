@@ -10,10 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
-import com.binar.sciroper.data.local.MusicPlayer.mediaPlayer
-import com.binar.sciroper.util.App.Companion.context
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
+
 
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
@@ -40,18 +37,6 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
 
 }
 
-fun playMusic(context: Context) {
-    mediaPlayer = MediaPlayer.create(
-        context,
-        R.raw.bensound_ukulele
-    )
-    mediaPlayer?.start()
-    mediaPlayer?.isLooping = true
-}
-
- fun pausePlay() {
-    mediaPlayer?.stop()
-}
 
 
 class SettingVmFactory(

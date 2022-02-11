@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.util.pausePlay
+import com.binar.sciroper.util.playMusic
 import com.binar.sciroper.databinding.FragmentSettingBinding
 import com.binar.sciroper.util.App
 
