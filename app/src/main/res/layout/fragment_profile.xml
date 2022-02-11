@@ -24,7 +24,18 @@
         android:background="?backgroundColour"
         tools:context=".ui.fragments.profile.ProfileFragment">
 
-        <androidx.constraintlayout.utils.widget.ImageFilterView
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/card_how_to_play"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
             android:id="@+id/btnBack"
             android:layout_width="@dimen/btn"
             android:layout_height="@dimen/btn"
@@ -43,11 +54,11 @@
             android:text="@string/profile"
             android:textColor="?textColour"
             android:textSize="@dimen/title"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnBack" />
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayoutAvatar"
@@ -61,7 +72,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toTopOf="@id/guideline1">
 
             <ImageView
                 android:id="@+id/avatarId1"
@@ -230,42 +241,40 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/shape_background"
             android:backgroundTint="@color/signColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/update"
-            android:textSize="@dimen/btn_text_sign_in"
             android:textColor="@color/black"
+            android:textSize="@dimen/btn_text_sign_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnSignOut"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/ilRePass" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSignOut"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="32dp"
-            android:textSize="@dimen/btn_text_sign_in"
-            android:background="?backgroundColour"
-            android:fontFamily="@font/madeeta"
-            android:text="@string/sign_out"
-            android:textColor="?textColour"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/ilRePass"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btnUpdate" />
+            app:layout_constraintStart_toStartOf="@+id/ilRePass"
+            app:layout_constraintTop_toBottomOf="@+id/ilRePass" />
 
         <TextView
-            android:id="@+id/testing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.user.toString()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/btnSignOut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/madeeta"
+            android:text="@string/sign_out"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="?textColour"
+            android:textSize="@dimen/btn_text_sign_in"
+            app:layout_constraintBottom_toBottomOf="@+id/btnUpdate"
+            app:layout_constraintEnd_toEndOf="@+id/ilRePass"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btnUpdate"
+            app:layout_constraintTop_toTopOf="@+id/btnUpdate" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="3dp"
+            android:layout_height="47dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
