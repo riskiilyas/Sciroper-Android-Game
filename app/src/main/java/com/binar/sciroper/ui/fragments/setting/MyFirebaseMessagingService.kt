@@ -8,6 +8,7 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.binar.sciroper.R
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -21,7 +22,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage) {
         super.onMessageReceived(p0)
-        showNotification(this, p0.notification?.title.toString(), p0.notification?.body.toString())
+        if (AppSharedPreference.isNotif == true){
+            showNotification(this, p0.notification?.title.toString(), p0.notification?.body.toString())
+        }
 
     }
 

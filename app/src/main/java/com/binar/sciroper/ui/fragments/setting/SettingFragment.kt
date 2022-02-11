@@ -70,10 +70,7 @@ class SettingFragment : Fragment() {
 
         settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
             if (it) {
-
-                Log.d("banana", "if: $it")
                 settingVm.setNotif(it)
-                Log.d("banana", "setnotif: $it")
             } else {
                 settingVm.setNotif(it)
             }
