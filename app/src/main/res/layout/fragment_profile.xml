@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.profile.ProfileVm" />
+            type="com.binar.sciroper.ui.fragments.profile.ProfileVm" />
 
         <variable
             name="profileFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.profile.ProfileFragment" />
+            type="com.binar.sciroper.ui.fragments.profile.ProfileFragment" />
 
         <variable
             name="avatarHelper"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.profile.ProfileFragment">
+        tools:context=".ui.fragments.profile.ProfileFragment">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/btnBack"

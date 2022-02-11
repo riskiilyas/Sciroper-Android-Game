@@ -42,7 +42,10 @@ data class User(
     var coin: Int = 0,
 
     @ColumnInfo(name = "achievement")
-    var achievement: String = ""
+    var achievement: String = "",
+
+    @ColumnInfo(name = "items")
+    var items: String = ""
 ) {
     companion object {
         const val TABLE_NAME = "user_table"

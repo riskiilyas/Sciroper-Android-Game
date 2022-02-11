@@ -7,18 +7,18 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu_game_play.MenuGamePlayVm" />
+            type="com.binar.sciroper.ui.fragments.menu_game_play.MenuGamePlayVm" />
 
         <variable
             name="mgpFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu_game_play.MenuGamePlayFragment" />
+            type="com.binar.sciroper.ui.fragments.menu_game_play.MenuGamePlayFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.menu_game_play.MenuGamePlayFragment">
+        tools:context=".ui.fragments.menu_game_play.MenuGamePlayFragment">
 
 
         <ImageView

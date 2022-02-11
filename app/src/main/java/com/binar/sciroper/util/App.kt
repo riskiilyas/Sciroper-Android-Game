@@ -21,6 +21,7 @@ class App : Application() {
             AppDB::class.java,
             AppDB.DB_NAME
         )
+            .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
     }

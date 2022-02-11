@@ -7,17 +7,17 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.login.LogInVM" />
+            type="com.binar.sciroper.ui.fragments.login.LogInVM" />
 
         <variable
             name="log_in"
-            type="com.binar.sciroper.ui.mvvm.fragments.login.LogInFragment" />
+            type="com.binar.sciroper.ui.fragments.login.LogInFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.login.LogInFragment">
+        tools:context=".ui.fragments.login.LogInFragment">
 
         <ImageView
             android:id="@+id/logo_img"

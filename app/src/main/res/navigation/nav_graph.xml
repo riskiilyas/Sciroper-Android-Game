@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.splash.SplashFragment"
+        android:name="com.binar.sciroper.ui.fragments.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/newViewPagerFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.landing.NewViewPagerFragment"
+        android:name="com.binar.sciroper.ui.fragments.landing.NewViewPagerFragment"
         android:label="NewViewPagerFragment" >
         <action
             android:id="@+id/action_newViewPagerFragment_to_logInFragment"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.login.LogInFragment"
+        android:name="com.binar.sciroper.ui.fragments.login.LogInFragment"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.signup.SignUpFragment"
+        android:name="com.binar.sciroper.ui.fragments.signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.menu.MenuFragment"
+        android:name="com.binar.sciroper.ui.fragments.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerConfirmationFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.signup.RegisterConfirmationFragment"
+        android:name="com.binar.sciroper.ui.fragments.signup.RegisterConfirmationFragment"
         android:label="RegisterConfirmationFragment" >
         <action
             android:id="@+id/action_registerConfirmationFragment_to_menuFragment"
@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.setting.SettingFragment"
+        android:name="com.binar.sciroper.ui.fragments.setting.SettingFragment"
         android:label="SettingFragment" >
         <action
             android:id="@+id/action_settingFragment_to_menuFragment"
@@ -100,7 +100,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.profile.ProfileFragment"
+        android:name="com.binar.sciroper.ui.fragments.profile.ProfileFragment"
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profileFragment_to_logInFragment"
@@ -113,7 +113,7 @@
     </fragment>
     <fragment
         android:id="@+id/leaderboardFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.leaderboard.LeaderboardFragment"
+        android:name="com.binar.sciroper.ui.fragments.leaderboard.LeaderboardFragment"
         android:label="LeaderboardFragment" >
         <action
             android:id="@+id/action_leaderboardFragment_to_menuFragment"
@@ -121,7 +121,7 @@
     </fragment>
     <fragment
         android:id="@+id/menuGamePlayFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.menu_game_play.MenuGamePlayFragment"
+        android:name="com.binar.sciroper.ui.fragments.menu_game_play.MenuGamePlayFragment"
         android:label="MenuGamePlayFragment" >
         <action
             android:id="@+id/action_menuGamePlayFragment_to_menuFragment"
@@ -137,7 +137,7 @@
     </fragment>
     <fragment
         android:id="@+id/vsComFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.vs_com.VsComFragment"
+        android:name="com.binar.sciroper.ui.fragments.vs_com.VsComFragment"
         android:label="fragment_vs_com"
         tools:layout="@layout/fragment_vs_com" >
         <action
@@ -148,7 +148,7 @@
     </fragment>
     <fragment
         android:id="@+id/vsPlayerFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerFragment"
+        android:name="com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragment"
         android:label="fragment_vs_player"
         tools:layout="@layout/fragment_vs_player" >
         <action
@@ -162,7 +162,7 @@
     </fragment>
     <fragment
         android:id="@+id/HTPFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.how_to_play.HTPFragment"
+        android:name="com.binar.sciroper.ui.fragments.how_to_play.HTPFragment"
         android:label="HTPFragment" >
         <action
             android:id="@+id/action_HTPFragment_to_menuFragment"
@@ -171,7 +171,7 @@
     </fragment>
     <fragment
         android:id="@+id/achievementFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.achievement.AchievementFragment"
+        android:name="com.binar.sciroper.ui.fragments.achievement.AchievementFragment"
         android:label="fragment_achievement"
         tools:layout="@layout/fragment_achievement" >
         <action
@@ -182,7 +182,7 @@
     </fragment>
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.binar.sciroper.ui.mvvm.fragments.shop.ShopFragment"
+        android:name="com.binar.sciroper.ui.fragments.shop.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action

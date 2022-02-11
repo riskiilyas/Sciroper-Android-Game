@@ -6,18 +6,18 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.setting.SettingVm" />
+            type="com.binar.sciroper.ui.fragments.setting.SettingVm" />
 
         <variable
             name="settingFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.setting.SettingFragment" />
+            type="com.binar.sciroper.ui.fragments.setting.SettingFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.setting.SettingFragment">
+        tools:context=".ui.fragments.setting.SettingFragment">
 
         <View
             android:id="@+id/view_setting"

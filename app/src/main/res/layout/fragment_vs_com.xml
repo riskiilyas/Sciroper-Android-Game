@@ -7,18 +7,19 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_com.VsComVm" />
+            type="com.binar.sciroper.ui.fragments.vs_com.VsComVm" />
 
         <variable
             name="vsComFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_com.VsComFragment" />
+            type="com.binar.sciroper.ui.fragments.vs_com.VsComFragment" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.vs_com.VsComFragment">
+        android:background="?backgroundColour"
+        tools:context=".ui.fragments.vs_com.VsComFragment">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -31,6 +32,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_bg"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         <ImageView
             android:id="@+id/ivAvatarPlayer"
@@ -159,10 +171,10 @@
 
         <TextView
             android:id="@+id/text_hasil"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/shape_vs"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
