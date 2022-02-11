@@ -20,6 +20,17 @@
         android:background="?backgroundColour"
         tools:context=".ui.fragments.menu_game_play.MenuGamePlayFragment">
 
+        <View
+            android:id="@+id/view_htp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/card_how_to_play"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/btnBack"
@@ -38,100 +49,96 @@
             style="@style/landing_menu_text"
             android:text="@string/choose_your_opponent"
             android:textColor="?textColour"
-            android:layout_marginTop="@dimen/margin_top_title"
             android:textSize="@dimen/title_choose"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_htp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/shape_bg_landing"
+            app:layout_constraintBottom_toTopOf="@+id/tv_pemain_vs_pemain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/view_htp" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/card_bg"
-            android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_pemain_vs_pemain"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:onClick="@{() -> mgpFragment.moveToVsPemain()}"
+            app:layout_constraintBottom_toBottomOf="@+id/view1"
+            app:layout_constraintEnd_toEndOf="@+id/view1"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline6"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pilih">
+            app:layout_constraintStart_toStartOf="@+id/view1"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/player_vs_player" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/iv_pemain_vs_pemain"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:onClick="@{() -> mgpFragment.moveToVsPemain()}"
-                app:layout_constraintBottom_toTopOf="@+id/iv_pemain_vs_CPU"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/player_vs_player" />
+        <TextView
+            android:id="@+id/tv_pemain_vs_pemain"
+            style="@style/landing_menu_text"
+            android:text="@{@string/player_vs_player(vm.user.username)}"
+            android:textSize="@dimen/text"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/view1"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
+            tools:text="Player vs Player" />
 
-            <TextView
-                android:id="@+id/tv_pemain_vs_pemain"
-                style="@style/landing_menu_text"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@{@string/player_vs_player(vm.user.username)}"
-                android:textSize="@dimen/text"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain_vs_pemain"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain_vs_pemain"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_pemain"
-                tools:text="test" />
+        <View
+            android:id="@+id/view2"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android:background="@drawable/shape_bg_landing"
+            app:layout_constraintBottom_toTopOf="@+id/tv_pemain_vs_CPU"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pemain_vs_pemain" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/iv_pemain_vs_CPU"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginBottom="32dp"
-                android:onClick="@{() -> mgpFragment.moveToVsCpu()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tv_pemain_vs_pemain"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/tv_pemain_vs_pemain"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_pemain"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/player_vs_com" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_pemain_vs_CPU"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:onClick="@{() -> mgpFragment.moveToVsCpu()}"
+            app:layout_constraintBottom_toBottomOf="@id/view2"
+            app:layout_constraintEnd_toEndOf="@id/view2"
+            app:layout_constraintStart_toStartOf="@id/view2"
+            app:layout_constraintTop_toTopOf="@id/view2"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/player_vs_com"
+            tools:layout_editor_absoluteX="126dp" />
 
-            <TextView
-                android:id="@+id/tv_pemain_vs_CPU"
-                style="@style/landing_menu_text"
-                android:layout_marginTop="8dp"
-                android:text="@{@string/player_vs_com(vm.user.username)}"
-                android:textSize="@dimen/text"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain_vs_CPU"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain_vs_CPU"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pemain_vs_CPU"
-                tools:text="test" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".05" />
+        <TextView
+            android:id="@+id/tv_pemain_vs_CPU"
+            style="@style/landing_menu_text"
+            android:layout_marginBottom="32dp"
+            android:text="@{@string/player_vs_com(vm.user.username)}"
+            android:textSize="@dimen/text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            tools:text="Player vs Computer" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".95" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/guideline1"
+            android:layout_width="3dp"
+            android:layout_height="47dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".95"/>
-
-
+            app:layout_constraintGuide_percent="0.15" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

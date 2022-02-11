@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.fragments.signup.RegisterConfirmationFragment">
 
         <TextView
@@ -51,10 +52,9 @@
             android:text="@string/next"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/lottie"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/lottie"
-            app:layout_constraintTop_toBottomOf="@id/lottie" />
+            app:layout_constraintStart_toStartOf="@+id/lottie" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

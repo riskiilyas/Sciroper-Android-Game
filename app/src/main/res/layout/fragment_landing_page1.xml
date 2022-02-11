@@ -13,30 +13,68 @@
         android:background="?backgroundColour"
         tools:context=".ui.fragments.landing.LandingPage1Fragment">
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:background="@drawable/shape_bg_landing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/iv_first_page"
             style="@style/landing_image"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/player_vs_player"
             tools:ignore="MissingConstraints" />
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="64dp"
+            android:background="@drawable/shape_bg_landing2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
         <TextView
             android:id="@+id/tv_fragment_satu"
             style="@style/landing_menu_text"
-            app:layout_constraintEnd_toEndOf="@+id/iv_first_page"
-            app:layout_constraintStart_toStartOf="@+id/iv_first_page"
-            app:layout_constraintTop_toBottomOf="@+id/iv_first_page"
-            android:layout_marginTop="@dimen/margin"
+            android:layout_marginTop="16dp"
             android:text="@string/player_with_other_player"
-            android:textColor="?textColour" />
+            android:textColor="?textColour"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view2" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play with your \nfriends with fun with this game"
+            android:textSize="20sp"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
+            app:layout_constraintEnd_toEndOf="@+id/tv_fragment_satu"
+            app:layout_constraintStart_toStartOf="@+id/tv_fragment_satu"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fragment_satu" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
-            app:layout_constraintGuide_percent="0.15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
