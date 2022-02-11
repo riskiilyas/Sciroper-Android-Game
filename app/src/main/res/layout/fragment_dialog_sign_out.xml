@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape_bg_dialog"
-        android:backgroundTint="?backgroundColour"
+        android:backgroundTint="@color/white"
         android:padding="20dp">
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/shape_background"
-            android:backgroundTint="@color/navigationColour"
+            android:backgroundTint="@color/signoutColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/yes"
             android:textColor="@color/white"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/shape_background"
-            android:backgroundTint="@color/signoutColour"
+            android:backgroundTint="@color/navigationColour"
             android:fontFamily="@font/madeeta"
             android:text="@string/no"
             android:textColor="@color/white"
