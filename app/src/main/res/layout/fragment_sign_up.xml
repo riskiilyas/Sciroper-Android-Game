@@ -7,13 +7,26 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.signup.SignUpVm" />
+            type="com.binar.sciroper.ui.fragments.signup.SignUpVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.signup.SignUpFragment">
+        android:background="?backgroundColour"
+        tools:context=".ui.fragments.signup.SignUpFragment">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/card_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_guideline"
+            app:layout_constraintBottom_toTopOf="@id/btn_sign_up"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/top_guideline"
@@ -21,6 +34,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/view_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start_guideline"
@@ -48,6 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_avatar"
+            android:textColor="?textColour"
+            android:fontFamily="@font/madeeta"
             app:layout_constraintStart_toStartOf="@+id/start_guideline"
             app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
@@ -114,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:fontFamily="@font/madeeta"
                 android:maxLength="10"
                 android:maxLines="1"
                 android:text="@={vm.inputUsername}"
@@ -138,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputEmail}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -160,6 +185,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputPassword}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -182,6 +208,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputRePassword}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -215,16 +242,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/testing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This is a fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

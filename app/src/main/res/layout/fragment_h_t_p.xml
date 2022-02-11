@@ -6,14 +6,14 @@
     <data>
         <variable
             name="htpFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.how_to_play.HTPFragment" />
+            type="com.binar.sciroper.ui.fragments.how_to_play.HTPFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.how_to_play.HTPFragment">
+        tools:context=".ui.fragments.how_to_play.HTPFragment">
 
         <View
             android:id="@+id/view_htp"
@@ -30,16 +30,16 @@
             android:id="@+id/tvHowToPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_title"
             android:fontFamily="@font/madeeta"
             android:text="@string/how_to_play"
             android:textColor='?textColour'
             android:textSize="@dimen/title"
+            app:layout_constraintBottom_toBottomOf="@+id/view_htp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="16dp"/>
 
-            <ImageView
+        <ImageView
                 android:id="@+id/ivBackHTP"
                 android:layout_width="@dimen/btn"
                 android:layout_height="@dimen/btn"
@@ -83,7 +83,7 @@
             android:layout_width="3dp"
             android:layout_height="47dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.18" />
+            app:layout_constraintGuide_percent="0.15" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
