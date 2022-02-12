@@ -6,18 +6,18 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerVm" />
+            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerVm" />
 
         <variable
             name="vsPlayerFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.vs_player.VsPlayerFragment" />
+            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.vs_player.VsPlayerFragment">
+        tools:context=".ui.fragments.vs_player.VsPlayerFragment">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -30,123 +30,151 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="@dimen/btn_icon"
+            android:layout_height="@dimen/btn_icon"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="@dimen/margin"
+            android:src="@drawable/coin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/coin"
+            app:layout_constraintStart_toStartOf="@+id/coin"
+            app:layout_constraintTop_toBottomOf="@+id/coin"
+            tools:text="100" />
+
         <View
+            android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/card_bg"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"/>
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-            <ImageView
-                android:id="@+id/ivAvatar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
-                app:layout_constraintTop_toTopOf="@+id/guideline2"
-                tools:src="@drawable/avatar1" />
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toTopOf="@+id/com"
+            app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
+            app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:src="@drawable/avatar1" />
 
-            <TextView
-                android:id="@+id/pemain1"
-                style="@style/text_pemain_com"
-                android:textAlignment="center"
-                android:textColor="?textColour"
-                app:layout_constraintBottom_toBottomOf="@+id/com"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
-                app:layout_constraintTop_toTopOf="@+id/com"
-                tools:text="Mamat" />
+        <TextView
+            android:id="@+id/pemain1"
+            style="@style/text_pemain_com"
+            android:textAlignment="center"
+            android:textColor="?textColour"
+            app:layout_constraintBottom_toBottomOf="@+id/com"
+            app:layout_constraintEnd_toEndOf="@+id/iv_pemain1_batu"
+            app:layout_constraintStart_toStartOf="@+id/iv_pemain1_batu"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="Mamat" />
 
-            <ImageView
-                android:id="@+id/iv_pemain1_batu"
-                style="@style/btn_style"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/rock"
-                android:src="@drawable/rock"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_pemain2_batu"
-                app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/iv_pemain1_batu"
+            style="@style/btn_style"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/rock"
+            android:src="@drawable/rock"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_batu"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@+id/iv_pemain2_batu"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
-                android:id="@+id/iv_pemain1_kertas"
-                style="@style/btn_style"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/paper"
-                android:src="@drawable/paper"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas" />
+        <ImageView
+            android:id="@+id/iv_pemain1_kertas"
+            style="@style/btn_style"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/paper"
+            android:src="@drawable/paper"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_kertas"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@+id/iv_pemain2_kertas" />
 
-            <ImageView
-                android:id="@+id/iv_pemain1_gunting"
-                style="@style/btn_style"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/scissors"
-                android:src="@drawable/scissors"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_pemain2_gunting"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting"
-                app:layout_constraintVertical_bias="0.0" />
+        <ImageView
+            android:id="@+id/iv_pemain1_gunting"
+            style="@style/btn_style"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/scissors"
+            android:src="@drawable/scissors"
+            app:layout_constraintBottom_toBottomOf="@id/view"
+            app:layout_constraintStart_toStartOf="@id/view"
+            app:layout_constraintTop_toTopOf="@+id/iv_pemain2_gunting"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/avatar1"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
-                app:layout_constraintTop_toTopOf="@id/guideline2" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar1"
+            app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_batu"
+            app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
+            app:layout_constraintTop_toTopOf="@id/view" />
 
-            <TextView
-                android:id="@+id/com"
-                style="@style/text_pemain_com"
-                android:layout_marginTop="2dp"
-                android:text="@string/player_2"
-                android:textColor="?textColour"
-                app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
-                app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <TextView
+            android:id="@+id/com"
+            style="@style/text_pemain_com"
+            android:layout_marginTop="2dp"
+            android:text="@string/player_2"
+            android:textColor="?textColour"
+            app:layout_constraintEnd_toEndOf="@+id/iv_pemain2_batu"
+            app:layout_constraintStart_toStartOf="@+id/iv_pemain2_batu"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            <ImageView
-                android:id="@+id/iv_pemain2_batu"
-                style="@style/btn_style"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/rock"
-                android:src="@drawable/rock"
-                app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/com" />
+        <ImageView
+            android:id="@+id/iv_pemain2_batu"
+            style="@style/btn_style"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/rock"
+            android:src="@drawable/rock"
+            app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_kertas"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            <ImageView
-                android:id="@+id/iv_pemain2_kertas"
-                style="@style/btn_style"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/paper"
-                android:src="@drawable/paper"
-                app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_batu" />
+        <ImageView
+            android:id="@+id/iv_pemain2_kertas"
+            style="@style/btn_style"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/paper"
+            android:src="@drawable/paper"
+            app:layout_constraintBottom_toTopOf="@+id/iv_pemain2_gunting"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_batu" />
 
-            <ImageView
-                android:id="@+id/iv_pemain2_gunting"
-                style="@style/btn_style"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/scissors"
-                android:src="@drawable/scissors"
-                app:layout_constraintBottom_toTopOf="@id/guideline3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_kertas" />
+        <ImageView
+            android:id="@+id/iv_pemain2_gunting"
+            style="@style/btn_style"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/scissors"
+            android:src="@drawable/scissors"
+            app:layout_constraintBottom_toBottomOf="@id/view"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintTop_toBottomOf="@+id/iv_pemain2_kertas" />
 
         <ImageView
             android:id="@+id/iv_refresh"
@@ -155,15 +183,14 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:visibility="visible"
             android:contentDescription="@string/app_name"
             android:padding="10dp"
             android:scaleType="centerInside"
             android:src="@drawable/refresh"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
 
 
         <TextView
@@ -207,7 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.83" />
+            app:layout_constraintGuide_percent="0.85" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

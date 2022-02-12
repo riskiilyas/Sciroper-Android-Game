@@ -7,22 +7,25 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.login.LogInVM" />
+            type="com.binar.sciroper.ui.fragments.login.LogInVM" />
 
         <variable
             name="log_in"
-            type="com.binar.sciroper.ui.mvvm.fragments.login.LogInFragment" />
+            type="com.binar.sciroper.ui.fragments.login.LogInFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.login.LogInFragment">
+        android:background="?backgroundColour"
+        tools:context=".ui.fragments.login.LogInFragment">
+
 
         <ImageView
             android:id="@+id/logo_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_menu"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,11 +42,22 @@
             android:text="@string/login"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="?textColour"
-            android:textStyle="bold"
             android:textSize="@dimen/title"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/logo_img"
             app:layout_constraintStart_toStartOf="@id/logo_img"
             app:layout_constraintTop_toBottomOf="@id/logo_img" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/card_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mid_guideline" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_email"
@@ -52,20 +66,25 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginVertical="8dp"
+            android:layout_marginTop="8dp"
             android:focusedByDefault="true"
             android:hint="@string/email"
             app:endIconMode="clear_text"
+            app:layout_constraintBottom_toTopOf="@+id/til_password"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mid_guideline">
+            app:layout_constraintTop_toBottomOf="@+id/view">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/madeeta"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:text="@={vm.inputEmail}" />
+                android:text="@={vm.inputEmail}"
+                android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -74,32 +93,37 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
+            android:layout_marginBottom="8dp"
             android:hint="@string/password"
             app:endIconMode="password_toggle"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="@id/til_email"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/til_email"
-            app:layout_constraintTop_toBottomOf="@id/til_email">
+            app:layout_constraintTop_toBottomOf="@+id/til_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/madeeta"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:text="@={vm.inputPassword}" />
+                android:text="@={vm.inputPassword}"
+                android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_sign_in"
             style="@style/MaterialButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:enabled="false"
             android:fontFamily="@font/madeeta"
             android:onClick="@{() -> vm.logIn()}"
             android:text="@string/sign_in"
-            android:textSize="@dimen/btn_text_sign_in"
             android:textColor="@color/black"
+            android:textSize="@dimen/btn_text_sign_in"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/til_password"
             app:layout_constraintStart_toStartOf="@id/til_password"
@@ -109,7 +133,8 @@
             android:id="@+id/btn_sign_up"
             style="@style/MaterialButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
+            android:backgroundTint="?menuColour"
             android:fontFamily="@font/madeeta"
             android:onClick="@{() -> log_in.goToSignUp()}"
             android:text="@string/sign_up"
@@ -145,15 +170,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.67" />
-
-        <TextView
-            android:id="@+id/fragment_identifier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This is a fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

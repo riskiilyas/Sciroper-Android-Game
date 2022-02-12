@@ -7,30 +7,55 @@
 
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu.MenuVm" />
+            type="com.binar.sciroper.ui.fragments.menu.MenuVm" />
 
         <variable
             name="menuFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.menu.MenuFragment" />
+            type="com.binar.sciroper.ui.fragments.menu.MenuFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        tools:context=".ui.mvvm.fragments.menu.MenuFragment">
+        tools:context=".ui.fragments.menu.MenuFragment">
 
         <ImageView
             android:id="@+id/logo_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_menu"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_max="150dp"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_max="150dp" />
+
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="@dimen/btn_icon"
+            android:layout_height="@dimen/btn_icon"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:src="@drawable/coin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/coin"
+            app:layout_constraintStart_toStartOf="@+id/coin"
+            app:layout_constraintTop_toBottomOf="@+id/coin"
+            tools:text="100" />
 
         <ImageView
             android:id="@+id/btnShop"
@@ -62,30 +87,38 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/htp"
+            android:contentDescription="@string/how_to_play"
             android:onClick="@{() -> menuFragment.navToHtp()}"
+            android:src="@drawable/htp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnAchievement"
-            app:layout_constraintTop_toBottomOf="@+id/btnAchievement"
-            android:contentDescription="@string/how_to_play" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAchievement" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32sp"
             android:background="@drawable/card_bg"
             android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/logo_img">
+            app:layout_constraintTop_toBottomOf="@+id/logo_img"
+            app:layout_constraintVertical_bias="0.0">
 
             <ImageView
                 android:id="@+id/user_img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toTopOf="@+id/tv_username"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/avatar1" />
@@ -96,14 +129,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/madeeta"
                 android:text="@{vm.user.username}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="?textColour"
-                app:layout_constraintEnd_toStartOf="@+id/tv_user_level"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_play"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.359"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_img"
+                app:layout_constraintTop_toBottomOf="@+id/user_img"
                 tools:text="Joe" />
 
             <TextView
@@ -111,6 +146,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginVertical="8dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/level_bg"
                 android:fontFamily="@font/madeeta"
                 android:gravity="center"
@@ -120,8 +156,6 @@
                 android:textColor="?textColour"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_username"
                 app:layout_constraintTop_toTopOf="@+id/tv_username"
                 tools:text="999" />
@@ -138,14 +172,14 @@
                 android:onClick="@{()->menuFragment.navToPlay()}"
                 android:text="@string/play_game"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textColor="?textColour"
                 android:textSize="32sp"
-                android:textAllCaps="false"
                 app:layout_constraintBottom_toTopOf="@+id/btn_setting"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_user_level" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_setting"
@@ -158,9 +192,9 @@
                 android:onClick="@{() -> menuFragment.navToSetting()}"
                 android:text="@string/setting"
                 android:textAlignment="center"
-                android:textSize="32sp"
                 android:textAllCaps="false"
                 android:textColor="?textColour"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_leader_board"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -178,9 +212,9 @@
                 android:onClick="@{() -> menuFragment.navToLeaderBoard()}"
                 android:text="@string/leader_board"
                 android:textAlignment="center"
-                android:textSize="32sp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="?textColour"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_exit_game"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -198,9 +232,9 @@
                 android:onClick="@{() -> menuFragment.createDialog()}"
                 android:text="@string/exit"
                 android:textAlignment="center"
-                android:textSize="32sp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="?textColour"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -208,7 +242,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_leader_board" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start_guideline"

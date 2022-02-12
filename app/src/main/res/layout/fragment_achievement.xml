@@ -5,17 +5,17 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.mvvm.fragments.achievement.AchievementVm" />
+            type="com.binar.sciroper.ui.fragments.achievement.AchievementVm" />
 
         <variable
             name="achievementFragment"
-            type="com.binar.sciroper.ui.mvvm.fragments.achievement.AchievementFragment" />
+            type="com.binar.sciroper.ui.fragments.achievement.AchievementFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mvvm.fragments.achievement.AchievementFragment">
+        tools:context=".ui.fragments.achievement.AchievementFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
