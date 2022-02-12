@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
@@ -59,23 +62,11 @@ class SignUpFragment : Fragment() {
         loadingInd = binding.loadingInd
         avatarList = listOf(binding.avatar1, binding.avatar2, binding.avatar3, binding.avatar4)
 
-
         binding.apply {
             vm = signUpVm
             lifecycleOwner = viewLifecycleOwner
         }
 
-//        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-//            .addOnCompleteListener(requireActivity()) { task ->
-//                if (task.isSuccessful) {
-//                    Log.d("banana auth", "createUserWithEmail: Success")
-//                    val user = auth.currentUser
-//                    makeToast("$user")
-//                } else {
-//                    Log.w("banana auth", "createUserWithEmail:failure", task.exception)
-//                    makeToast("Authentication failed.")
-//                }
-//            }
 
         signUpVm.navToMenu.observe(viewLifecycleOwner) {
             if (it) {
@@ -137,7 +128,6 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    // function to add text watcher on multiple text input edit text view
     private fun addTextChangedListenerOnView(
         vararg views: TextInputEditText,
         textWatcher: TextWatcher

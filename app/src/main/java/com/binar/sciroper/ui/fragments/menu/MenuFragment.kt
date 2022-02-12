@@ -12,7 +12,6 @@ import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
 import com.google.firebase.database.FirebaseDatabase
 
-
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
@@ -26,31 +25,22 @@ class MenuFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.apply {
             vm = menuVm
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
         }
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("User")
-
-        myRef.setValue(
-            menuVm.user.value
-        )
-
-
         menuVm.user.observe(viewLifecycleOwner) {
             binding.userImg.setImageResource(it.avatarId)
+            binding.tvCoinMenu.text = it.coin.toString()
         }
     }
 

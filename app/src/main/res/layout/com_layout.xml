@@ -6,17 +6,17 @@
     <data>
         <variable
             name="vm"
-            type="com.binar.sciroper.ui.fragments.vs_player.VsPlayerVm" />
+            type="com.binar.sciroper.ui.fragments.vs_com.VsComVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="@drawable/shape_bg_dialog">
+        android:padding="8dp"
+        android:background="@drawable/card_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_head"
+            android:id="@+id/tv_headC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
@@ -29,18 +29,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lootieResult"
+            android:id="@+id/lootieResultC"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_head"
+            app:layout_constraintTop_toBottomOf="@+id/tv_headC"
             app:lottie_autoPlay="true"
             app:lottie_loop="true" />
 
 
         <TextView
-            android:id="@+id/tv_result"
+            android:id="@+id/tv_resultC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -49,13 +49,13 @@
             android:textColor="?textColour"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/lootieResult"
-            app:layout_constraintStart_toStartOf="@+id/lootieResult"
-            app:layout_constraintTop_toBottomOf="@+id/lootieResult"
+            app:layout_constraintEnd_toEndOf="@+id/lootieResultC"
+            app:layout_constraintStart_toStartOf="@+id/lootieResultC"
+            app:layout_constraintTop_toBottomOf="@+id/lootieResultC"
             tools:text="@string/player_win" />
 
         <Button
-            android:id="@+id/btn_main_lagi"
+            android:id="@+id/btn_main_lagiC"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -66,10 +66,10 @@
             android:textColor="?textColour"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_result" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultC" />
 
         <Button
-            android:id="@+id/btn_menu"
+            android:id="@+id/btn_menuC"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -80,7 +80,7 @@
             android:textColor="?textColour"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_main_lagi" />
+            app:layout_constraintTop_toBottomOf="@id/btn_main_lagiC" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
