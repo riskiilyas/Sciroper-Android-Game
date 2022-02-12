@@ -1,5 +1,7 @@
 package com.binar.sciroper.ui.fragments.vs_com
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +9,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
@@ -44,6 +49,7 @@ class VsComFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -93,13 +99,39 @@ class VsComFragment : Fragment() {
             ivAvatarPlayer.setImageResource(vsComVm.user.avatarId)
         }
 
-        vsComVm.isOver.observe(viewLifecycleOwner) {
+        vsComVm.isOver.observe(viewLifecycleOwner) { it ->
             if (it) {
                 Log.d("comd", "onViewCreated: dialog")
-                val dialogFragment = ComDialog()
+                val dialogFragment = ComDialog(vsComVm)
                 dialogFragment.isCancelable = false
-                dialogFragment.view?.bringToFront()
-                dialogFragment.show(childFragmentManager, "VS_COM_DIALOG")
+                dialogFragment.show(childFragmentManager, "DIALOG_COM")
+//                val dialog = AlertDialog.Builder(requireContext()).apply {
+//                    setCancelable(false)
+//                    setView(layoutInflater.inflate(R.layout.com_layout, null).also { v ->
+//                        v.findViewById<LottieAnimationView>(R.id.lootieResultC).apply {
+//                            when (vsComVm.result.value) {
+//                                "draw" -> {
+//                                    this.setAnimation(R.raw.result_draw)
+//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "Draw"
+//                                }
+//                                else -> {
+//                                    this.setAnimation(R.raw.result_win)
+//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "${vsComVm.winner} ${vsComVm.result.value}"
+//                                }
+//                            }
+//                        }
+//                        v.findViewById<Button>(R.id.btn_main_lagiC).setOnClickListener {
+//                            vsComVm.reset()
+//                        }
+//                        v.findViewById<Button>(R.id.btn_menuC).setOnClickListener {
+//                            setCancelable(true)
+//                            navToMenuGamePlay()
+//                        }
+//                    })
+//                    create()
+//                }
+//                dialog.show()
+//                dialog.setCancelable(true)
             }
         }
 
@@ -133,14 +165,6 @@ class VsComFragment : Fragment() {
         choices.forEach {
             it.isEnabled = true
         }
-    }
-
-    private fun View.changeBgColor(@ColorRes id: Int) {
-        setBackgroundColor(ContextCompat.getColor(requireActivity(), id))
-    }
-
-    fun mockChoices(){
-
     }
 
     fun navToMenuGamePlay(){

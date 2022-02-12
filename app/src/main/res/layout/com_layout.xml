@@ -10,6 +10,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="8dp"
+        android:background="@drawable/card_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -47,7 +49,6 @@
             android:textColor="?textColour"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:text="@{@string/winner(vm.winner)}"
             app:layout_constraintEnd_toEndOf="@+id/lootieResultC"
             app:layout_constraintStart_toStartOf="@+id/lootieResultC"
             app:layout_constraintTop_toBottomOf="@+id/lootieResultC"

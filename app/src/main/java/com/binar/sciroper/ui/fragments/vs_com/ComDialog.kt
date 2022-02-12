@@ -20,12 +20,9 @@ import com.binar.sciroper.databinding.GameDialogBinding
 import com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragmentDirections
 import com.binar.sciroper.util.App
 
-class ComDialog: DialogFragment() {
+class ComDialog(private val vsComVm: VsComVm): DialogFragment() {
     private var _binding: ComLayoutBinding? = null
     private val binding get() = _binding!!
-    private val vsComVm: VsComVm by activityViewModels {
-        VsComVmFactory(App.appDb.getUserDao())
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +59,7 @@ class ComDialog: DialogFragment() {
             }
             else -> {
                 binding.lootieResultC.setAnimation(R.raw.result_win)
-                binding.tvResultC.text = "${vsComVm.winner} ${vsComVm.result}"
+                binding.tvResultC.text = "${vsComVm.winner}\nWin"
             }
         }
     }
