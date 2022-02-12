@@ -22,8 +22,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage) {
         super.onMessageReceived(p0)
-        if (AppSharedPreference.isNotif == true){
-            showNotification(this, p0.notification?.title.toString(), p0.notification?.body.toString())
+        if (AppSharedPreference.isNotif == true) {
+            showNotification(
+                this,
+                p0.notification?.title.toString(),
+                p0.notification?.body.toString()
+            )
         }
 
     }

@@ -13,11 +13,11 @@
     <string name="game_suit">Game Suit</string>
     <string name="_1">1</string>
     <string name="user_level">%1$d</string>
-    <string name="register_succeed">Register \nSucceed</string>
+    <string name="register_succeed">Register\nSucceed</string>
     <string name="binar">Binar</string>
     <string name="bos">Bos</string>
     <string name="salsa">salsa</string>
-    <string name="leaderboard">Leader Board</string>
+    <string name="leaderboard">Leaderboard</string>
     <string name="rock">Rock</string>
     <string name="paper">Paper</string>
     <string name="scissors">Scissors</string>

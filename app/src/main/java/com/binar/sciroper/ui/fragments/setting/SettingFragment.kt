@@ -1,18 +1,17 @@
 package com.binar.sciroper.ui.fragments.setting
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
+import com.binar.sciroper.ui.activity.MainActivity
 import com.binar.sciroper.util.App
 
 
@@ -23,17 +22,11 @@ class SettingFragment : Fragment() {
         SettingVmFactory(App.appDb.getUserDao(), AppSharedPreference)
     }
 
-    @SuppressLint("ResourceAsColor")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor = R.color.btnLight
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,7 +40,6 @@ class SettingFragment : Fragment() {
             settingFragment = this@SettingFragment
         }
 
-        binding.switchNotif.isChecked = AppSharedPreference.isNotif!!
         settingVm.isChecked.observe(viewLifecycleOwner) {
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -59,14 +51,20 @@ class SettingFragment : Fragment() {
         }
 
         settingVm.isCheckedMusic.observe(viewLifecycleOwner) {
-            if (it) {
+            if (it && !(activity as MainActivity).isMusicPlay) {
                 playMusic(requireContext())
+                Toast.makeText(requireContext(), "music ON", Toast.LENGTH_SHORT).show()
                 settingVm.setMusic(it)
-            } else {
+                (activity as MainActivity).isMusicPlay = true
+
+            } else if (!it && (activity as MainActivity).isMusicPlay) {
                 pausePlay()
                 settingVm.setMusic(it)
+                (activity as MainActivity).isMusicPlay = false
             }
         }
+
+
 
         settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
             if (it) {

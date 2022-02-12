@@ -14,7 +14,7 @@ import com.binar.sciroper.data.local.MusicPlayer.mediaPlayer
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
     private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
-    private val _isCheckedMusic = MutableLiveData<Boolean>(false)
+    private val _isCheckedMusic = MutableLiveData<Boolean>(AppSharedPreference.isMusicPlay)
     private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isNotif)
     val isChecked: LiveData<Boolean> = _isChecked
     val isCheckedMusic: LiveData<Boolean> = _isCheckedMusic
