@@ -58,8 +58,10 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
             playerChoice == choices[1] && opponentChoice == choices[0] ||
             playerChoice == choices[2] && opponentChoice == choices[1]
         ) {
+//            gameMusic()
             _winner = user.toString()
             "win"
+
         } else if (playerChoice == choices[0] && opponentChoice == choices[1] ||
             playerChoice == choices[1] && opponentChoice == choices[2] ||
             playerChoice == choices[2] && opponentChoice == choices[0]
@@ -83,7 +85,27 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
         setPlayerSelectedId(0)
         setStatus(true)
     }
+
+//    private fun gameMusic() {
+//        val myUri: Int = R.raw.win_game // initialize Uri here
+//        val mediaPlayer: MediaPlayer = MediaPlayer().apply {
+//            setAudioStreamType(AudioManager.STREAM_MUSIC)
+//            setDataSource(this, myUri)
+//            prepare()
+//            start()
+//        }
+//    }
+
+
 }
+
+//private fun MediaPlayer.setDataSource(mediaPlayer: MediaPlayer, myUri: Int) {
+//   mediaPlayer = MediaPlayer.create(
+//        context,
+//        R.raw.win_game
+//    )
+//   mediaPlayer.start()
+//}
 
 class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -92,5 +114,6 @@ class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factor
         }
         throw IllegalArgumentException("Unknown view model class")
     }
+
 
 }

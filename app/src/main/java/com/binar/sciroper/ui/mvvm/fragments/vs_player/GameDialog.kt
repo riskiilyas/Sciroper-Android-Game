@@ -11,11 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.GameDialogBinding
-import com.binar.sciroper.util.App
+import com.binar.sciroper.util.*
 
 class GameDialog : DialogFragment() {
 
@@ -63,12 +62,15 @@ class GameDialog : DialogFragment() {
     private fun setAnimation() {
         when (vsPlayerVm.result) {
             "draw" -> {
+                App.context.get()?.let { drawMusic(it) }
                 binding.lootieResult.setAnimation(R.raw.result_draw)
                 binding.tvResult.text = "Draw"
             }
             else -> {
+                App.context.get()?.let { winMusic(it) }
                 binding.lootieResult.setAnimation(R.raw.result_win)
                 binding.tvResult.text = "${vsPlayerVm.winner} ${vsPlayerVm.result}"
+
             }
         }
         Log.i("banana", "${vsPlayerVm.winner} ${vsPlayerVm.result}")

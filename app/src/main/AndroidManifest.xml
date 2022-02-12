@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.binar.sciroper">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".util.App"
@@ -75,11 +75,25 @@
         <activity
             android:name=".ui.splash.SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.playgame.CPUActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-    </application>
+            android:screenOrientation="portrait">
 
-</manifest>
+        </activity>
+        // add file providER
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.binar.sciroper.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/files_paths" />
+    </provider>
+
+    <activity
+        android:name=".ui.playgame.CPUActivity"
+        android:exported="true"
+        android:screenOrientation="portrait" />
+</application>
+
+    </manifest>
