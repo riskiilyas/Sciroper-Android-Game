@@ -222,7 +222,6 @@
             android:layout_marginTop="12dp"
             android:enabled="false"
             android:fontFamily="@font/madeeta"
-            android:onClick="@{() -> vm.signUp()}"
             android:text="@string/sign_up"
             android:textColor="@color/black"
             android:textSize="@dimen/btn_text_sign_in"
