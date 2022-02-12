@@ -19,6 +19,7 @@ import com.binar.sciroper.util.AvatarHelper
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
@@ -58,6 +59,9 @@ class SignUpFragment : Fragment() {
         signUpBtn = binding.btnSignUp
         loadingInd = binding.loadingInd
         avatarList = listOf(binding.avatar1, binding.avatar2, binding.avatar3, binding.avatar4)
+
+        val database = Firebase.database("https://sciroper-fd4fe-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val ref = database.getReference("User")
 
 
         binding.apply {

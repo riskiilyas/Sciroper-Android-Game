@@ -46,11 +46,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvCoin"
+            android:id="@+id/tvCoinMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
             android:textColor="?textColour"
+            android:layout_marginTop="4dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/coin"
             app:layout_constraintStart_toStartOf="@+id/coin"
@@ -64,6 +65,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
+            android:onClick="@{()->menuFragment.navToShop()}"
             android:src="@drawable/shop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -121,7 +123,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/avatar1" />
-
 
             <TextView
                 android:id="@+id/tv_username"

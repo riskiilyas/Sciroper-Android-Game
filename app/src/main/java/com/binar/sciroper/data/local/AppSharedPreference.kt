@@ -9,6 +9,7 @@ object AppSharedPreference {
     private const val KEY_IS_LOGIN = "key_is_login"
     private const val KEY_IS_DARK_MODE = "key_is_dark_mode"
     private const val KEY_ID = "key_id"
+    private const val  KEY_USERNAME = "key_username"
 
     private val sharedPreference =
         App.context.get()?.getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE)
@@ -27,6 +28,12 @@ object AppSharedPreference {
             if (value != null) {
                 sharedPreference?.edit()?.putInt(KEY_ID, value)?.apply()
             }
+        }
+
+    var username: String?
+        get() = sharedPreference?.getString(KEY_USERNAME, "")
+        set(value) {
+            sharedPreference?.edit()?.putString(KEY_USERNAME, value)?.apply()
         }
 
     var isDarkMode: Boolean?

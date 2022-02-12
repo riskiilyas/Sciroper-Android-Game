@@ -45,6 +45,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_bg"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
         <ImageView
             android:id="@+id/coin"
             android:layout_width="@dimen/btn_icon"
@@ -61,6 +72,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
             android:textColor="?textColour"
+            android:layout_marginTop="4dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/coin"
             app:layout_constraintStart_toStartOf="@+id/coin"
@@ -199,10 +211,10 @@
 
         <TextView
             android:id="@+id/text_hasil"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/shape_vs"
             android:fontFamily="@font/madeeta"
             android:gravity="center"

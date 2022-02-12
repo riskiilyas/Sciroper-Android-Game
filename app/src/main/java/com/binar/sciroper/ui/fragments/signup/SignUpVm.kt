@@ -1,11 +1,14 @@
 package com.binar.sciroper.ui.fragments.signup
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.*
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.data.remote.ApiClient
+import com.binar.sciroper.data.remote.LoginData
 import kotlinx.coroutines.*
 
 class SignUpVm(private val userDao: UserDAO) : ViewModel() {
@@ -33,6 +36,7 @@ class SignUpVm(private val userDao: UserDAO) : ViewModel() {
                 email = inputEmail.value!!
             )
 
+            val usernameInput = inputUsername.value!!
             if (getUserCredentials == null) {
                 if (!Patterns.EMAIL_ADDRESS.matcher(inputEmail.value.toString())
                         .matches()
@@ -40,7 +44,33 @@ class SignUpVm(private val userDao: UserDAO) : ViewModel() {
                     _errorEmailFormatToast.value = true
                 } else if (inputPassword.value != inputRePassword.value) {
                     _nonMatchingPassword.value = true
-                } else {
+                } else if(
+                    usernameInput.contains('.') ||
+                    usernameInput.contains('#') ||
+                    usernameInput.contains('$') ||
+                    usernameInput.contains('[') ||
+                    usernameInput.contains(']')) {
+                    _errorEmailFormatToast.value = true
+
+                }else{
+
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = ApiClient.userService.registUser(
+                            LoginData(
+                                inputEmail.value!!,
+                                inputPassword.value!!,
+                                inputUsername.value!!
+                            )
+                        )
+                        launch(Dispatchers.Main) {
+//                            if (response.) {
+//                                Log.d("tagg", "signUp: Successsss")
+//                            } else {
+//                                Log.d("tagg", "signUp: Errooooorrr")
+//                            }
+                        }
+                    }
+
                     insertUser(
                         User(
                             username = inputUsername.value!!,

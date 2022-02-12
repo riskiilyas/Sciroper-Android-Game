@@ -1,20 +1,32 @@
 package com.binar.sciroper.ui.fragments.vs_com
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
+import com.binar.sciroper.ui.fragments.vs_player.GameDialog
 import com.binar.sciroper.util.App
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 
 class VsComFragment : Fragment() {
@@ -28,6 +40,7 @@ class VsComFragment : Fragment() {
 
     private lateinit var p1Choices: List<ImageView>
     private lateinit var comChoices: List<ImageView>
+    private var currentLevel = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,10 +51,12 @@ class VsComFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         user = vsComVm.user
+        currentLevel = vsComVm.user.level
 
         p1Choices = listOf(
             binding.ivPemain1BatuPlayer,
@@ -61,13 +76,19 @@ class VsComFragment : Fragment() {
                 showToast("${user.username} Memilih ${it.contentDescription}")
                 vsComVm.setPlayerChoice(it.contentDescription.toString())
                 freezeState(p1Choices)
-                repeat(3) {
-                    vsComVm.setComputerChoice()
-                    comChoices.filter { it.contentDescription == vsComVm.computerChoice }[0].setBackgroundResource(
-                        R.drawable.shape_background
-                    )
+                val comChoice = (0..2).random()
+                lifecycleScope.launch {
+                    delay(800)
+                    comChoices.forEach {
+                        it.setBackgroundResource(R.drawable.shape_background)
+                        delay(500)
+                        it.setBackgroundColor(Color.TRANSPARENT)
+                    }
+                    delay(1000)
+                    comChoices[comChoice].setBackgroundResource(R.drawable.shape_background)
+                    vsComVm.setComChoice(listOf("Rock", "Paper", "Scissors")[comChoice])
+                    vsComVm.gameResult()
                 }
-                vsComVm.setOpponentSelectedId(comChoices.filter { it.contentDescription == vsComVm.computerChoice }[0].id)
             }
         }
 
@@ -81,6 +102,60 @@ class VsComFragment : Fragment() {
             ivAvatarPlayer.setImageResource(vsComVm.user.avatarId)
         }
 
+        vsComVm.isOver.observe(viewLifecycleOwner) { it ->
+            if (it) {
+                Log.d("comd", "onViewCreated: dialog")
+                val dialogFragment = ComDialog(vsComVm)
+                dialogFragment.isCancelable = false
+                dialogFragment.show(childFragmentManager, "DIALOG_COM")
+//                val dialog = AlertDialog.Builder(requireContext()).apply {
+//                    setCancelable(false)
+//                    setView(layoutInflater.inflate(R.layout.com_layout, null).also { v ->
+//                        v.findViewById<LottieAnimationView>(R.id.lootieResultC).apply {
+//                            when (vsComVm.result.value) {
+//                                "draw" -> {
+//                                    this.setAnimation(R.raw.result_draw)
+//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "Draw"
+//                                }
+//                                else -> {
+//                                    this.setAnimation(R.raw.result_win)
+//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "${vsComVm.winner} ${vsComVm.result.value}"
+//                                }
+//                            }
+//                        }
+//                        v.findViewById<Button>(R.id.btn_main_lagiC).setOnClickListener {
+//                            vsComVm.reset()
+//                        }
+//                        v.findViewById<Button>(R.id.btn_menuC).setOnClickListener {
+//                            setCancelable(true)
+//                            navToMenuGamePlay()
+//                        }
+//                    })
+//                    create()
+//                }
+//                dialog.show()
+//                dialog.setCancelable(true)
+            }
+        }
+
+        vsComVm.isReset.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("comd", "onViewCreated: dialogRESET")
+                unFreezeState(p1Choices)
+                p1Choices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
+                comChoices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
+            }
+        }
+
+        vsComVm.userLiveData.observe(viewLifecycleOwner) {
+            binding.tvCoin.text = it.coin.toString()
+
+            if (currentLevel < it.level) {
+                Toast.makeText(requireContext(), "NAIK LEVEL", Toast.LENGTH_SHORT).show()
+                currentLevel = it.level
+            }
+        }
+
 
     }
 
@@ -89,18 +164,15 @@ class VsComFragment : Fragment() {
     }
 
     private fun freezeState(choices: List<ImageView>) {
-        vsComVm.setStatus(false)
         choices.forEach {
-            it.isEnabled = vsComVm.status
+            it.isEnabled = false
         }
     }
 
-    private fun View.changeBgColor(@ColorRes id: Int) {
-        setBackgroundColor(ContextCompat.getColor(requireActivity(), id))
-    }
-
-    fun mockChoices(){
-
+    private fun unFreezeState(choices: List<ImageView>) {
+        choices.forEach {
+            it.isEnabled = true
+        }
     }
 
     fun navToMenuGamePlay(){

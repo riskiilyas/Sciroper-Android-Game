@@ -2,16 +2,26 @@ package com.binar.sciroper.ui.fragments.menu
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.BuildConfig
+import com.binar.sciroper.R
+import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -35,22 +45,50 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        binding.tvUsername.setOnClickListener {
+//            myRef.child("riski123").setValue(
+//                User(
+//                    111,
+//                    "riski123",
+//                    "riski@gmail.com",
+//                    "riski123",
+//                )
+//            )
+//        }
+//
+//        myRef.child("riski123").addValueEventListener(object: ValueEventListener {
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                val users = mutableListOf<Any?>()
+//
+//                snapshot.children.forEach {
+//                    users.add(it.value)
+//                }
+//
+//                users.forEach{
+//                    Log.d("TAGGG", "onDataChange: $it")
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.w("TAGG", "Failed to read value.")
+//            }
+//
+//        })
+
+
+
         binding.apply {
             vm = menuVm
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
         }
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("User")
-
-        myRef.setValue(
-            menuVm.user.value
-        )
-
-
         menuVm.user.observe(viewLifecycleOwner) {
             binding.userImg.setImageResource(it.avatarId)
+            binding.tvCoinMenu.text = it.coin.toString()
         }
     }
 
