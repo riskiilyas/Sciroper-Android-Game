@@ -6,19 +6,13 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ComLayoutBinding
-import com.binar.sciroper.databinding.GameDialogBinding
-import com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragmentDirections
-import com.binar.sciroper.util.App
 
 class ComDialog(private val vsComVm: VsComVm): DialogFragment() {
     private var _binding: ComLayoutBinding? = null
