@@ -41,9 +41,25 @@ data class User(
     @ColumnInfo(name = "coin")
     var coin: Int = 0,
 
+    /* id:
+        'a' = R.id.achievement11
+        'b' = R.id.achievement12
+        'c' = R.id.achievement13
+        'd' = R.id.achievement14
+    */
     @ColumnInfo(name = "achievement")
     var achievement: String = "",
 
+    /* id:
+        'a' = R.id.avatar31
+        'b' = R.id.avatar32
+        'c' = R.id.avatar33
+        'd' = R.id.avatar34
+        'e' = R.id.avatar41
+        'f' = R.id.avatar42
+        'g' = R.id.avatar43
+        'h' = R.id.avatar44
+     */
     @ColumnInfo(name = "items")
     var items: String = ""
 ) {

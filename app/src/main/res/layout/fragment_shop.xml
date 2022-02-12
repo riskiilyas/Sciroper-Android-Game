@@ -26,6 +26,7 @@
             android:layout_height="@dimen/btn"
             android:contentDescription="@string/app_name"
             android:src="@drawable/back"
+            android:onClick="@{()->shopFragment.back()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +83,6 @@
                 app:rippleColor="@color/menuDark"
                 app:cardCornerRadius="16dp"
                 android:elevation="16dp"
-                app:cardBackgroundColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/cardView3"
                 app:layout_constraintEnd_toStartOf="@+id/cardView2"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -91,6 +91,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI1"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -112,6 +113,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="100"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView11"
@@ -146,6 +149,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI3"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -166,7 +170,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:text="250"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView33"
@@ -201,6 +207,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI5"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -221,7 +228,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="200"
+                        android:text="1000"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView55"
@@ -256,6 +265,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI7"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -276,7 +286,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:text="3000"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView77"
@@ -312,6 +324,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI2"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -332,7 +345,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:fontFamily="@font/madeeta"
+                        android:text="150"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView22"
@@ -367,6 +382,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI4"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -387,7 +403,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:text="500"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView44"
@@ -422,6 +440,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI6"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -442,7 +461,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:text="1500"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView66"
@@ -477,6 +498,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI8"
+                    android:background="@color/white"
                     android:layout_width="120dp"
                     android:layout_height="120dp">
 
@@ -497,7 +519,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
+                        android:text="5000"
+                        android:fontFamily="@font/madeeta"
+                        android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView88"
@@ -524,6 +548,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

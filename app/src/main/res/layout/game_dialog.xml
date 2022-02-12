@@ -47,7 +47,6 @@
             android:textColor="?textColour"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:text="@{@string/winner(vm.winner)}"
             app:layout_constraintEnd_toEndOf="@+id/lootieResult"
             app:layout_constraintStart_toStartOf="@+id/lootieResult"
             app:layout_constraintTop_toBottomOf="@+id/lootieResult"

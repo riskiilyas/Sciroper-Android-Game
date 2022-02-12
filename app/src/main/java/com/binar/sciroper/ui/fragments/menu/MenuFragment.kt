@@ -86,9 +86,9 @@ class MenuFragment : Fragment() {
             menuFragment = this@MenuFragment
         }
 
-
         menuVm.user.observe(viewLifecycleOwner) {
             binding.userImg.setImageResource(it.avatarId)
+            binding.tvCoinMenu.text = it.coin.toString()
         }
     }
 

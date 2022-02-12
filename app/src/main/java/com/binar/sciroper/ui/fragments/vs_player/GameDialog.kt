@@ -46,14 +46,14 @@ class GameDialog : DialogFragment() {
             vsPlayerVm.reset()
             findNavController().navigate(VsPlayerFragmentDirections.actionVsPlayerFragmentToMenuGamePlayFragment())
         }
-
-        setAnimation()
-
+        App.context.get()
         return AlertDialog.Builder(requireActivity()).setView(binding.root).create()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setAnimation()
+
         binding.apply {
             vm = vsPlayerVm
         }

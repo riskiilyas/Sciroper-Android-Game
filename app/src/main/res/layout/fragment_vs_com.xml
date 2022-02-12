@@ -72,6 +72,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
             android:textColor="?textColour"
+            android:layout_marginTop="4dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/coin"
             app:layout_constraintStart_toStartOf="@+id/coin"
