@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.binar.sciroper.BuildConfig
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentMenuBinding
@@ -44,42 +43,6 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.tvUsername.setOnClickListener {
-//            myRef.child("riski123").setValue(
-//                User(
-//                    111,
-//                    "riski123",
-//                    "riski@gmail.com",
-//                    "riski123",
-//                )
-//            )
-//        }
-//
-//        myRef.child("riski123").addValueEventListener(object: ValueEventListener {
-//
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                val users = mutableListOf<Any?>()
-//
-//                snapshot.children.forEach {
-//                    users.add(it.value)
-//                }
-//
-//                users.forEach{
-//                    Log.d("TAGGG", "onDataChange: $it")
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.w("TAGG", "Failed to read value.")
-//            }
-//
-//        })
-
-
-
         binding.apply {
             vm = menuVm
             lifecycleOwner = viewLifecycleOwner

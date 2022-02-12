@@ -10,7 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.binar.sciroper.databinding.DialogUpLvBinding
 
 
-class DialogLvUp : DialogFragment() {
+class DialogLvUp(private val lv: Int) : DialogFragment() {
     private lateinit var binding: DialogUpLvBinding
 
     override fun onCreateView(
@@ -24,7 +24,6 @@ class DialogLvUp : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val lv = arguments?.getInt(LV)
         binding.tvLv.text = lv.toString()
         binding.btnOk.setOnClickListener {
             dismiss()
@@ -33,6 +32,5 @@ class DialogLvUp : DialogFragment() {
 
     companion object {
         const val DIALOG_LVUP = "dialog_update"
-        const val LV = "lv"
     }
 }

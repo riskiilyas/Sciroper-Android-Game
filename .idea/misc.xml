@@ -137,8 +137,9 @@
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/activity_menu.xml" value="0.225" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/activity_menu_game_play.xml" value="0.225" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/activity_sign_up.xml" value="0.225" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/com_layout.xml" value="0.7125" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/dialog_exit.xml" value="0.9" />
-        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/dialog_up_lv.xml" value="0.88" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/dialog_up_lv.xml" value="0.5850746268656717" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_achievement.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_dialog_result.xml" value="0.225" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_dialog_sign_out.xml" value="0.33" />
@@ -161,7 +162,7 @@
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_vs_com.xml" value="0.35588507877664505" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_vs_player.xml" value="0.33" />
-        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/game_dialog.xml" value="0.67" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/game_dialog.xml" value="0.6086956521739131" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/bg_hasil_win.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/dimens.xml" value="0.10902777777777778" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/shape_background.xml" value="0.125" />

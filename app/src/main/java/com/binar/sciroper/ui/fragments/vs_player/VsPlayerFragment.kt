@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentVsPlayerBinding
 import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp.Companion.DIALOG_LVUP
-import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp.Companion.LV
+import com.binar.sciroper.ui.fragments.vs_player.GameDialog.Companion.DIALOG_GAME
 import com.binar.sciroper.util.App
 
 class VsPlayerFragment : Fragment() {
@@ -26,12 +26,12 @@ class VsPlayerFragment : Fragment() {
     private lateinit var btnPemainSatu: List<ImageView>
     private lateinit var btnPemainDua: List<ImageView>
     private lateinit var allBtn: MutableList<ImageView>
+    private var currentLevel = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentVsPlayerBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,6 +39,7 @@ class VsPlayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        currentLevel = vsPlayerVm.user.level
         btnPemainSatu = listOf(
             binding.ivPemain1Batu,
             binding.ivPemain1Kertas,
@@ -66,7 +67,16 @@ class VsPlayerFragment : Fragment() {
 
         playGame()
 
-        showDialogUpLv(vsPlayerVm.user.level)
+
+        vsPlayerVm.userLiveData.observe(viewLifecycleOwner) {
+            binding.tvCoin.text = it.coin.toString()
+
+            if (currentLevel < it.level) {
+                val dialogSignOut = DialogLvUp(it.level)
+                dialogSignOut.show(childFragmentManager, DIALOG_LVUP)
+                currentLevel = it.level
+            }
+        }
 
     }
 
@@ -76,10 +86,6 @@ class VsPlayerFragment : Fragment() {
             "$player Memilih $choice",
             Toast.LENGTH_SHORT
         ).show()
-        Log.i(
-            "testing",
-            "$choice, opponent: ${vsPlayerVm.opponentChoice}, player: ${vsPlayerVm.playerChoice}"
-        )
     }
 
     private fun playerMove() {
@@ -122,22 +128,11 @@ class VsPlayerFragment : Fragment() {
         }
     }
 
-    private fun showDialogUpLv(lv:Int) {
-
-        if (lv ){
-            val dialogSignOut = DialogLvUp()
-            val bundle = Bundle()
-            bundle.putInt(LV, lv)
-            dialogSignOut.show(childFragmentManager, DIALOG_LVUP)
-        }
-
-    }
-
     private fun createDialog() {
         if (vsPlayerVm.result != "") {
-            val dialogFragment = GameDialog()
+            val dialogFragment = GameDialog(vsPlayerVm)
             dialogFragment.isCancelable = false
-            dialogFragment.show(childFragmentManager, "test")
+            dialogFragment.show(childFragmentManager, DIALOG_GAME)
         }
     }
 
