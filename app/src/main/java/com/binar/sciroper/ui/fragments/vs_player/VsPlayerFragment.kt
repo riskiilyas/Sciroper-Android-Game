@@ -2,16 +2,18 @@ package com.binar.sciroper.ui.fragments.vs_player
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentVsPlayerBinding
+import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp.Companion.DIALOG_LVUP
+import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp.Companion.LV
 import com.binar.sciroper.util.App
 
 class VsPlayerFragment : Fragment() {
@@ -63,6 +65,8 @@ class VsPlayerFragment : Fragment() {
         }
 
         playGame()
+
+        showDialogUpLv(vsPlayerVm.user.level)
 
     }
 
@@ -116,6 +120,17 @@ class VsPlayerFragment : Fragment() {
         choices.forEach {
             it.isEnabled = vsPlayerVm.status
         }
+    }
+
+    private fun showDialogUpLv(lv:Int) {
+
+        if (lv ){
+            val dialogSignOut = DialogLvUp()
+            val bundle = Bundle()
+            bundle.putInt(LV, lv)
+            dialogSignOut.show(childFragmentManager, DIALOG_LVUP)
+        }
+
     }
 
     private fun createDialog() {
