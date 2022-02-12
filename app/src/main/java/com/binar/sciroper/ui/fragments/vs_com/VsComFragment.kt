@@ -2,6 +2,7 @@ package com.binar.sciroper.ui.fragments.vs_com
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
+import com.binar.sciroper.ui.fragments.vs_player.GameDialog
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -75,14 +77,9 @@ class VsComFragment : Fragment() {
                     }
                     delay(1000)
                     comChoices[comChoice].setBackgroundResource(R.drawable.shape_background)
+                    vsComVm.setComChoice(listOf("Rock", "Paper", "Scissors")[comChoice])
+                    vsComVm.gameResult()
                 }
-//                repeat(3) {
-//                    vsComVm.setComputerChoice()
-//                    comChoices.filter { it.contentDescription == vsComVm.computerChoice }[0].setBackgroundResource(
-//                        R.drawable.shape_background
-//                    )
-//                }
-                vsComVm.setOpponentSelectedId(comChoices[comChoice].id)
             }
         }
 
@@ -96,6 +93,29 @@ class VsComFragment : Fragment() {
             ivAvatarPlayer.setImageResource(vsComVm.user.avatarId)
         }
 
+        vsComVm.isOver.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("comd", "onViewCreated: dialog")
+                val dialogFragment = ComDialog()
+                dialogFragment.isCancelable = false
+                dialogFragment.view?.bringToFront()
+                dialogFragment.show(childFragmentManager, "VS_COM_DIALOG")
+            }
+        }
+
+        vsComVm.isReset.observe(viewLifecycleOwner) {
+            if (it) {
+                Log.d("comd", "onViewCreated: dialogRESET")
+                unFreezeState(p1Choices)
+                p1Choices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
+                comChoices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
+            }
+        }
+
+        vsComVm.userLiveData.observe(viewLifecycleOwner) {
+            binding.tvCoin.text = it.coin.toString()
+        }
+
 
     }
 
@@ -104,9 +124,14 @@ class VsComFragment : Fragment() {
     }
 
     private fun freezeState(choices: List<ImageView>) {
-        vsComVm.setStatus(false)
         choices.forEach {
-            it.isEnabled = vsComVm.status
+            it.isEnabled = false
+        }
+    }
+
+    private fun unFreezeState(choices: List<ImageView>) {
+        choices.forEach {
+            it.isEnabled = true
         }
     }
 
