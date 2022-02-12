@@ -4,7 +4,7 @@ import com.binar.sciroper.R
 
 object AvatarHelper {
 
-    fun provideListFull(): List<Int> {
+    fun provideList(): List<Int> {
         return listOf(
             avatarId1,
             avatarId2,
@@ -18,15 +18,6 @@ object AvatarHelper {
             avatarI6,
             avatarI7,
             avatarI8
-        )
-    }
-
-    fun provideList(): List<Int> {
-        return listOf(
-            avatarId1,
-            avatarId2,
-            avatarId3,
-            avatarId4,
         )
     }
 

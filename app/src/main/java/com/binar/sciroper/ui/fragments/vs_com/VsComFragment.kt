@@ -26,6 +26,7 @@ import com.binar.sciroper.ui.fragments.vs_player.GameDialog
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 
 class VsComFragment : Fragment() {
@@ -39,6 +40,7 @@ class VsComFragment : Fragment() {
 
     private lateinit var p1Choices: List<ImageView>
     private lateinit var comChoices: List<ImageView>
+    private var currentLevel = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +56,7 @@ class VsComFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         user = vsComVm.user
+        currentLevel = vsComVm.user.level
 
         p1Choices = listOf(
             binding.ivPemain1BatuPlayer,
@@ -146,6 +149,11 @@ class VsComFragment : Fragment() {
 
         vsComVm.userLiveData.observe(viewLifecycleOwner) {
             binding.tvCoin.text = it.coin.toString()
+
+            if (currentLevel < it.level) {
+                Toast.makeText(requireContext(), "NAIK LEVEL", Toast.LENGTH_SHORT).show()
+                currentLevel = it.level
+            }
         }
 
 
