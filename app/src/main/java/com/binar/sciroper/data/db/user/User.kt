@@ -61,7 +61,10 @@ data class User(
         'h' = R.id.avatar44
      */
     @ColumnInfo(name = "items")
-    var items: String = ""
+    var items: String = "",
+
+    @ColumnInfo(name = "idBinar")
+    var idBinar: String = ""
 ) {
     companion object {
         const val TABLE_NAME = "user_table"

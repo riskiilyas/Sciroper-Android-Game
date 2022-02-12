@@ -108,33 +108,6 @@ class VsComFragment : Fragment() {
                 val dialogFragment = ComDialog(vsComVm)
                 dialogFragment.isCancelable = false
                 dialogFragment.show(childFragmentManager, "DIALOG_COM")
-//                val dialog = AlertDialog.Builder(requireContext()).apply {
-//                    setCancelable(false)
-//                    setView(layoutInflater.inflate(R.layout.com_layout, null).also { v ->
-//                        v.findViewById<LottieAnimationView>(R.id.lootieResultC).apply {
-//                            when (vsComVm.result.value) {
-//                                "draw" -> {
-//                                    this.setAnimation(R.raw.result_draw)
-//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "Draw"
-//                                }
-//                                else -> {
-//                                    this.setAnimation(R.raw.result_win)
-//                                    v.findViewById<TextView>(R.id.tv_resultC).text = "${vsComVm.winner} ${vsComVm.result.value}"
-//                                }
-//                            }
-//                        }
-//                        v.findViewById<Button>(R.id.btn_main_lagiC).setOnClickListener {
-//                            vsComVm.reset()
-//                        }
-//                        v.findViewById<Button>(R.id.btn_menuC).setOnClickListener {
-//                            setCancelable(true)
-//                            navToMenuGamePlay()
-//                        }
-//                    })
-//                    create()
-//                }
-//                dialog.show()
-//                dialog.setCancelable(true)
             }
         }
 

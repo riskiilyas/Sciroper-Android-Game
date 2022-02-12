@@ -60,8 +60,8 @@ class SignUpFragment : Fragment() {
         loadingInd = binding.loadingInd
         avatarList = listOf(binding.avatar1, binding.avatar2, binding.avatar3, binding.avatar4)
 
-        val database = Firebase.database("https://sciroper-fd4fe-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        val ref = database.getReference("User")
+//        val database = Firebase.database("https://sciroper-fd4fe-default-rtdb.asia-southeast1.firebasedatabase.app/")
+//        val ref = database.getReference("User")
 
 
         binding.apply {
