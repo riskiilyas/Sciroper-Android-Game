@@ -5,6 +5,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
+import com.binar.sciroper.data.retrofit.HistoryResponse
+import com.binar.sciroper.ui.fragments.achievement.HistoryAdapter
 import com.binar.sciroper.ui.fragments.leaderboard.UserListAdapter
 
 @BindingAdapter("setImg")

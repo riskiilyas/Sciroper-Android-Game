@@ -18,15 +18,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragments.leaderboard.LeaderboardFragment">
 
-        <Button
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="get list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -70,6 +61,7 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/app_name"
             android:fontFamily="@font/madeeta"
+            android:text="2"
             android:textColor="?textColour"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -111,6 +103,7 @@
             style="@style/style_crown"
             android:contentDescription="@string/app_name"
             android:src="@drawable/crown_gold1"
+            android:visibility="@{vm.userListSize>=1? View.VISIBLE: View.INVISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/rankSatu"
             app:layout_constraintEnd_toEndOf="@id/rankSatu"
             app:layout_constraintStart_toStartOf="@id/rankSatu" />
@@ -121,6 +114,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="60dp"
+            android:visibility="@{vm.userListSize>=1? View.VISIBLE: View.INVISIBLE}"
             app:civ_circle_background_color="#666666"
             app:layout_constraintBottom_toBottomOf="@id/tv_RankSatu"
             app:layout_constraintEnd_toEndOf="parent"
@@ -138,6 +132,7 @@
             android:text="@{vm.userLiveData[0].username}"
             android:textColor="?textColour"
             android:textSize="16sp"
+            android:visibility="@{vm.userListSize>=1? View.VISIBLE: View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/rankSatu"
             app:layout_constraintStart_toStartOf="@id/rankSatu"

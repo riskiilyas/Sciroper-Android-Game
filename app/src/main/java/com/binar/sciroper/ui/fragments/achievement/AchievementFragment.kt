@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.binar.sciroper.databinding.FragmentAchievementBinding
 import com.binar.sciroper.util.App
@@ -14,6 +16,11 @@ class AchievementFragment : Fragment() {
     private val binding get() = _binding!!
     private val achievementVm: AchievementVm by viewModels {
         AchievementVmFactory(App.appDb.getUserDao())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        achievementVm.getHistory()
     }
 
     override fun onCreateView(
@@ -31,6 +38,15 @@ class AchievementFragment : Fragment() {
             vm = achievementVm
             lifecycleOwner = viewLifecycleOwner
             achievementFragment = this@AchievementFragment
+        }
+
+        achievementVm.historyList.observe(viewLifecycleOwner) {
+            val adapter = HistoryAdapter(it.reversed())
+            binding.recylclerView.adapter = adapter
+        }
+
+        achievementVm.loadInd.observe(viewLifecycleOwner) {
+            binding.loadingInd.isGone = it != true
         }
     }
 

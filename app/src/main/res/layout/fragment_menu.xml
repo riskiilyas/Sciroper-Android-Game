@@ -78,6 +78,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/achievement"
+            android:onClick="@{() -> menuFragment.navToAchievement()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnShop"
             app:layout_constraintTop_toBottomOf="@+id/btnShop" />

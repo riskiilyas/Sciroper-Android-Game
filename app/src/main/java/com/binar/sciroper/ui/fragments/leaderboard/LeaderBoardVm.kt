@@ -29,7 +29,7 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
         getUsers()
     }
 
-    fun getUsers() {
+    private fun getUsers() {
         database.databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (data in snapshot.children) {
@@ -40,6 +40,7 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
                 _userListSize.value = userList.size
                 Log.i("userlist_size", "${userListSize.value}")
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.i("update_list", "shit happens")
             }
