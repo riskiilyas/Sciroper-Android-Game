@@ -32,16 +32,16 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
             vm = menuVm
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
         }
 
-        menuVm.user.observe(viewLifecycleOwner) {
-            binding.userImg.setImageResource(it.avatarId)
-            binding.tvCoinMenu.text = it.coin.toString()
-        }
+//        menuVm.userDetails.observe(viewLifecycleOwner){
+//            binding.tvUsername.text = it.data.username
+//        }
     }
 
     fun navToSetting() {

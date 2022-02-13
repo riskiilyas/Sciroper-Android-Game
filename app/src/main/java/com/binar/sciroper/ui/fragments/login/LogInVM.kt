@@ -1,58 +1,52 @@
 package com.binar.sciroper.ui.fragments.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import com.binar.sciroper.data.db.user.AuthDetails
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.binar.sciroper.data.retrofit.AuthResponse
+import com.binar.sciroper.data.retrofit.Retrofit
+import com.binar.sciroper.util.BaseViewModel
+import com.binar.sciroper.util.UiState
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class LogInVM(
     private val userDao: UserDAO,
-) : ViewModel() {
+) : BaseViewModel<UiState>() {
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + Job())
     private val sharedPreference: AppSharedPreference = AppSharedPreference
     val inputEmail = MutableLiveData<String>()
     val inputPassword = MutableLiveData<String>()
-    private val _errorToast = MutableLiveData<Boolean>()
-    val errorToast: LiveData<Boolean> get() = _errorToast
-    private val _navToMenu = MutableLiveData<Boolean>()
-    val navToMenu: LiveData<Boolean> get() = _navToMenu
+    private var _errorToast = false
+    val errorToast get() = _errorToast
+    private val _onSuccess = MutableLiveData<AuthResponse>()
+    val onSuccess: LiveData<AuthResponse> get() = _onSuccess
+    private val _onError = MutableLiveData<String>()
+    val onError: LiveData<String> = _onError
+
 
     fun logIn() {
-        if (inputEmail.value == null || inputPassword.value == null) {
-            _errorToast.value = true
-        } else {
-            uiScope.launch {
-                val userCredential =
-                    userDao.getUserByEmailAndPassword(
+        uiState.value = UiState.Loading
+
+        viewModelScope.launch {
+            try {
+                val loginResponse = Retrofit.retrofitService.login(
+                    AuthDetails(
                         email = inputEmail.value!!,
-                        password = inputPassword.value!!
+                        password = inputPassword.value!!,
+                        username = ""
                     )
-                if (userCredential != null) {
-                    sharedPreference.id = userCredential.id
-                    sharedPreference.isLogin = true
-                    inputEmail.value = ""
-                    inputPassword.value = ""
-                    _navToMenu.value = true
-                } else {
-                    _errorToast.value = true
-                }
+                )
+                sharedPreference.userToken = loginResponse.data.token
+                sharedPreference.idBinar = loginResponse.data._id
+                sharedPreference.isLogin = true
+                uiState.value = UiState.Success(loginResponse)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                uiState.value = UiState.Error("${e.message}")
             }
         }
-    }
-
-    fun setEndNav() {
-        _navToMenu.value = false
-    }
-
-    fun setEndToast() {
-        _errorToast.value = false
     }
 }
 
