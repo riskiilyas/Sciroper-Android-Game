@@ -64,9 +64,6 @@ class SettingFragment : Fragment() {
             }
         }
 
-
-
-
         settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
             if (it) {
                 settingVm.setNotif(it)
@@ -74,8 +71,6 @@ class SettingFragment : Fragment() {
                 settingVm.setNotif(it)
             }
         }
-
-
     }
 
     fun navToMenu() {
