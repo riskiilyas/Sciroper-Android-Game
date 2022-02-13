@@ -16,7 +16,7 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
     val userLiveData = userDao.getUserById(AppSharedPreference.id!!)
 
     private val _choices: List<String> = listOf("Rock", "Paper", "Scissors")
-    val choices get() = _choices
+    private val choices get() = _choices
 
     private var _playerChoice = ""
     val playerChoice get() = _playerChoice
@@ -65,7 +65,6 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
     }
 
     fun reset() {
-        Log.d("comd", "reset: ")
         isOver.value = false
         isReset.value = true
     }

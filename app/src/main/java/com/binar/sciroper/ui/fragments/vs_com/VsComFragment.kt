@@ -22,6 +22,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
+import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp
 import com.binar.sciroper.ui.fragments.vs_player.GameDialog
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.delay
@@ -45,13 +46,11 @@ class VsComFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentVsComBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -104,7 +103,6 @@ class VsComFragment : Fragment() {
 
         vsComVm.isOver.observe(viewLifecycleOwner) { it ->
             if (it) {
-                Log.d("comd", "onViewCreated: dialog")
                 val dialogFragment = ComDialog(vsComVm)
                 dialogFragment.isCancelable = false
                 dialogFragment.show(childFragmentManager, "DIALOG_COM")
@@ -113,7 +111,6 @@ class VsComFragment : Fragment() {
 
         vsComVm.isReset.observe(viewLifecycleOwner) {
             if (it) {
-                Log.d("comd", "onViewCreated: dialogRESET")
                 unFreezeState(p1Choices)
                 p1Choices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
                 comChoices.forEach { v -> v.setBackgroundColor(Color.TRANSPARENT) }
@@ -124,7 +121,8 @@ class VsComFragment : Fragment() {
             binding.tvCoin.text = it.coin.toString()
 
             if (currentLevel < it.level) {
-                Toast.makeText(requireContext(), "NAIK LEVEL", Toast.LENGTH_SHORT).show()
+                val dialogSignOut = DialogLvUp(it.level)
+                dialogSignOut.show(childFragmentManager, DialogLvUp.DIALOG_LVUP)
                 currentLevel = it.level
             }
         }
