@@ -21,4 +21,17 @@ interface BinarApiService {
         @Header("Authorization") authorization: String,
         @Body body: RequestBody
     ): AuthResponse
+
+    @GET("api/v1/battle")
+    suspend fun getHistory(
+        @Header("Authorization") authorization: String
+    ): HistoryResponse
+
+    @POST("api/v1/battle")
+    suspend fun postGameResult(
+        @Header("Authorization") authorization: String,
+        @Body gameResult: GameResult
+    ): HistoryResponse
+
+
 }

@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.databinding.FragmentLeaderboardBinding
 import com.binar.sciroper.util.App
-import com.binar.sciroper.util.UserLevel
 
 class LeaderboardFragment : Fragment() {
 
@@ -20,6 +20,7 @@ class LeaderboardFragment : Fragment() {
         LeaderBoardVmFactory(App.appDb.getUserDao())
     }
     private lateinit var recyclerView: RecyclerView
+    private val database = FirebaseRtdb()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +41,6 @@ class LeaderboardFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             vm = leaderBoardVm
-        }
-
-
-        leaderBoardVm.allUsers.observe(viewLifecycleOwner) { users ->
-            users.let {
-                adapter.submitList(UserLevel.sortUsersLevel(it))
-            }
-            leaderBoardVm.getUserListSize(users)
         }
 
         binding.btnBack.setOnClickListener {
