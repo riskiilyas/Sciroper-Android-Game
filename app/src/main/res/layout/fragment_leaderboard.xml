@@ -18,6 +18,15 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragments.leaderboard.LeaderboardFragment">
 
+        <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="get list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -58,10 +67,9 @@
             android:id="@+id/iv_rank2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/app_name"
             android:fontFamily="@font/madeeta"
-            android:text="2"
             android:textColor="?textColour"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -80,7 +88,7 @@
             app:layout_constraintEnd_toStartOf="@id/rankSatu"
             app:layout_constraintHorizontal_bias="0.188"
             app:layout_constraintStart_toStartOf="parent"
-            app:setImg="@{vm.allUsers[1].avatarId}"
+            app:setImg="@{vm.userLiveData[1].avatarId}"
             tools:src="@drawable/avatar22" />
 
         <TextView
@@ -89,7 +97,7 @@
             android:background="@drawable/position_rank"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
-            android:text="@{vm.allUsers[1].username}"
+            android:text="@{vm.userLiveData[1].username}"
             android:textColor="?textColour"
             android:textSize="16sp"
             android:visibility="@{vm.userListSize>=2? View.VISIBLE: View.INVISIBLE}"
@@ -118,7 +126,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:setImg="@{vm.allUsers[0].avatarId}"
+            app:setImg="@{vm.userLiveData[0].avatarId}"
             tools:src="@drawable/avatar21" />
 
         <TextView
@@ -127,7 +135,7 @@
             android:background="@drawable/position_rank"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
-            android:text="@{vm.allUsers[0].username}"
+            android:text="@{vm.userLiveData[0].username}"
             android:textColor="?textColour"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
@@ -137,16 +145,16 @@
 
 
         <TextView
+            android:id="@+id/iv_rank3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/app_name"
             android:fontFamily="@font/madeeta"
             android:text="3"
             android:textColor="?textColour"
-            android:id="@+id/iv_rank3"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:contentDescription="@string/app_name"
             android:visibility="@{vm.userListSize>=3? View.VISIBLE: View.INVISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/rankTiga"
             app:layout_constraintEnd_toEndOf="@id/rankTiga"
@@ -163,7 +171,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.697"
             app:layout_constraintStart_toEndOf="@id/rankSatu"
-            app:setImg="@{vm.allUsers[2].avatarId}"
+            app:setImg="@{vm.userLiveData[2].avatarId}"
             tools:src="@drawable/avatar3" />
 
         <TextView
@@ -172,7 +180,7 @@
             android:background="@drawable/position_rank"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
-            android:text="@{vm.allUsers[2].username}"
+            android:text="@{vm.userLiveData[2].username}"
             android:textColor="?textColour"
             android:textSize="16sp"
             android:visibility="@{vm.userListSize>=3? View.VISIBLE: View.INVISIBLE}"
@@ -194,6 +202,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline1"
             app:layout_constraintVertical_bias="0.0"
+            app:listData="@{vm.userLiveData}"
             tools:listitem="@layout/activity_item_leaderboard" />
 
         <androidx.constraintlayout.utils.widget.ImageFilterView

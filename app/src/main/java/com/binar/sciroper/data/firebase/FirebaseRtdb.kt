@@ -11,7 +11,7 @@ class FirebaseRtdb {
     private val sharedPreference = AppSharedPreference
     val database =
         Firebase.database("https://sciroper-fd4fe-default-rtdb.asia-southeast1.firebasedatabase.app")
-    val databaseRef = database.reference
+    val databaseRef = database.getReference("Users")
     val auth = Firebase.auth
 
 
@@ -45,7 +45,7 @@ class FirebaseRtdb {
                     avatarId = avatarId
                 )
                 Log.i("sign up", "registration successful")
-                databaseRef.child("Users").child(uid!!).setValue(user).addOnCompleteListener {
+                databaseRef.child(uid!!).setValue(user).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.i("sign up", "registration successful and data saved in firebase")
                     } else {
