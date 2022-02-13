@@ -11,10 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
-import com.binar.sciroper.util.pausePlay
-import com.binar.sciroper.util.playMusic
 import com.binar.sciroper.databinding.FragmentSettingBinding
-import com.binar.sciroper.util.App
+import com.binar.sciroper.util.*
 
 
 class SettingFragment : Fragment() {
@@ -49,6 +47,9 @@ class SettingFragment : Fragment() {
         }
 
         settingVm.isChecked.observe(viewLifecycleOwner) {
+            if(settingVm.isCheckedMusic.value == true){
+                pausePlay()
+            }
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 settingVm.setTheme(it)
@@ -60,10 +61,10 @@ class SettingFragment : Fragment() {
 
         settingVm.isCheckedMusic.observe(viewLifecycleOwner) {
             if (it) {
-                playMusic(view.context)
+                App.context.get()?.let { it1 -> playMusic(it1) }
                 settingVm.setMusic(it)
             } else {
-                pausePlay()
+                resetMusic()
                 settingVm.setMusic(it)
             }
         }
@@ -84,5 +85,8 @@ class SettingFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        if (settingVm.isCheckedMusic.value!!) {
+            pausePlay()
+        }
     }
 }
