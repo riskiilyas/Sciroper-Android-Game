@@ -22,9 +22,9 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
     private val sharedPreference = AppSharedPreference
     private val uiScope = CoroutineScope(Dispatchers.Main + Job())
     val allOtherUsers: LiveData<List<User>> =
-        userDao.getUserExclFlow(sharedPreference.id!!).asLiveData()
+        userDao.getUserExclFlow(sharedPreference.idBinar!!).asLiveData()
     private val _duplicateUsername = MutableLiveData<Boolean>()
-    private val user = userDao.getUserById(sharedPreference.id!!)
+    private val user = userDao.getUserByIdNoLiveData(sharedPreference.idBinar!!)
     private val _userAvatarId = MutableLiveData<Int>()
     val userAvatarId: LiveData<Int> = _userAvatarId
     private val _username = MutableLiveData<String>()
@@ -85,6 +85,10 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
 //            }
 //        }
 //    }
+
+    fun deleteUser() {
+        viewModelScope.launch { userDao.deleteUser(user) }
+    }
 
     fun postChanges(
         token: String,

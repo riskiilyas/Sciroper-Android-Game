@@ -40,7 +40,7 @@ class UserListAdapter :
             }
 
             override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.idBinar == newItem.idBinar
             }
         }
     }
