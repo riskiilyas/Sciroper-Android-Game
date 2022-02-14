@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
-import com.binar.sciroper.util.Util
+import com.binar.sciroper.util.checkNetworkAvailable
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.FirebaseDatabase
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
+    private var isOnline = false
     private val menuVm: MenuVm by viewModels {
         MenuVmFactory(App.appDb.getUserDao())
     }
@@ -39,17 +41,24 @@ class MenuFragment : Fragment() {
             menuFragment = this@MenuFragment
         }
 
-        checkNetworkAvailable(requireContext()) {
-            if (it) {
-                Toast.makeText(requireContext(), "AVAILABLE INTERNET", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "NO INTERNET", Toast.LENGTH_SHORT).show()
-            }
+        menuVm.user.observe(viewLifecycleOwner) {
+            binding.tvCoinMenu.text = it.coin.toString()
+            binding.tvUsername.text = it.username
+            binding.tvUserLevel.text = it.level.toString()
+            binding.userImg.setImageResource(it.avatarId)
         }
 
-//        menuVm.userDetails.observe(viewLifecycleOwner){
-//            binding.tvUsername.text = it.data.username
-//        }
+        checkNetworkAvailable {
+            isOnline = it
+            if (isVisible) {
+                if (it) {
+                    Snackbar.make(requireView(), "You are online!", Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(requireView(), "Currently offline!", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+            if (it) menuVm.updateUser(menuVm.user)
+        }
 
     }
 
@@ -79,8 +88,12 @@ class MenuFragment : Fragment() {
     }
 
     fun navToLeaderBoard(){
-        val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
-        findNavController().navigate(action)
+        if (!isOnline) {
+            Toast.makeText(requireContext(), "Connect to Internet first!", Toast.LENGTH_SHORT).show()
+        } else {
+            val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
+            findNavController().navigate(action)
+        }
     }
 
     fun createDialog() {

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class User(
     @PrimaryKey
     @ColumnInfo(name = "id_binar")
-    val idBinar: String = "",
+    var idBinar: String = "",
 
     @SerializedName(value = "username")
     @ColumnInfo(name = "username")
@@ -24,7 +24,7 @@ data class User(
     var password: String = "",
 
     @ColumnInfo(name = "avatar_id")
-    val avatarId: Int = -1,
+    var avatarId: Int = -1,
 
     @ColumnInfo(name = "wins")
     var wins: Int = 0,

@@ -16,11 +16,15 @@ class FirebaseRtdb {
 
 
     // addUser to the firebase rtdb
-    fun addUser(idBinar: String, email: String, username: String, password: String, avatarId: Int) {
+    fun addUser(idBinar: String,
+                email: String,
+                username: String,
+                password: String,
+                avatarId: Int) {
         val user = User(
             idBinar = idBinar,
-            email = email,
             username = username,
+            email = email,
             password = password,
             avatarId = avatarId
         )
@@ -59,5 +63,9 @@ class FirebaseRtdb {
                 Log.i("sign up", "registration fail")
             }
         }
+    }
+
+    fun updateUser(user: User) {
+        databaseRef.child(user.idBinar).setValue(user)
     }
 }

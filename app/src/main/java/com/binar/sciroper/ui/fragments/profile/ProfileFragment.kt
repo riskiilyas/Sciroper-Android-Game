@@ -149,7 +149,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun onSignOut() {
-        val dialogSignOut = DialogSignOutt()
+        val dialogSignOut = DialogSignOutt(profileVm)
         dialogSignOut.show(childFragmentManager, DialogSignOutt.DIALOG_SIGNOUTT)
     }
 
