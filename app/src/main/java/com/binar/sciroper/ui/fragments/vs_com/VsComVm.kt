@@ -2,18 +2,22 @@ package com.binar.sciroper.ui.fragments.vs_com
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
+import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.UserLevel
+import com.binar.sciroper.util.checkNetworkAvailable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
 class VsComVm(private val userDao: UserDAO) : ViewModel() {
-    val user = userDao.getUserId(AppSharedPreference.id!!)
+    val user = userDao.getUserId(AppSharedPreference.idBinar!!)
     val isReset = MutableLiveData(false)
     val isOver = MutableLiveData(false)
-    val userLiveData = userDao.getUserById(AppSharedPreference.id!!)
+    val firebase = FirebaseRtdb()
+    val userLiveData = userDao.getUserById(AppSharedPreference.idBinar!!)
 
     private val _choices: List<String> = listOf("Rock", "Paper", "Scissors")
     private val choices get() = _choices
@@ -59,9 +63,16 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
         } else {
             ""
         }
-        viewModelScope.launch(Dispatchers.Default) { userDao.updateUser(user) }
+        updateUser()
         isReset.value = false
         isOver.value = true
+    }
+
+    private fun updateUser() {
+        checkNetworkAvailable {
+            if (it) firebase.updateUser(user)
+        }
+        viewModelScope.launch(Dispatchers.Default) { userDao.updateUser(user) }
     }
 
     fun reset() {

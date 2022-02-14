@@ -4,14 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.binar.sciroper.data.db.user.UserDAO
+import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.UserLevel
+import com.binar.sciroper.util.checkNetworkAvailable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
-    val user = userDao.getUserId(AppSharedPreference.id!!)
-    val userLiveData = userDao.getUserById(AppSharedPreference.id!!)
+    val user = userDao.getUserId(AppSharedPreference.idBinar!!)
+    val userLiveData = userDao.getUserById(AppSharedPreference.idBinar!!)
+    val firebase = FirebaseRtdb()
     private val _choices: List<String> = listOf("Rock", "Paper", "Scissors")
     private val choices get() = _choices
 
@@ -76,6 +79,13 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
             "lose"
         } else {
             ""
+        }
+        updateUser()
+    }
+
+    private fun updateUser() {
+        checkNetworkAvailable {
+            if (it) firebase.updateUser(user)
         }
         viewModelScope.launch(Dispatchers.Default) { userDao.updateUser(user) }
     }

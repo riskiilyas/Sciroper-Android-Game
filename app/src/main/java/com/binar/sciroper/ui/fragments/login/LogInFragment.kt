@@ -19,6 +19,7 @@ import com.binar.sciroper.databinding.FragmentLogInBinding
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.runBlocking
 
 
 class LogInFragment : Fragment() {
@@ -55,6 +56,7 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (logInVm.isLoggedIn() == true) findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
 
         email = binding.tietEmail
         password = binding.tietPassword

@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentDialogSignOutBinding
 
-class DialogSignOutt : DialogFragment() {
+class DialogSignOutt(private val vm: ProfileVm) : DialogFragment() {
     private var _binding: FragmentDialogSignOutBinding? = null
     private val binding get() = _binding!!
 
@@ -27,6 +27,7 @@ class DialogSignOutt : DialogFragment() {
             AppSharedPreference.isLogin = false
             val action = ProfileFragmentDirections.actionProfileFragmentToLogInFragment()
             findNavController().navigate(action)
+            vm.deleteUser()
         }
 
         binding.btnNo.setOnClickListener {
