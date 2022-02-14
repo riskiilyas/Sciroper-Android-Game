@@ -26,5 +26,9 @@ fun resetMusic(){
     mediaPlayer?.pause()
     mediaPlayer?.reset()
 }
+fun resumeMusic(){
+    mediaPlayer?.seekTo(durationNow);
+    mediaPlayer?.start();
+}
 
 

@@ -1,7 +1,9 @@
 package com.binar.sciroper.ui.fragments.setting
 
 import android.annotation.SuppressLint
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,15 +49,19 @@ class SettingFragment : Fragment() {
         }
 
         settingVm.isChecked.observe(viewLifecycleOwner) {
-            if(settingVm.isCheckedMusic.value == true){
-                pausePlay()
-            }
+
+//            if(settingVm.isCheckedMusic.value == true){
+//                pausePlay()
+//            }
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 settingVm.setTheme(it)
+                Log.e("Tag", "true")
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 settingVm.setTheme(it)
+                Log.e("Tag", "false")
+
             }
         }
 
