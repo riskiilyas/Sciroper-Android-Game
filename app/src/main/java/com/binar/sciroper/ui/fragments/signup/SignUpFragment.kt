@@ -44,7 +44,6 @@ class SignUpFragment : Fragment() {
     private lateinit var signUpBtn: Button
     private lateinit var loadingInd: ProgressBar
     private lateinit var avatarList: List<AppCompatImageView>
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +57,6 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
         userName = binding.tietUsername
         email = binding.tietEmail
         password = binding.tietPassword
@@ -122,7 +120,6 @@ class SignUpFragment : Fragment() {
             rePassword,
             textWatcher = textWatcher
         )
-
     }
 
     private val textWatcher = object : TextWatcher {
@@ -136,12 +133,10 @@ class SignUpFragment : Fragment() {
             val rePasswordText = rePassword.text?.trim().toString()
             signUpBtn.isEnabled =
                 (userNameText.isNotBlank() && emailText.isNotBlank() && passwordText.isNotBlank() && rePasswordText.isNotBlank())
-
-            password.error = null
-            rePassword.error = null
         }
 
         override fun afterTextChanged(s: Editable?) {
+            signUpVm.resetErrorField()
         }
     }
 

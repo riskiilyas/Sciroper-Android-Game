@@ -16,12 +16,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?backgroundColour"
         tools:context=".ui.fragments.leaderboard.LeaderboardFragment">
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="?btnColour"
+            android:background="@drawable/card_how_to_play"
             app:layout_constraintBottom_toBottomOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

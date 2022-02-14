@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
-import com.google.firebase.database.FirebaseDatabase
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -18,8 +17,6 @@ class MenuFragment : Fragment() {
     private val menuVm: MenuVm by viewModels {
         MenuVmFactory(App.appDb.getUserDao())
     }
-
-    private lateinit var database: FirebaseDatabase
 
 
     override fun onCreateView(
