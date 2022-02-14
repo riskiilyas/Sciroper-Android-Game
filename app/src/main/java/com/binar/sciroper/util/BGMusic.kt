@@ -19,6 +19,6 @@ object BGMusic {
     fun isPlay() = mediaPlayer?.isPlaying ?: false
 
     fun pausePlay() {
-        mediaPlayer?.stop()
+        mediaPlayer?.pause()
     }
 }
