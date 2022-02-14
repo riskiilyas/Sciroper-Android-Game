@@ -1,6 +1,6 @@
 package com.binar.sciroper.util
 
-import android.content.Context
+
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
@@ -12,9 +12,6 @@ fun checkNetworkAvailable(
 ) {
     val networkRequest = NetworkRequest.Builder()
         .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-//        .addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
-//        .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-//        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
         .build()
 
     val networkCallback = object : ConnectivityManager.NetworkCallback() {
