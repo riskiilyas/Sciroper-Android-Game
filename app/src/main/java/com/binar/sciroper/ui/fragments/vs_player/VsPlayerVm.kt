@@ -1,15 +1,22 @@
 package com.binar.sciroper.ui.fragments.vs_player
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.binar.sciroper.data.db.user.UserDAO
+import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.util.UserLevel
+import com.binar.sciroper.util.checkNetworkAvailable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
-    val user = userDao.getUserId(AppSharedPreference.id!!)
+    val user = userDao.getUserId(AppSharedPreference.idBinar!!)
+    val userLiveData = userDao.getUserById(AppSharedPreference.idBinar!!)
+    val firebase = FirebaseRtdb()
     private val _choices: List<String> = listOf("Rock", "Paper", "Scissors")
-    val choices get() = _choices
+    private val choices get() = _choices
 
 
     private var _playerChoice: String = ""
@@ -47,35 +54,46 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
     val result get() = _result
     private var _winner: String = ""
     val winner get() = _winner
-    private var _opponent: String = ""
+    private var _opponent: String = "Player 2"
     val opponent get() = _opponent
 
     fun gameResult() {
+        val userLevel = UserLevel(user)
         _result = if (playerChoice == opponentChoice) {
+            userLevel.draw()
             _winner = "draw"
             "draw"
         } else if (playerChoice == choices[0] && opponentChoice == choices[2] ||
             playerChoice == choices[1] && opponentChoice == choices[0] ||
             playerChoice == choices[2] && opponentChoice == choices[1]
         ) {
+<<<<<<< HEAD
 //            gameMusic()
             _winner = user.toString()
+=======
+            userLevel.win()
+            _winner = user.username
+>>>>>>> b84bbcfe1bd68127c246ecdabac32fcd164d395f
             "win"
 
         } else if (playerChoice == choices[0] && opponentChoice == choices[1] ||
             playerChoice == choices[1] && opponentChoice == choices[2] ||
             playerChoice == choices[2] && opponentChoice == choices[0]
         ) {
+            userLevel.lose()
             _winner = opponent
             "lose"
         } else {
             ""
         }
-        Log.d(
-            "game_result",
-            "Player: ${playerChoice}, Opponent: $opponentChoice - Result: $result"
-        )
-        Log.d("game_result", "$opponentSelectedId")
+        updateUser()
+    }
+
+    private fun updateUser() {
+        checkNetworkAvailable {
+            if (it) firebase.updateUser(user)
+        }
+        viewModelScope.launch(Dispatchers.Default) { userDao.updateUser(user) }
     }
 
     fun reset() {

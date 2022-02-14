@@ -33,8 +33,6 @@ class UserListAdapter :
         holder.bind(currentUser)
     }
 
-//    fun getUserPosition(user: User) = currentList.indexOf(user)
-
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
@@ -42,7 +40,7 @@ class UserListAdapter :
             }
 
             override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.idBinar == newItem.idBinar
             }
         }
     }

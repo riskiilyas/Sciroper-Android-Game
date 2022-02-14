@@ -46,11 +46,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvCoin"
+            android:id="@+id/tvCoinMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
             android:textColor="?textColour"
+            android:layout_marginTop="4dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/coin"
             app:layout_constraintStart_toStartOf="@+id/coin"
@@ -64,6 +65,7 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
+            android:onClick="@{()->menuFragment.navToShop()}"
             android:src="@drawable/shop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,6 +78,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/achievement"
+            android:onClick="@{() -> menuFragment.navToAchievement()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnShop"
             app:layout_constraintTop_toBottomOf="@+id/btnShop" />
@@ -115,6 +118,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/app_name"
+                app:setImg="@{vm.avatarId}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_username"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,21 +127,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/avatar1" />
 
-
             <TextView
                 android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/madeeta"
-                android:text="@{vm.user.username}"
+                android:text="@{vm.username}"
                 android:textColor="?textColour"
                 android:textSize="32sp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_play"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline6"
                 app:layout_constraintHorizontal_bias="0.359"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_img"
                 tools:text="Joe" />
 
@@ -146,17 +149,17 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginVertical="8dp"
-                android:layout_marginStart="16dp"
                 android:background="@drawable/level_bg"
                 android:fontFamily="@font/madeeta"
                 android:gravity="center"
-                android:text="@{@string/user_level(vm.user.level)}"
+                android:layout_marginStart="8dp"
+                android:text="@{vm.userLevel.toString()}"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="?textColour"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_username"
-                app:layout_constraintStart_toEndOf="@+id/tv_username"
+                app:layout_constraintStart_toEndOf="@id/guideline6"
                 app:layout_constraintTop_toTopOf="@+id/tv_username"
                 tools:text="999" />
 
@@ -241,6 +244,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_leader_board" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
@@ -263,6 +273,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.95" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

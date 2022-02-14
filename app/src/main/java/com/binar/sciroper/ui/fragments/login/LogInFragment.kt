@@ -3,7 +3,6 @@ package com.binar.sciroper.ui.fragments.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,18 +11,22 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentLogInBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.runBlocking
 
 
 class LogInFragment : Fragment() {
 
     private var _binding: FragmentLogInBinding? = null
     private val binding get() = _binding!!
-    private val logInVm: LogInVM by viewModels() {
+    private val logInVm: LogInVM by viewModels {
         LogInVMFactory(App.appDb.getUserDao())
     }
 
@@ -32,7 +35,6 @@ class LogInFragment : Fragment() {
     private lateinit var signUpBtn: Button
     private lateinit var signInBtn: Button
     private lateinit var loadingInd: ProgressBar
-
 
 
     override fun onCreateView(
@@ -49,12 +51,12 @@ class LogInFragment : Fragment() {
                     activity?.finishAffinity()
                 }
             })
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (logInVm.isLoggedIn() == true) findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
 
         email = binding.tietEmail
         password = binding.tietPassword
@@ -68,24 +70,9 @@ class LogInFragment : Fragment() {
             logIn = this@LogInFragment
         }
 
-        logInVm.navToMenu.observe(viewLifecycleOwner) {
-            if (it) {
-                Log.i("banana", "navToMenu triggered")
-                val action = LogInFragmentDirections.actionLogInFragmentToMenuFragment()
-                findNavController().navigate(action)
-                logInVm.setEndNav()
-            }
-        }
-
-        logInVm.errorToast.observe(viewLifecycleOwner) {
-            if (it) {
-                Log.i("Banana", "errorToast triggered")
-                Toast.makeText(
-                    requireContext(),
-                    "email or password is incorrect",
-                    Toast.LENGTH_SHORT
-                ).show()
-                logInVm.setEndToast()
+        logInVm.uiState().observe(viewLifecycleOwner) { uiState ->
+            if (uiState != null) {
+                render(uiState)
             }
         }
 
@@ -116,11 +103,46 @@ class LogInFragment : Fragment() {
         }
     }
 
-    fun goToSignUp() {
+    fun navToSignUp() {
         val action = LogInFragmentDirections.actionLogInFragmentToSignUpFragment()
         findNavController().navigate(action)
     }
 
+    fun makeToast(msg: String) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun render(uiState: UiState) {
+        when (uiState) {
+            is UiState.Loading -> {
+                onLoad()
+            }
+            is UiState.Success -> {
+                onSuccess(uiState)
+            }
+            is UiState.Error -> {
+                onError(uiState)
+            }
+        }
+    }
+
+    private fun onLoad() {
+        binding.loadingInd.isVisible = true
+        binding.btnSignIn.isEnabled = false
+    }
+
+    private fun onSuccess(uiState: UiState.Success) = with(binding) {
+        binding.loadingInd.isGone = true
+        email.text?.clear()
+        password.text?.clear()
+        findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
+    }
+
+    private fun onError(uiState: UiState.Error) = with(binding) {
+        binding.loadingInd.isGone = true
+        btnSignIn.isEnabled = true
+        makeToast(uiState.message)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -1,18 +1,22 @@
 package com.binar.sciroper.ui.fragments.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
+import com.binar.sciroper.data.firebase.FirebaseRtdb
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentProfileBinding
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
+import okhttp3.MultipartBody
 
 class ProfileFragment : Fragment() {
 
@@ -27,6 +31,7 @@ class ProfileFragment : Fragment() {
     private lateinit var inputUsername: String
     private lateinit var inputEmail: String
     private lateinit var inputPassword: String
+    private val database = FirebaseRtdb()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,39 +58,98 @@ class ProfileFragment : Fragment() {
             profileFragment = this@ProfileFragment
         }
 
-        profileVm.getUser().observe(viewLifecycleOwner) {
-            user = it
-            bind(it)
-            onSelectAvatar(it, avatars)
-        }
-
-        profileVm.userAvatarId.observe(viewLifecycleOwner) {
-
-        }
-
         binding.btnSignOut.setOnClickListener {
             onSignOut()
         }
-    }
 
-    private fun bind(user: User) {
-        binding.apply {
-            etUsername.setText(user.username, TextView.BufferType.SPANNABLE)
-            etEmail.setText(user.email, TextView.BufferType.SPANNABLE)
-//            testing.text = user.avatarId.toString()
+        onSelectedAvatar(avatars)
+
+        binding.btnUpdate.setOnClickListener {
+            Log.i("button", "button is clicked")
+            profileVm.postChanges(
+                "Bearer ${AppSharedPreference.userToken}",
+                MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("email", binding.etEmail.text.toString())
+                    .addFormDataPart("username", binding.etUsername.text.toString())
+                    .build(),
+            )
         }
+
+//        profileVm.userAvatarId.observe(viewLifecycleOwner) { avatarId ->
+//            binding.btnUpdate.setOnClickListener {
+//                Log.i("button", "button is clicked")
+////                profileVm.postChanges(
+////                    "Bearer ${AppSharedPreference.userToken}",
+////                    MultipartBody.Builder()
+////                        .setType(MultipartBody.FORM)
+////                        .addFormDataPart("email", binding.etEmail.text.toString())
+////                        .addFormDataPart("username", binding.etUsername.text.toString())
+////                        .build()
+////                )
+//
+//                profileVm.checkDuplicateEmail(
+//                    binding.etEmail.text.toString()
+//                )
+//
+////                profileVm.postChangesFirebase(
+////                    AppSharedPreference.idBinar!!,
+////                    binding.etUsername.text.toString(),
+////                    binding.etEmail.text.toString(),
+////                    avatarId
+////                )
+//            }
+//
+////            profileVm.postRetrofitToast.observe(viewLifecycleOwner) {
+////                if (it) {
+////                    Toast.makeText(requireContext(), "update successful", Toast.LENGTH_SHORT).show()
+////                    profileVm.setRetrofitToast()
+////                }
+////            }
+//
+////            profileVm.duplicateEmail.observe(viewLifecycleOwner) {
+////                if (it) {
+////                    Toast.makeText(
+////                        requireContext(),
+////                        "email exists, please try again",
+////                        Toast.LENGTH_SHORT
+////                    ).show()
+////                    profileVm.setDuplicateEmailToast()
+////                }
+////            }
+//        }
     }
 
-    private fun onSelectAvatar(user: User, avatarList: List<ImageView>) {
+//    private fun bind(user: User) {
+//        binding.apply {
+//            etUsername.setText(user.username, TextView.BufferType.SPANNABLE)
+//            etEmail.setText(user.email, TextView.BufferType.SPANNABLE)
+////            testing.text = user.avatarId.toString()
+//        }
+//    }
+
+//    private fun onSelectAvatar(user: User, avatarList: List<ImageView>) {
+//        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
+//            imageView.setOnClickListener {
+//                profileVm.setAvatarId(AvatarHelper.provideList()[index])
+//            }
+//        }
+//    }
+
+    private fun onSelectedAvatar(avatarList: List<ImageView>) {
         avatarList.forEachIndexed { index: Int, imageView: ImageView ->
             imageView.setOnClickListener {
                 profileVm.setAvatarId(AvatarHelper.provideList()[index])
+                avatarList.forEach {
+                    it.setBackgroundResource(android.R.color.transparent)
+                }
+                avatarList[index].setBackgroundResource(R.color.navigationColour)
             }
         }
     }
 
     private fun onSignOut() {
-        val dialogSignOut = DialogSignOutt()
+        val dialogSignOut = DialogSignOutt(profileVm)
         dialogSignOut.show(childFragmentManager, DialogSignOutt.DIALOG_SIGNOUTT)
     }
 

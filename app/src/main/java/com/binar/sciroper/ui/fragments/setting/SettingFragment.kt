@@ -49,10 +49,6 @@ class SettingFragment : Fragment() {
         }
 
         settingVm.isChecked.observe(viewLifecycleOwner) {
-
-//            if(settingVm.isCheckedMusic.value == true){
-//                pausePlay()
-//            }
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 settingVm.setTheme(it)

@@ -3,20 +3,27 @@ package com.binar.sciroper.ui.fragments.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
+import com.binar.sciroper.data.db.user.AuthDetails
 import com.binar.sciroper.databinding.FragmentSignUpBinding
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
+import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -32,6 +39,7 @@ class SignUpFragment : Fragment() {
     private lateinit var userName: TextInputEditText
     private lateinit var email: TextInputEditText
     private lateinit var password: TextInputEditText
+    private lateinit var passwordLayout: TextInputLayout
     private lateinit var rePassword: TextInputEditText
     private lateinit var signUpBtn: Button
     private lateinit var loadingInd: ProgressBar
@@ -54,6 +62,7 @@ class SignUpFragment : Fragment() {
         userName = binding.tietUsername
         email = binding.tietEmail
         password = binding.tietPassword
+        passwordLayout = binding.tilPassword
         rePassword = binding.tietRepassword
         signUpBtn = binding.btnSignUp
         loadingInd = binding.loadingInd
@@ -65,46 +74,42 @@ class SignUpFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-//        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-//            .addOnCompleteListener(requireActivity()) { task ->
-//                if (task.isSuccessful) {
-//                    Log.d("banana auth", "createUserWithEmail: Success")
-//                    val user = auth.currentUser
-//                    makeToast("$user")
-//                } else {
-//                    Log.w("banana auth", "createUserWithEmail:failure", task.exception)
-//                    makeToast("Authentication failed.")
-//                }
-//            }
-
-        signUpVm.navToMenu.observe(viewLifecycleOwner) {
-            if (it) {
-                Log.i("banana", "navToMenu Triggered")
-                val action =
-                    SignUpFragmentDirections.actionSignUpFragmentToRegisterConfirmationFragment()
-                findNavController().navigate(action)
-                signUpVm.setEndNav()
+        signUpVm.uiState().observe(viewLifecycleOwner) { uiState ->
+            if (uiState != null) {
+                render(uiState)
             }
         }
 
-        signUpVm.errorToast.observe(viewLifecycleOwner) {
-            if (it) {
-                makeToast("Username or email was registered")
-                signUpVm.setEndToast()
-            }
+        binding.btnSignUp.setOnClickListener {
+            val registerDetails = AuthDetails(
+                username = userName.text?.trim().toString(),
+                email = email.text?.trim().toString(),
+                password = password.text?.trim().toString()
+            )
+            signUpVm.signUp(registerDetails)
         }
 
-        signUpVm.errorEmailFormatToast.observe(viewLifecycleOwner) {
+        signUpVm.usernameLength.observe(viewLifecycleOwner) {
             if (it) {
-                makeToast("Incorrect email format")
-                signUpVm.setEndErrorEmailFormatToast()
-            }
+                binding.tilUsername.error = "username must have more than 5 letters"
+            } else
+                binding.tilUsername.error = null
         }
 
-        signUpVm.nonMatchingPassword.observe(viewLifecycleOwner) {
+        signUpVm.onInvalidEmail.observe(viewLifecycleOwner) {
             if (it) {
-                makeToast("Password does not match")
-                signUpVm.setNonMatchingPasswordToast()
+                binding.tilEmail.error = "invalid email format"
+            } else
+                binding.tilEmail.error = null
+        }
+
+        signUpVm.onPasswordError.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.tilPassword.error = "password does not match"
+                binding.tilRepassword.error = "password does not match"
+            } else {
+                binding.tilPassword.error = null
+                binding.tilRepassword.error = null
             }
         }
 
@@ -131,6 +136,9 @@ class SignUpFragment : Fragment() {
             val rePasswordText = rePassword.text?.trim().toString()
             signUpBtn.isEnabled =
                 (userNameText.isNotBlank() && emailText.isNotBlank() && passwordText.isNotBlank() && rePasswordText.isNotBlank())
+
+            password.error = null
+            rePassword.error = null
         }
 
         override fun afterTextChanged(s: Editable?) {
@@ -160,7 +168,46 @@ class SignUpFragment : Fragment() {
     }
 
     private fun makeToast(msg: String) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+    }
+
+    private fun render(uiState: UiState) {
+        when (uiState) {
+            is UiState.Loading -> {
+                onLoad()
+            }
+            is UiState.Success -> {
+                onSuccess(uiState)
+            }
+            is UiState.Error -> {
+                onError(uiState)
+            }
+        }
+    }
+
+    private fun onLoad() = with(binding) {
+        binding.loadingInd.isVisible = true
+        signUpBtn.isEnabled = false
+    }
+
+    private fun onSuccess(uiState: UiState.Success) = with(binding) {
+        binding.loadingInd.isGone = true
+        binding.apply {
+            email.text?.clear()
+            userName.text?.clear()
+            password.text?.clear()
+            rePassword.text?.clear()
+
+            val action =
+                SignUpFragmentDirections.actionSignUpFragmentToRegisterConfirmationFragment()
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun onError(uiState: UiState.Error) {
+        binding.loadingInd.isGone = true
+        signUpBtn.isEnabled = true
+        makeToast(uiState.message)
     }
 
     override fun onDestroy() {

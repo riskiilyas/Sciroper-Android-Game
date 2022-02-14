@@ -19,3 +19,11 @@ fun drawMusic(context: Context){
     )
     mediaPlayer?.start()
 }
+
+fun soundEffect(context: Context){
+    mediaPlayer = MediaPlayer.create(
+        context,
+        R.raw.sound_effect
+    )
+    mediaPlayer?.start()
+}

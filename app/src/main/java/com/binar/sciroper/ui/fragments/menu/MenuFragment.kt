@@ -6,28 +6,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.checkNetworkAvailable
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.FirebaseDatabase
-
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
+    private var isOnline = false
     private val menuVm: MenuVm by viewModels {
         MenuVmFactory(App.appDb.getUserDao())
     }
-
-    private lateinit var database: FirebaseDatabase
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,17 +41,25 @@ class MenuFragment : Fragment() {
             menuFragment = this@MenuFragment
         }
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("User")
-
-        myRef.setValue(
-            menuVm.user.value
-        )
-
-
         menuVm.user.observe(viewLifecycleOwner) {
+            binding.tvCoinMenu.text = it.coin.toString()
+            binding.tvUsername.text = it.username
+            binding.tvUserLevel.text = it.level.toString()
             binding.userImg.setImageResource(it.avatarId)
         }
+
+        checkNetworkAvailable {
+            isOnline = it
+            if (isVisible) {
+                if (it) {
+                    Snackbar.make(requireView(), "You are online!", Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(requireView(), "Currently offline!", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+            if (it) menuVm.updateUser(menuVm.user)
+        }
+
     }
 
     fun navToSetting() {
@@ -80,8 +88,12 @@ class MenuFragment : Fragment() {
     }
 
     fun navToLeaderBoard(){
-        val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
-        findNavController().navigate(action)
+        if (!isOnline) {
+            Toast.makeText(requireContext(), "Connect to Internet first!", Toast.LENGTH_SHORT).show()
+        } else {
+            val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
+            findNavController().navigate(action)
+        }
     }
 
     fun createDialog() {
