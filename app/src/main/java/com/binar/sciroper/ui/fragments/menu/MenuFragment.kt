@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
-import com.google.firebase.database.FirebaseDatabase
+import com.binar.sciroper.util.BGMusic
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -18,8 +19,6 @@ class MenuFragment : Fragment() {
     private val menuVm: MenuVm by viewModels {
         MenuVmFactory(App.appDb.getUserDao())
     }
-
-    private lateinit var database: FirebaseDatabase
 
 
     override fun onCreateView(
@@ -42,6 +41,7 @@ class MenuFragment : Fragment() {
 //        menuVm.userDetails.observe(viewLifecycleOwner){
 //            binding.tvUsername.text = it.data.username
 //        }
+
     }
 
     fun navToSetting() {

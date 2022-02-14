@@ -13,6 +13,9 @@ import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
 import com.binar.sciroper.ui.activity.MainActivity
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.BGMusic.isPlay
+import com.binar.sciroper.util.BGMusic.pausePlay
+import com.binar.sciroper.util.BGMusic.playMusic
 
 
 class SettingFragment : Fragment() {
@@ -40,6 +43,7 @@ class SettingFragment : Fragment() {
             settingFragment = this@SettingFragment
         }
 
+
         settingVm.isChecked.observe(viewLifecycleOwner) {
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -50,20 +54,22 @@ class SettingFragment : Fragment() {
             }
         }
 
-        settingVm.isCheckedMusic.observe(viewLifecycleOwner) {
-            if (it && !(activity as MainActivity).isMusicPlay) {
+        binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
+
+        binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked && !isPlay()) {
                 playMusic(requireContext())
                 Toast.makeText(requireContext(), "music ON", Toast.LENGTH_SHORT).show()
-                settingVm.setMusic(it)
+                settingVm.setMusic(isChecked)
                 (activity as MainActivity).isMusicPlay = true
-
-            } else if (!it && (activity as MainActivity).isMusicPlay) {
+                binding.switchMusic.isChecked = true
+            } else if (!isChecked && isPlay()) {
                 pausePlay()
-                settingVm.setMusic(it)
+                settingVm.setMusic(isChecked)
                 (activity as MainActivity).isMusicPlay = false
+                binding.switchMusic.isChecked = false
             }
         }
-
         settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
             if (it) {
                 settingVm.setNotif(it)

@@ -15,8 +15,10 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentLogInBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.BGMusic
 import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
 
@@ -55,6 +57,10 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (AppSharedPreference.isMusicPlay){
+            BGMusic.pausePlay()
+        }
 
         email = binding.tietEmail
         password = binding.tietPassword
@@ -134,6 +140,9 @@ class LogInFragment : Fragment() {
         email.text?.clear()
         password.text?.clear()
         findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
+        if (AppSharedPreference.isMusicPlay){
+            BGMusic.playMusic(requireContext())
+        }
     }
 
     private fun onError(uiState: UiState.Error) = with(binding) {

@@ -29,7 +29,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 p0.notification?.body.toString()
             )
         }
-
     }
 
     private fun showNotification(context: Context, title: String, body: String) {
