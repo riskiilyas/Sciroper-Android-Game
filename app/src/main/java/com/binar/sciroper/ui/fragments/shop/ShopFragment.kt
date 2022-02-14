@@ -3,13 +3,12 @@ package com.binar.sciroper.ui.fragments.shop
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
@@ -99,6 +98,7 @@ class ShopFragment : Fragment() {
                 }
                 else -> {
                     shopVm.buyItem("abcdefgh"[selectedId!!], priceListInt[selectedId!!])
+                    priceList[selectedId!!].setTextColor(Color.BLACK)
                     Toast.makeText(requireContext(), "Item purchased!!", Toast.LENGTH_SHORT).show()
                     selectedId = null
                 }
