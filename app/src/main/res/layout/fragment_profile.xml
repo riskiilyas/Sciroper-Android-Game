@@ -80,10 +80,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:onClick="@{() -> vm.setAvatarId(vm.avatarIds[0])}"
                 android:src="@drawable/avatar21"
-                app:imgId="@{vm.avatarIds[0]}"
-                app:storedImgId="@{vm.user.avatarId}" />
+                />
 
             <ImageView
                 android:id="@+id/avatarId2"
@@ -91,10 +89,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:onClick="@{() -> vm.setAvatarId(vm.avatarIds[1])}"
                 android:src="@drawable/avatar22"
-                app:imgId="@{vm.avatarIds[1]}"
-                app:storedImgId="@{vm.user.avatarId}" />
+                />
 
             <ImageView
                 android:id="@+id/avatarId3"
@@ -102,10 +98,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:onClick="@{() -> vm.setAvatarId(vm.avatarIds[2])}"
                 android:src="@drawable/avatar23"
-                app:imgId="@{vm.avatarIds[2]}"
-                app:storedImgId="@{vm.user.avatarId}" />
+                />
 
             <ImageView
                 android:id="@+id/avatarId4"
@@ -113,10 +107,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:onClick="@{() -> vm.setAvatarId(vm.avatarIds[3])}"
                 android:src="@drawable/avatar24"
-                app:imgId="@{vm.avatarIds[3]}"
-                app:storedImgId="@{vm.user.avatarId}" />
+                />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -143,7 +135,7 @@
                 android:inputType="text"
                 android:maxLength="10"
                 android:maxLines="1"
-
+                android:text="@{vm.userDetails.data.username}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,7 +157,7 @@
                 android:fontFamily="@font/madeeta"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-
+                android:text="@{vm.userDetails.data.email}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
 

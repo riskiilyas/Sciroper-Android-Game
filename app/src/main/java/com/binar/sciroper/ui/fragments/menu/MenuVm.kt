@@ -1,9 +1,17 @@
 package com.binar.sciroper.ui.fragments.menu
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.util.Log
+import androidx.lifecycle.*
 import com.binar.sciroper.data.db.user.UserDAO
+import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.data.retrofit.AuthResponse
+import com.binar.sciroper.data.retrofit.Retrofit
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class MenuVm(private val userDao: UserDAO) : ViewModel() {
     private val sharedPreferences = AppSharedPreference
@@ -11,6 +19,65 @@ class MenuVm(private val userDao: UserDAO) : ViewModel() {
     private val userId = sharedPreferences.id
     private val _user = userDao.getUserById(userId!!)
     val user get() = _user
+    private val database = FirebaseRtdb()
+
+    private val _onSuccess = MutableLiveData<AuthResponse>()
+    val onSuccess: LiveData<AuthResponse> get() = _onSuccess
+    private val _onFailure = MutableLiveData<String>()
+    val onFailure: LiveData<String> get() = _onFailure
+    private val _userDetails = MutableLiveData<AuthResponse>()
+    val userDetails: LiveData<AuthResponse> get() = _userDetails
+    private val _avatarId = MutableLiveData<Int>()
+    val avatarId: LiveData<Int> get() = _avatarId
+    private val _userLevel = MutableLiveData<Int>()
+    val userLevel: LiveData<Int> get() = _userLevel
+    private val _username = MutableLiveData<String>()
+    val username: LiveData<String> get() = _username
+
+    private val userToken = "Bearer ${sharedPreferences.userToken}"
+
+
+    init {
+        getUserDetails()
+        getUserAvatarId()
+    }
+
+    private fun getUserDetails() {
+        viewModelScope.launch {
+            try {
+                val userDetails = Retrofit.retrofitService.getUser("$userToken")
+                _onSuccess.value = userDetails
+                _userDetails.value = userDetails
+                Log.i("banana_menu_success", "shit actually works! ${userDetails}")
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _onFailure.value = e.message
+                Log.i("banana_menu_failure", "${e.message}, token: $userToken")
+            }
+        }
+    }
+
+    private fun getUserAvatarId() {
+        val target = database.database.getReference("Users").orderByChild("idBinar")
+            .equalTo(sharedPreferences.idBinar)
+        target.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                _avatarId.value =
+                    snapshot.child(sharedPreferences.idBinar!!).child("avatarId").value.toString()
+                        .toInt()
+                _userLevel.value =
+                    snapshot.child(sharedPreferences.idBinar!!).child("level").value.toString()
+                        .toInt()
+                _username.value =
+                    snapshot.child(sharedPreferences.idBinar!!).child("username").value.toString()
+                Log.i("onDataChange_getUserAvatarId", "$snapshot")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i("onCancelled_getAvatarId", error.message)
+            }
+        })
+    }
 
 }
 

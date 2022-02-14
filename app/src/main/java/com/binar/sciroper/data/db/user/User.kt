@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = User.TABLE_NAME)
 data class User(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    val id: Int = 0,
+    @PrimaryKey
+    @ColumnInfo(name = "id_binar")
+    val idBinar: String = "",
 
     @SerializedName(value = "username")
     @ColumnInfo(name = "username")
@@ -62,12 +62,15 @@ data class User(
      */
     @ColumnInfo(name = "items")
     var items: String = "",
-
-    @ColumnInfo(name = "idBinar")
-    var idBinar: String = ""
 ) {
     companion object {
         const val TABLE_NAME = "user_table"
     }
 }
+
+data class AuthDetails(
+    val email: String,
+    val password: String,
+    val username: String
+)
 

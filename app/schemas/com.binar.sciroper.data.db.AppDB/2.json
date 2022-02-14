@@ -2,16 +2,30 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
+<<<<<<< HEAD
     "identityHash": "47102fbc84a48e880768360e39f2fdf0",
     "entities": [
       {
         "tableName": "user_table",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL, `coin` INTEGER NOT NULL, `achievement` TEXT NOT NULL, `items` TEXT NOT NULL, `idBinar` TEXT NOT NULL)",
+=======
+    "identityHash": "2c428e6ce532313838d548a14632fba4",
+    "entities": [
+      {
+        "tableName": "user_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `id_binar` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL, `coin` INTEGER NOT NULL, `achievement` TEXT NOT NULL, `items` TEXT NOT NULL, PRIMARY KEY(`id_binar`))",
+>>>>>>> 49795ac96aa2098c9377c78193be80c4d580e62b
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idBinar",
+            "columnName": "id_binar",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -89,9 +103,9 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "id_binar"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -100,7 +114,11 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+<<<<<<< HEAD
       "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '47102fbc84a48e880768360e39f2fdf0')"
+=======
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2c428e6ce532313838d548a14632fba4')"
+>>>>>>> 49795ac96aa2098c9377c78193be80c4d580e62b
     ]
   }
 }

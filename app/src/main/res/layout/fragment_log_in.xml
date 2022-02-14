@@ -136,7 +136,7 @@
             android:layout_height="55dp"
             android:backgroundTint="?menuColour"
             android:fontFamily="@font/madeeta"
-            android:onClick="@{() -> log_in.goToSignUp()}"
+            android:onClick="@{() -> log_in.navToSignUp()}"
             android:text="@string/sign_up"
             android:textColor="@color/black"
             android:textSize="@dimen/btn_text_sign_in"

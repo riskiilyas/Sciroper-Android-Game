@@ -10,6 +10,9 @@ object AppSharedPreference {
     private const val KEY_IS_DARK_MODE = "key_is_dark_mode"
     private const val KEY_ID = "key_id"
     private const val  KEY_USERNAME = "key_username"
+    private const val USER_TOKEN = "user_token"
+    private const val ID_BINAR = "id_binar"
+
 
     private val sharedPreference =
         App.context.get()?.getSharedPreferences(APP_SHARED_PREFERENCES, Context.MODE_PRIVATE)
@@ -41,6 +44,22 @@ object AppSharedPreference {
         set(value) {
             if (value != null) {
                 sharedPreference?.edit()?.putBoolean(KEY_IS_DARK_MODE, value)?.apply()
+            }
+        }
+
+    var userToken: String?
+        get() = sharedPreference?.getString(USER_TOKEN, "")
+        set(value) {
+            if (value != null) {
+                sharedPreference?.edit()?.putString(USER_TOKEN, value)?.apply()
+            }
+        }
+
+    var idBinar: String?
+        get() = sharedPreference?.getString(ID_BINAR, "")
+        set(value) {
+            if (value != null) {
+                sharedPreference?.edit()?.putString(ID_BINAR, value)?.apply()
             }
         }
 }
