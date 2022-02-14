@@ -13,11 +13,11 @@
     <string name="game_suit">Game Suit</string>
     <string name="_1">1</string>
     <string name="user_level">%1$d</string>
-    <string name="register_succeed">Register \nSucceed</string>
+    <string name="register_succeed">Register\nSucceed</string>
     <string name="binar">Binar</string>
     <string name="bos">Bos</string>
     <string name="salsa">salsa</string>
-    <string name="leaderboard">Leader Board</string>
+    <string name="leaderboard">Leaderboard</string>
     <string name="rock">Rock</string>
     <string name="paper">Paper</string>
     <string name="scissors">Scissors</string>
@@ -42,8 +42,6 @@
     <string name="re_new_password">Re-new password</string>
     <string name="update">Update</string>
     <string name="sign_out">Sign Out</string>
-    <string name="dark_mode">Dark mode</string>
-    <string name="disable_dark_mode">Disable dark mode</string>
     <string name="choose_avatar">Choose Avatar</string>
     <string name="re_password">re-password</string>
     <string name="are_you_sure">Are you sure?</string>
@@ -57,6 +55,8 @@
     <string name="okay">Okay</string>
     <string name="setting">Setting</string>
     <string name="back">Back</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
     <string name="winner">%1$s\nWIN!</string>
     <string name="draw">Draw</string>
     <!-- TODO: Remove or change this placeholder text -->

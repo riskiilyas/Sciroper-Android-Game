@@ -94,7 +94,8 @@
             android:onClick="@{()->menuFragment.navToHtp()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnAchievement"
-            app:layout_constraintTop_toBottomOf="@+id/btnAchievement" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAchievement"
+            android:contentDescription="@string/how_to_play" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -13,7 +13,6 @@ import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.checkNetworkAvailable
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.FirebaseDatabase
 
 class MenuFragment : Fragment() {
     private var _binding: FragmentMenuBinding? = null
@@ -40,6 +39,7 @@ class MenuFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             menuFragment = this@MenuFragment
         }
+
 
         menuVm.user.observe(viewLifecycleOwner) {
             binding.tvCoinMenu.text = it.coin.toString()

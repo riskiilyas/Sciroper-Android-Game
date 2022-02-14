@@ -9,16 +9,29 @@ import com.binar.sciroper.data.local.AppSharedPreference
 
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
-    private val _isChecked = MutableLiveData<Boolean>(false)
+    private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
+    private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isNotif)
     val isChecked: LiveData<Boolean> = _isChecked
+    val isCheckedNotif: LiveData<Boolean> = _isCheckedNotif
 
-    fun setIsChecked(){
+    fun setIsChecked() {
         _isChecked.value = !_isChecked.value!!
     }
 
     fun setTheme(condition: Boolean) {
         AppSharedPreference.isDarkMode = condition
     }
+    fun setMusic(condition: Boolean) {
+        AppSharedPreference.isMusicPlay = condition
+    }
+    fun setIsCheckedNotif() {
+        _isCheckedNotif.value = !_isCheckedNotif.value!!
+    }
+
+    fun setNotif(condition: Boolean) {
+        AppSharedPreference.isNotif = condition
+    }
+
 }
 
 class SettingVmFactory(
