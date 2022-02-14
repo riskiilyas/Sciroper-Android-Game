@@ -6,7 +6,7 @@ import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
 
 class MenuGamePlayVm(private val userDao: UserDAO) : ViewModel() {
-    val user = userDao.getUserById(AppSharedPreference.id!!)
+    val user = userDao.getUserById(AppSharedPreference.idBinar!!)
 }
 
 class MenuGamePlayVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {

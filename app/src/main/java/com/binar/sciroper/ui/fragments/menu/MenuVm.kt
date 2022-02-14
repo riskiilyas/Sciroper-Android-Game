@@ -2,6 +2,7 @@ package com.binar.sciroper.ui.fragments.menu
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
@@ -11,13 +12,14 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 
-class MenuVm(private val userDao: UserDAO) : ViewModel() {
+class MenuVm(userDao: UserDAO) : ViewModel() {
     private val sharedPreferences = AppSharedPreference
 
-    private val userId = sharedPreferences.id
-    private val _user = userDao.getUserById(userId!!)
+    private val userId = sharedPreferences.idBinar
+    private val _user = userDao.getUserById(sharedPreferences.idBinar!!)
     val user get() = _user
     private val database = FirebaseRtdb()
 
@@ -36,47 +38,8 @@ class MenuVm(private val userDao: UserDAO) : ViewModel() {
 
     private val userToken = "Bearer ${sharedPreferences.userToken}"
 
-
-    init {
-        getUserDetails()
-        getUserAvatarId()
-    }
-
-    private fun getUserDetails() {
-        viewModelScope.launch {
-            try {
-                val userDetails = Retrofit.retrofitService.getUser("$userToken")
-                _onSuccess.value = userDetails
-                _userDetails.value = userDetails
-                Log.i("banana_menu_success", "shit actually works! ${userDetails}")
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _onFailure.value = e.message
-                Log.i("banana_menu_failure", "${e.message}, token: $userToken")
-            }
-        }
-    }
-
-    private fun getUserAvatarId() {
-        val target = database.database.getReference("Users").orderByChild("idBinar")
-            .equalTo(sharedPreferences.idBinar)
-        target.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                _avatarId.value =
-                    snapshot.child(sharedPreferences.idBinar!!).child("avatarId").value.toString()
-                        .toInt()
-                _userLevel.value =
-                    snapshot.child(sharedPreferences.idBinar!!).child("level").value.toString()
-                        .toInt()
-                _username.value =
-                    snapshot.child(sharedPreferences.idBinar!!).child("username").value.toString()
-                Log.i("onDataChange_getUserAvatarId", "$snapshot")
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.i("onCancelled_getAvatarId", "${error.message}")
-            }
-        })
+    fun updateUser(user: LiveData<User>) {
+        user.value?.let { FirebaseRtdb().updateUser(it) }
     }
 
 }
