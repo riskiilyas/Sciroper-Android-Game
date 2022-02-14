@@ -1,20 +1,23 @@
 package com.binar.sciroper.ui.fragments.setting
 
-import android.annotation.SuppressLint
-import android.nfc.Tag
+
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
-import com.binar.sciroper.util.*
+import com.binar.sciroper.ui.activity.MainActivity
+import com.binar.sciroper.util.App
+import com.binar.sciroper.util.BGMusic.isPlay
+import com.binar.sciroper.util.BGMusic.pausePlay
+import com.binar.sciroper.util.BGMusic.playMusic
 
 
 class SettingFragment : Fragment() {
@@ -24,17 +27,11 @@ class SettingFragment : Fragment() {
         SettingVmFactory(App.appDb.getUserDao(), AppSharedPreference)
     }
 
-    @SuppressLint("ResourceAsColor")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor = R.color.btnLight
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,6 +44,7 @@ class SettingFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             settingFragment = this@SettingFragment
         }
+
 
         settingVm.isChecked.observe(viewLifecycleOwner) {
             if (it) {
@@ -61,17 +59,29 @@ class SettingFragment : Fragment() {
             }
         }
 
-        settingVm.isCheckedMusic.observe(viewLifecycleOwner) {
-            if (it) {
-                App.context.get()?.let { it1 -> playMusic(it1) }
-                settingVm.setMusic(it)
-            } else {
-                resetMusic()
-                settingVm.setMusic(it)
+        binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
+
+        binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked && !isPlay()) {
+                playMusic(requireContext())
+                Toast.makeText(requireContext(), "Music ON", Toast.LENGTH_SHORT).show()
+                settingVm.setMusic(isChecked)
+                (activity as MainActivity).isMusicPlay = true
+                binding.switchMusic.isChecked = true
+            } else if (!isChecked && isPlay()) {
+                pausePlay()
+                settingVm.setMusic(isChecked)
+                (activity as MainActivity).isMusicPlay = false
+                binding.switchMusic.isChecked = false
             }
         }
-
-
+        settingVm.isCheckedNotif.observe(viewLifecycleOwner) {
+            if (it) {
+                settingVm.setNotif(it)
+            } else {
+                settingVm.setNotif(it)
+            }
+        }
     }
 
     fun navToMenu() {
@@ -87,8 +97,5 @@ class SettingFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        if (settingVm.isCheckedMusic.value!!) {
-            pausePlay()
-        }
     }
 }

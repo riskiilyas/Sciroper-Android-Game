@@ -50,6 +50,8 @@ class LogInVM(
                 sharedPreference.userToken = loginResponse.data.token
                 sharedPreference.isLogin = true
                 sharedPreference.idBinar = loginResponse.data._id
+                sharedPreference.isLogin = true
+                uiState.value = UiState.Success(loginResponse)
                 loadUser(loginResponse)
             } catch (e: Exception) {
                 e.printStackTrace()

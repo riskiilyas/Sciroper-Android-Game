@@ -67,13 +67,10 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
             playerChoice == choices[1] && opponentChoice == choices[0] ||
             playerChoice == choices[2] && opponentChoice == choices[1]
         ) {
-<<<<<<< HEAD
 //            gameMusic()
             _winner = user.toString()
-=======
             userLevel.win()
             _winner = user.username
->>>>>>> b84bbcfe1bd68127c246ecdabac32fcd164d395f
             "win"
 
         } else if (playerChoice == choices[0] && opponentChoice == choices[1] ||

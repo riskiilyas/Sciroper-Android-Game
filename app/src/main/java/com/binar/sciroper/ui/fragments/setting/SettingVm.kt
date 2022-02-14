@@ -1,23 +1,18 @@
 package com.binar.sciroper.ui.fragments.setting
 
-import android.content.Context
-import android.media.MediaPlayer
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
 
-
 class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
     ViewModel() {
-    private val _isChecked = MutableLiveData<Boolean>(false)
-    private val _isCheckedMusic = MutableLiveData<Boolean>(false)
+    private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
+    private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isNotif)
     val isChecked: LiveData<Boolean> = _isChecked
-    val isCheckedMusic: LiveData<Boolean> = _isCheckedMusic
+    val isCheckedNotif: LiveData<Boolean> = _isCheckedNotif
 
     fun setIsChecked() {
         _isChecked.value = !_isChecked.value!!
@@ -27,16 +22,19 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
         AppSharedPreference.isDarkMode = condition
     }
 
-    fun setIsCheckedMusic() {
-        _isCheckedMusic.value = !_isCheckedMusic.value!!
-    }
-
     fun setMusic(condition: Boolean) {
         AppSharedPreference.isMusicPlay = condition
     }
 
-}
+    fun setIsCheckedNotif() {
+        _isCheckedNotif.value = !_isCheckedNotif.value!!
+    }
 
+    fun setNotif(condition: Boolean) {
+        AppSharedPreference.isNotif = condition
+    }
+
+}
 
 
 class SettingVmFactory(

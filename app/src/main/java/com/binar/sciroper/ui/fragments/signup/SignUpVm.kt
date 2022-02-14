@@ -14,10 +14,12 @@ import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BaseViewModel
 import com.binar.sciroper.util.UiState
+import kotlinx.coroutines.launch
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.*
+
 
 class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
     private val sharedPreferences = AppSharedPreference
@@ -66,6 +68,7 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
                     )
                     sharedPreferences.userToken = logInResponse.data.token
                     sharedPreferences.idBinar = logInResponse.data._id
+                    sharedPreferences.isLogin = true
                     firebase.addUser(
                         idBinar = logInResponse.data._id,
                         email = inputEmail.value!!,
