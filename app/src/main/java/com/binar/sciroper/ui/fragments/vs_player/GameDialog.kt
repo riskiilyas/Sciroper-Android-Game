@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.GameDialogBinding
-import com.binar.sciroper.util.App
+import com.binar.sciroper.util.*
 
 class GameDialog(private val vsPlayerVm: VsPlayerVm) : DialogFragment() {
 
@@ -50,6 +50,7 @@ class GameDialog(private val vsPlayerVm: VsPlayerVm) : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.apply {
             vm = vsPlayerVm
         }
@@ -58,12 +59,15 @@ class GameDialog(private val vsPlayerVm: VsPlayerVm) : DialogFragment() {
     private fun setAnimation() {
         when (vsPlayerVm.result) {
             "draw" -> {
+                App.context.get()?.let { drawMusic(it) }
                 binding.lootieResult.setAnimation(R.raw.result_draw)
                 binding.tvResult.text = getString(R.string.draw)
             }
             else -> {
+                App.context.get()?.let { winMusic(it) }
                 binding.lootieResult.setAnimation(R.raw.result_win)
                 binding.tvResult.text = getString(R.string.winner, vsPlayerVm.winner)
+
             }
         }
     }

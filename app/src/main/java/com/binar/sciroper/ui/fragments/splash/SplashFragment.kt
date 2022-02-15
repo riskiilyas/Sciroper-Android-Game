@@ -3,7 +3,6 @@ package com.binar.sciroper.ui.fragments.splash
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BGMusic
+
 
 class SplashFragment : Fragment() {
 
@@ -22,14 +21,16 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if (AppSharedPreference.isMusicPlay){
+            BGMusic.pausePlay()
+        }
         if(AppSharedPreference.isLogin!!){
             Handler(Looper.getMainLooper()).postDelayed({
                 lifecycleScope.launchWhenResumed {
                     findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMenuFragment())
                     if (AppSharedPreference.isMusicPlay){
-                        BGMusic.playMusic()
+                        BGMusic.playMusic(requireContext())
                     }
-                    App.isReady = true
                 }
             }, 3000)
         } else {
