@@ -143,8 +143,9 @@ class LogInFragment : Fragment() {
         password.text?.clear()
         findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
         if (AppSharedPreference.isMusicPlay){
-            BGMusic.playMusic(requireContext())
+            BGMusic.playMusic()
         }
+        App.isReady = true
     }
 
     private fun onError(uiState: UiState.Error) = with(binding) {

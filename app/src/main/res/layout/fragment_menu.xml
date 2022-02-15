@@ -97,7 +97,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btnAchievement"
             android:contentDescription="@string/how_to_play" />
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
@@ -125,7 +124,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/avatar1" />
+                tools:src="@drawable/avatar33" />
 
             <TextView
                 android:id="@+id/tv_username"
