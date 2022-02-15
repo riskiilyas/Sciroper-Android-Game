@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentShopBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.drawMusic
+import com.binar.sciroper.util.soundEffect
 
 
 class ShopFragment : Fragment() {
@@ -95,6 +97,7 @@ class ShopFragment : Fragment() {
                 selectedId == null -> Toast.makeText(requireContext(), "Choose the item first!", Toast.LENGTH_SHORT).show()
                 shopVm.userData.value!!.coin < priceListInt[selectedId!!] -> {
                     Toast.makeText(requireContext(), "Not Enough coins!", Toast.LENGTH_SHORT).show()
+                    App.context.get()?.let { soundEffect(it) }
                 }
                 else -> {
                     shopVm.buyItem("abcdefgh"[selectedId!!], priceListInt[selectedId!!])

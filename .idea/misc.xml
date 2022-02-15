@@ -112,6 +112,19 @@
         <entry key="..\:/Binar/Chapter 6/Sciroper/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Binar/Chapter 6/Sciroper/app/src/main/res/layout/activity_splash_screen.xml" value="0.10185185185185185" />
         <entry key="..\:/Binar/Chapter 6/Sciroper/app/src/main/res/layout/fragment_page1.xml" value="0.14402173913043478" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/activity_setting.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/fragment_h_t_p.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/fragment_leaderboard.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/fragment_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/fragment_setting.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/fragment_shop.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/layout/game_dialog.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/Sciropper CC7/app/src/main/res/xml/xml.xml" value="0.14266304347826086" />
+=======
+=======
+>>>>>>> 741de7d63899eae38bd57dc6fe26434cbc8dae1d
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.2935" />
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/fragment_achievement.xml" value="0.25104166666666666" />
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/fragment_leaderboard.xml" value="0.18802083333333333" />
@@ -173,6 +186,10 @@
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_vs_com.xml" value="0.35588507877664505" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_vs_player.xml" value="0.33" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/game_dialog.xml" value="0.6086956521739131" />
+<<<<<<< HEAD
+>>>>>>> b84bbcfe1bd68127c246ecdabac32fcd164d395f
+=======
+>>>>>>> 741de7d63899eae38bd57dc6fe26434cbc8dae1d
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/bg_hasil_win.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/dimens.xml" value="0.10902777777777778" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RPSChallengechapter4/app/src/main/res/drawable/shape_background.xml" value="0.125" />
@@ -190,7 +207,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.11458333333333333" />
       </ProjectState>
     </option>
   </component>

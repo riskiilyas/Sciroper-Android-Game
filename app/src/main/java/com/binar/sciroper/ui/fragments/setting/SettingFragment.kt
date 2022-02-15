@@ -1,6 +1,8 @@
 package com.binar.sciroper.ui.fragments.setting
 
+
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
+import com.binar.sciroper.ui.activity.MainActivity
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.BGMusic.isPlay
+import com.binar.sciroper.util.BGMusic.pausePlay
 import com.binar.sciroper.util.BGMusic.playMusic
-import com.binar.sciroper.util.BGMusic.stopPlay
 
 
 class SettingFragment : Fragment() {
@@ -46,22 +50,27 @@ class SettingFragment : Fragment() {
             if (it) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 settingVm.setTheme(it)
+                Log.e("Tag", "true")
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 settingVm.setTheme(it)
+                Log.e("Tag", "false")
+
             }
         }
 
         binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
-
         binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
-            settingVm.setMusic(isChecked)
-            if (isChecked) {
-                playMusic()
-                Toast.makeText(requireContext(), "music ON", Toast.LENGTH_SHORT).show()
+            if (isChecked && !isPlay()) {
+                playMusic(requireContext())
+                Toast.makeText(requireContext(), "Music ON", Toast.LENGTH_SHORT).show()
+                settingVm.setMusic(isChecked)
+                (activity as MainActivity).isMusicPlay = true
                 binding.switchMusic.isChecked = true
-            } else if (!isChecked) {
-                stopPlay()
+            } else if (!isChecked && isPlay()) {
+                pausePlay()
+                settingVm.setMusic(isChecked)
+                (activity as MainActivity).isMusicPlay = false
                 binding.switchMusic.isChecked = false
             }
         }

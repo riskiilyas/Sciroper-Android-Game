@@ -13,6 +13,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.ComLayoutBinding
+import com.binar.sciroper.util.App
+import com.binar.sciroper.util.drawMusic
+import com.binar.sciroper.util.winMusic
 
 class ComDialog(private val vsComVm: VsComVm): DialogFragment() {
     private var _binding: ComLayoutBinding? = null
@@ -48,10 +51,12 @@ class ComDialog(private val vsComVm: VsComVm): DialogFragment() {
     private fun setAnimation() {
         when (vsComVm.result.value) {
             "draw" -> {
+                App.context.get()?.let { drawMusic(it) }
                 binding.lootieResultC.setAnimation(R.raw.result_draw)
                 binding.tvResultC.text = "Draw"
             }
             else -> {
+                App.context.get()?.let { winMusic(it) }
                 binding.lootieResultC.setAnimation(R.raw.result_win)
                 binding.tvResultC.text = "${vsComVm.winner}\nWin"
             }

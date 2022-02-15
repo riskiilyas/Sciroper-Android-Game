@@ -67,9 +67,11 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
             playerChoice == choices[1] && opponentChoice == choices[0] ||
             playerChoice == choices[2] && opponentChoice == choices[1]
         ) {
+            _winner = user.toString()
             userLevel.win()
             _winner = user.username
             "win"
+
         } else if (playerChoice == choices[0] && opponentChoice == choices[1] ||
             playerChoice == choices[1] && opponentChoice == choices[2] ||
             playerChoice == choices[2] && opponentChoice == choices[0]
@@ -97,14 +99,13 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
         setPlayerSelectedId(0)
         setStatus(true)
     }
-}
 
-class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(VsPlayerVm::class.java)) {
-            return VsPlayerVm(userDao) as T
+    class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(VsPlayerVm::class.java)) {
+                return VsPlayerVm(userDao) as T
+            }
+            throw IllegalArgumentException("Unknown view model class")
         }
-        throw IllegalArgumentException("Unknown view model class")
     }
-
 }

@@ -19,7 +19,6 @@ class App : Application() {
     companion object {
         lateinit var context: WeakReference<Context>
         lateinit var appDb: AppDB
-        var isReady = false
     }
 
     override fun onCreate() {
@@ -36,9 +35,6 @@ class App : Application() {
         AppSharedPreference.isLogin?.let {
             if (it) loadUser()
         }
-        BGMusic.createMediaplayer(this)
-        BGMusic.playMusic()
-        BGMusic.pausePlay()
     }
 
     private fun loadUser() {
