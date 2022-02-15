@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentHTPBinding
+import java.io.File
 
 class HTPFragment : Fragment() {
 
@@ -16,7 +17,7 @@ class HTPFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentHTPBinding.inflate(inflater, container, false)
         return binding.root
@@ -24,7 +25,6 @@ class HTPFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             htpFragment = this@HTPFragment

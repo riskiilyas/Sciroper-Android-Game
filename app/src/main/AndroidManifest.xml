@@ -21,7 +21,6 @@
         tools:ignore="AllowBackup">
         <activity
             android:name="com.binar.sciroper.ui.activity.MainActivity"
-            android:configChanges="uiMode"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

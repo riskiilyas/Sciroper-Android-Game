@@ -24,6 +24,7 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
     val allUsers = userDao.getUsers()
     private val _userListSize = MutableLiveData<Int>()
     val userListSize: LiveData<Int> get() = _userListSize
+    private var observer: () -> Unit = {}
 
     init {
         getUsers()
@@ -32,12 +33,14 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
     private fun getUsers() {
         database.databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                userList.removeAll(userList)
                 for (data in snapshot.children) {
                     val user = data.getValue(User::class.java)
                     _userList.add(user!!)
                 }
                 _userLiveData.value = UserLevel.sortUsersLevel(userList)
                 _userListSize.value = userList.size
+                observe()
                 Log.i("userlist_size", "${userListSize.value}")
             }
 
@@ -45,6 +48,14 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
                 Log.i("update_list", "shit happens")
             }
         })
+    }
+
+    fun setObserver(callback: () -> Unit) {
+        observer = callback
+    }
+
+    fun observe() {
+        observer()
     }
 
 }
