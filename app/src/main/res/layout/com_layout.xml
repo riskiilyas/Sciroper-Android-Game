@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="8dp"
+        android:background="@drawable/shape_bg_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
