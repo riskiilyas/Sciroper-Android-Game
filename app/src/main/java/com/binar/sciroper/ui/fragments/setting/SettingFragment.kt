@@ -60,7 +60,6 @@ class SettingFragment : Fragment() {
         }
 
         binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
-
         binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked && !isPlay()) {
                 playMusic(requireContext())
