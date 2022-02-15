@@ -8,6 +8,7 @@ import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.util.BGMusic
 import com.binar.sciroper.util.BGMusic.pausePlay
 import com.binar.sciroper.util.BGMusic.playMusic
+import com.binar.sciroper.util.Share
 
 class MainActivity : AppCompatActivity() {
     var isMusicPlay: Boolean = false
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
 
 //    override fun onStop() {
