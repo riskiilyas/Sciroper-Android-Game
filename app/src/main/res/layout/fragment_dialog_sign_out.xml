@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/madeeta"
             android:text="@string/are_you_sure"
-            android:textColor="@color/black"
+            android:textColor="?textColour"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

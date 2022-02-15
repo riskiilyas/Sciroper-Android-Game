@@ -24,7 +24,7 @@
             android:id="@+id/logo_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_marginTop="32dp"
+            android:layout_marginTop="32dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_menu"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -90,21 +90,22 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/how_to_play"
+            android:onClick="@{() -> menuFragment.navToHtp()}"
             android:src="@drawable/htp"
-            android:onClick="@{()->menuFragment.navToHtp()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/btnAchievement"
-            app:layout_constraintTop_toBottomOf="@+id/btnAchievement"
-            android:contentDescription="@string/how_to_play" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAchievement" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="32sp"
             android:background="@drawable/card_bg"
             android:padding="16dp"
-            android:layout_marginBottom="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/end_guideline"
             app:layout_constraintHorizontal_bias="0.5"
@@ -124,7 +125,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/avatar33" />
+                tools:src="@drawable/avatar1" />
 
             <TextView
                 android:id="@+id/tv_username"
