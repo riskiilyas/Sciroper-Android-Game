@@ -1,6 +1,7 @@
 package com.binar.sciroper.ui.fragments.vs_player
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -66,7 +67,6 @@ class VsPlayerFragment : Fragment() {
 
         playGame()
 
-
         vsPlayerVm.userLiveData.observe(viewLifecycleOwner) {
             binding.tvCoin.text = it.coin.toString()
 
@@ -95,8 +95,10 @@ class VsPlayerFragment : Fragment() {
                 choice.setBackgroundResource(R.drawable.shape_background)
                 freezeState(btnPemainSatu)
                 vsPlayerVm.gameResult()
+                Log.i("choices", "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}")
                 createDialog()
                 createToast(vsPlayerVm.user.username, vsPlayerVm.playerChoice)
+
             }
         }
     }
@@ -109,6 +111,7 @@ class VsPlayerFragment : Fragment() {
                 choice.setBackgroundResource(R.drawable.shape_background)
                 freezeState(btnPemainDua)
                 vsPlayerVm.gameResult()
+                Log.i("choices", "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}")
                 createDialog()
                 createToast(vsPlayerVm.opponent, vsPlayerVm.opponentChoice)
             }
@@ -118,6 +121,7 @@ class VsPlayerFragment : Fragment() {
     private fun playGame() {
         playerMove()
         opponentMove()
+        vsPlayerVm.postResult(vsPlayerVm.result)
     }
 
     private fun freezeState(choices: List<ImageView>) {
@@ -143,7 +147,7 @@ class VsPlayerFragment : Fragment() {
         }
     }
 
-    fun navToMenuGamePlay(){
+    fun navToMenuGamePlay() {
         val action = VsPlayerFragmentDirections.actionVsPlayerFragmentToMenuGamePlayFragment()
         findNavController().navigate(action)
     }

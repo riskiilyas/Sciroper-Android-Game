@@ -71,41 +71,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/btnAchievement"
-            android:layout_width="@dimen/btn_icon"
-            android:layout_height="@dimen/btn_icon"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/achievement"
-            android:onClick="@{() -> menuFragment.navToAchievement()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btnShop"
-            app:layout_constraintTop_toBottomOf="@+id/btnShop" />
-
-        <ImageView
             android:id="@+id/btnHowToPlay"
             android:layout_width="@dimen/btn_icon"
             android:layout_height="@dimen/btn_icon"
-            android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/how_to_play"
-            android:onClick="@{() -> menuFragment.navToHtp()}"
+            android:onClick="@{()->menuFragment.navToHtp()}"
             android:src="@drawable/htp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btnAchievement"
-            app:layout_constraintTop_toBottomOf="@+id/btnAchievement" />
-
+            app:layout_constraintStart_toStartOf="@+id/btnShop"
+            app:layout_constraintTop_toBottomOf="@+id/btnShop" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="32sp"
             android:background="@drawable/card_bg"
             android:padding="16dp"
+            android:layout_marginBottom="32sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/end_guideline"
             app:layout_constraintHorizontal_bias="0.5"
@@ -125,7 +110,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/avatar1" />
+                tools:src="@drawable/avatar33" />
 
             <TextView
                 android:id="@+id/tv_username"
@@ -139,8 +124,10 @@
                 android:textColor="?textColour"
                 android:textSize="32sp"
                 app:layout_constraintBottom_toTopOf="@+id/btn_play"
-                app:layout_constraintEnd_toEndOf="@id/guideline6"
-                app:layout_constraintHorizontal_bias="0.359"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_level"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_img"
                 tools:text="Joe" />
 
@@ -159,7 +146,9 @@
                 android:textColor="?textColour"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_username"
-                app:layout_constraintStart_toEndOf="@id/guideline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_username"
                 app:layout_constraintTop_toTopOf="@+id/tv_username"
                 tools:text="999" />
 
@@ -218,11 +207,31 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
                 android:textColor="?textColour"
                 android:textSize="32sp"
-                app:layout_constraintBottom_toTopOf="@+id/btn_exit_game"
+                app:layout_constraintBottom_toTopOf="@+id/btn_history"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_setting" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?menuColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{() -> menuFragment.navToHistory()}"
+                android:text="@string/history"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_exit_game"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_leader_board" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_exit_game"
@@ -242,14 +251,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_leader_board" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_history" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

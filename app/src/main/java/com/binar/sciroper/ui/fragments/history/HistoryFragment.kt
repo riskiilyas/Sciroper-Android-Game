@@ -1,4 +1,4 @@
-package com.binar.sciroper.ui.fragments.achievement
+package com.binar.sciroper.ui.fragments.history
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,26 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
-import com.binar.sciroper.databinding.FragmentAchievementBinding
-import com.binar.sciroper.util.App
+import com.binar.sciroper.databinding.FragmentHistoryBinding
+import com.binar.sciroper.ui.fragments.achievement.HistoryAdapter
 
-class AchievementFragment : Fragment() {
-    private var _binding: FragmentAchievementBinding? = null
+
+class HistoryFragment : Fragment() {
+
+    private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-    private val achievementVm: AchievementVm by viewModels {
-        AchievementVmFactory(App.appDb.getUserDao())
-    }
+    private val historyVm: HistoryVm by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        achievementVm.getHistory()
+        historyVm.getHistory()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAchievementBinding.inflate(inflater, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,17 +34,17 @@ class AchievementFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            vm = achievementVm
             lifecycleOwner = viewLifecycleOwner
-            achievementFragment = this@AchievementFragment
+//            vm = historyVm
+//            historyFragment = this@HistoryFragment
         }
 
-        achievementVm.historyList.observe(viewLifecycleOwner) {
+        historyVm.historyList.observe(viewLifecycleOwner) {
             val adapter = HistoryAdapter(it.reversed())
             binding.recylclerView.adapter = adapter
         }
 
-        achievementVm.loadInd.observe(viewLifecycleOwner) {
+        historyVm.loadInd.observe(viewLifecycleOwner) {
             binding.loadingInd.isGone = it != true
         }
     }
