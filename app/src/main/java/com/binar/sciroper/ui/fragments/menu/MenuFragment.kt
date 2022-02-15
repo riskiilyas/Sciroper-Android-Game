@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentMenuBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.BGMusic
 import com.binar.sciroper.util.checkNetworkAvailable
 import com.google.android.material.snackbar.Snackbar
 
@@ -76,6 +78,9 @@ class MenuFragment : Fragment() {
     fun navToHtp() {
         val action = MenuFragmentDirections.actionMenuFragmentToHTPFragment()
         findNavController().navigate(action)
+        if (AppSharedPreference.isMusicPlay){
+            BGMusic.pausePlay()
+        }
     }
 
     fun navToShop() {
