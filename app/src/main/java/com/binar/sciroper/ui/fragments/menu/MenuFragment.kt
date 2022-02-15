@@ -1,6 +1,5 @@
 package com.binar.sciroper.ui.fragments.menu
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,10 +41,12 @@ class MenuFragment : Fragment() {
 
 
         menuVm.user.observe(viewLifecycleOwner) {
-            binding.tvCoinMenu.text = it.coin.toString()
-            binding.tvUsername.text = it.username
-            binding.tvUserLevel.text = it.level.toString()
-            binding.userImg.setImageResource(it.avatarId)
+            if (it != null) {
+                binding.tvCoinMenu.text = it.coin.toString()
+                binding.tvUsername.text = it.username
+                binding.tvUserLevel.text = it.level.toString()
+                binding.userImg.setImageResource(it.avatarId)
+            }
         }
 
         checkNetworkAvailable {
@@ -100,11 +101,6 @@ class MenuFragment : Fragment() {
         val dialogFragment = DialogExit()
         dialogFragment.isCancelable = false
         dialogFragment.show(childFragmentManager, "custom_dialog")
-    }
-
-    private fun <T> moveTo(target: Class<T>) {
-        val intent = Intent(activity, target)
-        startActivity(intent)
     }
 
     override fun onDestroy() {

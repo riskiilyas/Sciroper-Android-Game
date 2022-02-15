@@ -11,11 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
-import com.binar.sciroper.ui.activity.MainActivity
 import com.binar.sciroper.util.App
-import com.binar.sciroper.util.BGMusic.isPlay
-import com.binar.sciroper.util.BGMusic.pausePlay
 import com.binar.sciroper.util.BGMusic.playMusic
+import com.binar.sciroper.util.BGMusic.stopPlay
 
 
 class SettingFragment : Fragment() {
@@ -57,16 +55,13 @@ class SettingFragment : Fragment() {
         binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
 
         binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked && !isPlay()) {
-                playMusic(requireContext())
+            settingVm.setMusic(isChecked)
+            if (isChecked) {
+                playMusic()
                 Toast.makeText(requireContext(), "music ON", Toast.LENGTH_SHORT).show()
-                settingVm.setMusic(isChecked)
-                (activity as MainActivity).isMusicPlay = true
                 binding.switchMusic.isChecked = true
-            } else if (!isChecked && isPlay()) {
-                pausePlay()
-                settingVm.setMusic(isChecked)
-                (activity as MainActivity).isMusicPlay = false
+            } else if (!isChecked) {
+                stopPlay()
                 binding.switchMusic.isChecked = false
             }
         }

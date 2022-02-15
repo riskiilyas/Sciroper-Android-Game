@@ -50,7 +50,6 @@ class GameDialog(private val vsPlayerVm: VsPlayerVm) : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.apply {
             vm = vsPlayerVm
         }
