@@ -2,10 +2,11 @@ package com.binar.sciroper.ui.fragments.vs_com
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.data.retrofit.GameResult
+import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.UserLevel
 import com.binar.sciroper.util.checkNetworkAvailable
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +40,26 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
     val result: LiveData<String> get() = _result
     private var _winner: String = ""
     val winner get() = _winner
+
+    fun postResult(gameResult: String) {
+        viewModelScope.launch {
+            val outcome =
+                when (gameResult) {
+                    "win" -> "Player Win"
+                    "lose" -> "Opponent Win"
+                    else -> "Draw"
+                }
+            try {
+                val historyResponse = Retrofit.retrofitService.postGameResult(
+                    "Bearer ${AppSharedPreference.userToken!!}",
+                    GameResult(result = outcome)
+                )
+                Log.i("result", "post ${result.value}")
+            } catch (e: Exception) {
+                Log.i("result", "${e.message}")
+            }
+        }
+    }
 
     fun gameResult() {
         val userLevel = UserLevel(user)
