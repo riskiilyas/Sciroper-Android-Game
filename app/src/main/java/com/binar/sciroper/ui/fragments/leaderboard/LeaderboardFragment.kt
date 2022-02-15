@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.fragments.leaderboard
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.databinding.FragmentLeaderboardBinding
 import com.binar.sciroper.util.App
+import com.binar.sciroper.util.Share
+import java.io.File
 
 class LeaderboardFragment : Fragment() {
 
@@ -48,6 +51,28 @@ class LeaderboardFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        binding.btnShare.setOnClickListener {
+            ambilscreenshot()
+            bagiscreenshot()
+        }
+
+    }
+
+    fun ambilscreenshot() {
+        val bitmap: Bitmap? = Share.getViewScreenshot(
+            binding.constView,
+            binding.constView.height,
+            binding.constView.width
+        )
+        bitmap?.let {
+            Share.saveScreenshot(it,requireContext())
+        };
+    }
+
+    fun bagiscreenshot() {
+        val fileScreenshot =
+            File(requireContext().getExternalFilesDir(null)!!.absolutePath + "/Screenshot/Screenshot.jpg")
+        startActivity(Share.ShareFileScreensshot(fileScreenshot))
     }
 
     override fun onDestroy() {
