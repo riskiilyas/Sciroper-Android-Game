@@ -25,6 +25,7 @@ class DialogSignOutt(private val vm: ProfileVm) : DialogFragment() {
 
         binding.btnYes.setOnClickListener {
             AppSharedPreference.isLogin = false
+            AppSharedPreference.userToken = null
             val action = ProfileFragmentDirections.actionProfileFragmentToLogInFragment()
             findNavController().navigate(action)
             vm.deleteUser()
