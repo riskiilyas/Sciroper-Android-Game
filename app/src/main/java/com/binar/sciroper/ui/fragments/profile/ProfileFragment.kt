@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
-import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentProfileBinding
 import com.binar.sciroper.util.App
@@ -25,13 +26,7 @@ class ProfileFragment : Fragment() {
     }
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var user: User
     private lateinit var avatars: List<ImageView>
-    private lateinit var userListExcl: List<User>
-    private lateinit var inputUsername: String
-    private lateinit var inputEmail: String
-    private lateinit var inputPassword: String
-    private val database = FirebaseRtdb()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,68 +68,33 @@ class ProfileFragment : Fragment() {
                     .addFormDataPart("email", binding.etEmail.text.toString())
                     .addFormDataPart("username", binding.etUsername.text.toString())
                     .build(),
+                email = binding.etEmail.text.toString(),
+                username = binding.etUsername.text.toString(),
+                /*masukkan value avatarId yang di pass lewat nav arg
+                * value R.drawable.avatar22 hanya sebuah temporary place holder*/
+                avatarId = R.drawable.avatar22
             )
         }
 
-//        profileVm.userAvatarId.observe(viewLifecycleOwner) { avatarId ->
-//            binding.btnUpdate.setOnClickListener {
-//                Log.i("button", "button is clicked")
-////                profileVm.postChanges(
-////                    "Bearer ${AppSharedPreference.userToken}",
-////                    MultipartBody.Builder()
-////                        .setType(MultipartBody.FORM)
-////                        .addFormDataPart("email", binding.etEmail.text.toString())
-////                        .addFormDataPart("username", binding.etUsername.text.toString())
-////                        .build()
-////                )
-//
-//                profileVm.checkDuplicateEmail(
-//                    binding.etEmail.text.toString()
-//                )
-//
-////                profileVm.postChangesFirebase(
-////                    AppSharedPreference.idBinar!!,
-////                    binding.etUsername.text.toString(),
-////                    binding.etEmail.text.toString(),
-////                    avatarId
-////                )
-//            }
-//
-////            profileVm.postRetrofitToast.observe(viewLifecycleOwner) {
-////                if (it) {
-////                    Toast.makeText(requireContext(), "update successful", Toast.LENGTH_SHORT).show()
-////                    profileVm.setRetrofitToast()
-////                }
-////            }
-//
-////            profileVm.duplicateEmail.observe(viewLifecycleOwner) {
-////                if (it) {
-////                    Toast.makeText(
-////                        requireContext(),
-////                        "email exists, please try again",
-////                        Toast.LENGTH_SHORT
-////                    ).show()
-////                    profileVm.setDuplicateEmailToast()
-////                }
-////            }
-//        }
+        profileVm.onSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                createDialog()
+                profileVm.setOnSuccessValue()
+            }
+        }
+
+        profileVm.onFailure.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        profileVm.loadingInd.observe(viewLifecycleOwner) {
+            if (it == true) {
+                binding.loadingInd.isVisible = true
+            } else {
+                binding.loadingInd.isGone = false
+            }
+        }
     }
-
-//    private fun bind(user: User) {
-//        binding.apply {
-//            etUsername.setText(user.username, TextView.BufferType.SPANNABLE)
-//            etEmail.setText(user.email, TextView.BufferType.SPANNABLE)
-////            testing.text = user.avatarId.toString()
-//        }
-//    }
-
-//    private fun onSelectAvatar(user: User, avatarList: List<ImageView>) {
-//        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
-//            imageView.setOnClickListener {
-//                profileVm.setAvatarId(AvatarHelper.provideList()[index])
-//            }
-//        }
-//    }
 
     private fun onSelectedAvatar(avatarList: List<ImageView>) {
         avatarList.forEachIndexed { index: Int, imageView: ImageView ->
@@ -158,9 +118,12 @@ class ProfileFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    fun createDialog() {
+        /*create update success dialog/toast*/
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 }

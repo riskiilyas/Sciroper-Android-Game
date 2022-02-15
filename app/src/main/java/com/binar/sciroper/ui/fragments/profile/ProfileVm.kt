@@ -9,21 +9,11 @@ import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.data.retrofit.AuthResponse
 import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.AvatarHelper
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
 
 class ProfileVm(private val userDao: UserDAO) : ViewModel() {
     private val sharedPreference = AppSharedPreference
-    private val uiScope = CoroutineScope(Dispatchers.Main + Job())
-    val allOtherUsers: LiveData<List<User>> =
-        userDao.getUserExclFlow(sharedPreference.idBinar!!).asLiveData()
-    private val _duplicateUsername = MutableLiveData<Boolean>()
     private val user = userDao.getUserByIdNoLiveData(sharedPreference.idBinar!!)
     private val _userAvatarId = MutableLiveData<Int>()
     val userAvatarId: LiveData<Int> = _userAvatarId
@@ -32,59 +22,36 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> get() = _email
     private val userToken = "Bearer ${sharedPreference.userToken}"
-    private val _onSuccess = MutableLiveData<AuthResponse>()
-    val onSuccess: LiveData<AuthResponse> get() = _onSuccess
+    private val _onSuccess = MutableLiveData<Boolean>()
+    val onSuccess: LiveData<Boolean> get() = _onSuccess
     private val _onFailure = MutableLiveData<String>()
     val onFailure: LiveData<String> get() = _onFailure
     private val _userDetails = MutableLiveData<AuthResponse>()
     val userDetails: LiveData<AuthResponse> get() = _userDetails
-    private val _postRetrofitToast = MutableLiveData<Boolean>()
-    val postRetrofitToast: LiveData<Boolean> get() = _postRetrofitToast
-    private val _postFirebaseToast = MutableLiveData<Boolean>()
-    val postFirebaseToast: LiveData<Boolean> get() = _postFirebaseToast
-    private val emailSize: Int = 0
-
-    val avatarIds = AvatarHelper.provideList()
-
     private val database = FirebaseRtdb()
+    private val _loadingInd = MutableLiveData<Boolean>()
+    val loadingInd: LiveData<Boolean> get() = _loadingInd
 
     init {
         getUserDetails()
     }
 
     private fun getUserDetails() {
+        _loadingInd.value = true
         viewModelScope.launch {
             try {
                 val userDetails = Retrofit.retrofitService.getUser("$userToken")
-                _onSuccess.value = userDetails
                 _userDetails.value = userDetails
-                Log.i("banana_menu_success", "shit actually works! ${userDetails}")
+                _loadingInd.value = false
+                Log.i("banana_menu_success", "shit actually works! $userDetails")
             } catch (e: Exception) {
+                _loadingInd.value = false
                 e.printStackTrace()
                 _onFailure.value = e.message
                 Log.i("banana_menu_failure", "${e.message}, token: $userToken")
             }
         }
     }
-
-//    fun postChanges(
-//        token: String,
-//        requestBody: RequestBody,
-//    ) {
-//        viewModelScope.launch {
-//            try {
-//                Retrofit.retrofitService.updateProfile(
-//                    token,
-//                    requestBody
-//                )
-//                _postRetrofitToast.value = true
-//                Log.i("banana_update", "posting success")
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//                Log.i("banana_update", "${e.message}")
-//            }
-//        }
-//    }
 
     fun deleteUser() {
         viewModelScope.launch { userDao.deleteUser(user) }
@@ -93,46 +60,42 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
     fun postChanges(
         token: String,
         requestBody: RequestBody,
+        username: String,
+        email: String,
+        avatarId: Int
     ) {
+        _loadingInd.value = true
         viewModelScope.launch {
             try {
                 Retrofit.retrofitService.updateProfile(
                     token,
                     requestBody
                 )
-                _postRetrofitToast.value = true
+                postChangesFirebase(username = username, email = email, avatarId = avatarId)
+                _onSuccess.value = true
+                _loadingInd.value = false
                 Log.i("banana_update", "post to retrofit success")
                 Log.i("banana_update", "attempting to update firebase")
             } catch (e: Exception) {
                 e.printStackTrace()
+                _onFailure.value = "Fails to updated"
+                _loadingInd.value = false
                 Log.i("banana_update", "${e.message}")
             }
         }
     }
 
-    fun setRetrofitToast() {
-        _postRetrofitToast.value = false
-    }
-
-    fun setFirebaseToast() {
-        _postRetrofitToast.value = false
-    }
-
-    fun setAvatarId(avatarId: Int) {
-        _userAvatarId.value = avatarId
-    }
-
-    fun postChangesFirebase(idBinar: String, username: String, email: String, avatarId: Int) {
+    private fun postChangesFirebase(username: String, email: String, avatarId: Int) {
+        Log.i("banana_update", "attempting to update firebase")
         val userMap = mutableMapOf<String, Any>()
         userMap["email"] = email
         userMap["username"] = username
         userMap["avatarId"] = avatarId
 
-        database.database.getReference("Users").child(idBinar).updateChildren(userMap)
+        database.database.getReference("Users").child(sharedPreference.idBinar!!)
+            .updateChildren(userMap)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    _postFirebaseToast.value = true
-                    setFirebaseToast()
                     Log.i("update_success", "you got it boss")
                 } else {
                     Log.i("update_error", "${it.exception}")
@@ -140,38 +103,13 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
             }
     }
 
-    fun getEmailSize(email: String) {
-        val checkEmail =
-            database.database.getReference("Users").orderByChild("email").equalTo(email)
-        checkEmail.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                Log.i("check_duplicate", "${snapshot.childrenCount}")
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.i("check_duplicate", "can't get query size with reference to email")
-            }
-        })
+    fun setOnSuccessValue() {
+        _onSuccess.value = false
     }
-//    fun getUserDetails() {
-//        val target = database.database.getReference("Users").orderByChild("idBinar")
-//            .equalTo(sharedPreference.idBinar)
-//        target.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                Log.i("banana_profile", "$snapshot")
-//                _userAvatarId.value =
-//                    snapshot.child(sharedPreference.idBinar!!).child("avatarId").value.toString()
-//                        .toInt()
-//                _username.value = snapshot.child(sharedPreference.idBinar!!).child("username").value.toString()
-//                _email.value = snapshot.child(sharedPreference.idBinar!!).child("email").value.toString()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.i("onCancelled_getUserDetails", error.message)
-//            }
-//        })
-//    }
+
+    fun setAvatarId(avatarId: Int) {
+        _userAvatarId.value = avatarId
+    }
 }
 
 class ProfileVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {

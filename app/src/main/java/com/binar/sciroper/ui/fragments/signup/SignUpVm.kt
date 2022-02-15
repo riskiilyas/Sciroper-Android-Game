@@ -40,7 +40,7 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
     private var selectedAvatarId: Int = R.drawable.avatar21
 
 
-    fun signUp(user: AuthDetails) {
+    fun signUp() {
         fieldChecker()
         if (fieldChecker.value!!) {
             uiState.value = UiState.Loading
@@ -62,6 +62,8 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
                     )
                     sharedPreferences.userToken = logInResponse.data.token
                     sharedPreferences.idBinar = logInResponse.data._id
+                    sharedPreferences.username = logInResponse.data.username
+                    sharedPreferences.email = logInResponse.data.email
                     sharedPreferences.isLogin = true
                     firebase.addUser(
                         idBinar = logInResponse.data._id,
@@ -70,13 +72,11 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
                         password = inputPassword.value!!,
                         avatarId = selectedAvatarId
                     )
-//                    _onSuccess.value = signUpResponse
                     uiState.value = UiState.Success(signUpResponse)
                     sharedPreferences.isLogin = true
                     loadUser()
                 } catch (e: Exception) {
                     e.printStackTrace()
-//                    _onFailure.value = e.message
                     uiState.value = UiState.Error(e.message.toString())
                     Log.i("sign_up", "${e.message}")
                 }
@@ -143,7 +143,7 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
             usernameLength.value != true && onInvalidEmail.value != true && onPasswordError.value != true
     }
 
-    fun resetErrorField(){
+    fun resetErrorField() {
         _onPasswordError.value = false
         _onInvalidEmail.value = false
         _usernameLength.value = false
