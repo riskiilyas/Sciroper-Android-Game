@@ -7,25 +7,18 @@ import com.binar.sciroper.R
 
 object BGMusic {
     var mediaPlayer: MediaPlayer? = null
-
-    fun createMediaplayer(context: Context) {
+    fun playMusic(context: Context) {
         mediaPlayer = MediaPlayer.create(
             context,
             R.raw.bensound_ukulele
         )
-    }
-
-    fun playMusic() {
         mediaPlayer?.start()
         mediaPlayer?.isLooping = true
     }
 
+    fun isPlay() = mediaPlayer?.isPlaying ?: false
+
     fun pausePlay() {
         mediaPlayer?.pause()
-    }
-
-    fun stopPlay() {
-        mediaPlayer?.pause()
-        mediaPlayer?.seekTo(0)
     }
 }

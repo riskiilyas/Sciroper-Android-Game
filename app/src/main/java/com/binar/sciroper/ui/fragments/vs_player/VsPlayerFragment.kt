@@ -1,7 +1,6 @@
 package com.binar.sciroper.ui.fragments.vs_player
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,7 @@ class VsPlayerFragment : Fragment() {
     private var _binding: FragmentVsPlayerBinding? = null
     private val binding get() = _binding!!
     private val vsPlayerVm: VsPlayerVm by activityViewModels {
-        VsPlayerVmFactory(App.appDb.getUserDao())
+        VsPlayerVm.VsPlayerVmFactory(App.appDb.getUserDao())
     }
     private lateinit var btnPemainSatu: List<ImageView>
     private lateinit var btnPemainDua: List<ImageView>
@@ -153,4 +152,6 @@ class VsPlayerFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+
 }
