@@ -50,7 +50,7 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
                     else -> "Draw"
                 }
             try {
-                val historyResponse = Retrofit.retrofitService.postGameResult(
+                Retrofit.retrofitService.postGameResult(
                     "Bearer ${AppSharedPreference.userToken!!}",
                     GameResult(result = outcome)
                 )
