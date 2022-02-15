@@ -97,6 +97,11 @@ class MenuFragment : Fragment() {
         }
     }
 
+    fun navToHistory(){
+        val action = MenuFragmentDirections.actionMenuFragmentToHistoryFragment()
+        findNavController().navigate(action)
+    }
+
     fun createDialog() {
         val dialogFragment = DialogExit()
         dialogFragment.isCancelable = false
