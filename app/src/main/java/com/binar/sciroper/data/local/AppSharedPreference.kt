@@ -14,6 +14,7 @@ object AppSharedPreference {
     private const val NOTIF = "notif"
     private const val USER_TOKEN = "user_token"
     private const val ID_BINAR = "id_binar"
+    private const val KEY_EMAIL = "key_email"
 
 
     private val sharedPreference =
@@ -77,6 +78,14 @@ object AppSharedPreference {
         set(value) {
             if (value != null) {
                 sharedPreference?.edit()?.putString(ID_BINAR, value)?.apply()
+            }
+        }
+
+    var email: String?
+        get() = sharedPreference?.getString(KEY_EMAIL, "")
+        set(value) {
+            if (value != null) {
+                sharedPreference?.edit()?.putString(KEY_EMAIL, value)?.apply()
             }
         }
 }

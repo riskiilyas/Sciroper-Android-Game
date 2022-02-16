@@ -1,21 +1,19 @@
 package com.binar.sciroper.ui.fragments.profile
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.binar.sciroper.R
-import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentProfileBinding
+import com.binar.sciroper.ui.fragments.profile.DialogUpdate.Companion.DIALOG_UPDATE
 import com.binar.sciroper.util.App
-import com.binar.sciroper.util.AvatarHelper
 import okhttp3.MultipartBody
 
 class ProfileFragment : Fragment() {
@@ -25,13 +23,7 @@ class ProfileFragment : Fragment() {
     }
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var user: User
-    private lateinit var avatars: List<ImageView>
-    private lateinit var userListExcl: List<User>
-    private lateinit var inputUsername: String
-    private lateinit var inputEmail: String
-    private lateinit var inputPassword: String
-    private val database = FirebaseRtdb()
+    private var avatars = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,28 +36,23 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        avatars = listOf(
-//            binding.avatarId1,
-//            binding.avatarId2,
-//            binding.avatarId3,
-//            binding.avatarId4
-//        )
-
         binding.apply {
             vm = profileVm
             lifecycleOwner = viewLifecycleOwner
             profileFragment = this@ProfileFragment
         }
 
+        profileVm.userLive.observe(viewLifecycleOwner) {
+            binding.ivAvatar.setImageResource(it.avatarId)
+            avatars = it.avatarId
+        }
+
         binding.btnSignOut.setOnClickListener {
             onSignOut()
         }
 
-//        onSelectedAvatar(avatars)
 
         binding.btnUpdate.setOnClickListener {
-            Log.i("button", "button is clicked")
             profileVm.postChanges(
                 "Bearer ${AppSharedPreference.userToken}",
                 MultipartBody.Builder()
@@ -73,80 +60,31 @@ class ProfileFragment : Fragment() {
                     .addFormDataPart("email", binding.etEmail.text.toString())
                     .addFormDataPart("username", binding.etUsername.text.toString())
                     .build(),
+                email = binding.etEmail.text.toString(),
+                username = binding.etUsername.text.toString(),
+                avatarId = avatars
             )
         }
 
-//        profileVm.userAvatarId.observe(viewLifecycleOwner) { avatarId ->
-//            binding.btnUpdate.setOnClickListener {
-//                Log.i("button", "button is clicked")
-////                profileVm.postChanges(
-////                    "Bearer ${AppSharedPreference.userToken}",
-////                    MultipartBody.Builder()
-////                        .setType(MultipartBody.FORM)
-////                        .addFormDataPart("email", binding.etEmail.text.toString())
-////                        .addFormDataPart("username", binding.etUsername.text.toString())
-////                        .build()
-////                )
-//
-//                profileVm.checkDuplicateEmail(
-//                    binding.etEmail.text.toString()
-//                )
-//
-////                profileVm.postChangesFirebase(
-////                    AppSharedPreference.idBinar!!,
-////                    binding.etUsername.text.toString(),
-////                    binding.etEmail.text.toString(),
-////                    avatarId
-////                )
-//            }
-//
-////            profileVm.postRetrofitToast.observe(viewLifecycleOwner) {
-////                if (it) {
-////                    Toast.makeText(requireContext(), "update successful", Toast.LENGTH_SHORT).show()
-////                    profileVm.setRetrofitToast()
-////                }
-////            }
-//
-////            profileVm.duplicateEmail.observe(viewLifecycleOwner) {
-////                if (it) {
-////                    Toast.makeText(
-////                        requireContext(),
-////                        "email exists, please try again",
-////                        Toast.LENGTH_SHORT
-////                    ).show()
-////                    profileVm.setDuplicateEmailToast()
-////                }
-////            }
-//        }
+        profileVm.onSuccess.observe(viewLifecycleOwner) {
+            if (it) {
+                createDialog()
+                profileVm.setOnSuccessValue()
+            }
+        }
+
+        profileVm.onFailure.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+        }
+
+        profileVm.loadingInd.observe(viewLifecycleOwner) {
+            if (it == true) {
+                binding.loadingInd.isVisible = true
+            } else {
+                binding.loadingInd.isGone = false
+            }
+        }
     }
-
-//    private fun bind(user: User) {
-//        binding.apply {
-//            etUsername.setText(user.username, TextView.BufferType.SPANNABLE)
-//            etEmail.setText(user.email, TextView.BufferType.SPANNABLE)
-////            testing.text = user.avatarId.toString()
-//        }
-//    }
-
-//    private fun onSelectAvatar(user: User, avatarList: List<ImageView>) {
-//        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
-//            imageView.setOnClickListener {
-//                profileVm.setAvatarId(AvatarHelper.provideList()[index])
-//            }
-//        }
-//    }
-
-//    private fun onSelectedAvatar(avatarList: List<ImageView>) {
-//        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
-//            imageView.setOnClickListener {
-//                profileVm.setAvatarId(AvatarHelper.provideList()[index])
-//                avatarList.forEach {
-//                    it.setBackgroundResource(android.R.color.transparent)
-//                }
-//                avatarList[index].setBackgroundResource(R.color.navigationColour)
-//            }
-//        }
-//    }
 
     private fun onSignOut() {
         val dialogSignOut = DialogSignOutt(profileVm)
@@ -157,9 +95,16 @@ class ProfileFragment : Fragment() {
         val action = ProfileFragmentDirections.actionProfileFragmentToSettingFragment()
         findNavController().navigate(action)
     }
+
     fun navToChangeAvatar() {
         val action = ProfileFragmentDirections.actionProfileFragmentToChangeAvatarFragment()
         findNavController().navigate(action)
+    }
+
+
+    fun createDialog() {
+        val dialogUpdate = DialogUpdate()
+        dialogUpdate.show(childFragmentManager, DIALOG_UPDATE)
     }
 
 
@@ -167,5 +112,4 @@ class ProfileFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 }

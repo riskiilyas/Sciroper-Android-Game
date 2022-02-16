@@ -51,6 +51,8 @@ class LogInVM(
                 sharedPreference.isLogin = true
                 sharedPreference.idBinar = loginResponse.data._id
                 sharedPreference.isLogin = true
+                sharedPreference.username = loginResponse.data.username
+                sharedPreference.email = loginResponse.data.email
                 uiState.value = UiState.Success(loginResponse)
                 loadUser(loginResponse)
             } catch (e: Exception) {

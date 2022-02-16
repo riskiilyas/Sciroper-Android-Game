@@ -24,9 +24,6 @@ import com.binar.sciroper.util.AvatarHelper
 import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
 
@@ -84,7 +81,7 @@ class SignUpFragment : Fragment() {
                 email = email.text?.trim().toString(),
                 password = password.text?.trim().toString()
             )
-            signUpVm.signUp(registerDetails)
+            signUpVm.signUp()
         }
 
         signUpVm.usernameLength.observe(viewLifecycleOwner) {
