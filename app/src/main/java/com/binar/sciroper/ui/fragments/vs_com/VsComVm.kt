@@ -24,13 +24,13 @@ class VsComVm(private val userDao: UserDAO) : ViewModel() {
     private val choices get() = _choices
 
     private var _playerChoice = ""
-    val playerChoice get() = _playerChoice
+    private val playerChoice get() = _playerChoice
     fun setPlayerChoice(choice: String) {
         _playerChoice = choice
     }
 
     private var _computerChoice = ""
-    val computerChoice get() = _computerChoice
+    private val computerChoice get() = _computerChoice
 
     fun setComChoice(choice: String) {
         _computerChoice = choice

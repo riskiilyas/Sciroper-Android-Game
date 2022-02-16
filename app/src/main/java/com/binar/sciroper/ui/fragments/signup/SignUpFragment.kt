@@ -19,7 +19,6 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.AuthDetails
 import com.binar.sciroper.databinding.FragmentSignUpBinding
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.AvatarHelper
 import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
@@ -30,7 +29,7 @@ class SignUpFragment : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
     private val signUpVm: SignUpVm by viewModels {
-        SignUpVmFactory(App.appDb.getUserDao())
+        SignUpVmFactory()
     }
 
     private lateinit var userName: TextInputEditText
@@ -45,7 +44,7 @@ class SignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
@@ -76,7 +75,7 @@ class SignUpFragment : Fragment() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            val registerDetails = AuthDetails(
+            AuthDetails(
                 username = userName.text?.trim().toString(),
                 email = email.text?.trim().toString(),
                 password = password.text?.trim().toString()
@@ -169,7 +168,7 @@ class SignUpFragment : Fragment() {
                 onLoad()
             }
             is UiState.Success -> {
-                onSuccess(uiState)
+                onSuccess()
             }
             is UiState.Error -> {
                 onError(uiState)
@@ -182,7 +181,7 @@ class SignUpFragment : Fragment() {
         signUpBtn.isEnabled = false
     }
 
-    private fun onSuccess(uiState: UiState.Success) = with(binding) {
+    private fun onSuccess() = with(binding) {
         binding.loadingInd.isGone = true
         binding.apply {
             email.text?.clear()

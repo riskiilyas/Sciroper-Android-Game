@@ -1,5 +1,6 @@
 package com.binar.sciroper.ui.fragments.setting
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -17,7 +18,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(p0: String) {
         super.onNewToken(p0)
         val refreshToken = FirebaseMessaging.getInstance().token
-        Log.e("banana", "onNewToken: $refreshToken", )
+        Log.e("banana", "onNewToken: $refreshToken")
     }
 
     override fun onMessageReceived(p0: RemoteMessage) {
@@ -31,6 +32,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun showNotification(context: Context, title: String, body: String) {
         val intent = context.packageManager.getLaunchIntentForPackage("com.binar.sciroper")
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)

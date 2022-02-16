@@ -46,27 +46,38 @@
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/drawable/card_how_to_play.xml" value="0.2395" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/drawable/shape_bg_dialog.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/drawable/shape_vs.xml" value="0.1915" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout-v26/fragment_log_in.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/activity_item_leaderboard.xml" value="0.536" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/activity_menu.xml" value="0.17391304347826086" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/activity_profile.xml" value="0.12635869565217392" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/activity_setting.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/com_layout.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/dialog_exit.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/dialog_up_lv.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_achievement.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_change_avatar.xml" value="0.19333333333333333" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_dialog_sign_out.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_dialog_update.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_h_t_p.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_history.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_landing_page1.xml" value="0.11398176291793313" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_landing_page2.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_landing_page2.xml" value="0.1676300578034682" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_leaderboard.xml" value="0.234375" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_log_in.xml" value="0.234375" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_log_in.xml" value="0.13551401869158877" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_menu.xml" value="0.2" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_menu_game_play.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_new_view_pager.xml" value="0.234375" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_register_confirmation.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_setting.xml" value="0.234375" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_shop.xml" value="0.264" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_sign_up.xml" value="0.234375" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_splash.xml" value="0.234375" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_vs_com.xml" value="0.264" />
-        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_vs_player.xml" value="0.264" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_shop.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_vs_com.xml" value="0.1" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/fragment_vs_player.xml" value="0.1" />
         <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/game_dialog.xml" value="0.20553359683794467" />
+        <entry key="..\:/Android Studio Projects/Sciroper/app/src/main/res/layout/history_card.xml" value="0.1" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/ic_baseline_arrow_right_24.xml" value="0.35833333333333334" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/shape_background.xml" value="0.3851851851851852" />
         <entry key="..\:/Binar/Challenge/RPS Challenge chapter 5/app/src/main/res/drawable/shape_bg.xml" value="0.3851851851851852" />
@@ -130,7 +141,7 @@
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/fragment_shop.xml" value="0.24375" />
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/history_achievement.xml" value="0.36666666666666664" />
-        <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/history_card.xml" value="0.3476863753213368" />
+        <entry key="..\:/Binar/Chapter 7/Challenge/CC7/Sciroper/app/src/main/res/layout/history_card.xml" value="1.5" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/drawable/border.xml" value="0.215" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/drawable/bottom_line.xml" value="0.215" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/drawable/card_bg.xml" value="0.215" />

@@ -6,14 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.util.UserLevel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
+class LeaderBoardVm : ViewModel() {
 
     private val database = FirebaseRtdb()
     private val _userList = mutableListOf<User>()
@@ -21,7 +20,6 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
     private val _userLiveData = MutableLiveData<List<User>>()
     val userLiveData: LiveData<List<User>> get() = _userLiveData
 
-    val allUsers = userDao.getUsers()
     private val _userListSize = MutableLiveData<Int>()
     val userListSize: LiveData<Int> get() = _userListSize
     private var observer: () -> Unit = {}
@@ -60,10 +58,10 @@ class LeaderBoardVm(private val userDao: UserDAO) : ViewModel() {
 
 }
 
-class LeaderBoardVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
+class LeaderBoardVmFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LeaderBoardVm::class.java)) {
-            return LeaderBoardVm(userDao) as T
+            return LeaderBoardVm() as T
         }
         throw IllegalArgumentException("Unknown view model class")
     }

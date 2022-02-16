@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
 
-class MenuGamePlayVm(private val userDao: UserDAO) : ViewModel() {
+class MenuGamePlayVm(userDao: UserDAO) : ViewModel() {
     val user = userDao.getUserById(AppSharedPreference.idBinar!!)
 }
 

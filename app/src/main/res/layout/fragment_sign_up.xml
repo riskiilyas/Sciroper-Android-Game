@@ -23,10 +23,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/card_bg"
+            app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/view_guideline"
-            app:layout_constraintBottom_toTopOf="@id/btn_sign_up"/>
+            app:layout_constraintTop_toTopOf="@id/view_guideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/top_guideline"
@@ -68,9 +68,9 @@
             android:id="@+id/tv_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
             android:text="@string/choose_avatar"
             android:textColor="?textColour"
-            android:fontFamily="@font/madeeta"
             app:layout_constraintStart_toStartOf="@+id/start_guideline"
             app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
@@ -136,8 +136,8 @@
                 android:id="@+id/tiet_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
                 android:fontFamily="@font/madeeta"
+                android:inputType="text"
                 android:maxLength="10"
                 android:maxLines="1"
                 android:text="@={vm.inputUsername}"
@@ -160,9 +160,9 @@
                 android:id="@+id/tiet_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/madeeta"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputEmail}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -183,9 +183,9 @@
                 android:id="@+id/tiet_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/madeeta"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputPassword}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -206,9 +206,9 @@
                 android:id="@+id/tiet_repassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/madeeta"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:fontFamily="@font/madeeta"
                 android:text="@={vm.inputRePassword}"
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>

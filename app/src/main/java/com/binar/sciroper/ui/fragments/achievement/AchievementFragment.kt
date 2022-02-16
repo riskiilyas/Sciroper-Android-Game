@@ -25,7 +25,7 @@ class AchievementFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAchievementBinding.inflate(inflater, container, false)
         return binding.root
     }

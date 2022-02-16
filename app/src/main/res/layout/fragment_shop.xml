@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.binar.sciroper.ui.fragments.shop.ShopVm" />
@@ -17,16 +18,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?backgroundColour"
-        android:padding="12dp"
         tools:context=".ui.fragments.shop.ShopFragment">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/card_how_to_play"
+            app:layout_constraintBottom_toTopOf="@+id/guideline10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivBackShop"
             android:layout_width="@dimen/btn"
             android:layout_height="@dimen/btn"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/back"
             android:onClick="@{()->shopFragment.back()}"
+            android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,6 +47,9 @@
             android:id="@+id/ivCoinShop"
             android:layout_width="@dimen/btn"
             android:layout_height="@dimen/btn"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/content"
             android:src="@drawable/coin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,33 +58,35 @@
             android:id="@+id/tvCoinShop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/madeeta"
-            android:textSize="16sp"
-            android:textColor="?textColour"
             android:layout_marginTop="4dp"
+            android:fontFamily="@font/madeeta"
+            android:text="@string/_55440"
+            android:textColor="?textColour"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/ivCoinShop"
             app:layout_constraintStart_toStartOf="@+id/ivCoinShop"
-            app:layout_constraintTop_toBottomOf="@+id/ivCoinShop"
-            android:text="55440$" />
+            app:layout_constraintTop_toBottomOf="@+id/ivCoinShop" />
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop"
-            android:textSize="@dimen/title"
-            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/madeeta"
+            android:text="@string/shop"
             android:textColor="?textColour"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            android:textSize="@dimen/title"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/card_bg"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,20 +98,20 @@
                 android:id="@+id/cardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:rippleColor="@color/menuDark"
-                app:cardCornerRadius="16dp"
                 android:elevation="16dp"
+                app:cardCornerRadius="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/cardView3"
                 app:layout_constraintEnd_toStartOf="@+id/cardView2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/menuDark">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI1"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView11"
@@ -112,8 +130,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="100"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_100"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -128,6 +146,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView11"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -149,9 +168,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI3"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView33"
@@ -170,8 +189,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="250"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_250"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -186,6 +205,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView33"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -207,9 +227,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI5"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView55"
@@ -228,8 +248,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="1000"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_1000"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -244,6 +264,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView55"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -257,17 +278,17 @@
                 android:id="@+id/cardView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:cardCornerRadius="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="@+id/cardView4"
                 app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI7"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView77"
@@ -286,8 +307,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="3000"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_3000"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -302,6 +323,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView77"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -324,9 +346,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI2"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView22"
@@ -346,7 +368,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/madeeta"
-                        android:text="150"
+                        android:text="@string/_150"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -361,6 +383,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView22"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -382,9 +405,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI4"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView44"
@@ -403,8 +426,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="500"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_500"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -419,6 +442,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView44"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -440,9 +464,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI6"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView66"
@@ -461,8 +485,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="1500"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_1500"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -477,6 +501,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView66"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -498,9 +523,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/avatarI8"
-                    android:background="@color/white"
                     android:layout_width="120dp"
-                    android:layout_height="120dp">
+                    android:layout_height="120dp"
+                    android:background="@color/white">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/appCompatImageView88"
@@ -519,8 +544,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="5000"
                         android:fontFamily="@font/madeeta"
+                        android:text="@string/_5000"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -535,6 +560,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:layout_marginStart="2dp"
+                        android:contentDescription="@string/content"
                         android:src="@drawable/coin"
                         app:layout_constraintBottom_toBottomOf="@+id/textView88"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -555,9 +581,9 @@
             android:background="@drawable/rounded_border"
             android:backgroundTint="?btnColour"
             android:fontFamily="@font/madeeta"
-            android:textSize="@dimen/text"
+            android:text="@string/buy"
             android:textAllCaps="false"
-            android:text="Buy"
+            android:textSize="@dimen/text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -568,7 +594,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.13" />
+            app:layout_constraintGuide_percent="0.15" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline11"

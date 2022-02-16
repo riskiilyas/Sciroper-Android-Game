@@ -1,7 +1,5 @@
 package com.binar.sciroper.ui.fragments.vs_com
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -9,26 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.ColorRes
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.airbnb.lottie.LottieAnimationView
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.databinding.FragmentVsComBinding
 import com.binar.sciroper.ui.fragments.vs_player.DialogLvUp
-import com.binar.sciroper.ui.fragments.vs_player.GameDialog
 import com.binar.sciroper.util.App
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
-
 
 class VsComFragment : Fragment() {
 
@@ -71,10 +61,10 @@ class VsComFragment : Fragment() {
 
         vsComVm.result.observe(viewLifecycleOwner) {
             p1Choices.forEach { its ->
-                its.setOnClickListener {
-                    it.setBackgroundResource(R.drawable.shape_background)
-                    showToast("${user.username} Memilih ${it.contentDescription}")
-                    vsComVm.setPlayerChoice(it.contentDescription.toString())
+                its.setOnClickListener { it1 ->
+                    it1.setBackgroundResource(R.drawable.shape_background)
+                    showToast("${user.username} Memilih ${it1.contentDescription}")
+                    vsComVm.setPlayerChoice(it1.contentDescription.toString())
                     freezeState(p1Choices)
                     val comChoice = (0..2).random()
                     lifecycleScope.launch {
@@ -105,7 +95,7 @@ class VsComFragment : Fragment() {
             ivAvatarPlayer.setImageResource(vsComVm.user.avatarId)
         }
 
-        vsComVm.isOver.observe(viewLifecycleOwner) { it ->
+        vsComVm.isOver.observe(viewLifecycleOwner) {
             if (it) {
                 val dialogFragment = ComDialog(vsComVm)
                 dialogFragment.isCancelable = false

@@ -53,9 +53,7 @@ object AppSharedPreference {
     var isMusicPlay: Boolean
         get() = sharedPreference?.getBoolean(KEY_MUSIC, true) ?: false
         set(value) {
-            if (value != null) {
-                sharedPreference?.edit()?.putBoolean(KEY_MUSIC, value)?.apply()
-            }
+            sharedPreference?.edit()?.putBoolean(KEY_MUSIC, value)?.apply()
         }
 
     var isNotif: Boolean?

@@ -2,21 +2,18 @@ package com.binar.sciroper.ui.fragments.profile
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.binar.sciroper.data.db.user.User
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.data.retrofit.AuthResponse
 import com.binar.sciroper.data.retrofit.Retrofit
-import com.binar.sciroper.util.AvatarHelper
 import kotlinx.coroutines.launch
 import okhttp3.RequestBody
 
 class ProfileVm(private val userDao: UserDAO) : ViewModel() {
     private val sharedPreference = AppSharedPreference
     private val user = userDao.getUserByIdNoLiveData(sharedPreference.idBinar!!)
-    private val _userAvatarId = MutableLiveData<Int>()
-    val userAvatarId: LiveData<Int> = _userAvatarId
+    val userLive = userDao.getUserById(sharedPreference.idBinar!!)
     private val _username = MutableLiveData<String>()
     val username: LiveData<String> get() = _username
     private val _email = MutableLiveData<String>()
@@ -40,7 +37,7 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
         _loadingInd.value = true
         viewModelScope.launch {
             try {
-                val userDetails = Retrofit.retrofitService.getUser("$userToken")
+                val userDetails = Retrofit.retrofitService.getUser(userToken)
                 _userDetails.value = userDetails
                 _loadingInd.value = false
                 Log.i("banana_menu_success", "shit actually works! $userDetails")
@@ -83,6 +80,15 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
                 Log.i("banana_update", "${e.message}")
             }
         }
+
+        viewModelScope.launch {
+            userDao.updateUser(userLive.value!!.apply {
+                this.username = username
+                this.email = email
+                this.avatarId = avatarId
+            })
+        }
+
     }
 
     private fun postChangesFirebase(username: String, email: String, avatarId: Int) {
@@ -105,10 +111,6 @@ class ProfileVm(private val userDao: UserDAO) : ViewModel() {
 
     fun setOnSuccessValue() {
         _onSuccess.value = false
-    }
-
-    fun setAvatarId(avatarId: Int) {
-        _userAvatarId.value = avatarId
     }
 }
 

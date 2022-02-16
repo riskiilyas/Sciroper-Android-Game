@@ -12,7 +12,7 @@ fun winMusic(context: Context) {
     mediaPlayer?.start()
 }
 
-fun drawMusic(context: Context){
+fun drawMusic(context: Context) {
     mediaPlayer = MediaPlayer.create(
         context,
         R.raw.draw_game
@@ -20,7 +20,7 @@ fun drawMusic(context: Context){
     mediaPlayer?.start()
 }
 
-fun soundEffect(context: Context){
+fun soundEffect(context: Context) {
     mediaPlayer = MediaPlayer.create(
         context,
         R.raw.sound_effect

@@ -9,7 +9,7 @@ import com.binar.sciroper.data.retrofit.Retrofit
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class AchievementVm(private val userDao: UserDAO) : ViewModel() {
+class AchievementVm : ViewModel() {
 
     private val sharedPreference = AppSharedPreference
 
@@ -20,7 +20,6 @@ class AchievementVm(private val userDao: UserDAO) : ViewModel() {
     val historyList: LiveData<List<HistoryResponse.History>> get() = _historyList
 
     private val _onError = MutableLiveData<String>()
-    val onError: LiveData<String> get() = _onError
 
     fun getHistory() {
         viewModelScope.launch {
@@ -44,7 +43,7 @@ class AchievementVm(private val userDao: UserDAO) : ViewModel() {
 class AchievementVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AchievementVm::class.java)) {
-            return AchievementVm(userDao) as T
+            return AchievementVm() as T
         }
         throw IllegalArgumentException("Unknown view model class")
     }

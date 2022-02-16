@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="htpFragment"
             type="com.binar.sciroper.ui.fragments.how_to_play.HTPFragment" />
@@ -24,32 +25,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvHowToPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/madeeta"
             android:text="@string/how_to_play"
             android:textColor='?textColour'
             android:textSize="@dimen/title"
             app:layout_constraintBottom_toBottomOf="@+id/view_htp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="16dp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-                android:id="@+id/ivBackHTP"
-                android:layout_width="@dimen/btn"
-                android:layout_height="@dimen/btn"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/app_name"
-                android:onClick="@{() -> htpFragment.navToMenu()}"
-                android:src="@drawable/back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/ivBackHTP"
+            android:layout_width="@dimen/btn"
+            android:layout_height="@dimen/btn"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
+            android:onClick="@{() -> htpFragment.navToMenu()}"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtube_player_view"
@@ -57,9 +58,9 @@
             android:layout_height="300dp"
             android:layout_marginTop="20dp"
             app:autoPlay="true"
-            app:layout_constraintTop_toBottomOf="@id/guideline1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tvHowToPlay2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline1"
             app:videoId="xsg0HMcL2oo" />
 
         <TextView
@@ -70,6 +71,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="40dp"
             android:fontFamily="@font/madeeta"
+            android:padding="4dp"
             android:text="@string/choose_one_between_rock_sciccors_paper_and_the_opponent_will_choose_between_rock_sciccors_paper_too"
             android:textAlignment="center"
             android:textColor='?textColour'

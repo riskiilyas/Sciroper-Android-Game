@@ -42,15 +42,6 @@ data class User(
     var coin: Int = 0,
 
     /* id:
-        'a' = R.id.achievement11
-        'b' = R.id.achievement12
-        'c' = R.id.achievement13
-        'd' = R.id.achievement14
-    */
-    @ColumnInfo(name = "achievement")
-    var achievement: String = "",
-
-    /* id:
         'a' = R.id.avatar31
         'b' = R.id.avatar32
         'c' = R.id.avatar33

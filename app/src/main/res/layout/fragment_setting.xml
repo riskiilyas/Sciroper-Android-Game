@@ -47,11 +47,11 @@
             android:id="@+id/tvSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/madeeta"
             android:text="@string/setting"
             android:textColor='?textColour'
             android:textSize="@dimen/title"
-            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/view_setting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -92,7 +92,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/madeeta"
-            android:text="Dark Mode"
+            android:text="@string/dark_mode"
             android:textColor='?textColour'
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/view"
@@ -121,7 +121,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/madeeta"
-            android:text="Music"
+            android:text="@string/music"
             android:textColor='?textColour'
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/view"
@@ -147,7 +147,7 @@
             android:layout_marginStart="16sp"
             android:layout_marginTop="24sp"
             android:fontFamily="@font/madeeta"
-            android:text="Notification"
+            android:text="@string/notification"
             android:textColor='?textColour'
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/view"

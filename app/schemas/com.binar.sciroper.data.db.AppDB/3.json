@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "7265b812a3328c43930858df7ce71cac",
+    "identityHash": "d8b6d3dfa72d5b95fbc52a4b27e5b616",
     "entities": [
       {
         "tableName": "user_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_binar` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL, `coin` INTEGER NOT NULL, `achievement` TEXT NOT NULL, `items` TEXT NOT NULL, PRIMARY KEY(`id_binar`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_binar` TEXT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL, `coin` INTEGER NOT NULL, `items` TEXT NOT NULL, PRIMARY KEY(`id_binar`))",
         "fields": [
           {
             "fieldPath": "idBinar",
@@ -69,12 +69,6 @@
             "notNull": true
           },
           {
-            "fieldPath": "achievement",
-            "columnName": "achievement",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
             "fieldPath": "items",
             "columnName": "items",
             "affinity": "TEXT",
@@ -94,7 +88,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7265b812a3328c43930858df7ce71cac')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd8b6d3dfa72d5b95fbc52a4b27e5b616')"
     ]
   }
 }

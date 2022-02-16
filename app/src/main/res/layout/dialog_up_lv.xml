@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +13,7 @@
             android:id="@+id/imageView3"
             android:layout_width="180dp"
             android:layout_height="180dp"
+            android:contentDescription="@string/content"
             android:src="@drawable/level_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +23,9 @@
             android:id="@+id/tvLv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="70sp"
             android:fontFamily="@font/madeeta"
             android:textColor="@color/black"
+            android:textSize="70sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
@@ -35,10 +36,10 @@
             android:id="@+id/tvYouLvUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You Level Up"
             android:fontFamily="@font/madeeta"
-            android:textSize="30sp"
+            android:text="@string/you_level_up"
             android:textColor="@color/black"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -47,11 +48,11 @@
             android:id="@+id/btnOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Okay"
             android:layout_marginTop="8dp"
-            android:textColor="@color/white"
             android:background="@drawable/shape_background"
             android:backgroundTint="@color/navigationColour"
+            android:text="@string/okay"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toBottomOf="@+id/tvYouLvUp" />

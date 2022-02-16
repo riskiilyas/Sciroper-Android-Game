@@ -21,7 +21,6 @@ import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BGMusic
 import com.binar.sciroper.util.UiState
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.runBlocking
 
 
 class LogInFragment : Fragment() {
@@ -29,7 +28,7 @@ class LogInFragment : Fragment() {
     private var _binding: FragmentLogInBinding? = null
     private val binding get() = _binding!!
     private val logInVm: LogInVM by viewModels {
-        LogInVMFactory(App.appDb.getUserDao())
+        LogInVMFactory()
     }
 
     private lateinit var email: TextInputEditText
@@ -42,7 +41,7 @@ class LogInFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentLogInBinding.inflate(inflater, container, false)
 
@@ -60,7 +59,7 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (logInVm.isLoggedIn() == true) findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
 
-        if (AppSharedPreference.isMusicPlay){
+        if (AppSharedPreference.isMusicPlay) {
             BGMusic.pausePlay()
         }
 
@@ -114,7 +113,7 @@ class LogInFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    fun makeToast(msg: String) {
+    private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
@@ -124,7 +123,7 @@ class LogInFragment : Fragment() {
                 onLoad()
             }
             is UiState.Success -> {
-                onSuccess(uiState)
+                onSuccess()
             }
             is UiState.Error -> {
                 onError(uiState)
@@ -137,14 +136,15 @@ class LogInFragment : Fragment() {
         binding.btnSignIn.isEnabled = false
     }
 
-    private fun onSuccess(uiState: UiState.Success) = with(binding) {
+    private fun onSuccess() = with(binding) {
         binding.loadingInd.isGone = true
         email.text?.clear()
         password.text?.clear()
         findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToMenuFragment())
-        if (AppSharedPreference.isMusicPlay){
-            BGMusic.playMusic(requireContext())
+        if (AppSharedPreference.isMusicPlay) {
+            BGMusic.playMusic()
         }
+        App.isReady = true
     }
 
     private fun onError(uiState: UiState.Error) = with(binding) {

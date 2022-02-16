@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/logo_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_menu"
@@ -39,6 +39,7 @@
             android:id="@+id/coin"
             android:layout_width="@dimen/btn_icon"
             android:layout_height="@dimen/btn_icon"
+            android:contentDescription="@string/content"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
             android:src="@drawable/coin"
@@ -63,6 +64,7 @@
             android:layout_width="@dimen/btn_icon"
             android:layout_height="@dimen/btn_icon"
             android:layout_marginTop="@dimen/margin"
+            android:contentDescription="@string/content"
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:onClick="@{()->menuFragment.navToShop()}"
@@ -77,6 +79,7 @@
             android:layout_marginEnd="@dimen/margin"
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/how_to_play"
+            android:layout_marginTop="16dp"
             android:onClick="@{()->menuFragment.navToHtp()}"
             android:src="@drawable/htp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,8 +103,8 @@
 
             <ImageView
                 android:id="@+id/user_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:contentDescription="@string/app_name"
                 app:setImg="@{vm.avatarId}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_username"

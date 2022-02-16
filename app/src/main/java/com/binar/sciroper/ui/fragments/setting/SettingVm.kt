@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.local.AppSharedPreference
 
-class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppSharedPreference) :
+class SettingVm :
     ViewModel() {
     private val _isChecked = MutableLiveData<Boolean>(AppSharedPreference.isDarkMode)
     private val _isCheckedNotif = MutableLiveData<Boolean>(AppSharedPreference.isNotif)
@@ -37,13 +36,10 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
 }
 
 
-class SettingVmFactory(
-    private val userDao: UserDAO,
-    private val sharedPreference: AppSharedPreference
-) : ViewModelProvider.Factory {
+class SettingVmFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingVm::class.java)) {
-            return SettingVm(userDao, sharedPreference) as T
+            return SettingVm() as T
         }
         throw IllegalArgumentException("Unknown view model class")
     }

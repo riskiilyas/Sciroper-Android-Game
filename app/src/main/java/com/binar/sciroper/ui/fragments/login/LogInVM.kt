@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.binar.sciroper.data.db.user.AuthDetails
 import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.data.retrofit.AuthResponse
@@ -15,24 +14,15 @@ import com.binar.sciroper.util.UiState
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 
-class LogInVM(
-    private val userDao: UserDAO,
-) : BaseViewModel<UiState>() {
+class LogInVM : BaseViewModel<UiState>() {
 
     private val sharedPreference: AppSharedPreference = AppSharedPreference
     val inputEmail = MutableLiveData<String>()
     val inputPassword = MutableLiveData<String>()
-    private var _errorToast = false
-    val errorToast get() = _errorToast
-    private val _onSuccess = MutableLiveData<AuthResponse>()
-    val onSuccess: LiveData<AuthResponse> get() = _onSuccess
-    private val _onError = MutableLiveData<String>()
-    val onError: LiveData<String> = _onError
 
 
     fun logIn() {
@@ -77,8 +67,6 @@ class LogInVM(
                 loadedUser.level =
                     snapshot.child("level").value.toString()
                         .toInt()
-                loadedUser.achievement =
-                    snapshot.child("achievement").value.toString()
                 loadedUser.coin =
                     snapshot.child("coin").value.toString().toInt()
                 loadedUser.idBinar =
@@ -112,13 +100,11 @@ class LogInVM(
     }
 }
 
-class LogInVMFactory(
-    private val userDao: UserDAO
-) :
+class LogInVMFactory :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LogInVM::class.java)) {
-            return LogInVM(userDao) as T
+            return LogInVM() as T
         }
         throw IllegalArgumentException("Unknown view model class")
     }

@@ -11,7 +11,7 @@ import com.binar.sciroper.data.retrofit.Retrofit
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class HistoryVm: ViewModel() {
+class HistoryVm : ViewModel() {
 
     private val sharedPreference = AppSharedPreference
 
@@ -22,7 +22,6 @@ class HistoryVm: ViewModel() {
     val historyList: LiveData<List<HistoryResponse.History>> get() = _historyList
 
     private val _onError = MutableLiveData<String>()
-    val onError: LiveData<String> get() = _onError
 
     fun getHistory() {
         viewModelScope.launch {
