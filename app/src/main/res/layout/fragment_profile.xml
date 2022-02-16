@@ -33,15 +33,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="@dimen/btn"
             android:layout_height="@dimen/btn"
             android:layout_marginStart="8dp"
-            android:onClick="@{() -> profileFragment.navToSetting()}"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> profileFragment.navToSetting()}"
             android:src="@drawable/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,11 +50,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/madeeta"
             android:text="@string/profile"
             android:textColor="?textColour"
             android:textSize="@dimen/title"
-            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -80,8 +80,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/avatar21"
-                />
+                android:src="@drawable/avatar21" />
 
             <ImageView
                 android:id="@+id/avatarId2"
@@ -89,8 +88,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/avatar22"
-                />
+                android:src="@drawable/avatar22" />
 
             <ImageView
                 android:id="@+id/avatarId3"
@@ -98,8 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/avatar23"
-                />
+                android:src="@drawable/avatar23" />
 
             <ImageView
                 android:id="@+id/avatarId4"
@@ -107,8 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/avatar24"
-                />
+                android:src="@drawable/avatar24" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -161,73 +157,6 @@
                 android:textColor="?textColour" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ilOldPass"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/password"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="@+id/ilEmail"
-            app:layout_constraintStart_toStartOf="@+id/ilEmail"
-            app:layout_constraintTop_toBottomOf="@+id/ilEmail">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etOldPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/madeeta"
-                android:inputType="textPassword"
-                android:maxLines="1"
-
-                android:textColor="?textColour" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ilNewPass"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/new_password"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="@+id/ilOldPass"
-            app:layout_constraintStart_toStartOf="@+id/ilOldPass"
-            app:layout_constraintTop_toBottomOf="@+id/ilOldPass">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNewPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/madeeta"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="?textColour" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ilRePass"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/re_new_password"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="@+id/ilNewPass"
-            app:layout_constraintStart_toStartOf="@+id/ilNewPass"
-            app:layout_constraintTop_toBottomOf="@+id/ilNewPass">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRePass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/madeeta"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="?textColour" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnUpdate"
             android:layout_width="0dp"
@@ -242,21 +171,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnSignOut"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/ilRePass"
-            app:layout_constraintTop_toBottomOf="@+id/ilRePass" />
+            app:layout_constraintStart_toStartOf="@+id/ilEmail"
+            app:layout_constraintTop_toBottomOf="@+id/ilEmail" />
 
         <TextView
             android:id="@+id/btnSignOut"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/madeeta"
-            android:text="@string/sign_out"
             android:gravity="center"
+            android:text="@string/sign_out"
             android:textAlignment="center"
             android:textColor="?textColour"
             android:textSize="@dimen/btn_text_sign_in"
             app:layout_constraintBottom_toBottomOf="@+id/btnUpdate"
-            app:layout_constraintEnd_toEndOf="@+id/ilRePass"
+            app:layout_constraintEnd_toEndOf="@+id/ilEmail"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnUpdate"
             app:layout_constraintTop_toTopOf="@+id/btnUpdate" />
@@ -267,6 +196,15 @@
             android:layout_height="47dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.15" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loading_ind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

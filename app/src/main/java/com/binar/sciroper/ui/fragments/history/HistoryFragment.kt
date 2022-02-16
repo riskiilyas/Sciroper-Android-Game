@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentHistoryBinding
 import com.binar.sciroper.ui.fragments.achievement.HistoryAdapter
 
@@ -35,8 +36,8 @@ class HistoryFragment : Fragment() {
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
+            historyFragment = this@HistoryFragment
 //            vm = historyVm
-//            historyFragment = this@HistoryFragment
         }
 
         historyVm.historyList.observe(viewLifecycleOwner) {
@@ -47,6 +48,11 @@ class HistoryFragment : Fragment() {
         historyVm.loadInd.observe(viewLifecycleOwner) {
             binding.loadingInd.isGone = it != true
         }
+    }
+
+    fun navToMenu() {
+        val action = HistoryFragmentDirections.actionHistoryFragmentToMenuFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroy() {

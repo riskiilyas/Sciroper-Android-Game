@@ -38,6 +38,7 @@ class MenuVm(userDao: UserDAO) : ViewModel() {
 
     private val userToken = "Bearer ${sharedPreferences.userToken}"
 
+
     fun updateUser(user: LiveData<User>) {
         user.value?.let { FirebaseRtdb().updateUser(it) }
     }
