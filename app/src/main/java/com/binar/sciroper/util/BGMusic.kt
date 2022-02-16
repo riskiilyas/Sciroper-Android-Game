@@ -6,7 +6,7 @@ import com.binar.sciroper.R
 
 
 object BGMusic {
-    var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayer: MediaPlayer? = null
     fun playMusic(context: Context) {
         mediaPlayer = MediaPlayer.create(
             context,

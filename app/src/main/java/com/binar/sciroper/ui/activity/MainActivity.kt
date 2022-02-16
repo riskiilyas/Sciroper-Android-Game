@@ -26,6 +26,6 @@ class MainActivity : AppCompatActivity() {
 //
 //    override fun onResume() {
 //        super.onResume()
-//        if (AppSharedPreference.isMusicPlay) BGMusic.playMusic(this)
+//        if (AppSharedPreference.isMusicPlay) playMusic(this)
 //    }
 }
