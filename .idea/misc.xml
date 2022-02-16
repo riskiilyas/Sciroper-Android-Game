@@ -162,6 +162,7 @@
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/dialog_exit.xml" value="0.9" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/dialog_up_lv.xml" value="0.5850746268656717" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_achievement.xml" value="0.36666666666666664" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_change_avatar.xml" value="0.1" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_dialog_result.xml" value="0.225" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_dialog_sign_out.xml" value="0.33" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_dialog_update.xml" value="0.75" />
@@ -170,12 +171,12 @@
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_landing_page2.xml" value="0.33" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_leaderboard.xml" value="0.25" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_log_in.xml" value="0.33" />
-        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_menu.xml" value="0.33" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_menu.xml" value="0.25" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_menu_game_play.xml" value="0.33" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_new_view_pager.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_page1.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_page2.xml" value="0.36666666666666664" />
-        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_register_confirmation.xml" value="0.36666666666666664" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_setting.xml" value="0.35555555555555557" />
         <entry key="..\:/Binar/Sciroper-CC7/app/src/main/res/layout/fragment_shop.xml" value="0.36666666666666664" />
