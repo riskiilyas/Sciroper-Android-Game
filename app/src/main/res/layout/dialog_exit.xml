@@ -1,65 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:foregroundGravity="center"
-    app:layout_anchorGravity="center">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="?backgroundColour"
-        app:cardCornerRadius="16dp">
+        android:foregroundGravity="center"
+        app:layout_anchorGravity="center">
 
-        <LinearLayout
-            android:id="@+id/constraint_layout"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:background="@color/white"
+            app:cardCornerRadius="16dp">
 
-            <TextView
-                android:id="@+id/tv_confirmation_msg"
+            <LinearLayout
+                android:id="@+id/constraint_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/madeeta"
-                android:text="@string/are_you_sure"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                android:textColor="?textColour"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_margin="32dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/positive_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:backgroundTint="@color/grey_bg"
-                android:fontFamily="@font/madeeta"
-                android:text="@string/yes"
-                android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/tv_confirmation_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/madeeta"
+                    android:text="@string/are_you_sure"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:textColor="?textColour"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/negative_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:backgroundTint="@color/grey_bg"
-                android:fontFamily="@font/madeeta"
-                android:text="@string/no"
-                android:textColor="@color/white" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/positive_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/grey_bg"
+                    android:fontFamily="@font/madeeta"
+                    android:text="@string/yes"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/negative_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/navigationColour"
+                    android:fontFamily="@font/madeeta"
+                    android:text="@string/no"
+                    android:textColor="@color/white" />
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-
-</FrameLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>

@@ -1,57 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardRank"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="10dp"
-    android:background="?backgroundColour">
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemLeaderboard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="2dp">
+        android:layout_height="75dp"
+        android:layout_marginTop="8dp">
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/bottom_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_Rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/madeeta"
-            android:text="@string/_1"
             android:textColor="?textColour"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/_1" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/AvatarPlayer"
-            style="@style/image_style"
-            android:layout_marginStart="12dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:layout_toEndOf="@id/tv_Rank"
             android:contentDescription="@string/avatar_game"
             android:src="@drawable/avatar1"
             app:civ_circle_background_color="#666666"
-
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toEndOf="@id/tv_Rank"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/namaPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginVertical="16dp"
             android:layout_toEndOf="@id/AvatarPlayer"
             android:fontFamily="@font/madeeta"
             android:gravity="center"
             android:text="@string/game_suit"
             android:textColor="?textColour"
             android:textSize="20sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvLeaderboardLevel"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/level_bg"
+            android:fontFamily="@font/madeeta"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="?textColour"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvLeaderboardPoint"
+            app:layout_constraintEnd_toEndOf="@+id/tvLeaderboardPoint"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tvLeaderboardPoint"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="999" />
+
+        <TextView
+            android:id="@+id/tvLeaderboardPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view4"
+            app:layout_constraintTop_toBottomOf="@+id/tvLeaderboardLevel"
+            tools:text="45 Pts" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

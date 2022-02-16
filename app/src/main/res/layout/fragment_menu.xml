@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.binar.sciroper.ui.fragments.menu.MenuVm" />
+
+        <variable
+            name="menuFragment"
+            type="com.binar.sciroper.ui.fragments.menu.MenuFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?backgroundColour"
+        tools:context=".ui.fragments.menu.MenuFragment">
+
+        <ImageView
+            android:id="@+id/logo_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_menu"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="150dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="150dp" />
+
+        <ImageView
+            android:id="@+id/coin"
+            android:layout_width="@dimen/btn_icon"
+            android:layout_height="@dimen/btn_icon"
+            android:contentDescription="@string/content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:src="@drawable/coin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCoinMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
+            android:layout_marginTop="4dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/coin"
+            app:layout_constraintStart_toStartOf="@+id/coin"
+            app:layout_constraintTop_toBottomOf="@+id/coin"
+            tools:text="100" />
+
+        <ImageView
+            android:id="@+id/btnShop"
+            android:layout_width="@dimen/btn_icon"
+            android:layout_height="@dimen/btn_icon"
+            android:layout_marginTop="@dimen/margin"
+            android:contentDescription="@string/content"
+            android:layout_marginEnd="@dimen/margin"
+            android:background="?selectableItemBackgroundBorderless"
+            android:onClick="@{()->menuFragment.navToShop()}"
+            android:src="@drawable/shop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnHowToPlay"
+            android:layout_width="@dimen/btn_icon"
+            android:layout_height="@dimen/btn_icon"
+            android:layout_marginEnd="@dimen/margin"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/how_to_play"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()->menuFragment.navToHtp()}"
+            android:src="@drawable/htp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btnShop"
+            app:layout_constraintTop_toBottomOf="@+id/btnShop" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/end_guideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/logo_img"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/user_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="@string/app_name"
+                app:setImg="@{vm.avatarId}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_username"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/avatar33" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/madeeta"
+                android:text="@{vm.username}"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_play"
+                app:layout_constraintEnd_toStartOf="@+id/tv_user_level"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_img"
+                tools:text="Joe" />
+
+            <TextView
+                android:id="@+id/tv_user_level"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/level_bg"
+                android:fontFamily="@font/madeeta"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="@{vm.userLevel.toString()}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="?textColour"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_username"
+                app:layout_constraintTop_toTopOf="@+id/tv_username"
+                tools:text="999" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_play"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?menuColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{()->menuFragment.navToPlay()}"
+                android:text="@string/play_game"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_setting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_setting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?menuColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{() -> menuFragment.navToSetting()}"
+                android:text="@string/setting"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_leader_board"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_play" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_leader_board"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?menuColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{() -> menuFragment.navToLeaderBoard()}"
+                android:text="@string/leader_board"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_history"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_setting" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?menuColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{() -> menuFragment.navToHistory()}"
+                android:text="@string/history"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_exit_game"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_leader_board" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_exit_game"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="?exitColour"
+                android:fontFamily="@font/madeeta"
+                android:onClick="@{() -> menuFragment.createDialog()}"
+                android:text="@string/exit"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="?textColour"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_history" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

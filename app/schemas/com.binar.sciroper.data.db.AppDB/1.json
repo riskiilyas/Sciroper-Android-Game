@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "56bd43593bc038bb7df82eb5dbfd9d98",
+    "identityHash": "2094728446950b451156abcf344bee27",
     "entities": [
       {
         "tableName": "user_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username` TEXT NOT NULL, `email` TEXT NOT NULL, `password` TEXT NOT NULL, `avatar_id` INTEGER NOT NULL, `wins` INTEGER NOT NULL, `loses` INTEGER NOT NULL, `level` INTEGER NOT NULL, `point` INTEGER NOT NULL, `coin` INTEGER NOT NULL, `achievement` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -61,6 +61,18 @@
             "columnName": "point",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "coin",
+            "columnName": "coin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "achievement",
+            "columnName": "achievement",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -76,7 +88,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '56bd43593bc038bb7df82eb5dbfd9d98')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2094728446950b451156abcf344bee27')"
     ]
   }
 }

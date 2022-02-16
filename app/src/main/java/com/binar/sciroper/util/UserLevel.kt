@@ -21,21 +21,21 @@ class UserLevel(private val user: User) {
                         p0.level > p1.level -> return@Comparator 1
                         else -> return@Comparator -1
                     }
-
                 })
             return users
         }
-
     }
 
     fun win() {
         user.point += 25
         user.wins += 1
+        user.coin += 75
         checkPoint()
     }
 
     fun draw() {
         user.point += 15
+        user.coin += 25
         checkPoint()
     }
 
@@ -46,7 +46,7 @@ class UserLevel(private val user: User) {
     }
 
     private fun checkPoint() {
-        if (user.point >= 100) {
+        if (user.point >= 100 && user.level < 999) {
             upLevel()
         }
     }

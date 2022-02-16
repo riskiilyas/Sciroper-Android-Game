@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.binar.sciroper.ui.fragments.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_newViewPagerFragment"
+            app:destination="@id/newViewPagerFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/newViewPagerFragment"
+        android:name="com.binar.sciroper.ui.fragments.landing.NewViewPagerFragment"
+        android:label="NewViewPagerFragment" >
+        <action
+            android:id="@+id/action_newViewPagerFragment_to_logInFragment"
+            app:destination="@id/logInFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.binar.sciroper.ui.fragments.login.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.binar.sciroper.ui.fragments.signup.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_registerConfirmationFragment"
+            app:destination="@id/registerConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.binar.sciroper.ui.fragments.menu.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_menuGamePlayFragment"
+            app:destination="@id/menuGamePlayFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_HTPFragment"
+            app:destination="@id/HTPFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_menuFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerConfirmationFragment"
+        android:name="com.binar.sciroper.ui.fragments.signup.RegisterConfirmationFragment"
+        android:label="RegisterConfirmationFragment" >
+        <action
+            android:id="@+id/action_registerConfirmationFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.binar.sciroper.ui.fragments.setting.SettingFragment"
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.binar.sciroper.ui.fragments.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:popUpTo="@id/settingFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_changeAvatarFragment"
+            app:destination="@id/changeAvatarFragment" />
+        <argument android:name="avatarSelected"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.binar.sciroper.ui.fragments.leaderboard.LeaderboardFragment"
+        android:label="LeaderboardFragment" >
+        <action
+            android:id="@+id/action_leaderboardFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuGamePlayFragment"
+        android:name="com.binar.sciroper.ui.fragments.menu_game_play.MenuGamePlayFragment"
+        android:label="MenuGamePlayFragment" >
+        <action
+            android:id="@+id/action_menuGamePlayFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_menuGamePlayFragment_to_vsComFragment"
+            app:destination="@id/vsComFragment" />
+        <action
+            android:id="@+id/action_menuGamePlayFragment_to_vsPlayerFragment"
+            app:destination="@id/vsPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vsComFragment"
+        android:name="com.binar.sciroper.ui.fragments.vs_com.VsComFragment"
+        android:label="fragment_vs_com"
+        tools:layout="@layout/fragment_vs_com" >
+        <action
+            android:id="@+id/action_vsComFragment_to_menuGamePlayFragment"
+            app:destination="@id/menuGamePlayFragment"
+            app:popUpTo="@id/menuGamePlayFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/vsPlayerFragment"
+        android:name="com.binar.sciroper.ui.fragments.vs_player.VsPlayerFragment"
+        android:label="fragment_vs_player"
+        tools:layout="@layout/fragment_vs_player" >
+        <action
+            android:id="@+id/action_vsPlayerFragment_to_menuGamePlayFragment"
+            app:destination="@id/menuGamePlayFragment"
+            app:popUpTo="@id/menuGamePlayFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_vsPlayerFragment_to_vsPlayerFragment"
+            app:destination="@id/vsPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/HTPFragment"
+        android:name="com.binar.sciroper.ui.fragments.how_to_play.HTPFragment"
+        android:label="HTPFragment" >
+        <action
+            android:id="@+id/action_HTPFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.binar.sciroper.ui.fragments.shop.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.binar.sciroper.ui.fragments.history.HistoryFragment"
+        android:label="HistoryFragment" >
+        <action
+            android:id="@+id/action_historyFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeAvatarFragment"
+        android:name="com.binar.sciroper.ui.fragments.profile.changeavatar.ChangeAvatarFragment"
+        android:label="fragment_change_avatar"
+        tools:layout="@layout/fragment_change_avatar" >
+        <action
+            android:id="@+id/action_changeAvatarFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument
+            android:name="avatar"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

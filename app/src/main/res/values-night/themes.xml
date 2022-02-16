@@ -10,9 +10,13 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/backgroundColourDark</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="backgroundColour">@color/backgroundColourDark</item>
         <item name="textColour">@color/textColourDark</item>
+        <item name="cardColour">@color/cardDark</item>
+        <item name="menuColour">@color/menuDark</item>
+        <item name="btnColour">@color/btnDark</item>
+        <item name="exitColour">@color/exitDark</item>
     </style>
 </resources>
