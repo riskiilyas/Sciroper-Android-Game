@@ -69,24 +69,28 @@ class VsComFragment : Fragment() {
             binding.ivPemain2GuntingCOM
         )
 
-        p1Choices.forEach { its ->
-            its.setOnClickListener {
-                it.setBackgroundResource(R.drawable.shape_background)
-                showToast("${user.username} Memilih ${it.contentDescription}")
-                vsComVm.setPlayerChoice(it.contentDescription.toString())
-                freezeState(p1Choices)
-                val comChoice = (0..2).random()
-                lifecycleScope.launch {
-                    delay(800)
-                    comChoices.forEach {
-                        it.setBackgroundResource(R.drawable.shape_background)
-                        delay(500)
-                        it.setBackgroundColor(Color.TRANSPARENT)
+        vsComVm.result.observe(viewLifecycleOwner) {
+            p1Choices.forEach { its ->
+                its.setOnClickListener {
+                    it.setBackgroundResource(R.drawable.shape_background)
+                    showToast("${user.username} Memilih ${it.contentDescription}")
+                    vsComVm.setPlayerChoice(it.contentDescription.toString())
+                    freezeState(p1Choices)
+                    val comChoice = (0..2).random()
+                    lifecycleScope.launch {
+                        delay(800)
+                        comChoices.forEach {
+                            it.setBackgroundResource(R.drawable.shape_background)
+                            delay(500)
+                            it.setBackgroundColor(Color.TRANSPARENT)
+                        }
+                        delay(1000)
+                        comChoices[comChoice].setBackgroundResource(R.drawable.shape_background)
+                        vsComVm.setComChoice(listOf("Rock", "Paper", "Scissors")[comChoice])
+                        vsComVm.gameResult()
+                        Log.i("gameresult", "${vsComVm.result.value}")
+                        vsComVm.postResult(vsComVm.result.value!!)
                     }
-                    delay(1000)
-                    comChoices[comChoice].setBackgroundResource(R.drawable.shape_background)
-                    vsComVm.setComChoice(listOf("Rock", "Paper", "Scissors")[comChoice])
-                    vsComVm.gameResult()
                 }
             }
         }
@@ -146,7 +150,7 @@ class VsComFragment : Fragment() {
         }
     }
 
-    fun navToMenuGamePlay(){
+    fun navToMenuGamePlay() {
         val action = VsComFragmentDirections.actionVsComFragmentToMenuGamePlayFragment()
         findNavController().navigate(action)
     }

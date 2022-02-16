@@ -1,11 +1,14 @@
 package com.binar.sciroper.ui.fragments.vs_player
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.data.retrofit.GameResult
+import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.UserLevel
 import com.binar.sciroper.util.checkNetworkAvailable
 import kotlinx.coroutines.Dispatchers
@@ -57,6 +60,27 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
     private var _opponent: String = "Player 2"
     val opponent get() = _opponent
 
+    fun postResult(gameResult: String) {
+        viewModelScope.launch {
+            val outcome =
+                when (gameResult) {
+                    "win" -> "Player Win"
+                    "lose" -> "Opponent Win"
+                    "draw" -> "Draw"
+                    else -> ""
+                }
+            try {
+                Retrofit.retrofitService.postGameResult(
+                    "Bearer ${AppSharedPreference.userToken!!}",
+                    GameResult(result = outcome)
+                )
+                Log.i("result", "post $result")
+            } catch (e: Exception) {
+                Log.i("result", "${e.message}")
+            }
+        }
+    }
+
     fun gameResult() {
         val userLevel = UserLevel(user)
         _result = if (playerChoice == opponentChoice) {
@@ -67,9 +91,11 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
             playerChoice == choices[1] && opponentChoice == choices[0] ||
             playerChoice == choices[2] && opponentChoice == choices[1]
         ) {
+            _winner = user.toString()
             userLevel.win()
             _winner = user.username
             "win"
+
         } else if (playerChoice == choices[0] && opponentChoice == choices[1] ||
             playerChoice == choices[1] && opponentChoice == choices[2] ||
             playerChoice == choices[2] && opponentChoice == choices[0]
@@ -80,7 +106,6 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
         } else {
             ""
         }
-        updateUser()
     }
 
     private fun updateUser() {
@@ -97,14 +122,13 @@ class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
         setPlayerSelectedId(0)
         setStatus(true)
     }
-}
 
-class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(VsPlayerVm::class.java)) {
-            return VsPlayerVm(userDao) as T
+    class VsPlayerVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(VsPlayerVm::class.java)) {
+                return VsPlayerVm(userDao) as T
+            }
+            throw IllegalArgumentException("Unknown view model class")
         }
-        throw IllegalArgumentException("Unknown view model class")
     }
-
 }

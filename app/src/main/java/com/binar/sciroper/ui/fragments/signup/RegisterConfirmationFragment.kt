@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentRegisterConfirmationBinding
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BGMusic
 
 class RegisterConfirmationFragment : Fragment() {
@@ -31,9 +30,8 @@ class RegisterConfirmationFragment : Fragment() {
             val action =
                 RegisterConfirmationFragmentDirections.actionRegisterConfirmationFragmentToMenuFragment()
             findNavController().navigate(action)
-            App.isReady = true
             if (AppSharedPreference.isMusicPlay){
-                BGMusic.playMusic()
+                BGMusic.playMusic(requireContext())
             }
         }
     }

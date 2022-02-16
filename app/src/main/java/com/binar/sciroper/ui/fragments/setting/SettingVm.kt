@@ -21,9 +21,11 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
     fun setTheme(condition: Boolean) {
         AppSharedPreference.isDarkMode = condition
     }
+
     fun setMusic(condition: Boolean) {
         AppSharedPreference.isMusicPlay = condition
     }
+
     fun setIsCheckedNotif() {
         _isCheckedNotif.value = !_isCheckedNotif.value!!
     }
@@ -33,6 +35,7 @@ class SettingVm(private val userDao: UserDAO, private val sharedPreference: AppS
     }
 
 }
+
 
 class SettingVmFactory(
     private val userDao: UserDAO,

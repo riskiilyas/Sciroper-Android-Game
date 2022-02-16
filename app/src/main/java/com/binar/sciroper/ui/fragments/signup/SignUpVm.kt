@@ -29,12 +29,6 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
     val inputRePassword = MutableLiveData<String>()
 
     private val firebase = FirebaseRtdb()
-    private val _loadingIndStatus = MutableLiveData<Boolean>()
-    val loadingIndStatus: LiveData<Boolean> get() = _loadingIndStatus
-    private val _onSuccess = MutableLiveData<AuthResponse>()
-    val onSuccess: LiveData<AuthResponse> get() = _onSuccess
-    private val _onFailure = MutableLiveData<String>()
-    val onFailure: LiveData<String> get() = _onFailure
     private val _usernameLength = MutableLiveData<Boolean>()
     val usernameLength: LiveData<Boolean> get() = _usernameLength
     private val _onPasswordError = MutableLiveData<Boolean>()
@@ -147,6 +141,12 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
         _usernameLength.value = inputUsername.value?.length!! < 6
         _fieldChecker.value =
             usernameLength.value != true && onInvalidEmail.value != true && onPasswordError.value != true
+    }
+
+    fun resetErrorField(){
+        _onPasswordError.value = false
+        _onInvalidEmail.value = false
+        _usernameLength.value = false
     }
 }
 
