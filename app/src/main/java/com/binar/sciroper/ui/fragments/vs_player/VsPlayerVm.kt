@@ -10,9 +10,11 @@ import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.data.retrofit.GameResult
 import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.UserLevel
+import com.binar.sciroper.util.checkNetworkAvailable
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class VsPlayerVm(userDao: UserDAO) : ViewModel() {
+class VsPlayerVm(private val userDao: UserDAO) : ViewModel() {
     val user = userDao.getUserId(AppSharedPreference.idBinar!!)
     val userLiveData = userDao.getUserById(AppSharedPreference.idBinar!!)
     val firebase = FirebaseRtdb()
@@ -102,6 +104,14 @@ class VsPlayerVm(userDao: UserDAO) : ViewModel() {
         } else {
             ""
         }
+        updateUser()
+    }
+
+    private fun updateUser() {
+        checkNetworkAvailable {
+            if (it) firebase.updateUser(user)
+        }
+        viewModelScope.launch(Dispatchers.Default) { userDao.updateUser(user) }
     }
 
     fun reset() {
