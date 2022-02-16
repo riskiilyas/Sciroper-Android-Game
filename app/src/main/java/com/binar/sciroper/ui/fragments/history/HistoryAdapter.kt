@@ -1,4 +1,4 @@
-package com.binar.sciroper.ui.fragments.achievement
+package com.binar.sciroper.ui.fragments.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

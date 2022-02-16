@@ -84,7 +84,6 @@
     <string name="play_with_your_nfriends_with_fun_with_this_game">play with your \nfriends with fun with this game</string>
     <string name="change_avatar">Change Avatar</string>
     <string name="change">Change</string>
-    <string name="you_level_up">You Level Up</string>
+    <string name="you_level_up">Level Up</string>
     <string name="okay">Okay</string>
-    <string name="coin">coin</string>
 </resources>

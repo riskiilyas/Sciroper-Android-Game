@@ -9,7 +9,6 @@ import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.databinding.FragmentHistoryBinding
-import com.binar.sciroper.ui.fragments.achievement.HistoryAdapter
 
 
 class HistoryFragment : Fragment() {
