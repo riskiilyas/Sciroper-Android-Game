@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentDialogSignOutBinding
+import com.binar.sciroper.util.App
 
 class DialogSignOutt(private val vm: ProfileVm) : DialogFragment() {
     private var _binding: FragmentDialogSignOutBinding? = null
@@ -29,6 +30,7 @@ class DialogSignOutt(private val vm: ProfileVm) : DialogFragment() {
             val action = ProfileFragmentDirections.actionProfileFragmentToLogInFragment()
             findNavController().navigate(action)
             vm.deleteUser()
+            App.isReady = false
         }
 
         binding.btnNo.setOnClickListener {
@@ -44,7 +46,7 @@ class DialogSignOutt(private val vm: ProfileVm) : DialogFragment() {
         _binding = null
     }
 
-    companion object{
+    companion object {
         const val DIALOG_SIGNOUTT = "dialog_update"
     }
 }

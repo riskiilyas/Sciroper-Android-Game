@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.binar.sciroper.ui.fragments.vs_com.VsComVm" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="8dp"
-        android:background="@drawable/shape_bg_dialog"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_dialog"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tv_headC"

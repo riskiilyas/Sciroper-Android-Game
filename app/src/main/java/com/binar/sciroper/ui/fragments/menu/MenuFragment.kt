@@ -78,7 +78,7 @@ class MenuFragment : Fragment() {
     fun navToHtp() {
         val action = MenuFragmentDirections.actionMenuFragmentToHTPFragment()
         findNavController().navigate(action)
-        if (AppSharedPreference.isMusicPlay){
+        if (AppSharedPreference.isMusicPlay) {
             BGMusic.pausePlay()
         }
     }
@@ -88,21 +88,22 @@ class MenuFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    fun navToAchievement() {
-        val action = MenuFragmentDirections.actionMenuFragmentToAchievementFragment()
-        findNavController().navigate(action)
-    }
-
-    fun navToLeaderBoard(){
+    fun navToLeaderBoard() {
         if (!isOnline) {
-            Toast.makeText(requireContext(), "Connect to Internet first!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Connect to Internet first!", Toast.LENGTH_SHORT)
+                .show()
         } else {
             val action = MenuFragmentDirections.actionMenuFragmentToLeaderboardFragment()
             findNavController().navigate(action)
         }
     }
 
-    fun navToHistory(){
+    fun navToHistory() {
+        if (!isOnline) {
+            Toast.makeText(requireContext(), "Connect to Internet first!", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
         val action = MenuFragmentDirections.actionMenuFragmentToHistoryFragment()
         findNavController().navigate(action)
     }

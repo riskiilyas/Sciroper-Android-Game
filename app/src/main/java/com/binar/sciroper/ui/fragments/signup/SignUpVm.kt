@@ -6,10 +6,8 @@ import androidx.lifecycle.*
 import com.binar.sciroper.R
 import com.binar.sciroper.data.db.user.AuthDetails
 import com.binar.sciroper.data.db.user.User
-import com.binar.sciroper.data.db.user.UserDAO
 import com.binar.sciroper.data.firebase.FirebaseRtdb
 import com.binar.sciroper.data.local.AppSharedPreference
-import com.binar.sciroper.data.retrofit.AuthResponse
 import com.binar.sciroper.data.retrofit.Retrofit
 import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BaseViewModel
@@ -21,7 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.*
 
 
-class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
+class SignUpVm : BaseViewModel<UiState>() {
     private val sharedPreferences = AppSharedPreference
     val inputUsername = MutableLiveData<String>()
     val inputEmail = MutableLiveData<String>()
@@ -36,7 +34,7 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
     private val _onInvalidEmail = MutableLiveData<Boolean>()
     val onInvalidEmail: LiveData<Boolean> get() = _onInvalidEmail
     private val _fieldChecker = MutableLiveData<Boolean>()
-    val fieldChecker: LiveData<Boolean> get() = _fieldChecker
+    private val fieldChecker: LiveData<Boolean> get() = _fieldChecker
     private var selectedAvatarId: Int = R.drawable.avatar21
 
 
@@ -101,8 +99,6 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
                 loadedUser.level =
                     snapshot.child("level").value.toString()
                         .toInt()
-                loadedUser.achievement =
-                    snapshot.child("achievement").value.toString()
                 loadedUser.coin =
                     snapshot.child("coin").value.toString().toInt()
                 loadedUser.idBinar =
@@ -150,10 +146,10 @@ class SignUpVm(private val userDao: UserDAO) : BaseViewModel<UiState>() {
     }
 }
 
-class SignUpVmFactory(private val userDao: UserDAO) : ViewModelProvider.Factory {
+class SignUpVmFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SignUpVm::class.java)) {
-            return SignUpVm(userDao) as T
+            return SignUpVm() as T
         }
         throw IllegalArgumentException("Unknown view model class")
     }

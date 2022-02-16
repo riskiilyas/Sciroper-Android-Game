@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.sciroper.databinding.FragmentLeaderboardBinding
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.Share
 import java.io.File
 
@@ -20,7 +19,7 @@ class LeaderboardFragment : Fragment() {
     private var _binding: FragmentLeaderboardBinding? = null
     private val binding get() = _binding!!
     private val leaderBoardVm: LeaderBoardVm by viewModels {
-        LeaderBoardVmFactory(App.appDb.getUserDao())
+        LeaderBoardVmFactory()
     }
     private lateinit var recyclerView: RecyclerView
 
@@ -63,15 +62,15 @@ class LeaderboardFragment : Fragment() {
             binding.constView.width
         )
         bitmap?.let {
-            Share.saveScreenshot(it,requireContext())
+            Share.saveScreenshot(it, requireContext())
         }
     }
 
     private fun bagiScreenshot() {
         val fileScreenshot =
             File(requireContext().getExternalFilesDir(null)!!.absolutePath + "/Screenshot/Screenshot.jpg")
-        startActivity(Share.ShareFileScreensshot(fileScreenshot))
-        }
+        startActivity(Share.shareFileScreensshot(fileScreenshot))
+    }
 
     override fun onDestroy() {
         super.onDestroy()

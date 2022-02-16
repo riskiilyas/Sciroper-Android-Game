@@ -17,7 +17,7 @@ import com.binar.sciroper.util.App
 import com.binar.sciroper.util.drawMusic
 import com.binar.sciroper.util.winMusic
 
-class ComDialog(private val vsComVm: VsComVm): DialogFragment() {
+class ComDialog(private val vsComVm: VsComVm) : DialogFragment() {
     private var _binding: ComLayoutBinding? = null
     private val binding get() = _binding!!
 

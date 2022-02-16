@@ -35,7 +35,7 @@ class HTPFragment : Fragment() {
         val action = HTPFragmentDirections.actionHTPFragmentToMenuFragment()
         findNavController().navigate(action)
         if (AppSharedPreference.isMusicPlay) {
-            BGMusic.playMusic(requireContext())
+            BGMusic.playMusic()
         }
     }
 

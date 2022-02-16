@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="ChangeFragment"
             type="com.binar.sciroper.ui.fragments.profile.changeavatar.ChangeAvatarFragment" />
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/madeeta"
-            android:text="Change Avatar"
+            android:text="@string/change_avatar"
             android:textColor="?textColour"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/view"
@@ -429,14 +430,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBuy"
+            android:id="@+id/btnChange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_border"
             android:backgroundTint="?btnColour"
             android:fontFamily="@font/madeeta"
-            android:text="Change"
+            android:onClick="@{()->ChangeFragment.change()}"
+            android:text="@string/change"
             android:textAllCaps="false"
             android:textSize="@dimen/text"
             app:layout_constraintEnd_toEndOf="parent"

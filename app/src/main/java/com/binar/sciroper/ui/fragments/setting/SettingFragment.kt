@@ -13,19 +13,19 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.data.local.AppSharedPreference
 import com.binar.sciroper.databinding.FragmentSettingBinding
-import com.binar.sciroper.ui.activity.MainActivity
-import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BGMusic.isPlay
-import com.binar.sciroper.util.BGMusic.pausePlay
 import com.binar.sciroper.util.BGMusic.playMusic
+import com.binar.sciroper.util.BGMusic.stopMusic
+import com.binar.sciroper.util.checkNetworkAvailable
 
 
 class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
     private val settingVm: SettingVm by viewModels {
-        SettingVmFactory(App.appDb.getUserDao(), AppSharedPreference)
+        SettingVmFactory()
     }
+    private var isOnline = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +38,7 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkNetworkAvailable { isOnline = it }
 
         binding.apply {
             vm = settingVm
@@ -55,22 +56,18 @@ class SettingFragment : Fragment() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 settingVm.setTheme(it)
                 Log.e("Tag", "false")
-
             }
         }
 
         binding.switchMusic.isChecked = AppSharedPreference.isMusicPlay
-        binding.switchMusic.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked && !isPlay()) {
-                playMusic(requireContext())
+        binding.switchMusic.setOnCheckedChangeListener { _, isChecked ->
+            settingVm.setMusic(isChecked)
+            if (isChecked) {
+                playMusic()
                 Toast.makeText(requireContext(), "Music ON", Toast.LENGTH_SHORT).show()
-                settingVm.setMusic(isChecked)
-                (activity as MainActivity).isMusicPlay = true
                 binding.switchMusic.isChecked = true
             } else if (!isChecked && isPlay()) {
-                pausePlay()
-                settingVm.setMusic(isChecked)
-                (activity as MainActivity).isMusicPlay = false
+                stopMusic()
                 binding.switchMusic.isChecked = false
             }
         }
@@ -89,6 +86,10 @@ class SettingFragment : Fragment() {
     }
 
     fun navToProfile() {
+        if (!isOnline) {
+            Toast.makeText(requireContext(), "No internet Connection!", Toast.LENGTH_SHORT).show()
+            return
+        }
         val action = SettingFragmentDirections.actionSettingFragmentToProfileFragment()
         findNavController().navigate(action)
     }

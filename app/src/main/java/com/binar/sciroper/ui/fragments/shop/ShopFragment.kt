@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.databinding.FragmentShopBinding
 import com.binar.sciroper.util.App
-import com.binar.sciroper.util.drawMusic
 import com.binar.sciroper.util.soundEffect
 
 
@@ -94,7 +93,11 @@ class ShopFragment : Fragment() {
         binding.btnBuy.setOnClickListener {
             val priceListInt = listOf(100, 150, 250, 500, 1000, 1500, 3000, 5000)
             when {
-                selectedId == null -> Toast.makeText(requireContext(), "Choose the item first!", Toast.LENGTH_SHORT).show()
+                selectedId == null -> Toast.makeText(
+                    requireContext(),
+                    "Choose the item first!",
+                    Toast.LENGTH_SHORT
+                ).show()
                 shopVm.userData.value!!.coin < priceListInt[selectedId!!] -> {
                     Toast.makeText(requireContext(), "Not Enough coins!", Toast.LENGTH_SHORT).show()
                     App.context.get()?.let { soundEffect(it) }
@@ -111,7 +114,7 @@ class ShopFragment : Fragment() {
     }
 
     @SuppressLint("ResourceAsColor")
-    private fun selectItem(i: Int){
+    private fun selectItem(i: Int) {
         selectedId?.let {
             if (it == i) return
             itemList[it].setBackgroundColor(Color.WHITE)

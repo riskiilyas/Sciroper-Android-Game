@@ -17,7 +17,7 @@ class UserListAdapter(private val leaderBoardVm: LeaderBoardVm) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(user: User) {
-            binding.tvRank.text = (layoutPosition+1).toString()
+            binding.tvRank.text = (layoutPosition + 1).toString()
             binding.namaPlayer.text = user.username
             binding.AvatarPlayer.setImageResource(user.avatarId)
             binding.tvLeaderboardLevel.text = user.level.toString()

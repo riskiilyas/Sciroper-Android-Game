@@ -23,7 +23,7 @@
     <string name="scissors">Scissors</string>
     <string name="com">COM</string>
     <string name="vs">VS</string>
-    <string name="choose_one_between_rock_sciccors_paper_and_the_opponent_will_choose_between_rock_sciccors_paper_too">Choose one between rock / sciccors / paper, and the opponent will choose between rock / sciccors / paper too.</string>
+    <string name="choose_one_between_rock_sciccors_paper_and_the_opponent_will_choose_between_rock_sciccors_paper_too">Watch this video to guide you, how to play this game. Or simply is Choose one between rock / sciccors / paper, and the opponent will choose between rock / sciccors / paper too.</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -52,7 +52,6 @@
     <string name="play_again">Play Again</string>
     <string name="back_to_menu_game">Back to Menu Game</string>
     <string name="success">Success</string>
-    <string name="okay">Okay</string>
     <string name="setting">Setting</string>
     <string name="back">Back</string>
     <string name="on">On</string>
@@ -63,4 +62,28 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="history">History</string>
     <string name="shop">Shop</string>
+    <string name="player_menang">player menang</string>
+    <string name="minggu_3_sore">Minggu, 3 sore</string>
+    <string name="lawan_komputer">Lawan komputer</string>
+    <string name="coin">coin</string>
+    <string name="content">content</string>
+    <string name="_55440">55440$</string>
+    <string name="_100">100</string>
+    <string name="_250">250</string>
+    <string name="_1000">1000</string>
+    <string name="buy">Buy</string>
+    <string name="_5000">5000</string>
+    <string name="_1500">1500</string>
+    <string name="_500">500</string>
+    <string name="_150">150</string>
+    <string name="_3000">3000</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="music">Music</string>
+    <string name="notification">Notification</string>
+    <string name="you_can_also_against_the_computer_nquickly_press_the_next_button_to_nbe_able_to_play">You can also against the computer, \nquickly press the next button to \nbe able to play</string>
+    <string name="play_with_your_nfriends_with_fun_with_this_game">play with your \nfriends with fun with this game</string>
+    <string name="change_avatar">Change Avatar</string>
+    <string name="change">Change</string>
+    <string name="you_level_up">You Level Up</string>
+    <string name="okay">Okay</string>
 </resources>

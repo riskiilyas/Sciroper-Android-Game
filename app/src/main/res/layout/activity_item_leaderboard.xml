@@ -3,11 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemLeaderboard"
         android:layout_width="match_parent"
@@ -91,10 +86,10 @@
         <TextView
             android:id="@+id/tvLeaderboardPoint"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/madeeta"
-            android:layout_marginTop="4dp"
-            android:textColor="?textColour"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/madeeta"
+            android:textColor="?textColour"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/view4"
             app:layout_constraintTop_toBottomOf="@+id/tvLeaderboardLevel"

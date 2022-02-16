@@ -34,13 +34,6 @@ class MenuGamePlayFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             mgpFragment = this@MenuGamePlayFragment
         }
-
-//        menuGamePlayVm.user.observe(viewLifecycleOwner) {
-//            binding.apply {
-//                tvPemainVsPemain.text = it.username
-//                tvPemainVsCPU.text = it.username
-//            }
-//        }
     }
 
     fun moveToVsPemain() {

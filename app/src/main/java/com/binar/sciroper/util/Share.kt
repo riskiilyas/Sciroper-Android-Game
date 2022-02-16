@@ -59,7 +59,7 @@ object Share {
         StrictMode.setVmPolicy(builder.build())
     }
 
-    fun ShareFileScreensshot(file: File?): Intent? {
+    fun shareFileScreensshot(file: File?): Intent? {
         bmpUri = Uri.fromFile(file)
         return if (bmpUri != null) {
             val text = "Let's play Sciroper and invite your friends to play this game."

@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.binar.sciroper.R
 import com.binar.sciroper.data.local.AppSharedPreference
+import com.binar.sciroper.util.App
 import com.binar.sciroper.util.BGMusic
 
 
@@ -21,23 +22,24 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (AppSharedPreference.isMusicPlay){
+        if (AppSharedPreference.isMusicPlay) {
             BGMusic.pausePlay()
         }
-        if(AppSharedPreference.isLogin!!){
+        if (AppSharedPreference.isLogin!!) {
             Handler(Looper.getMainLooper()).postDelayed({
                 lifecycleScope.launchWhenResumed {
                     findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMenuFragment())
-                    if (AppSharedPreference.isMusicPlay){
-                        BGMusic.playMusic(requireContext())
+                    if (AppSharedPreference.isMusicPlay) {
+                        BGMusic.playMusic()
                     }
+                    App.isReady = true
                 }
             }, 3000)
         } else {
             Handler(Looper.getMainLooper()).postDelayed({
                 lifecycleScope.launchWhenResumed {
                     findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToNewViewPagerFragment())
-                    if (AppSharedPreference.isMusicPlay){
+                    if (AppSharedPreference.isMusicPlay) {
                         BGMusic.pausePlay()
                     }
                 }

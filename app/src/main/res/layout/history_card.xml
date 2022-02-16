@@ -10,19 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp">
+            android:layout_margin="4dp"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/game_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/madeeta"
-                android:hint="Lawan komputer"
+                android:hint="@string/lawan_komputer"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/madeeta"
+                android:hint="@string/player_menang"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:hint="player menang"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_mode" />
@@ -44,8 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/madeeta"
+                android:hint="@string/minggu_3_sore"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:hint="Minggu, 3 sore"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_result" />

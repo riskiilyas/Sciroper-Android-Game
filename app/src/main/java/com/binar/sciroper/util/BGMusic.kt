@@ -7,11 +7,15 @@ import com.binar.sciroper.R
 
 object BGMusic {
     private var mediaPlayer: MediaPlayer? = null
-    fun playMusic(context: Context) {
+
+    fun createMediaplayer(context: Context) {
         mediaPlayer = MediaPlayer.create(
             context,
             R.raw.bensound_ukulele
         )
+    }
+
+    fun playMusic() {
         mediaPlayer?.start()
         mediaPlayer?.isLooping = true
     }
@@ -20,5 +24,10 @@ object BGMusic {
 
     fun pausePlay() {
         mediaPlayer?.pause()
+    }
+
+    fun stopMusic() {
+        mediaPlayer?.pause()
+        mediaPlayer?.seekTo(0)
     }
 }

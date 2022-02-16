@@ -95,7 +95,10 @@ class VsPlayerFragment : Fragment() {
                 choice.setBackgroundResource(R.drawable.shape_background)
                 freezeState(btnPemainSatu)
                 vsPlayerVm.gameResult()
-                Log.i("choices", "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}")
+                Log.i(
+                    "choices",
+                    "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}"
+                )
                 createDialog()
                 createToast(vsPlayerVm.user.username, vsPlayerVm.playerChoice)
 
@@ -111,7 +114,10 @@ class VsPlayerFragment : Fragment() {
                 choice.setBackgroundResource(R.drawable.shape_background)
                 freezeState(btnPemainDua)
                 vsPlayerVm.gameResult()
-                Log.i("choices", "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}")
+                Log.i(
+                    "choices",
+                    "player ${vsPlayerVm.playerChoice} and opp ${vsPlayerVm.opponentChoice} result ${vsPlayerVm.result}"
+                )
                 createDialog()
                 createToast(vsPlayerVm.opponent, vsPlayerVm.opponentChoice)
             }

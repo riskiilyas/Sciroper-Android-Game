@@ -26,7 +26,7 @@ class HistoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,7 +37,6 @@ class HistoryFragment : Fragment() {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             historyFragment = this@HistoryFragment
-//            vm = historyVm
         }
 
         historyVm.historyList.observe(viewLifecycleOwner) {
