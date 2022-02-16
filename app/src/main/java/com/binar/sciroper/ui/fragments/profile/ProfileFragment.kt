@@ -45,12 +45,12 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        avatars = listOf(
-            binding.avatarId1,
-            binding.avatarId2,
-            binding.avatarId3,
-            binding.avatarId4
-        )
+//        avatars = listOf(
+//            binding.avatarId1,
+//            binding.avatarId2,
+//            binding.avatarId3,
+//            binding.avatarId4
+//        )
 
         binding.apply {
             vm = profileVm
@@ -62,7 +62,7 @@ class ProfileFragment : Fragment() {
             onSignOut()
         }
 
-        onSelectedAvatar(avatars)
+//        onSelectedAvatar(avatars)
 
         binding.btnUpdate.setOnClickListener {
             Log.i("button", "button is clicked")
@@ -136,17 +136,17 @@ class ProfileFragment : Fragment() {
 //        }
 //    }
 
-    private fun onSelectedAvatar(avatarList: List<ImageView>) {
-        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
-            imageView.setOnClickListener {
-                profileVm.setAvatarId(AvatarHelper.provideList()[index])
-                avatarList.forEach {
-                    it.setBackgroundResource(android.R.color.transparent)
-                }
-                avatarList[index].setBackgroundResource(R.color.navigationColour)
-            }
-        }
-    }
+//    private fun onSelectedAvatar(avatarList: List<ImageView>) {
+//        avatarList.forEachIndexed { index: Int, imageView: ImageView ->
+//            imageView.setOnClickListener {
+//                profileVm.setAvatarId(AvatarHelper.provideList()[index])
+//                avatarList.forEach {
+//                    it.setBackgroundResource(android.R.color.transparent)
+//                }
+//                avatarList[index].setBackgroundResource(R.color.navigationColour)
+//            }
+//        }
+//    }
 
     private fun onSignOut() {
         val dialogSignOut = DialogSignOutt(profileVm)
@@ -157,6 +157,11 @@ class ProfileFragment : Fragment() {
         val action = ProfileFragmentDirections.actionProfileFragmentToSettingFragment()
         findNavController().navigate(action)
     }
+    fun navToChangeAvatar() {
+        val action = ProfileFragmentDirections.actionProfileFragmentToChangeAvatarFragment()
+        findNavController().navigate(action)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
