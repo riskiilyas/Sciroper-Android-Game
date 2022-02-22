@@ -9,3 +9,36 @@
 <img src="https://github.com/riskiilyas/Sciroper-Android-Game/blob/master/assets/ss_dark.png"/>
                    
 ## Features
+- Splash Screen
+- Landing Page
+- SignIn/SignUP
+- Menu
+- Gameplay-pvp/pvc
+- Shop
+- How To Play
+- LeaderBoard-Realtime
+- History
+- Background Music
+- Push Notification
+- DarkMode
+- Profile
+- Share
+
+## Components
+- View Pager2
+- Glide
+- Dots Indicator
+- Room-Coroutine
+- Lottie
+- Circle Image
+- Data Binding
+- RecyclerView
+- SharedPreferences
+- Firebase-RealDatabase
+- Firebase-Push Notification
+- Retrofit(Moshi)-Coroutine
+- LiveData
+- View Model
+- Navigation
+- Android Youtube Player
+- Okhttp3
